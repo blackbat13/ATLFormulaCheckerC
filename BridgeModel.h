@@ -55,12 +55,12 @@ private:
     std::map<State, std::set<int> > epistemicStatesDictionary;
     int noCardsAvailable;
     int noEndCards;
-    std::vector<int> cardsAvailable;
+    std::vector<CARD_TYPE> cardsAvailable;
     int stateNumber = 0;
     State firstState;
     unsigned long beginningStatesCount;
     std::vector<State> states;
-    std::map<int, std::string> cardsDictionary;
+    std::map<CARD_TYPE, std::string> cardsDictionary;
 
 
     void createAtlModel();
@@ -81,6 +81,7 @@ private:
     HAND_TYPE keepValuesInList(HAND_TYPE list, int value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();
+    void clear();
 
 public:
     BridgeModel(int noCardsAvailable, int noEndCards, State firstState);

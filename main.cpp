@@ -7,8 +7,8 @@ using namespace std;
 
 int main() {
     int m, n;
-    m = 4;
-    n = 4;
+    m = 3;
+    n = 3;
 
     BridgeModel bridgeModel = BridgeModel(m, n, BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2,0), 0, BOARD_TYPE(4,-1), 0, HISTORY_TYPE(), 0, -1));
 

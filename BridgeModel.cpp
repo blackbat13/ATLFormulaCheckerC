@@ -67,16 +67,21 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     this->createAtlModel();
     this->model.addAction(0, "wait");
     this->generateAvailableCards();
-    printf("Starting generating beginning states\n");
+    printf("Generating beginning states... ");
     this->generateBeginningStates();
     this->beginningStatesCount = this->states.size();
+    printf("Done\n");
     printf("Generated %lu beginning states\n", this->beginningStatesCount);
-    printf("Starting generating rest of model\n");
+    printf("Generating rest of model... ");
     this->generateRestOfModel();
+    printf("Done\n");
     printf("Generated model with %lu states\n", this->states.size());
-    printf("Starting preparing epistemic relation\n");
+    printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
-    printf("Prepared epistemic relation\n");
+    printf("Done\n");
+    printf("Clearing old data... ");
+    this->clear();
+    printf("Done\n");
 }
 
 void BridgeModel::createAtlModel() {
@@ -435,6 +440,12 @@ void BridgeModel::printHands(BridgeModel::State state) {
 
 unsigned long BridgeModel::getBeginningStatesCount() const {
     return beginningStatesCount;
+}
+
+void BridgeModel::clear() {
+    this->statesDictionary.clear();
+    this->epistemicStatesDictionary.clear();
+    this->cardsAvailable.clear();
 }
 
 
