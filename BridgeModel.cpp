@@ -4,8 +4,8 @@
 
 #include "BridgeModel.h"
 
-BridgeModel::State::State(const HANDS_TYPE &hands, const std::vector<int> &lefts, int next,
-                          const std::vector<int> &board, int beginning, const std::vector<int> &history, int clock,
+BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, int next,
+                          const BOARD_TYPE &board, int beginning, const HISTORY_TYPE &history, int clock,
                           int suit) : hands(hands), lefts(lefts), next(next), board(board), beginning(beginning),
                                       history(history), clock(clock), suit(suit) {}
 
@@ -174,13 +174,13 @@ void BridgeModel::generateRestOfModel() {
             }
         } else if(state.clock == 4) {
             int winner = this->getWinner(state.beginning, state.board);
-            std::vector<int> newLefts = state.lefts;
+            LEFTS_TYPE newLefts = state.lefts;
             ++newLefts[winner % 2];
             int newNext = winner;
             int newClock = 0;
             int newBeginning = winner;
             int newSuit = -1;
-            std::vector<int> newBoard(4, -1);
+            BOARD_TYPE newBoard(4, -1);
             std::vector<std::string> actions(4, "wait");
             State newState = State(state.hands, newLefts, newNext, newBoard, newBeginning, state.history, newClock, newSuit);
 
@@ -258,8 +258,8 @@ void BridgeModel::prepareEpistemicRelation() {
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, int cardIndex) {
     int card = state.hands[state.next][cardIndex];
-    std::vector<int> newBoard = this->newBoardAfterPlay(state, card);
-    std::vector<int> newHistory = this->newHistoryAfterPlay(state, card);
+    BOARD_TYPE newBoard = this->newBoardAfterPlay(state, card);
+    HISTORY_TYPE newHistory = this->newHistoryAfterPlay(state, card);
 
     int newNext = (state.next + 1) % 4;
     int newClock = state.clock + 1;
@@ -272,7 +272,7 @@ BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, int 
     return newState;
 }
 
-int BridgeModel::newSuit(BridgeModel::State state, int card) {
+int BridgeModel::newSuit(BridgeModel::State state, CARD_TYPE card) {
     if(state.next == state.beginning) {
         return card % 10;
     } else {
@@ -280,14 +280,14 @@ int BridgeModel::newSuit(BridgeModel::State state, int card) {
     }
 }
 
-std::vector<int> BridgeModel::newBoardAfterPlay(BridgeModel::State state, int card) {
-    std::vector<int> newBoard = state.board;
+BOARD_TYPE BridgeModel::newBoardAfterPlay(BridgeModel::State state, CARD_TYPE card) {
+    BOARD_TYPE newBoard = state.board;
     newBoard[state.next] = card;
     return newBoard;
 }
 
-std::vector<int> BridgeModel::newHistoryAfterPlay(BridgeModel::State state, int card) {
-    std::vector<int> newHistory = state.history;
+HISTORY_TYPE BridgeModel::newHistoryAfterPlay(BridgeModel::State state, CARD_TYPE card) {
+    HISTORY_TYPE newHistory = state.history;
     newHistory.push_back(card);
     std::sort(newHistory.begin(), newHistory.end());
     return newHistory;
@@ -304,8 +304,8 @@ int BridgeModel::countRemainingCards(BridgeModel::State state) {
     return remainingCardsCount;
 }
 
-int BridgeModel::getWinner(int beginning, std::vector<int> board) {
-    std::vector<int> cards;
+int BridgeModel::getWinner(int beginning, BOARD_TYPE board) {
+    std::vector<CARD_TYPE> cards;
     for(int i = 0; i < 4; ++i) {
         cards.push_back(board[(beginning+i) % 4]);
     }
@@ -381,7 +381,7 @@ std::vector<std::vector<std::string> > BridgeModel::handsToReadableHands(HANDS_T
 HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInHand) {
     std::vector<int> array;
     std::vector<bool> used((unsigned long)noCardsAvailable * 4, false);
-    std::vector<int> cardNumbers;
+    std::vector<CARD_TYPE> cardNumbers;
     for(int i = 14; i > 0; --i) {
         for(int j = 4; j > 0; --j) {
             cardNumbers.push_back(i * 10 + j);

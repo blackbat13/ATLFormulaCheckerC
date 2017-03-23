@@ -7,10 +7,10 @@ using namespace std;
 
 int main() {
     int m, n;
-    m = 3;
-    n = 3;
+    m = 4;
+    n = 4;
 
-    BridgeModel bridgeModel = BridgeModel(m, n, BridgeModel::State(HANDS_TYPE(), std::vector<int>(2,0), 0, std::vector<int>(4,-1), 0, std::vector<int>(), 0, -1));
+    BridgeModel bridgeModel = BridgeModel(m, n, BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2,0), 0, BOARD_TYPE(4,-1), 0, HISTORY_TYPE(), 0, -1));
 
     set<int> winningStates;
     for(int i = 0; i < bridgeModel.getStates().size(); ++i) {

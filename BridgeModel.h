@@ -13,24 +13,28 @@
 #include <random>
 #include "cppitertools/itertools.hpp"
 
-#define HAND_TYPE std::vector<short>
-#define HANDS_TYPE std::vector<HAND_TYPE >
+typedef short CARD_TYPE;
+typedef std::vector<short> HAND_TYPE;
+typedef std::vector<HAND_TYPE > HANDS_TYPE;
+typedef std::vector<char> LEFTS_TYPE;
+typedef std::vector<CARD_TYPE> BOARD_TYPE;
+typedef std::vector<CARD_TYPE> HISTORY_TYPE;
 
 class BridgeModel {
 public:
     struct State{
         HANDS_TYPE hands;
-        std::vector<int> lefts;
+        LEFTS_TYPE lefts;
         char next;
-        std::vector<int> board;
-        int beginning;
-        std::vector<int> history;
+        BOARD_TYPE board;
+        char beginning;
+        HISTORY_TYPE history;
         char clock;
         char suit;
 
         State();
-        State(const HANDS_TYPE &hands, const std::vector<int> &lefts, int next,
-              const std::vector<int> &board, int beginning, const std::vector<int> &history, int clock, int suit);
+        State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, int next,
+              const BOARD_TYPE &board, int beginning, const HISTORY_TYPE &history, int clock, int suit);
 
         bool operator<(const State &rhs) const;
 
@@ -69,11 +73,11 @@ private:
     State getEpistemicState(State state);
     void prepareEpistemicRelation();
     State newStateAfterPlay(State state, int cardIndex);
-    int newSuit(State state, int card);
-    std::vector<int> newBoardAfterPlay(State state, int card);
-    std::vector<int> newHistoryAfterPlay(State state, int card);
+    int newSuit(State state, CARD_TYPE card);
+    BOARD_TYPE newBoardAfterPlay(State state, CARD_TYPE card);
+    HISTORY_TYPE newHistoryAfterPlay(State state, CARD_TYPE card);
     int countRemainingCards(State state);
-    int getWinner(int beginning, std::vector<int> board);
+    int getWinner(int beginning, BOARD_TYPE board);
     HAND_TYPE keepValuesInList(HAND_TYPE list, int value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();
