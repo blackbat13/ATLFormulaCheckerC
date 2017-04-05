@@ -262,7 +262,7 @@ void BridgeModel::prepareEpistemicRelation() {
 }
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, int cardIndex) {
-    int card = state.hands[state.next][cardIndex];
+    CARD_TYPE card = state.hands[state.next][cardIndex];
     BOARD_TYPE newBoard = this->newBoardAfterPlay(state, card);
     HISTORY_TYPE newHistory = this->newHistoryAfterPlay(state, card);
 
@@ -328,7 +328,7 @@ int BridgeModel::getWinner(int beginning, BOARD_TYPE board) {
     return winner;
 }
 
-HAND_TYPE BridgeModel::keepValuesInList(HAND_TYPE list, int value) {
+HAND_TYPE BridgeModel::keepValuesInList(HAND_TYPE list, CARD_TYPE value) {
     int countValues = 0;
     for(auto element: list) {
         if(element == value) {

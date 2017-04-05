@@ -78,7 +78,7 @@ private:
     HISTORY_TYPE newHistoryAfterPlay(State state, CARD_TYPE card);
     int countRemainingCards(State state);
     int getWinner(int beginning, BOARD_TYPE board);
-    HAND_TYPE keepValuesInList(HAND_TYPE list, int value);
+    HAND_TYPE keepValuesInList(HAND_TYPE list, CARD_TYPE value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();
     void clear();
