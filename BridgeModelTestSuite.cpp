@@ -54,7 +54,8 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
 }
 
 void BridgeModelTestSuite::startTests() {
-    for (int i = 0; i < this->numberOfTests; ++i) {
+    for (int testNumber = 0; testNumber < this->numberOfTests; ++testNumber) {
+        printf("----------TEST NUMBER %d----------\n", testNumber);
         struct timespec start, finish;
         double elapsed;
 
@@ -62,8 +63,65 @@ void BridgeModelTestSuite::startTests() {
 
         BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards, BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2,0), 0, BOARD_TYPE(4,-1), 0, HISTORY_TYPE(), 0, -1));
 
-        printf("Current Virtual Memory used: %lf MB", getVirtualMemory()/1024);
-        cout << "Current Virtual Memory used: " << getVirtualMemory()/1024 << " MB" << endl;
-        cout << "Current Physical Memory used: " << getPhysicalMemory()/1024 << " MB" << endl;
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        elapsed = (finish.tv_sec - start.tv_sec);
+        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+        printf("Generated model in %lfs\n", elapsed);
+        this->modelGenerationTimeSum += elapsed;
+        this->totalTimeSum += elapsed;
+
+        this->physicalMemorySum += getPhysicalMemory();
+        this->virtualMemorySum += getVirtualMemory();
+        printf("Current Virtual Memory used: %lf MB\n", getVirtualMemory()/1024);
+        printf("Current Physical Memory used: %lf MB\n", getPhysicalMemory()/1024);
+
+
+        std::set<int> winningStates;
+        for(int i = 0; i < bridgeModel.getStates().size(); ++i) {
+            BridgeModel::State state = bridgeModel.getStates()[i];
+            if(state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable) {
+                winningStates.insert(i);
+            }
+        }
+
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, winningStates);
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        elapsed = (finish.tv_sec - start.tv_sec);
+        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+
+        printf("Computed formula in %lfs\n", elapsed);
+        this->formulaTimeSum += elapsed;
+        this->totalTimeSum += elapsed;
+
+        bool isOk = true;
+        for(int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
+            if(result.find(i) == result.end()) {
+                isOk = false;
+                break;
+            }
+        }
+
+        if(isOk) {
+            printf("Formula result: true\n");
+        } else {
+            printf("Formula result: false\n");
+        }
+
+        printf("----------TEST NUMBER %d----------\n", testNumber);
+        printf("\n\n");
     }
+}
+
+void BridgeModelTestSuite::printStatistics() {
+    printf("----------TEST STATISTICS----------\n");
+    printf("Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
+    printf("Number of tests: %d\n", this->numberOfTests);
+    printf("Virtual memory: %lf\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
+    printf("Physical memory: %lf\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
+    printf("Formula time: %lf\n", this->formulaTimeSum / (double)this->numberOfTests);
+    printf("Generation time: %lf\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
+    printf("Total time: %lf\n", this->totalTimeSum / (double)this->numberOfTests);
+    printf("----------TEST STATISTICS----------\n");
+    printf("\n\n");
 }

@@ -8,14 +8,15 @@
 #include "BridgeModel.h"
 #include <cstdio>
 #include <cstring>
+#include <set>
 
 class BridgeModelTestSuite {
 private:
     long long virtualMemorySum;
     long long physicalMemorySum;
-    long long formulaTimeSum;
-    long long totalTimeSum;
-    long long modelGenerationTimeSum;
+    double formulaTimeSum;
+    double totalTimeSum;
+    double modelGenerationTimeSum;
     int numberOfTests;
     int noCardsAvailable;
     int noEndCards;
