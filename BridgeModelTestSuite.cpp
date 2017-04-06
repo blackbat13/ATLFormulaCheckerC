@@ -54,7 +54,7 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
 }
 
 void BridgeModelTestSuite::startTests() {
-    for (int testNumber = 0; testNumber < this->numberOfTests; ++testNumber) {
+    for (int testNumber = 1; testNumber <= this->numberOfTests; ++testNumber) {
         printf("----------TEST NUMBER %d----------\n", testNumber);
         struct timespec start, finish;
         double elapsed;
@@ -66,14 +66,14 @@ void BridgeModelTestSuite::startTests() {
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
-        printf("Generated model in %lfs\n", elapsed);
+        printf("Generated model in %fs\n", elapsed);
         this->modelGenerationTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
         this->physicalMemorySum += getPhysicalMemory();
         this->virtualMemorySum += getVirtualMemory();
-        printf("Current Virtual Memory used: %lf MB\n", getVirtualMemory()/1024);
-        printf("Current Physical Memory used: %lf MB\n", getPhysicalMemory()/1024);
+        printf("Current Virtual Memory used: %f MB\n", getVirtualMemory()/1024);
+        printf("Current Physical Memory used: %f MB\n", getPhysicalMemory()/1024);
 
 
         std::set<int> winningStates;
@@ -90,7 +90,7 @@ void BridgeModelTestSuite::startTests() {
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
 
-        printf("Computed formula in %lfs\n", elapsed);
+        printf("Computed formula in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
@@ -117,11 +117,27 @@ void BridgeModelTestSuite::printStatistics() {
     printf("----------TEST STATISTICS----------\n");
     printf("Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
     printf("Number of tests: %d\n", this->numberOfTests);
-    printf("Virtual memory: %lf\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
-    printf("Physical memory: %lf\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
-    printf("Formula time: %lf\n", this->formulaTimeSum / (double)this->numberOfTests);
-    printf("Generation time: %lf\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
-    printf("Total time: %lf\n", this->totalTimeSum / (double)this->numberOfTests);
+    printf("Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
+    printf("Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
+    printf("Formula time: %f\n", this->formulaTimeSum / (double)this->numberOfTests);
+    printf("Generation time: %f\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
+    printf("Total time: %f\n", this->totalTimeSum / (double)this->numberOfTests);
     printf("----------TEST STATISTICS----------\n");
     printf("\n\n");
+}
+
+void BridgeModelTestSuite::saveStatistics() {
+    std::string filename = "./results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test.txt";
+    FILE* file = fopen(filename.c_str(), "rw");
+    fprintf(file, "----------TEST STATISTICS----------\n");
+    fprintf(file, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
+    fprintf(file, "Number of tests: %d\n", this->numberOfTests);
+    fprintf(file, "Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
+    fprintf(file, "Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
+    fprintf(file, "Formula time: %f\n", this->formulaTimeSum / (double)this->numberOfTests);
+    fprintf(file, "Generation time: %f\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
+    fprintf(file, "Total time: %f\n", this->totalTimeSum / (double)this->numberOfTests);
+    fprintf(file, "----------TEST STATISTICS----------\n");
+    fprintf(file, "\n\n");
+    fclose(file);
 }

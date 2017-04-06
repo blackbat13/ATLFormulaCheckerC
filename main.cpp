@@ -57,12 +57,14 @@ double getPhysicalMemory() {
 
 
 int main() {
-    int noCardsAvailable = 3;
-    int noEndCards = 3;
-    int numberOfTests = 1;
+    int noCardsAvailable = 2;
+    int noEndCards = 2;
+    int numberOfTests = 20;
 
     BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards);
     testSuite.startTests();
+    testSuite.printStatistics();
+    testSuite.saveStatistics();
 //    string a;
 //    cin >> a;
     return 0;
