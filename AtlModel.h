@@ -11,6 +11,7 @@
 #include <map>
 #include <cstdio>
 #include <iterator>
+#include <algorithm>
 #include "DisjointUnion.h"
 
 class AtlModel {
