@@ -119,9 +119,9 @@ void BridgeModelTestSuite::printStatistics() {
     printf("Number of tests: %d\n", this->numberOfTests);
     printf("Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
     printf("Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
-    printf("Formula time: %f\n", this->formulaTimeSum / (double)this->numberOfTests);
-    printf("Generation time: %f\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
-    printf("Total time: %f\n", this->totalTimeSum / (double)this->numberOfTests);
+    printf("Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
+    printf("Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
+    printf("Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
     printf("----------TEST STATISTICS----------\n");
     printf("\n\n");
 }
@@ -134,9 +134,9 @@ void BridgeModelTestSuite::saveStatistics() {
     fprintf(file, "Number of tests: %d\n", this->numberOfTests);
     fprintf(file, "Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
     fprintf(file, "Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
-    fprintf(file, "Formula time: %f\n", this->formulaTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Generation time: %f\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Total time: %f\n", this->totalTimeSum / (double)this->numberOfTests);
+    fprintf(file, "Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
+    fprintf(file, "Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
+    fprintf(file, "Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "\n\n");
     fclose(file);
