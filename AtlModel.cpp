@@ -70,6 +70,18 @@ void AtlModel::addEpistemicClass(int agentNumber, std::set<int> epistemicClass) 
     this->findWhereCanGo(epistemicClass, epistemicClassNumber, agentNumber);
 }
 
+void AtlModel::finishEpistemicClasses(int agentNumber) {
+    for(int i = 0; i < this->imperfectInformation[agentNumber].size(); ++i) {
+        int firstState = *(this->imperfectInformation[agentNumber][i].begin());
+        for(auto state: this->imperfectInformation[agentNumber][i]) {
+            this->epistemicClassMembership[agentNumber][state] = i;
+            this->epistemicClassDisjoint[agentNumber].unionn(firstState, state);
+        }
+
+        this->findWhereCanGo( this->imperfectInformation[agentNumber][i], i, agentNumber);
+    }
+}
+
 void AtlModel::findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNumber, int agentNumber) {
     for(auto action: this->agentsActions[agentNumber]) {
         std::set<int> canGoTemp;

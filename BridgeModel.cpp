@@ -95,7 +95,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
     printf("Done\n");
-    printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
+    //printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
     printf("Clearing old data... ");
     this->clear();
     printf("Done\n");
@@ -265,7 +265,19 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
 }
 
 void BridgeModel::addToEpistemicDictionary(BridgeModel::State state, int newStateNumber) {
-    this->epistemicStatesDictionary[state].insert(newStateNumber);
+    for(int i = 0; i < this->model.imperfectInformation[0].size(); ++i) {
+        int firstStateNumber = *(this->model.imperfectInformation[0][i].begin());
+        State firstState = this->states[firstStateNumber];
+        State firstStateEpistemic = getEpistemicState(firstState);
+        if(state == firstStateEpistemic) {
+            this->model.imperfectInformation[0][i].insert(newStateNumber);
+            return;
+        }
+    }
+
+    std::set<int> newEpistemicClass;
+    newEpistemicClass.insert(newStateNumber);
+    this->model.imperfectInformation[0].push_back(newEpistemicClass);
 }
 
 BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
@@ -277,9 +289,7 @@ BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
 }
 
 void BridgeModel::prepareEpistemicRelation() {
-    for(auto item: this->epistemicStatesDictionary) {
-        this->model.addEpistemicClass(0, item.second);
-    }
+    this->model.finishEpistemicClasses(0);
 }
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, char cardIndex) {
@@ -473,7 +483,6 @@ unsigned long BridgeModel::getBeginningStatesCount() const {
 }
 
 void BridgeModel::clear() {
-    this->epistemicStatesDictionary.clear();
     this->cardsAvailable.clear();
 }
 

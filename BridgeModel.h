@@ -55,7 +55,6 @@ public:
 
 private:
     AtlModel model;
-    std::map<State, std::set<int> > epistemicStatesDictionary;
     int noCardsAvailable;
     int noEndCards;
     std::vector<CARD_TYPE> cardsAvailable;

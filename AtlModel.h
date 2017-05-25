@@ -37,13 +37,15 @@ class AtlModel {
     std::vector<std::set<Transition> > transitions;
     std::vector<std::set<Transition> > reverseTransitions;
     std::vector<std::set<int> > preStates;
-    std::vector<std::vector<std::set<int> > > imperfectInformation;
+
     std::vector<std::vector<std::string> > agentsActions;
     // states
     std::vector<std::vector<int> > epistemicClassMembership;
     std::vector<DisjointUnion> epistemicClassDisjoint;
     std::vector<std::vector<std::map<std::string, std::set<int> > > > canGoThere;
 public:
+    std::vector<std::vector<std::set<int> > > imperfectInformation;
+
     AtlModel(int numberOfAgents, int numberOfStates);
 
     AtlModel();
@@ -53,6 +55,7 @@ public:
     void addTransition(int from, int to, std::vector<std::string> actions);
 //    bool isSameState(int agentNumber, int a, int b);
     void addEpistemicClass(int agentNumber, std::set<int> epistemicClass);
+    void finishEpistemicClasses(int agentNumber);
     void findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNumber, int agentNumber);
 //    std::vector<int> basicFormula(int agentNumber, int winningState);
     bool isReachableByAgentDisjoint(std::string action, int fromState, int agentNumber, int firstWinning, DisjointUnion winningStates);
