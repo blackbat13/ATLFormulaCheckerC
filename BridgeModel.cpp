@@ -3,6 +3,7 @@
 //
 
 #include "BridgeModel.h"
+#define NotRandom true
 
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
                           const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
@@ -53,6 +54,21 @@ bool BridgeModel::State::operator<=(const BridgeModel::State &rhs) const {
 
 bool BridgeModel::State::operator>=(const BridgeModel::State &rhs) const {
     return !(*this < rhs);
+}
+
+bool BridgeModel::State::operator==(const BridgeModel::State &rhs) const {
+    return hands == rhs.hands &&
+           lefts == rhs.lefts &&
+           next == rhs.next &&
+           board == rhs.board &&
+           beginning == rhs.beginning &&
+           history == rhs.history &&
+           clock == rhs.clock &&
+           suit == rhs.suit;
+}
+
+bool BridgeModel::State::operator!=(const BridgeModel::State &rhs) const {
+    return !(rhs == *this);
 }
 
 BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(firstState) {
@@ -231,14 +247,18 @@ int BridgeModel::addState(BridgeModel::State state) {
 }
 
 int BridgeModel::getStateNumber(BridgeModel::State state) {
-    int newStateNumber;
-    if(this->statesDictionary[state] == 0) {
-        this->statesDictionary[state] = this->stateNumber;
+    int newStateNumber = -1;
+    for(int i = 0 ; i < this->states.size(); ++i) {
+        if(this->states[i] == state) {
+            newStateNumber = i;
+            break;
+        }
+    }
+
+    if(newStateNumber == -1) {
         newStateNumber = this->stateNumber;
         this->states.push_back(state);
         this->stateNumber++;
-    } else {
-        newStateNumber = this->statesDictionary[state];
     }
 
     return newStateNumber;
@@ -386,22 +406,31 @@ std::vector<std::vector<std::string> > BridgeModel::handsToReadableHands(HANDS_T
 
 HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInHand) {
     std::vector<CARD_TYPE> array;
-    std::vector<bool> used((unsigned long)noCardsAvailable * 4, false);
+    std::vector<bool> used((unsigned long) noCardsAvailable * 4, false);
     std::vector<CARD_TYPE> cardNumbers;
-    for(short i = 14; i > 0; --i) {
-        for(short j = 4; j > 0; --j) {
-            cardNumbers.push_back(i * (short)10 + j);
+    for (short i = 14; i > 0; --i) {
+        for (short j = 4; j > 0; --j) {
+            cardNumbers.push_back(i * (short) 10 + j);
         }
     }
 
-    for(int i = 0; i < noCardsInHand * 4; ++i) {
-        long number;
-        do {
-            number = rand() % (noCardsAvailable * 4);
-        }while(used[number]);
+    if (NotRandom) {
+        long number = 0;
+        for (int i = 0; i < noCardsInHand * 4; ++i) {
+            array.push_back(cardNumbers[number]);
+            ++number;
+        }
+    }
+    else {
+        for (int i = 0; i < noCardsInHand * 4; ++i) {
+            long number;
+            do {
+                number = rand() % (noCardsAvailable * 4);
+            } while (used[number]);
 
-        array.push_back(cardNumbers[number]);
-        used[number] = true;
+            array.push_back(cardNumbers[number]);
+            used[number] = true;
+        }
     }
 
     HANDS_TYPE hands;
@@ -444,7 +473,6 @@ unsigned long BridgeModel::getBeginningStatesCount() const {
 }
 
 void BridgeModel::clear() {
-    this->statesDictionary.clear();
     this->epistemicStatesDictionary.clear();
     this->cardsAvailable.clear();
 }

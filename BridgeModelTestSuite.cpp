@@ -50,7 +50,8 @@ double BridgeModelTestSuite::getPhysicalMemory() {
 
 BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards) : numberOfTests(
         numberOfTests), noEndCards(noEndCards), noCardsAvailable(noCardsAvailable) {
-
+    this->physicalMemorySum = 0;
+    this->virtualMemorySum = 0;
 }
 
 void BridgeModelTestSuite::startTests() {
@@ -117,8 +118,8 @@ void BridgeModelTestSuite::printStatistics() {
     printf("----------TEST STATISTICS----------\n");
     printf("Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
     printf("Number of tests: %d\n", this->numberOfTests);
-    printf("Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
-    printf("Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
+    printf("Virtual memory: %f MB\n", ((double)this->virtualMemorySum / (double)this->numberOfTests) / 1024);
+    printf("Physical memory: %f MB\n", ((double)this->physicalMemorySum / (double)this->numberOfTests) / 1024);
     printf("Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
     printf("Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
     printf("Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);

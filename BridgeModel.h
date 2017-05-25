@@ -43,6 +43,10 @@ public:
         bool operator<=(const State &rhs) const;
 
         bool operator>=(const State &rhs) const;
+
+        bool operator==(const State &rhs) const;
+
+        bool operator!=(const State &rhs) const;
     };
 
 private:
@@ -51,7 +55,6 @@ public:
 
 private:
     AtlModel model;
-    std::map<State, int> statesDictionary;
     std::map<State, std::set<int> > epistemicStatesDictionary;
     int noCardsAvailable;
     int noEndCards;
