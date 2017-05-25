@@ -14,7 +14,7 @@
 #include "cppitertools/itertools.hpp"
 
 typedef short CARD_TYPE;
-typedef std::vector<short> HAND_TYPE;
+typedef std::vector<CARD_TYPE> HAND_TYPE;
 typedef std::vector<HAND_TYPE > HANDS_TYPE;
 typedef std::vector<char> LEFTS_TYPE;
 typedef std::vector<CARD_TYPE> BOARD_TYPE;
@@ -33,8 +33,8 @@ public:
         char suit;
 
         State();
-        State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, int next,
-              const BOARD_TYPE &board, int beginning, const HISTORY_TYPE &history, int clock, int suit);
+        State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
+              const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock, char suit);
 
         bool operator<(const State &rhs) const;
 
@@ -72,12 +72,12 @@ private:
     void addToEpistemicDictionary(State state, int newStateNumber);
     State getEpistemicState(State state);
     void prepareEpistemicRelation();
-    State newStateAfterPlay(State state, int cardIndex);
-    int newSuit(State state, CARD_TYPE card);
+    State newStateAfterPlay(State state, char cardIndex);
+    char newSuit(State state, CARD_TYPE card);
     BOARD_TYPE newBoardAfterPlay(State state, CARD_TYPE card);
     HISTORY_TYPE newHistoryAfterPlay(State state, CARD_TYPE card);
     int countRemainingCards(State state);
-    int getWinner(int beginning, BOARD_TYPE board);
+    char getWinner(char beginning, BOARD_TYPE board);
     HAND_TYPE keepValuesInList(HAND_TYPE list, CARD_TYPE value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();

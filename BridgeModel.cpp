@@ -4,9 +4,9 @@
 
 #include "BridgeModel.h"
 
-BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, int next,
-                          const BOARD_TYPE &board, int beginning, const HISTORY_TYPE &history, int clock,
-                          int suit) : hands(hands), lefts(lefts), next(next), board(board), beginning(beginning),
+BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
+                          const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
+                          char suit) : hands(hands), lefts(lefts), next(next), board(board), beginning(beginning),
                                       history(history), clock(clock), suit(suit) {}
 
 BridgeModel::State::State(){}
@@ -79,6 +79,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
     printf("Done\n");
+    printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
     printf("Clearing old data... ");
     this->clear();
     printf("Done\n");
@@ -104,11 +105,11 @@ void BridgeModel::createAtlModel() {
 }
 
 void BridgeModel::generateAvailableCards() {
-    int cardNumber = 14;
-    for(int i = 0; i < this->noCardsAvailable; ++i) {
-        for(int c = 4; c >= 1; --c) {
-            this->cardsAvailable.push_back(cardNumber * 10 + c);
-            this->model.addAction(0, this->cardsDictionary[cardNumber * 10 + c]);
+    CARD_TYPE cardNumber = 14;
+    for(short i = 0; i < this->noCardsAvailable; ++i) {
+        for(short c = 4; c >= 1; --c) {
+            this->cardsAvailable.push_back(cardNumber * (short)10 + c);
+            this->model.addAction(0, this->cardsDictionary[cardNumber * (short)10 + c]);
         }
 
         --cardNumber;
@@ -178,13 +179,13 @@ void BridgeModel::generateRestOfModel() {
                 this->model.addTransition(currentStateNumber, newStateNumber, actions);
             }
         } else if(state.clock == 4) {
-            int winner = this->getWinner(state.beginning, state.board);
+            char winner = this->getWinner(state.beginning, state.board);
             LEFTS_TYPE newLefts = state.lefts;
             ++newLefts[winner % 2];
-            int newNext = winner;
-            int newClock = 0;
-            int newBeginning = winner;
-            int newSuit = -1;
+            char newNext = winner;
+            char newClock = 0;
+            char newBeginning = winner;
+            char newSuit = -1;
             BOARD_TYPE newBoard(4, -1);
             std::vector<std::string> actions(4, "wait");
             State newState = State(state.hands, newLefts, newNext, newBoard, newBeginning, state.history, newClock, newSuit);
@@ -261,25 +262,25 @@ void BridgeModel::prepareEpistemicRelation() {
     }
 }
 
-BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, int cardIndex) {
+BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, char cardIndex) {
     CARD_TYPE card = state.hands[state.next][cardIndex];
     BOARD_TYPE newBoard = this->newBoardAfterPlay(state, card);
     HISTORY_TYPE newHistory = this->newHistoryAfterPlay(state, card);
 
-    int newNext = (state.next + 1) % 4;
-    int newClock = state.clock + 1;
+    char newNext = (state.next + (char)1) % (char)4;
+    char newClock = state.clock + (char)1;
     HANDS_TYPE newHands = state.hands;
     newHands[state.next][cardIndex] = -1;
-    int newSuit = this->newSuit(state, card);
+    char newSuit = this->newSuit(state, card);
 
     State newState = State(newHands, state.lefts, newNext, newBoard, state.beginning, newHistory, newClock, newSuit);
 
     return newState;
 }
 
-int BridgeModel::newSuit(BridgeModel::State state, CARD_TYPE card) {
+char BridgeModel::newSuit(BridgeModel::State state, CARD_TYPE card) {
     if(state.next == state.beginning) {
-        return card % 10;
+        return (char)(card % 10);
     } else {
         return state.suit;
     }
@@ -309,19 +310,19 @@ int BridgeModel::countRemainingCards(BridgeModel::State state) {
     return remainingCardsCount;
 }
 
-int BridgeModel::getWinner(int beginning, BOARD_TYPE board) {
+char BridgeModel::getWinner(char beginning, BOARD_TYPE board) {
     std::vector<CARD_TYPE> cards;
     for(int i = 0; i < 4; ++i) {
         cards.push_back(board[(beginning+i) % 4]);
     }
 
-    int winner = beginning;
-    int winningCard = cards[0];
-    int color = cards[0] % 10;
-    for(int i = 1; i < 4; ++i) {
+    char winner = beginning;
+    CARD_TYPE winningCard = cards[0];
+    char color = (char)(cards[0] % 10);
+    for(char i = 1; i < 4; ++i) {
         if(cards[i] % 10 == color && cards[i] > winningCard) {
             winningCard = cards[i];
-            winner = (beginning + i) % 4;
+            winner = (char)((beginning + i) % 4);
         }
     }
 
@@ -329,14 +330,14 @@ int BridgeModel::getWinner(int beginning, BOARD_TYPE board) {
 }
 
 HAND_TYPE BridgeModel::keepValuesInList(HAND_TYPE list, CARD_TYPE value) {
-    int countValues = 0;
+    unsigned long countValues = 0;
     for(auto element: list) {
         if(element == value) {
             ++countValues;
         }
     }
 
-    return HAND_TYPE((unsigned long)countValues, value);
+    return HAND_TYPE(countValues, value);
 }
 
 std::vector<std::string> BridgeModel::generateReadableCardsArray() {
@@ -384,12 +385,12 @@ std::vector<std::vector<std::string> > BridgeModel::handsToReadableHands(HANDS_T
 }
 
 HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInHand) {
-    std::vector<int> array;
+    std::vector<CARD_TYPE> array;
     std::vector<bool> used((unsigned long)noCardsAvailable * 4, false);
     std::vector<CARD_TYPE> cardNumbers;
-    for(int i = 14; i > 0; --i) {
-        for(int j = 4; j > 0; --j) {
-            cardNumbers.push_back(i * 10 + j);
+    for(short i = 14; i > 0; --i) {
+        for(short j = 4; j > 0; --j) {
+            cardNumbers.push_back(i * (short)10 + j);
         }
     }
 
