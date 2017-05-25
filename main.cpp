@@ -20,7 +20,5 @@ int main() {
     testSuite.startTests();
     testSuite.printStatistics();
     testSuite.saveStatistics();
-//    string a;
-//    cin >> a;
     return 0;
 }

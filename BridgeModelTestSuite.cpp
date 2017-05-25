@@ -128,17 +128,30 @@ void BridgeModelTestSuite::printStatistics() {
 }
 
 void BridgeModelTestSuite::saveStatistics() {
-    std::string filename = "./results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test.txt";
-    FILE* file = fopen(filename.c_str(), "rw");
+    std::string filename = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test_" + getCurrentDateTime() + ".txt";
+    FILE* file = fopen(filename.c_str(), "w");
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
     fprintf(file, "Number of tests: %d\n", this->numberOfTests);
-    fprintf(file, "Virtual memory: %f KB\n", (double)this->virtualMemorySum / (double)this->numberOfTests);
-    fprintf(file, "Physical memory: %f KB\n", (double)this->physicalMemorySum / (double)this->numberOfTests);
+    fprintf(file, "Virtual memory: %f MB\n", ((double)this->virtualMemorySum / (double)this->numberOfTests) / 1024);
+    fprintf(file, "Physical memory: %f MB\n", ((double)this->physicalMemorySum / (double)this->numberOfTests) / 1024);
     fprintf(file, "Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
     fprintf(file, "Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
     fprintf(file, "Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "\n\n");
     fclose(file);
+}
+
+std::string BridgeModelTestSuite::getCurrentDateTime() {
+    time_t rawtime;
+    struct tm * timeinfo;
+    char buffer[80];
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer,sizeof(buffer),"%d-%m-%Y_%I:%M:%S",timeinfo);
+    std::string str(buffer);
+    return str;
 }

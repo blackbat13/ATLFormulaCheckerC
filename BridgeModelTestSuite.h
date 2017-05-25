@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <cstring>
 #include <set>
+#include <ctime>
 
 class BridgeModelTestSuite {
 private:
@@ -24,6 +25,7 @@ private:
     int parseLine(char* line);
     double getVirtualMemory();
     double getPhysicalMemory();
+    std::string getCurrentDateTime();
 public:
     BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards);
     void startTests();

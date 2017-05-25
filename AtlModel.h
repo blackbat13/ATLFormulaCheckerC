@@ -35,7 +35,6 @@ class AtlModel {
     int numberOfAgents;
     int numberOfStates;
     std::vector<std::set<Transition> > transitions;
-    std::vector<std::set<Transition> > reverseTransitions;
     std::vector<std::set<int> > preStates;
 
     std::vector<std::vector<std::string> > agentsActions;
