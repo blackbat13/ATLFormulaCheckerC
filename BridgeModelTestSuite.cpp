@@ -17,35 +17,37 @@ int BridgeModelTestSuite::parseLine(char *line) {
 }
 
 double BridgeModelTestSuite::getVirtualMemory() {
-    FILE *file = fopen("/proc/self/status", "r");
-    int result = -1;
-    char line[128];
-
-    while (fgets(line, 128, file) != NULL) {
-        if (strncmp(line, "VmSize:", 7) == 0) {
-            result = parseLine(line);
-            break;
-        }
-    }
-
-    fclose(file);
-    return result;
+//    FILE *file = fopen("/proc/self/status", "r");
+//    int result = -1;
+//    char line[128];
+//
+//    while (fgets(line, 128, file) != NULL) {
+//        if (strncmp(line, "VmSize:", 7) == 0) {
+//            result = parseLine(line);
+//            break;
+//        }
+//    }
+//
+//    fclose(file);
+//    return result;
+    return 0;
 }
 
 double BridgeModelTestSuite::getPhysicalMemory() {
-    FILE *file = fopen("/proc/self/status", "r");
-    int result = -1;
-    char line[128];
-
-    while (fgets(line, 128, file) != NULL) {
-        if (strncmp(line, "VmRSS:", 6) == 0) {
-            result = parseLine(line);
-            break;
-        }
-    }
-
-    fclose(file);
-    return result;
+//    FILE *file = fopen("/proc/self/status", "r");
+//    int result = -1;
+//    char line[128];
+//
+//    while (fgets(line, 128, file) != NULL) {
+//        if (strncmp(line, "VmRSS:", 6) == 0) {
+//            result = parseLine(line);
+//            break;
+//        }
+//    }
+//
+//    fclose(file);
+//    return result;
+    return 0;
 }
 
 BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards) : numberOfTests(
@@ -76,13 +78,7 @@ void BridgeModelTestSuite::startTests() {
         printf("Current Physical Memory used: %f MB\n", getPhysicalMemory()/1024);
 
 
-        std::set<int> winningStates;
-        for(int i = 0; i < bridgeModel.getStates().size(); ++i) {
-            BridgeModel::State state = bridgeModel.getStates()[i];
-            if(state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable) {
-                winningStates.insert(i);
-            }
-        }
+        std::set<int> winningStates = bridgeModel.getWinningStates();
 
         clock_gettime(CLOCK_MONOTONIC, &start);
         std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, winningStates);

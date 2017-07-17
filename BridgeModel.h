@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <ctime>
 #include <random>
+#include <queue>
 #include "cppitertools/itertools.hpp"
 
 typedef short CARD_TYPE;
@@ -59,10 +60,10 @@ private:
     int stateNumber = 0;
     State firstState;
     unsigned long beginningStatesCount;
-    std::vector<State> states;
+    std::queue<State> states;
     std::map<CARD_TYPE, std::string> cardsDictionary;
-
-
+    std::set<int> winningStates;
+private:
     void createAtlModel();
     void generateAvailableCards();
     void generateBeginningStates();
@@ -82,6 +83,7 @@ private:
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();
     void clear();
+    bool isWinningState(State state);
 
 public:
     BridgeModel(int noCardsAvailable, int noEndCards, State firstState);
@@ -89,8 +91,7 @@ public:
     std::vector<std::vector<std::string> > handsToReadableHands(HANDS_TYPE hands);
     void printHands(State state);
     AtlModel &getModel();
-
-    const std::vector<State> &getStates() const;
+    const std::set<int> &getWinningStates() const;
 };
 
 

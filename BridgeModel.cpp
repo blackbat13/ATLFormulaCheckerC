@@ -75,7 +75,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     printf("Generating rest of model... ");
     this->generateRestOfModel();
     printf("Done\n");
-    printf("Generated model with %lu states\n", this->states.size());
+    printf("Generated model with %d states\n", this->stateNumber);
     printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
     printf("Done\n");
@@ -153,8 +153,9 @@ void BridgeModel::generateBeginningStates() {
 
 void BridgeModel::generateRestOfModel() {
     int currentStateNumber = -1;
-    for(int s = 0; s < this->states.size(); ++s) {
-        State state = this->states[s];
+    while(!this->states.empty()) {
+        State state = this->states.front();
+        this->states.pop();
         ++currentStateNumber;
         if(state.next == state.beginning && state.clock == 0) {
             if(this->countRemainingCards(state) == 0) {
@@ -241,7 +242,11 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
     if(this->statesDictionary[state] == 0) {
         this->statesDictionary[state] = this->stateNumber;
         newStateNumber = this->stateNumber;
-        this->states.push_back(state);
+        this->states.push(state);
+        if(this->isWinningState(state)) {
+            this->winningStates.insert(newStateNumber);
+        }
+
         this->stateNumber++;
     } else {
         newStateNumber = this->statesDictionary[state];
@@ -430,10 +435,6 @@ AtlModel &BridgeModel::getModel() {
     return model;
 }
 
-const std::vector<BridgeModel::State> &BridgeModel::getStates() const {
-    return states;
-}
-
 void BridgeModel::printHands(BridgeModel::State state) {
     std::vector<std::vector<std::string> > hands = this->handsToReadableHands(state.hands);
     for(int i = 0; i < 4; ++i) {
@@ -455,6 +456,13 @@ void BridgeModel::clear() {
     this->cardsAvailable.clear();
 }
 
+bool BridgeModel::isWinningState(State state) {
+    return (state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable);
+}
+
+const std::set<int> &BridgeModel::getWinningStates() const {
+    return winningStates;
+}
 
 
 
