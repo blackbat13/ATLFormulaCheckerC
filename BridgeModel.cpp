@@ -88,19 +88,19 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
 void BridgeModel::createAtlModel() {
     switch(this->noEndCards) {
         case 1:
-            this->model = AtlModel(3, 100);
+            this->model = AtlModel(1, 100);
             break;
         case 2:
-            this->model = AtlModel(3, 1000);
+            this->model = AtlModel(1, 1000);
             break;
         case 3:
-            this->model = AtlModel(3, 100000);
+            this->model = AtlModel(1, 100000);
             break;
         case 4:
-            this->model = AtlModel(3, 3000000);
+            this->model = AtlModel(1, 3000000);
             break;
         default:
-            this->model = AtlModel(3, 10000000);
+            this->model = AtlModel(1, 10000000);
     }
 }
 
@@ -173,8 +173,11 @@ void BridgeModel::generateRestOfModel() {
                     agentNumber = 0;
                 }
 
-                std::vector<std::string> actions(4, "wait");
-                actions[agentNumber] = this->cardsDictionary[card];
+                std::vector<std::string> actions(1, "wait");
+                if(agentNumber == 0) {
+                    actions[agentNumber] = this->cardsDictionary[card];
+                }
+
                 int newStateNumber = this->addState(newState);
                 this->model.addTransition(currentStateNumber, newStateNumber, actions);
             }
@@ -187,7 +190,7 @@ void BridgeModel::generateRestOfModel() {
             char newBeginning = winner;
             char newSuit = -1;
             BOARD_TYPE newBoard(4, -1);
-            std::vector<std::string> actions(4, "wait");
+            std::vector<std::string> actions(1, "wait");
             State newState = State(state.hands, newLefts, newNext, newBoard, newBeginning, state.history, newClock, newSuit);
 
             int newStateNumber = this->addState(newState);
@@ -214,8 +217,11 @@ void BridgeModel::generateRestOfModel() {
                     agentNumber = 0;
                 }
 
-                std::vector<std::string> actions(4, "wait");
-                actions[agentNumber] = this->cardsDictionary[card];
+                std::vector<std::string> actions(1, "wait");
+                if(agentNumber == 0) {
+                    actions[agentNumber] = this->cardsDictionary[card];
+                }
+
                 int newStateNumber = this->addState(newState);
                 this->model.addTransition(currentStateNumber, newStateNumber, actions);
             }
