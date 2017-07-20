@@ -58,6 +58,9 @@ bool BridgeModel::State::operator>=(const BridgeModel::State &rhs) const {
 BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(
         std::move(firstState)) {
     srand((unsigned int)time(nullptr));
+    std::random_device randomDevice;
+    this->randomEngine = std::default_random_engine(randomDevice());
+
     this->generateCardsDictionary();
 
     if(this->firstState.hands.empty()) {
@@ -408,10 +411,12 @@ HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInH
         }
     }
 
+    std::uniform_int_distribution<int> uniformIntDistribution(0, noCardsAvailable * 4 - 1);
+
     for(int i = 0; i < noCardsInHand * 4; ++i) {
         long number;
         do {
-            number = rand() % (noCardsAvailable * 4);
+            number = uniformIntDistribution(this->randomEngine);
         }while(used[number]);
 
         array.push_back(cardNumbers[number]);

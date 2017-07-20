@@ -63,6 +63,7 @@ private:
     std::queue<State> states;
     std::map<CARD_TYPE, std::string> cardsDictionary;
     std::set<int> winningStates;
+    std::default_random_engine randomEngine;
 private:
     void createAtlModel();
     void generateAvailableCards();
