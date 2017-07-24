@@ -79,7 +79,7 @@ double BridgeModelTestSuite::getPhysicalMemoryOsx() {
 }
 
 BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards) : numberOfTests(
-        numberOfTests), noEndCards(noEndCards), noCardsAvailable(noCardsAvailable) {
+        numberOfTests), noCardsAvailable(noCardsAvailable), noEndCards(noEndCards) {
     this->physicalMemorySum = 0;
     this->virtualMemorySum = 0;
 }
