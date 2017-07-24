@@ -4,6 +4,8 @@
 
 #include "BridgeModel.h"
 
+#define NotRandom true
+
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
                           const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
                           char suit) : hands(hands), lefts(lefts), next(next), board(board), beginning(beginning),
@@ -394,14 +396,22 @@ HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInH
         }
     }
 
-    for(int i = 0; i < noCardsInHand * 4; ++i) {
-        long number;
-        do {
-            number = rand() % (noCardsAvailable * 4);
-        }while(used[number]);
+    if (NotRandom) {
+        long number = 0;
+        for (int i = 0; i < noCardsInHand * 4; ++i) {
+            array.push_back(cardNumbers[number]);
+            ++number;
+        }
+    } else {
+        for (int i = 0; i < noCardsInHand * 4; ++i) {
+            long number;
+            do {
+                number = rand() % (noCardsAvailable * 4);
+            } while (used[number]);
 
-        array.push_back(cardNumbers[number]);
-        used[number] = true;
+            array.push_back(cardNumbers[number]);
+            used[number] = true;
+        }
     }
 
     HANDS_TYPE hands;
