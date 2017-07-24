@@ -3,7 +3,7 @@
 //
 
 #include "BridgeModel.h"
-#define NotRandom false
+#define NotRandom true
 
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
                           const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
