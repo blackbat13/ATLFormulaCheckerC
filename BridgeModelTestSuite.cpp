@@ -175,7 +175,7 @@ std::string BridgeModelTestSuite::getCurrentDateTime() {
     time (&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer,sizeof(buffer),"%d-%m-%Y_%I:%M:%S",timeinfo);
+    strftime(buffer,sizeof(buffer),"%d-%m-%Y_%H:%M:%S",timeinfo);
     std::string str(buffer);
     return str;
 }
