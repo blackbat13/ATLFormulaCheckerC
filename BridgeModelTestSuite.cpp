@@ -4,14 +4,6 @@
 
 #include "BridgeModelTestSuite.h"
 
-#ifdef _WIN32
-#define OS "Windows"
-#elif __APPLE__
-#define OS "MACOS"
-#elif __linux__
-#define OS "Linux"
-#endif
-
 int BridgeModelTestSuite::parseLine(char *line) {
     int i = strlen(line);
     const char *p = line;
@@ -25,37 +17,65 @@ int BridgeModelTestSuite::parseLine(char *line) {
 }
 
 double BridgeModelTestSuite::getVirtualMemory() {
-//    FILE *file = fopen("/proc/self/status", "r");
-//    int result = -1;
-//    char line[128];
-//
-//    while (fgets(line, 128, file) != NULL) {
-//        if (strncmp(line, "VmSize:", 7) == 0) {
-//            result = parseLine(line);
-//            break;
-//        }
-//    }
-//
-//    fclose(file);
-//    return result;
-    return 0;
+    FILE *file = fopen("/proc/self/status", "r");
+    int result = -1;
+    char line[128];
+
+    while (fgets(line, 128, file) != NULL) {
+        if (strncmp(line, "VmSize:", 7) == 0) {
+            result = parseLine(line);
+            break;
+        }
+    }
+
+    fclose(file);
+    return result;
 }
 
 double BridgeModelTestSuite::getPhysicalMemory() {
-//    FILE *file = fopen("/proc/self/status", "r");
-//    int result = -1;
-//    char line[128];
-//
-//    while (fgets(line, 128, file) != NULL) {
-//        if (strncmp(line, "VmRSS:", 6) == 0) {
-//            result = parseLine(line);
-//            break;
-//        }
-//    }
-//
-//    fclose(file);
-//    return result;
-    return 0;
+    FILE *file = fopen("/proc/self/status", "r");
+    int result = -1;
+    char line[128];
+
+    while (fgets(line, 128, file) != NULL) {
+        if (strncmp(line, "VmRSS:", 6) == 0) {
+            result = parseLine(line);
+            break;
+        }
+    }
+
+    fclose(file);
+    return result;
+}
+
+// Return current virtual memory usage by process in KB
+double BridgeModelTestSuite::getVirtualMemoryOsx() {
+    struct task_basic_info t_info;
+    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
+
+    if (KERN_SUCCESS != task_info(mach_task_self(),
+                                  TASK_BASIC_INFO, (task_info_t)&t_info,
+                                  &t_info_count))
+    {
+        return -1;
+    }
+
+    return t_info.virtual_size/1024;
+}
+
+// Return current physical memory usage by process in KB
+double BridgeModelTestSuite::getPhysicalMemoryOsx() {
+    struct task_basic_info t_info;
+    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
+
+    if (KERN_SUCCESS != task_info(mach_task_self(),
+                                  TASK_BASIC_INFO, (task_info_t)&t_info,
+                                  &t_info_count))
+    {
+        return -1;
+    }
+
+    return t_info.resident_size/1024;
 }
 
 BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards) : numberOfTests(
@@ -81,10 +101,10 @@ void BridgeModelTestSuite::startTests() {
         this->modelGenerationTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
-        this->physicalMemorySum += getPhysicalMemory();
-        this->virtualMemorySum += getVirtualMemory();
-        printf("Current Virtual Memory used: %f MB\n", getVirtualMemory()/1024);
-        printf("Current Physical Memory used: %f MB\n", getPhysicalMemory()/1024);
+        this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
+        this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
+        printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION()/1024);
+        printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION()/1024);
 
 
         std::set<int> winningStates = bridgeModel.getWinningStates();

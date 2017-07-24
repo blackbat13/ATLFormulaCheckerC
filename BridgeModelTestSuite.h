@@ -11,6 +11,19 @@
 #include <set>
 #include <ctime>
 
+#ifdef _WIN32
+#define OS "Windows"
+#elif __APPLE__
+#include<mach/mach.h>
+#define OS "MACOS"
+#define GET_VIRTUAL_MEMORY_FUNCTION getVirtualMemoryOsx
+#define GET_PHYSICAL_MEMORY_FUNCTION getPhysicalMemoryOsx
+#elif __linux__
+#define OS "Linux"
+#define GET_VIRTUAL_MEMORY_FUNCTION getVirtualMemory
+#define GET_PHYSICAL_MEMORY_FUNCTION getPhysicalMemory
+#endif
+
 class BridgeModelTestSuite {
 private:
     long long virtualMemorySum;
@@ -25,6 +38,8 @@ private:
     int parseLine(char* line);
     double getVirtualMemory();
     double getPhysicalMemory();
+    double getVirtualMemoryOsx();
+    double getPhysicalMemoryOsx();
     std::string getCurrentDateTime();
 public:
     BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards);
