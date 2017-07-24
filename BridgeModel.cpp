@@ -96,7 +96,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
     printf("Done\n");
-    //printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
+    printf("Generated %lu epistemic classes\n", this->model.imperfectInformation[0].size());
     printf("Clearing old data... ");
     this->clear();
     printf("Done\n");
