@@ -14,12 +14,12 @@ using namespace std;
 int main() {
     int noCardsAvailable = 2;
     int noEndCards = 2;
-    int numberOfTests = 5;
+    int numberOfTests = 1;
 
     BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards);
     testSuite.startTests();
     testSuite.printStatistics();
-//    testSuite.saveStatistics();
+    testSuite.saveStatistics();
 //    string a;
 //    cin >> a;
     return 0;

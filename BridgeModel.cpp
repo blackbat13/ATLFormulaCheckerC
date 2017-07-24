@@ -3,6 +3,7 @@
 //
 
 #include "BridgeModel.h"
+#define NotRandom true
 
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
                           const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
@@ -61,6 +62,23 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     std::random_device randomDevice;
     this->randomEngine = std::default_random_engine(randomDevice());
 
+bool BridgeModel::State::operator==(const BridgeModel::State &rhs) const {
+    return hands == rhs.hands &&
+           lefts == rhs.lefts &&
+           next == rhs.next &&
+           board == rhs.board &&
+           beginning == rhs.beginning &&
+           history == rhs.history &&
+           clock == rhs.clock &&
+           suit == rhs.suit;
+}
+
+bool BridgeModel::State::operator!=(const BridgeModel::State &rhs) const {
+    return !(rhs == *this);
+}
+
+BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(firstState) {
+    srand((unsigned int)time(NULL));
     this->generateCardsDictionary();
 
     if(this->firstState.hands.empty()) {
@@ -83,7 +101,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     printf("Preparing epistemic relation... ");
     this->prepareEpistemicRelation();
     printf("Done\n");
-    printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
+    //printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
     printf("Clearing old data... ");
     this->clear();
     printf("Done\n");
@@ -242,9 +260,15 @@ int BridgeModel::addState(BridgeModel::State state) {
 }
 
 int BridgeModel::getStateNumber(BridgeModel::State state) {
-    int newStateNumber;
-    if(this->statesDictionary[state] == 0) {
-        this->statesDictionary[state] = this->stateNumber;
+    int newStateNumber = -1;
+    for(int i = 0 ; i < this->states.size(); ++i) {
+        if(this->states[i] == state) {
+            newStateNumber = i;
+            break;
+        }
+    }
+
+    if(newStateNumber == -1) {
         newStateNumber = this->stateNumber;
         this->states.push(state);
         if(this->isWinningState(state)) {
@@ -252,15 +276,25 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
         }
 
         this->stateNumber++;
-    } else {
-        newStateNumber = this->statesDictionary[state];
     }
 
     return newStateNumber;
 }
 
 void BridgeModel::addToEpistemicDictionary(BridgeModel::State state, int newStateNumber) {
-    this->epistemicStatesDictionary[state].insert(newStateNumber);
+    for(int i = 0; i < this->model.imperfectInformation[0].size(); ++i) {
+        int firstStateNumber = *(this->model.imperfectInformation[0][i].begin());
+        State firstState = this->states[firstStateNumber];
+        State firstStateEpistemic = getEpistemicState(firstState);
+        if(state == firstStateEpistemic) {
+            this->model.imperfectInformation[0][i].insert(newStateNumber);
+            return;
+        }
+    }
+
+    std::set<int> newEpistemicClass;
+    newEpistemicClass.insert(newStateNumber);
+    this->model.imperfectInformation[0].push_back(newEpistemicClass);
 }
 
 BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
@@ -272,9 +306,7 @@ BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
 }
 
 void BridgeModel::prepareEpistemicRelation() {
-    for(auto item: this->epistemicStatesDictionary) {
-        this->model.addEpistemicClass(0, item.second);
-    }
+    this->model.finishEpistemicClasses(0);
 }
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State state, char cardIndex) {
@@ -403,24 +435,32 @@ std::vector<std::vector<std::string> > BridgeModel::handsToReadableHands(HANDS_T
 
 HANDS_TYPE BridgeModel::generateRandomHands(int noCardsAvailable, int noCardsInHand) {
     std::vector<CARD_TYPE> array;
-    std::vector<bool> used((unsigned long)noCardsAvailable * 4, false);
+    std::vector<bool> used((unsigned long) noCardsAvailable * 4, false);
     std::vector<CARD_TYPE> cardNumbers;
-    for(short i = 14; i > 0; --i) {
-        for(short j = 4; j > 0; --j) {
-            cardNumbers.push_back(i * (short)10 + j);
+    for (short i = 14; i > 0; --i) {
+        for (short j = 4; j > 0; --j) {
+            cardNumbers.push_back(i * (short) 10 + j);
         }
     }
 
-    std::uniform_int_distribution<int> uniformIntDistribution(0, noCardsAvailable * 4 - 1);
+    if (NotRandom) {
+        long number = 0;
+        for (int i = 0; i < noCardsInHand * 4; ++i) {
+            array.push_back(cardNumbers[number]);
+            ++number;
+        }
+    }
+    else {
+        std::uniform_int_distribution<int> uniformIntDistribution(0, noCardsAvailable * 4 - 1);
+        for(int i = 0; i < noCardsInHand * 4; ++i) {
+            long number;
+            do {
+                number = uniformIntDistribution(this->randomEngine);
+            }while(used[number]);
 
-    for(int i = 0; i < noCardsInHand * 4; ++i) {
-        long number;
-        do {
-            number = uniformIntDistribution(this->randomEngine);
-        }while(used[number]);
-
-        array.push_back(cardNumbers[number]);
-        used[number] = true;
+            array.push_back(cardNumbers[number]);
+            used[number] = true;
+        }
     }
 
     HANDS_TYPE hands;
@@ -459,8 +499,6 @@ unsigned long BridgeModel::getBeginningStatesCount() const {
 }
 
 void BridgeModel::clear() {
-    this->statesDictionary.clear();
-    this->epistemicStatesDictionary.clear();
     this->cardsAvailable.clear();
 }
 
