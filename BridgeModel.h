@@ -66,6 +66,8 @@ private:
     std::map<CARD_TYPE, std::string> cardsDictionary;
     std::set<int> winningStates;
     std::default_random_engine randomEngine;
+    std::vector<std::pair<State, int> > nextLevelStates;
+    std::vector<State> epistemicClassRepresentative;
 private:
     void createAtlModel();
     void generateAvailableCards();

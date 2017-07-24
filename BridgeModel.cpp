@@ -3,7 +3,7 @@
 //
 
 #include "BridgeModel.h"
-#define NotRandom true
+#define NotRandom false
 
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
                           const BOARD_TYPE &board, char beginning, const HISTORY_TYPE &history, char clock,
@@ -56,12 +56,6 @@ bool BridgeModel::State::operator>=(const BridgeModel::State &rhs) const {
     return !(*this < rhs);
 }
 
-BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(
-        std::move(firstState)) {
-    srand((unsigned int)time(nullptr));
-    std::random_device randomDevice;
-    this->randomEngine = std::default_random_engine(randomDevice());
-
 bool BridgeModel::State::operator==(const BridgeModel::State &rhs) const {
     return hands == rhs.hands &&
            lefts == rhs.lefts &&
@@ -78,7 +72,8 @@ bool BridgeModel::State::operator!=(const BridgeModel::State &rhs) const {
 }
 
 BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(firstState) {
-    srand((unsigned int)time(NULL));
+    std::random_device randomDevice;
+    this->randomEngine = std::default_random_engine(randomDevice());
     this->generateCardsDictionary();
 
     if(this->firstState.hands.empty()) {
@@ -261,9 +256,9 @@ int BridgeModel::addState(BridgeModel::State state) {
 
 int BridgeModel::getStateNumber(BridgeModel::State state) {
     int newStateNumber = -1;
-    for(int i = 0 ; i < this->states.size(); ++i) {
-        if(this->states[i] == state) {
-            newStateNumber = i;
+    for(int i = 0 ; i < this->nextLevelStates.size(); ++i) {
+        if(this->nextLevelStates[i].first == state) {
+            newStateNumber = nextLevelStates[i].second;
             break;
         }
     }
@@ -271,6 +266,13 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
     if(newStateNumber == -1) {
         newStateNumber = this->stateNumber;
         this->states.push(state);
+
+        // If current level is finished (beginning new one) then clear current level
+        if(this->nextLevelStates.size() > 0 && this->nextLevelStates[0].first.clock != state.clock) {
+            this->nextLevelStates.clear();
+        }
+
+        this->nextLevelStates.push_back(std::make_pair(state, newStateNumber));
         if(this->isWinningState(state)) {
             this->winningStates.insert(newStateNumber);
         }
@@ -283,9 +285,7 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
 
 void BridgeModel::addToEpistemicDictionary(BridgeModel::State state, int newStateNumber) {
     for(int i = 0; i < this->model.imperfectInformation[0].size(); ++i) {
-        int firstStateNumber = *(this->model.imperfectInformation[0][i].begin());
-        State firstState = this->states[firstStateNumber];
-        State firstStateEpistemic = getEpistemicState(firstState);
+        State firstStateEpistemic = this->epistemicClassRepresentative[i];
         if(state == firstStateEpistemic) {
             this->model.imperfectInformation[0][i].insert(newStateNumber);
             return;
@@ -295,6 +295,7 @@ void BridgeModel::addToEpistemicDictionary(BridgeModel::State state, int newStat
     std::set<int> newEpistemicClass;
     newEpistemicClass.insert(newStateNumber);
     this->model.imperfectInformation[0].push_back(newEpistemicClass);
+    this->epistemicClassRepresentative.push_back(state);
 }
 
 BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
