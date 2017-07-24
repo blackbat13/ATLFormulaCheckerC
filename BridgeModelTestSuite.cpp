@@ -4,6 +4,14 @@
 
 #include "BridgeModelTestSuite.h"
 
+#ifdef _WIN32
+#define OS "Windows"
+#elif __APPLE__
+#define OS "MACOS"
+#elif __linux__
+#define OS "Linux"
+#endif
+
 int BridgeModelTestSuite::parseLine(char *line) {
     int i = strlen(line);
     const char *p = line;
@@ -124,7 +132,7 @@ void BridgeModelTestSuite::printStatistics() {
 }
 
 void BridgeModelTestSuite::saveStatistics() {
-    std::string filename = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test_" + getCurrentDateTime() + ".txt";
+    std::string filename = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test_" + getCurrentDateTime() + "_" + OS + ".txt";
     FILE* file = fopen(filename.c_str(), "w");
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
