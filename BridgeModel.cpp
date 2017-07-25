@@ -85,22 +85,22 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     this->createAtlModel();
     this->model.addAction(0, "wait");
     this->generateAvailableCards();
-    printf("Generating beginning states... ");
+    std::cout << "Generating beginning states... ";
     this->generateBeginningStates();
     this->beginningStatesCount = this->states.size();
-    printf("Done\n");
-    printf("Generated %lu beginning states\n", this->beginningStatesCount);
-    printf("Generating rest of model... ");
+    std::cout << "Done" << std::endl;
+    std::cout << "Generated " << this->beginningStatesCount << " beginning states" << std::endl;
+    std::cout << "Generating rest of model... ";
     this->generateRestOfModel();
-    printf("Done\n");
-    printf("Generated model with %d states\n", this->stateNumber);
-    printf("Preparing epistemic relation... ");
+    std::cout << "Done" << std::endl;
+    std::cout << "Generated model with " << this->stateNumber << " states" << std::endl;
+    std::cout << "Preparing epistemic relation... ";
     this->prepareEpistemicRelation();
-    printf("Done\n");
-    printf("Generated %lu epistemic classes\n", this->model.imperfectInformation[0].size());
-    printf("Clearing old data... ");
+    std::cout << "Done" << std::endl;
+    std::cout << "Generated " << this->model.imperfectInformation[0].size() << " epistemic classes" << std::endl;
+    std::cout << "Clearing old data... ";
     this->clear();
-    printf("Done\n");
+    std::cout << "Done" << std::endl;
 }
 
 void BridgeModel::createAtlModel() {
@@ -485,11 +485,11 @@ void BridgeModel::printHands(BridgeModel::State state) {
     std::vector<std::vector<std::string> > hands = this->handsToReadableHands(state.hands);
     for(int i = 0; i < 4; ++i) {
         for(const auto &card: hands[i]){
-            printf("%s ", card.c_str());
+            std::cout << card << " ";
         }
     }
 
-    printf("\n");
+    std::cout << std::endl;
 }
 
 unsigned long BridgeModel::getBeginningStatesCount() const {
