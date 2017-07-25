@@ -67,7 +67,7 @@ private:
     std::set<int> winningStates;
     std::default_random_engine randomEngine;
     std::vector<std::pair<State, int> > nextLevelStates;
-    std::vector<State> epistemicClassRepresentative;
+    std::map<State, int> epistemicStateClassNumber;
 private:
     void createAtlModel();
     void generateAvailableCards();

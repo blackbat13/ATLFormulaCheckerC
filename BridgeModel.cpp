@@ -71,7 +71,8 @@ bool BridgeModel::State::operator!=(const BridgeModel::State &rhs) const {
     return !(rhs == *this);
 }
 
-BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(firstState) {
+BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(
+        std::move(firstState)) {
     std::random_device randomDevice;
     this->randomEngine = std::default_random_engine(randomDevice());
     this->generateCardsDictionary();
@@ -268,11 +269,11 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
         this->states.push(state);
 
         // If current level is finished (beginning new one) then clear current level
-        if(this->nextLevelStates.size() > 0 && this->nextLevelStates[0].first.clock != state.clock) {
+        if(!this->nextLevelStates.empty() && this->nextLevelStates[0].first.clock != state.clock) {
             this->nextLevelStates.clear();
         }
 
-        this->nextLevelStates.push_back(std::make_pair(state, newStateNumber));
+        this->nextLevelStates.emplace_back(state, newStateNumber);
         if(this->isWinningState(state)) {
             this->winningStates.insert(newStateNumber);
         }
@@ -284,18 +285,14 @@ int BridgeModel::getStateNumber(BridgeModel::State state) {
 }
 
 void BridgeModel::addToEpistemicDictionary(BridgeModel::State state, int newStateNumber) {
-    for(int i = 0; i < this->model.imperfectInformation[0].size(); ++i) {
-        State firstStateEpistemic = this->epistemicClassRepresentative[i];
-        if(state == firstStateEpistemic) {
-            this->model.imperfectInformation[0][i].insert(newStateNumber);
-            return;
-        }
+    if(this->epistemicStateClassNumber[state] == 0) {
+        std::set<int> newEpistemicClass;
+        newEpistemicClass.insert(newStateNumber);
+        this->model.imperfectInformation[0].push_back(newEpistemicClass);
+        this->epistemicStateClassNumber[state] = (int)this->model.imperfectInformation[0].size();
+    } else {
+        this->model.imperfectInformation[0][this->epistemicStateClassNumber[state] - 1].insert(newStateNumber);
     }
-
-    std::set<int> newEpistemicClass;
-    newEpistemicClass.insert(newStateNumber);
-    this->model.imperfectInformation[0].push_back(newEpistemicClass);
-    this->epistemicClassRepresentative.push_back(state);
 }
 
 BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State state) {
@@ -501,6 +498,7 @@ unsigned long BridgeModel::getBeginningStatesCount() const {
 
 void BridgeModel::clear() {
     this->cardsAvailable.clear();
+    this->epistemicStateClassNumber.clear();
 }
 
 bool BridgeModel::isWinningState(State state) {
