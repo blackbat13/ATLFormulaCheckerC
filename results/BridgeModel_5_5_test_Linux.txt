@@ -1,0 +1,7 @@
+/home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+----------TEST NUMBER 1----------
+QueenClub QueenHeart QueenSpade KingSpade AceSpade JackDiamond JackHeart QueenDiamond KingClub AceClub JackClub JackSpade KingDiamond KingHeart AceHeart tenClub tenDiamond tenHeart tenSpade AceDiamond
+Generating beginning states... Done
+Generated 252 beginning states
+
+> 35.5h
