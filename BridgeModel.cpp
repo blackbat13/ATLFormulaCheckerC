@@ -256,24 +256,29 @@ int BridgeModel::addState(BridgeModel::State state) {
 }
 
 int BridgeModel::getStateNumber(BridgeModel::State state) {
-    int newStateNumber = -1;
-    for(int i = 0 ; i < this->nextLevelStates.size(); ++i) {
-        if(this->nextLevelStates[i].first == state) {
-            newStateNumber = nextLevelStates[i].second;
-            break;
-        }
-    }
+    int newStateNumber = this->nextLevelStates[state];
+//    std::cout << this->nextLevelStates.size() << " ";
+//
+//    for(int i = 0 ; i < this->nextLevelStates.size(); ++i) {
+//        if(this->nextLevelStates[i].first == state) {
+//            newStateNumber = nextLevelStates[i].second;
+//            std::cout << i;
+//            break;
+//        }
+//    }
+//
+//    std::cout << std::endl;
 
-    if(newStateNumber == -1) {
+    if(newStateNumber == 0) {
         newStateNumber = this->stateNumber;
         this->states.push(state);
 
         // If current level is finished (beginning new one) then clear current level
-        if(!this->nextLevelStates.empty() && this->nextLevelStates[0].first.clock != state.clock) {
+        if(!this->nextLevelStates.empty() && this->nextLevelStates.begin()->first.clock != state.clock) {
             this->nextLevelStates.clear();
         }
 
-        this->nextLevelStates.emplace_back(state, newStateNumber);
+        this->nextLevelStates[state] = newStateNumber;
         if(this->isWinningState(state)) {
             this->winningStates.insert(newStateNumber);
         }

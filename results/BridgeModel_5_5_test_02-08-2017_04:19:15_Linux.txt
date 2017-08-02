@@ -1,0 +1,41 @@
+/home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+----------TEST NUMBER 1----------
+KingSpade AceClub AceDiamond AceHeart AceSpade QueenHeart QueenSpade KingClub KingDiamond KingHeart JackDiamond JackHeart JackSpade QueenClub QueenDiamond tenClub tenDiamond tenHeart tenSpade JackClub
+Generating beginning states... Done
+Generated 252 beginning states
+Generating rest of model... Done
+Generated model with 2443467 states
+Preparing epistemic relation... Done
+Generated 307304 epistemic classes
+Clearing old data... Done
+Generated model in 49.000000s
+Current Virtual Memory used: 2406.386719 MB
+Current Physical Memory used: 2237.734375 MB
+Number of iterations: 25
+Computed formula in 6.000000s
+Formula result: true
+----------TEST NUMBER 1----------
+
+----------TEST STATISTICS----------
+Bridge Model (5, 5)
+Number of tests: 1
+Virtual memory: 2406.386719 MB
+Physical memory: 2237.734375 MB
+Formula time: 6.000000s
+Generation time: 49.000000s
+Total time: 55.000000s
+----------TEST STATISTICS----------
+
+
+----------TEST NUMBER 1----------
+tenDiamond tenSpade JackDiamond JackHeart KingClub JackSpade QueenClub KingHeart AceClub AceDiamond tenClub JackClub QueenDiamond QueenHeart KingDiamond tenHeart QueenSpade KingSpade AceHeart AceSpade
+Generating beginning states... Done
+Generated 252 beginning states
+Generating rest of model... Done
+Generated model with 22748474 states
+Preparing epistemic relation... Done
+Generated 5355893 epistemic classes
+Clearing old data... Done
+Generated model in 654.000001s
+Current Virtual Memory used: 29889.738281 MB
+Current Physical Memory used: 28812.398438 MB
