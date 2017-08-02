@@ -35,14 +35,9 @@ AtlModel::AtlModel(int numberOfAgents, int numberOfStates) : numberOfAgents(numb
                                                              numberOfStates(numberOfStates) {
     this->imperfectInformation = std::vector<std::vector<std::set<int> > >((unsigned long) numberOfAgents);
     this->agentsActions = std::vector<std::vector<std::string> >((unsigned long) numberOfAgents);
-    this->epistemicClassMembership = std::vector<std::vector<int> >((unsigned long) numberOfAgents,
-                                                                    std::vector<int>((unsigned long) numberOfStates,
-                                                                                     -1));
-    this->epistemicClassDisjoint = std::vector<DisjointUnion>((unsigned long) numberOfAgents,
-                                                              DisjointUnion(numberOfStates));
-    this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<int> > > >((unsigned long) numberOfAgents, std::vector<std::map<std::string, std::set<int> > >((unsigned long) numberOfStates));
-    this->transitions = std::vector<std::set<Transition> >((unsigned long) numberOfStates);
-    this->preStates = std::vector<std::set<int> >((unsigned long) numberOfStates);
+
+    this->transitions = std::vector<std::set<Transition> >((unsigned long) 1000);
+    this->preStates = std::vector<std::set<int> >((unsigned long) 1000);
 }
 
 void AtlModel::addAction(int agentNumber, std::string action) {
@@ -51,6 +46,14 @@ void AtlModel::addAction(int agentNumber, std::string action) {
 
 void AtlModel::addTransition(int from, int to, std::vector<std::string> actions) {
     Transition transition = Transition(to, actions);
+    while(from >= this->transitions.size()) {
+        this->transitions.resize(this->transitions.size() + 1000);
+    }
+
+    while(to >= this->preStates.size()) {
+        this->preStates.resize(this->preStates.size() + 1000);
+    }
+
     this->transitions[from].insert(transition);
     this->preStates[to].insert(from);
 }
@@ -68,6 +71,13 @@ void AtlModel::addEpistemicClass(int agentNumber, std::set<int> epistemicClass) 
 }
 
 void AtlModel::finishEpistemicClasses(int agentNumber) {
+    this->epistemicClassMembership = std::vector<std::vector<int> >((unsigned long) this->numberOfAgents,
+                                                                    std::vector<int>((unsigned long) this->numberOfStates,
+                                                                                     -1));
+    this->epistemicClassDisjoint = std::vector<DisjointUnion>((unsigned long) this->numberOfAgents,
+                                                              DisjointUnion(this->numberOfStates));
+    this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<int> > > >((unsigned long) this->numberOfAgents, std::vector<std::map<std::string, std::set<int> > >((unsigned long) this->numberOfStates));
+
     for(int i = 0; i < this->imperfectInformation[agentNumber].size(); ++i) {
         int firstState = *(this->imperfectInformation[agentNumber][i].begin());
         for(auto state: this->imperfectInformation[agentNumber][i]) {
@@ -77,6 +87,8 @@ void AtlModel::finishEpistemicClasses(int agentNumber) {
 
         this->findWhereCanGo( this->imperfectInformation[agentNumber][i], i, agentNumber);
     }
+
+    this->transitions.clear();
 }
 
 void AtlModel::findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNumber, int agentNumber) {
@@ -89,6 +101,8 @@ void AtlModel::findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNu
                     canGoStateTemp.insert(transition.nextState);
                 }
             }
+
+//            this->transitions[state].clear();
 
             canGoTemp.insert(canGoStateTemp.begin(), canGoStateTemp.end());
             if(canGoStateTemp.size() == 0) {
@@ -236,7 +250,7 @@ AtlModel::basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, 
 }
 
 std::set<int>
-AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set<int> winningStates) {
+AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, const std::set<int> &winningStates) {
     if(winningStates.size() == 0) {
         return std::set<int>();
     }
@@ -245,7 +259,8 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set
     resultStates.insert(winningStates.begin(), winningStates.end());
     int numberOfIterations = 0;
     std::set<int> currentStates = winningStates;
-    DisjointUnion winningStatesDisjoint = DisjointUnion(this->epistemicClassDisjoint[agentNumber].getSubsets());
+//    DisjointUnion winningStatesDisjoint = DisjointUnion(this->epistemicClassDisjoint[agentNumber].getSubsets());
+    DisjointUnion winningStatesDisjoint = this->epistemicClassDisjoint[agentNumber];
     int firstWinning = winningStatesDisjoint.find(*winningStates.begin());
     std::set<int> epistemicClassNumbers;
     for(auto stateNumber: winningStates) {
@@ -319,6 +334,12 @@ AtlModel::minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber
 }
 
 AtlModel::AtlModel() {}
+
+void AtlModel::setNumberOfStates(int numberOfStates) {
+    this->numberOfStates = numberOfStates;
+    this->transitions.resize((unsigned long)numberOfStates);
+    this->preStates.resize((unsigned long)numberOfStates);
+}
 
 
 

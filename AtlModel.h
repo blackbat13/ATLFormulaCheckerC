@@ -62,8 +62,9 @@ public:
     bool isReachableByAgentInSet(std::string action, int fromState, std::set<int> winningStates, int agentNumber);
     std::pair<std::set<int>, bool> basicFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set<int> currentStates, int firstWinning, DisjointUnion& winningStatesDisjoint, std::vector<std::map<std::string, std::set<int> > >& customCanGoThere);
     std::set<int> basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> currentStates, bool isWinningState[]);
-    std::set<int> minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set<int> winningStates);
+    std::set<int> minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, const std::set<int> &winningStates);
     std::set<int> minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> winningStates);
+    void setNumberOfStates(int numberOfStates);
 };
 
 
