@@ -1,0 +1,59 @@
+----------TEST STATISTICS----------
+Bridge Model (5, 5)
+Number of tests: 1
+Virtual memory: 1515.023438 MB
+Physical memory: 1354.589844 MB
+Formula time: 6.000000s
+Generation time: 36.000000s
+Total time: 42.000000s
+----------TEST STATISTICS----------
+
+
+----------TEST NUMBER 1----------
+tenHeart JackClub JackSpade AceDiamond AceSpade tenClub JackDiamond QueenDiamond KingHeart KingSpade tenSpade QueenHeart QueenSpade KingClub AceClub tenDiamond JackHeart QueenClub KingDiamond AceHeart
+Generating beginning states... Done
+Generated 252 beginning states
+Generating rest of model... Done
+Generated model with 20717398 states
+Preparing epistemic relation... Done
+Generated 242258 epistemic classes
+Clearing old data... Done
+Generated model in 439.000000s
+Current Virtual Memory used: 12971.175781 MB
+Current Physical Memory used: 11853.539062 MB
+Number of iterations: 25
+Computed formula in 38.000000s
+Formula result: true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+tenDiamond tenHeart QueenClub QueenDiamond AceHeart JackClub JackDiamond QueenSpade KingDiamond KingSpade tenSpade JackSpade QueenHeart KingClub KingHeart tenClub JackHeart AceClub AceDiamond AceSpade
+Generating beginning states... Done
+Generated 252 beginning states
+Generating rest of model... Done
+Generated model with 31878840 states
+Preparing epistemic relation... Done
+Generated 427897 epistemic classes
+Clearing old data... Done
+Generated model in 749.000001s
+Current Virtual Memory used: 18419.871094 MB
+Current Physical Memory used: 18329.765625 MB
+Number of iterations: 21
+Computed formula in 30.000000s
+Formula result: false
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+tenDiamond tenSpade QueenDiamond QueenSpade KingDiamond tenClub QueenHeart KingClub AceDiamond AceSpade tenHeart JackSpade QueenClub KingSpade AceHeart JackClub JackDiamond JackHeart KingHeart AceClub
+Generating beginning states... Done
+Generated 252 beginning states
+Generating rest of model... Done
+Generated model with 55187163 states
+Preparing epistemic relation... Done
+Generated 606823 epistemic classes
+Clearing old data... Done
+Generated model in 21229.000021s
+Current Virtual Memory used: 32835.039062 MB
+Current Physical Memory used: 29966.207031 MB
