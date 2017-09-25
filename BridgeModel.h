@@ -51,10 +51,6 @@ public:
     };
 
 private:
-public:
-    unsigned long getBeginningStatesCount() const;
-
-private:
     AtlModel model;
     int noCardsAvailable;
     int noEndCards;
@@ -68,7 +64,7 @@ private:
     std::default_random_engine randomEngine;
     std::map<State, int> nextLevelStates;
     std::map<State, int> epistemicStateClassNumber;
-private:
+
     void createAtlModel();
     void generateAvailableCards();
     void generateBeginningStates();
@@ -97,6 +93,7 @@ public:
     void printHands(State state);
     AtlModel &getModel();
     const std::set<int> &getWinningStates() const;
+    unsigned long getBeginningStatesCount() const;
 };
 
 

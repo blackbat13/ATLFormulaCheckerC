@@ -255,6 +255,7 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced) : no
     this->model = AtlModel(2, 1000000);
     this->states = std::vector<State>();
     this->stateNumber = 1;
+    this->addActions();
     this->generateModel();
     printf("Number of states: %d\n", this->states.size());
 
@@ -268,8 +269,9 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced) : no
 void SeleneModel::generateModel() {
     State firstState = State(this->noVoters, this->maxCoerced);
     this->addState(firstState);
-    int currentStateNumber = 1;
+    int currentStateNumber = 0;
     for (int state_i=0; state_i<this->states.size(); ++state_i) {
+        ++currentStateNumber;
         State state = this->states[state_i];
         if (!state.votingStarted) {
             std::vector<std::pair<short, short> > envActions;
@@ -423,7 +425,7 @@ void SeleneModel::generateModel() {
                             if(possibility[0] == -1) {
                                 actions.push_back("Wait");
                             } else {
-                                actions.push_back("Vote" + possibility[0]);
+                                actions.push_back("Vote" + this->toString(possibility[0]));
                             }
                             int newStateNumber = this->addState(newState);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
@@ -432,7 +434,7 @@ void SeleneModel::generateModel() {
                             if(possibility[0] == -1) {
                                 actions.push_back("Wait");
                             } else {
-                                actions.push_back("Vote" + possibility[0]);
+                                actions.push_back("Vote" + this->toString(possibility[0]));
                             }
                             int newStateNumber = this->addState(newState);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
@@ -544,7 +546,7 @@ void SeleneModel::generateModel() {
                                 ++finished;
                             } else { // Help I Need possibility[i]
                                 if(i == 0) {
-                                    actions.push_back("HelpINeed" + possibility[0]);
+                                    actions.push_back("HelpINeed" + this->toString(possibility[0]));
                                 }
                                 newState.helpRequestsSent[i] = true;
                                 newState.envVoteDemanded[i] = possibility[i];
@@ -652,4 +654,38 @@ std::vector<std::vector<short> > SeleneModel::cartessianProduct(std::vector<std:
 
 AtlModel &SeleneModel::getModel() {
     return this->model;
+}
+
+void SeleneModel::addActions() {
+    this->model.addAction(0, "Wait");
+    this->model.addAction(1, "Wait");
+    for(int i = 0; i < this->noVoters; ++i) {
+        for(int j = 0; j < this->noBallots; ++j) {
+            std::string action = "RequestVote" + this->toString(j);
+            action += "FromVoter" + this->toString(i);
+            this->model.addAction(0, action);
+        }
+    }
+
+    for(int i = 0; i < this->noBallots; ++i) {
+        this->model.addAction(1, "Vote" + this->toString(i));
+        this->model.addAction(1, "HelpINeed" + this->toString(i));
+    }
+
+    this->model.addAction(1, "FetchGoodTracker");
+    this->model.addAction(1, "CopyRealTracker");
+    this->model.addAction(1, "Finish");
+}
+
+//TODO Add epistemic classes
+
+void SeleneModel::CoercerEpistemicState::operator=(const SeleneModel::State &rhs) {
+    this->votesPublished = rhs.votesPublished;
+    this->votingFinished = rhs.votingFinished;
+    this->votingStarted = rhs.votingStarted;
+    this->falseCopTrackVot = rhs.falseCopTrackVot;
+    this->publicVotes =rhs.publicVotes;
+    this->coercedVoters =rhs.coercedVoters;
+    this->maxCoerced = rhs.maxCoerced;
+    this->coercerVotesDemanded = rhs.coercerVotesDemanded;
 }

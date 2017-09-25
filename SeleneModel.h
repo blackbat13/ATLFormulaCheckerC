@@ -71,6 +71,18 @@ public:
 
         bool operator>=(const State &rhs) const;
     };
+    struct CoercerEpistemicState {
+        bool votesPublished;
+        bool votingFinished;
+        bool votingStarted;
+        std::vector<short> falseCopTrackVot;
+        std::vector<short> publicVotes;
+        short coercedVoters;
+        short maxCoerced;
+        std::vector<short> coercerVotesDemanded;
+
+        void operator=(const State &rhs);
+    };
 private:
     AtlModel model;
     short noVoters;
@@ -83,6 +95,7 @@ private:
     int addState(State state);
     std::string toString(short a);
     std::vector<std::vector<short> > cartessianProduct(std::vector<std::vector<short> > &array);
+    void addActions();
 
 public:
     SeleneModel(short noVoters, short noBallots, short maxCoerced);
