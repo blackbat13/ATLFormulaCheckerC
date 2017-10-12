@@ -1,0 +1,394 @@
+/home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+----------TEST NUMBER 1----------
+AceDiamond AceSpade AceClub AceHeart
+AceDiamond AceSpade AceClub AceHeart
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+AceDiamond AceClub AceHeart AceSpade
+AceDiamond AceClub AceHeart AceSpade
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+AceDiamond AceSpade AceClub AceHeart
+AceDiamond AceSpade AceClub AceHeart
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+AceDiamond AceClub AceHeart AceSpade
+AceDiamond AceClub AceHeart AceSpade
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------
+AceHeart AceClub AceSpade AceDiamond
+AceHeart AceClub AceSpade AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 5----------
+
+
+----------TEST NUMBER 6----------
+AceDiamond AceHeart AceSpade AceClub
+AceDiamond AceHeart AceSpade AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 6----------
+
+
+----------TEST NUMBER 7----------
+AceDiamond AceSpade AceHeart AceClub
+AceDiamond AceSpade AceHeart AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 7----------
+
+
+----------TEST NUMBER 8----------
+AceSpade AceHeart AceClub AceDiamond
+AceSpade AceHeart AceClub AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 8----------
+
+
+----------TEST NUMBER 9----------
+AceHeart AceSpade AceClub AceDiamond
+AceHeart AceSpade AceClub AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 9----------
+
+
+----------TEST NUMBER 10----------
+AceDiamond AceHeart AceSpade AceClub
+AceDiamond AceHeart AceSpade AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 10----------
+
+
+----------TEST NUMBER 11----------
+AceClub AceDiamond AceSpade AceHeart
+AceClub AceDiamond AceSpade AceHeart
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 11----------
+
+
+----------TEST NUMBER 12----------
+AceHeart AceSpade AceDiamond AceClub
+AceHeart AceSpade AceDiamond AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 12----------
+
+
+----------TEST NUMBER 13----------
+AceSpade AceHeart AceDiamond AceClub
+AceSpade AceHeart AceDiamond AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 13----------
+
+
+----------TEST NUMBER 14----------
+AceHeart AceSpade AceDiamond AceClub
+AceHeart AceSpade AceDiamond AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 14----------
+
+
+----------TEST NUMBER 15----------
+AceHeart AceDiamond AceClub AceSpade
+AceHeart AceDiamond AceClub AceSpade
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 15----------
+
+
+----------TEST NUMBER 16----------
+AceHeart AceDiamond AceSpade AceClub
+AceHeart AceDiamond AceSpade AceClub
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 16----------
+
+
+----------TEST NUMBER 17----------
+AceHeart AceClub AceSpade AceDiamond
+AceHeart AceClub AceSpade AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 17----------
+
+
+----------TEST NUMBER 18----------
+AceClub AceHeart AceSpade AceDiamond
+AceClub AceHeart AceSpade AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 18----------
+
+
+----------TEST NUMBER 19----------
+AceSpade AceClub AceDiamond AceHeart
+AceSpade AceClub AceDiamond AceHeart
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 19----------
+
+
+----------TEST NUMBER 20----------
+AceSpade AceHeart AceClub AceDiamond
+AceSpade AceHeart AceClub AceDiamond
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 11 states
+Preparing epistemic relation... Done
+Generated 9 epistemic classes
+Clearing old data... Done
+Generated model in 0.000000s
+Current Virtual Memory used: 13.132812 MB
+Current Physical Memory used: 3.335938 MB
+Number of iterations: 5
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 20----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (1, 1)
+Number of tests: 20
+Virtual memory: 13.132812 MB
+Physical memory: 3.335938 MB
+Formula time: 0.000000s
+Generation time: 0.000000s
+Total time: 0.000000s
+----------TEST STATISTICS----------
+
+
+
+Process finished with exit code 0

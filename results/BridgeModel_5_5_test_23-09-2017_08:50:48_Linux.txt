@@ -1,0 +1,11 @@
+----------TEST STATISTICS----------
+Bridge Model (5, 5)
+Number of tests: 1
+Virtual memory: 1515.031250 MB
+Physical memory: 1354.609375 MB
+Formula time: 6.000000s
+Generation time: 35.000000s
+Total time: 41.000000s
+----------TEST STATISTICS----------
+
+

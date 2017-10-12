@@ -1,0 +1,394 @@
+/home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+----------TEST NUMBER 1----------
+JackSpade QueenDiamond QueenSpade AceSpade JackClub QueenClub KingClub AceClub JackHeart KingDiamond AceDiamond AceHeart JackDiamond QueenHeart KingHeart KingSpade
+JackSpade QueenDiamond QueenSpade AceSpade JackClub QueenClub KingClub AceClub JackHeart KingDiamond AceDiamond AceHeart JackDiamond QueenHeart KingHeart KingSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 1093661 states
+Preparing epistemic relation... Done
+Generated 42471 epistemic classes
+Clearing old data... Done
+Generated model in 15.000000s
+Current Virtual Memory used: 820.910156 MB
+Current Physical Memory used: 723.863281 MB
+Number of iterations: 20
+Computed formula in 2.000000s
+Formula result: true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+JackDiamond AceClub AceDiamond AceHeart QueenDiamond QueenHeart KingClub KingSpade JackHeart QueenClub KingDiamond KingHeart JackClub JackSpade QueenSpade AceSpade
+JackDiamond AceClub AceDiamond AceHeart QueenDiamond QueenHeart KingClub KingSpade JackHeart QueenClub KingDiamond KingHeart JackClub JackSpade QueenSpade AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 132299 states
+Preparing epistemic relation... Done
+Generated 3702 epistemic classes
+Clearing old data... Done
+Generated model in 1.000000s
+Current Virtual Memory used: 146.460938 MB
+Current Physical Memory used: 136.628906 MB
+Number of iterations: 20
+Computed formula in 1.000000s
+Formula result: true
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+JackHeart QueenClub QueenDiamond AceDiamond JackClub QueenHeart AceClub AceHeart JackSpade QueenSpade KingClub KingSpade JackDiamond KingDiamond KingHeart AceSpade
+JackHeart QueenClub QueenDiamond AceDiamond JackClub QueenHeart AceClub AceHeart JackSpade QueenSpade KingClub KingSpade JackDiamond KingDiamond KingHeart AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 936275 states
+Preparing epistemic relation... Done
+Generated 54421 epistemic classes
+Clearing old data... Done
+Generated model in 11.000000s
+Current Virtual Memory used: 647.988281 MB
+Current Physical Memory used: 631.851562 MB
+Number of iterations: 11
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+JackClub JackSpade QueenSpade AceDiamond QueenClub KingClub AceHeart AceSpade JackDiamond QueenDiamond KingDiamond KingHeart JackHeart QueenHeart KingSpade AceClub
+JackClub JackSpade QueenSpade AceDiamond QueenClub KingClub AceHeart AceSpade JackDiamond QueenDiamond KingDiamond KingHeart JackHeart QueenHeart KingSpade AceClub
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 1223484 states
+Preparing epistemic relation... Done
+Generated 47676 epistemic classes
+Clearing old data... Done
+Generated model in 17.000000s
+Current Virtual Memory used: 885.546875 MB
+Current Physical Memory used: 799.675781 MB
+Number of iterations: 12
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------
+JackClub QueenHeart KingDiamond AceHeart QueenClub QueenSpade KingClub AceSpade JackDiamond JackHeart AceClub AceDiamond JackSpade QueenDiamond KingHeart KingSpade
+JackClub QueenHeart KingDiamond AceHeart QueenClub QueenSpade KingClub AceSpade JackDiamond JackHeart AceClub AceDiamond JackSpade QueenDiamond KingHeart KingSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 327919 states
+Preparing epistemic relation... Done
+Generated 15525 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 264.339844 MB
+Current Physical Memory used: 254.128906 MB
+Number of iterations: 20
+Computed formula in 0.000000s
+Formula result: true
+----------TEST NUMBER 5----------
+
+
+----------TEST NUMBER 6----------
+JackSpade KingClub KingDiamond AceClub JackHeart QueenSpade KingHeart AceSpade JackDiamond QueenHeart KingSpade AceDiamond JackClub QueenClub QueenDiamond AceHeart
+JackSpade KingClub KingDiamond AceClub JackHeart QueenSpade KingHeart AceSpade JackDiamond QueenHeart KingSpade AceDiamond JackClub QueenClub QueenDiamond AceHeart
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 503474 states
+Preparing epistemic relation... Done
+Generated 27312 epistemic classes
+Clearing old data... Done
+Generated model in 6.000000s
+Current Virtual Memory used: 345.101562 MB
+Current Physical Memory used: 333.699219 MB
+Number of iterations: 20
+Computed formula in 0.000000s
+Formula result: true
+----------TEST NUMBER 6----------
+
+
+----------TEST NUMBER 7----------
+JackDiamond QueenDiamond KingDiamond AceHeart JackHeart JackSpade QueenClub AceClub QueenHeart QueenSpade KingHeart AceDiamond JackClub KingClub KingSpade AceSpade
+JackDiamond QueenDiamond KingDiamond AceHeart JackHeart JackSpade QueenClub AceClub QueenHeart QueenSpade KingHeart AceDiamond JackClub KingClub KingSpade AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 518254 states
+Preparing epistemic relation... Done
+Generated 13277 epistemic classes
+Clearing old data... Done
+Generated model in 6.000000s
+Current Virtual Memory used: 440.757812 MB
+Current Physical Memory used: 385.289062 MB
+Number of iterations: 20
+Computed formula in 1.000000s
+Formula result: true
+----------TEST NUMBER 7----------
+
+
+----------TEST NUMBER 8----------
+JackSpade QueenClub KingClub KingHeart QueenHeart KingDiamond AceClub AceHeart QueenSpade KingSpade AceDiamond AceSpade JackClub JackDiamond JackHeart QueenDiamond
+JackSpade QueenClub KingClub KingHeart QueenHeart KingDiamond AceClub AceHeart QueenSpade KingSpade AceDiamond AceSpade JackClub JackDiamond JackHeart QueenDiamond
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 1508953 states
+Preparing epistemic relation... Done
+Generated 54153 epistemic classes
+Clearing old data... Done
+Generated model in 22.000000s
+Current Virtual Memory used: 1053.386719 MB
+Current Physical Memory used: 996.359375 MB
+Number of iterations: 20
+Computed formula in 3.000000s
+Formula result: true
+----------TEST NUMBER 8----------
+
+
+----------TEST NUMBER 9----------
+JackClub QueenHeart KingClub KingHeart JackSpade QueenClub QueenDiamond KingSpade JackHeart QueenSpade KingDiamond AceSpade JackDiamond AceClub AceDiamond AceHeart
+JackClub QueenHeart KingClub KingHeart JackSpade QueenClub QueenDiamond KingSpade JackHeart QueenSpade KingDiamond AceSpade JackDiamond AceClub AceDiamond AceHeart
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 687021 states
+Preparing epistemic relation... Done
+Generated 43596 epistemic classes
+Clearing old data... Done
+Generated model in 9.000000s
+Current Virtual Memory used: 508.417969 MB
+Current Physical Memory used: 482.992188 MB
+Number of iterations: 11
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 9----------
+
+
+----------TEST NUMBER 10----------
+JackClub QueenDiamond KingHeart AceDiamond JackDiamond JackHeart QueenSpade AceHeart JackSpade QueenClub AceClub AceSpade QueenHeart KingClub KingDiamond KingSpade
+JackClub QueenDiamond KingHeart AceDiamond JackDiamond JackHeart QueenSpade AceHeart JackSpade QueenClub AceClub AceSpade QueenHeart KingClub KingDiamond KingSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 915894 states
+Preparing epistemic relation... Done
+Generated 57292 epistemic classes
+Clearing old data... Done
+Generated model in 11.000000s
+Current Virtual Memory used: 642.328125 MB
+Current Physical Memory used: 624.667969 MB
+Number of iterations: 20
+Computed formula in 1.000000s
+Formula result: true
+----------TEST NUMBER 10----------
+
+
+----------TEST NUMBER 11----------
+QueenHeart KingHeart KingSpade AceClub JackHeart QueenClub QueenDiamond AceDiamond JackClub JackDiamond JackSpade KingDiamond QueenSpade KingClub AceHeart AceSpade
+QueenHeart KingHeart KingSpade AceClub JackHeart QueenClub QueenDiamond AceDiamond JackClub JackDiamond JackSpade KingDiamond QueenSpade KingClub AceHeart AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 487413 states
+Preparing epistemic relation... Done
+Generated 37498 epistemic classes
+Clearing old data... Done
+Generated model in 5.000000s
+Current Virtual Memory used: 359.382812 MB
+Current Physical Memory used: 348.000000 MB
+Number of iterations: 12
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 11----------
+
+
+----------TEST NUMBER 12----------
+QueenHeart QueenSpade KingDiamond KingHeart JackSpade QueenDiamond KingClub AceClub JackHeart QueenClub KingSpade AceHeart JackClub JackDiamond AceDiamond AceSpade
+QueenHeart QueenSpade KingDiamond KingHeart JackSpade QueenDiamond KingClub AceClub JackHeart QueenClub KingSpade AceHeart JackClub JackDiamond AceDiamond AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 939579 states
+Preparing epistemic relation... Done
+Generated 43032 epistemic classes
+Clearing old data... Done
+Generated model in 12.000000s
+Current Virtual Memory used: 617.964844 MB
+Current Physical Memory used: 601.160156 MB
+Number of iterations: 16
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 12----------
+
+
+----------TEST NUMBER 13----------
+JackClub KingClub KingHeart AceDiamond JackDiamond QueenClub QueenHeart QueenSpade JackHeart JackSpade QueenDiamond AceHeart KingDiamond KingSpade AceClub AceSpade
+JackClub KingClub KingHeart AceDiamond JackDiamond QueenClub QueenHeart QueenSpade JackHeart JackSpade QueenDiamond AceHeart KingDiamond KingSpade AceClub AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 565611 states
+Preparing epistemic relation... Done
+Generated 35481 epistemic classes
+Clearing old data... Done
+Generated model in 7.000000s
+Current Virtual Memory used: 470.824219 MB
+Current Physical Memory used: 421.503906 MB
+Number of iterations: 20
+Computed formula in 0.000000s
+Formula result: true
+----------TEST NUMBER 13----------
+
+
+----------TEST NUMBER 14----------
+QueenDiamond QueenSpade KingHeart AceHeart JackClub KingClub KingSpade AceSpade JackDiamond QueenClub KingDiamond AceClub JackHeart JackSpade QueenHeart AceDiamond
+QueenDiamond QueenSpade KingHeart AceHeart JackClub KingClub KingSpade AceSpade JackDiamond QueenClub KingDiamond AceClub JackHeart JackSpade QueenHeart AceDiamond
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 962306 states
+Preparing epistemic relation... Done
+Generated 57311 epistemic classes
+Clearing old data... Done
+Generated model in 12.000000s
+Current Virtual Memory used: 662.097656 MB
+Current Physical Memory used: 648.507812 MB
+Number of iterations: 16
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 14----------
+
+
+----------TEST NUMBER 15----------
+JackDiamond JackSpade QueenSpade KingClub QueenHeart KingHeart AceClub AceDiamond JackHeart QueenDiamond AceHeart AceSpade JackClub QueenClub KingDiamond KingSpade
+JackDiamond JackSpade QueenSpade KingClub QueenHeart KingHeart AceClub AceDiamond JackHeart QueenDiamond AceHeart AceSpade JackClub QueenClub KingDiamond KingSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 485117 states
+Preparing epistemic relation... Done
+Generated 34617 epistemic classes
+Clearing old data... Done
+Generated model in 6.000000s
+Current Virtual Memory used: 354.257812 MB
+Current Physical Memory used: 341.453125 MB
+Number of iterations: 16
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 15----------
+
+
+----------TEST NUMBER 16----------
+JackDiamond KingClub AceHeart AceSpade JackHeart QueenHeart KingSpade AceDiamond JackClub QueenDiamond KingHeart AceClub JackSpade QueenClub QueenSpade KingDiamond
+JackDiamond KingClub AceHeart AceSpade JackHeart QueenHeart KingSpade AceDiamond JackClub QueenDiamond KingHeart AceClub JackSpade QueenClub QueenSpade KingDiamond
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 295827 states
+Preparing epistemic relation... Done
+Generated 15864 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 233.359375 MB
+Current Physical Memory used: 206.445312 MB
+Number of iterations: 20
+Computed formula in 1.000000s
+Formula result: true
+----------TEST NUMBER 16----------
+
+
+----------TEST NUMBER 17----------
+QueenDiamond QueenHeart KingClub KingSpade JackClub QueenClub KingDiamond AceClub JackDiamond JackHeart JackSpade QueenSpade KingHeart AceDiamond AceHeart AceSpade
+QueenDiamond QueenHeart KingClub KingSpade JackClub QueenClub KingDiamond AceClub JackDiamond JackHeart JackSpade QueenSpade KingHeart AceDiamond AceHeart AceSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 365165 states
+Preparing epistemic relation... Done
+Generated 27890 epistemic classes
+Clearing old data... Done
+Generated model in 4.000000s
+Current Virtual Memory used: 332.917969 MB
+Current Physical Memory used: 311.035156 MB
+Number of iterations: 6
+Computed formula in 0.000000s
+Formula result: false
+----------TEST NUMBER 17----------
+
+
+----------TEST NUMBER 18----------
+JackDiamond QueenClub QueenSpade KingClub JackSpade QueenHeart KingHeart AceSpade JackHeart KingSpade AceClub AceDiamond JackClub QueenDiamond KingDiamond AceHeart
+JackDiamond QueenClub QueenSpade KingClub JackSpade QueenHeart KingHeart AceSpade JackHeart KingSpade AceClub AceDiamond JackClub QueenDiamond KingDiamond AceHeart
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 238559 states
+Preparing epistemic relation... Done
+Generated 16650 epistemic classes
+Clearing old data... Done
+Generated model in 2.000000s
+Current Virtual Memory used: 179.632812 MB
+Current Physical Memory used: 167.355469 MB
+Number of iterations: 16
+Computed formula in 1.000000s
+Formula result: false
+----------TEST NUMBER 18----------
+
+
+----------TEST NUMBER 19----------
+JackClub AceClub AceHeart AceSpade JackHeart JackSpade QueenSpade AceDiamond JackDiamond QueenClub KingDiamond KingHeart QueenDiamond QueenHeart KingClub KingSpade
+JackClub AceClub AceHeart AceSpade JackHeart JackSpade QueenSpade AceDiamond JackDiamond QueenClub KingDiamond KingHeart QueenDiamond QueenHeart KingClub KingSpade
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 269321 states
+Preparing epistemic relation... Done
+Generated 14962 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 232.214844 MB
+Current Physical Memory used: 201.937500 MB
+Number of iterations: 20
+Computed formula in 0.000000s
+Formula result: true
+----------TEST NUMBER 19----------
+
+
+----------TEST NUMBER 20----------
+QueenHeart KingDiamond AceHeart AceSpade JackSpade QueenDiamond KingHeart KingSpade JackClub JackDiamond QueenSpade AceDiamond JackHeart QueenClub KingClub AceClub
+QueenHeart KingDiamond AceHeart AceSpade JackSpade QueenDiamond KingHeart KingSpade JackClub JackDiamond QueenSpade AceDiamond JackHeart QueenClub KingClub AceClub
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 499639 states
+Preparing epistemic relation... Done
+Generated 27280 epistemic classes
+Clearing old data... Done
+Generated model in 6.000000s
+Current Virtual Memory used: 344.121094 MB
+Current Physical Memory used: 333.183594 MB
+Number of iterations: 20
+Computed formula in 1.000000s
+Formula result: true
+----------TEST NUMBER 20----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (4, 4)
+Number of tests: 20
+Virtual memory: 477.100586 MB
+Physical memory: 447.486914 MB
+Formula time: 0.900000s
+Generation time: 8.050000s
+Total time: 8.950000s
+----------TEST STATISTICS----------
+
+
+
+Process finished with exit code 0
