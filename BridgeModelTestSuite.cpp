@@ -50,32 +50,34 @@ double BridgeModelTestSuite::getPhysicalMemory() {
 
 // Return current virtual memory usage by process in KB
 double BridgeModelTestSuite::getVirtualMemoryOsx() {
-    struct task_basic_info t_info;
-    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
-
-    if (KERN_SUCCESS != task_info(mach_task_self(),
-                                  TASK_BASIC_INFO, (task_info_t)&t_info,
-                                  &t_info_count))
-    {
-        return -1;
-    }
-
-    return t_info.virtual_size/1024;
+//    struct task_basic_info t_info;
+//    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
+//
+//    if (KERN_SUCCESS != task_info(mach_task_self(),
+//                                  TASK_BASIC_INFO, (task_info_t)&t_info,
+//                                  &t_info_count))
+//    {
+//        return -1;
+//    }
+//
+//    return t_info.virtual_size/1024;
+    return 0;
 }
 
 // Return current physical memory usage by process in KB
 double BridgeModelTestSuite::getPhysicalMemoryOsx() {
-    struct task_basic_info t_info;
-    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
-
-    if (KERN_SUCCESS != task_info(mach_task_self(),
-                                  TASK_BASIC_INFO, (task_info_t)&t_info,
-                                  &t_info_count))
-    {
-        return -1;
-    }
-
-    return t_info.resident_size/1024;
+//    struct task_basic_info t_info;
+//    mach_msg_type_number_t t_info_count = TASK_BASIC_INFO_COUNT;
+//
+//    if (KERN_SUCCESS != task_info(mach_task_self(),
+//                                  TASK_BASIC_INFO, (task_info_t)&t_info,
+//                                  &t_info_count))
+//    {
+//        return -1;
+//    }
+//
+//    return t_info.resident_size/1024;
+    return 0;
 }
 
 BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards) : numberOfTests(
@@ -92,7 +94,7 @@ void BridgeModelTestSuite::startTests() {
 
         clock_gettime(CLOCK_MONOTONIC, &start);
 
-        BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards, BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2,0), 0, BOARD_TYPE(4,-1), 0, HISTORY_TYPE(), 0, -1));
+        BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards, BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2,0), 0, BOARD_TYPE(4,-1), 0, 0, -1));
 
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
@@ -106,11 +108,8 @@ void BridgeModelTestSuite::startTests() {
         printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION()/1024);
         printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION()/1024);
 
-
-        std::set<int> winningStates = bridgeModel.getWinningStates();
-
         clock_gettime(CLOCK_MONOTONIC, &start);
-        std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, winningStates);
+        std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, bridgeModel.getWinningStates());
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
