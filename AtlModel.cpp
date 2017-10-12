@@ -46,11 +46,11 @@ void AtlModel::addAction(int agentNumber, std::string action) {
 
 void AtlModel::addTransition(int from, int to, std::vector<std::string> actions) {
     Transition transition = Transition(to, actions);
-    while(from >= this->transitions.size()) {
+    while (from >= this->transitions.size()) {
         this->transitions.resize(this->transitions.size() + 1000);
     }
 
-    while(to >= this->preStates.size()) {
+    while (to >= this->preStates.size()) {
         this->preStates.resize(this->preStates.size() + 1000);
     }
 
@@ -72,11 +72,14 @@ void AtlModel::addEpistemicClass(int agentNumber, std::set<int> epistemicClass) 
 
 void AtlModel::finishEpistemicClasses(int agentNumber) {
     this->epistemicClassMembership = std::vector<std::vector<int> >((unsigned long) this->numberOfAgents,
-                                                                    std::vector<int>((unsigned long) this->numberOfStates,
-                                                                                     -1));
+                                                                    std::vector<int>(
+                                                                            (unsigned long) this->numberOfStates,
+                                                                            -1));
     this->epistemicClassDisjoint = std::vector<DisjointUnion>((unsigned long) this->numberOfAgents,
                                                               DisjointUnion(this->numberOfStates));
-    this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<int> > > >((unsigned long) this->numberOfAgents, std::vector<std::map<std::string, std::set<int> > >((unsigned long) this->numberOfStates));
+    this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<int> > > >(
+            (unsigned long) this->numberOfAgents,
+            std::vector<std::map<std::string, std::set<int> > >((unsigned long) this->numberOfStates));
 
     for(int i = 0; i < this->imperfectInformation[agentNumber].size(); ++i) {
         int firstState = *(this->imperfectInformation[agentNumber][i].begin());
@@ -337,8 +340,8 @@ AtlModel::AtlModel() {}
 
 void AtlModel::setNumberOfStates(int numberOfStates) {
     this->numberOfStates = numberOfStates;
-    this->transitions.resize((unsigned long)numberOfStates);
-    this->preStates.resize((unsigned long)numberOfStates);
+    this->transitions.resize((unsigned long) numberOfStates);
+    this->preStates.resize((unsigned long) numberOfStates);
 }
 
 

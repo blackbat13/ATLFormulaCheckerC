@@ -34,6 +34,7 @@ private:
     int numberOfTests;
     int noCardsAvailable;
     int noEndCards;
+    int abstractionLevel;
 
     int parseLine(char* line);
     double getVirtualMemory();
@@ -42,7 +43,7 @@ private:
     double getPhysicalMemoryOsx();
     std::string getCurrentDateTime();
 public:
-    BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards);
+    BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards, int abstractionLevel = 0);
     void startTests();
     void printStatistics();
     void saveStatistics();

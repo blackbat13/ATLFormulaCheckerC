@@ -63,31 +63,48 @@ private:
     std::default_random_engine randomEngine;
     std::map<State, int> nextLevelStates;
     std::map<State, int> epistemicStateClassNumber;
+    CARD_TYPE abstractionLevel;
 
     void createAtlModel();
     void generateAvailableCards();
     void generateBeginningStates();
     void generateRestOfModel();
+
     int addState(State &state);
+
     int getStateNumber(State &state);
+
     void addToEpistemicDictionary(State &state, int newStateNumber);
+
     State getEpistemicState(State &state);
     void prepareEpistemicRelation();
+
     State newStateAfterPlay(State &state, char cardIndex);
+
     char newSuit(State &state, CARD_TYPE &card);
+
     BOARD_TYPE newBoardAfterPlay(State &state, CARD_TYPE card);
+
     int countRemainingCards(State &state);
+
     char getWinner(char &beginning, BOARD_TYPE &board);
+
     HAND_TYPE keepValuesInList(HAND_TYPE &list, CARD_TYPE value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();
     void clear();
+
     bool isWinningState(State &state);
 
+    void abstractState(State &state);
+
 public:
-    BridgeModel(int noCardsAvailable, int noEndCards, State firstState);
+    BridgeModel(int noCardsAvailable, int noEndCards, State firstState, CARD_TYPE abstractionLevel = 0);
+
     HANDS_TYPE generateRandomHands(int &noCardsAvailable, int &noCardsInHand);
+
     std::vector<std::vector<std::string> > handsToReadableHands(HANDS_TYPE &hands);
+
     void printHands(State &state);
     AtlModel &getModel();
     const std::set<int> &getWinningStates() const;

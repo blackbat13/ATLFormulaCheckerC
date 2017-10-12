@@ -3,6 +3,7 @@
 //
 
 #include "BridgeModel.h"
+
 #define NotRandom false
 
 BridgeModel::State::State(const HANDS_TYPE &hands, const LEFTS_TYPE &lefts, char next,
@@ -66,8 +67,11 @@ bool BridgeModel::State::operator!=(const BridgeModel::State &rhs) const {
     return !(rhs == *this);
 }
 
-BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState): noCardsAvailable(noCardsAvailable), noEndCards(noEndCards), firstState(
-        std::move(firstState)) {
+BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::State firstState,
+                         CARD_TYPE abstractionLevel) : noCardsAvailable(noCardsAvailable), noEndCards(noEndCards),
+                                                       firstState(
+                                                               std::move(firstState)),
+                                                       abstractionLevel(abstractionLevel) {
     std::random_device randomDevice;
     this->randomEngine = std::default_random_engine(randomDevice());
     this->generateCardsDictionary();
@@ -76,6 +80,9 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
         this->firstState.hands = this->generateRandomHands(noCardsAvailable, noEndCards);
         this->printHands(this->firstState);
     }
+
+    this->abstractState(this->firstState);
+    this->printHands(this->firstState);
 
     this->createAtlModel();
     this->model.addAction(0, "wait");
@@ -90,7 +97,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     std::cout << "Done" << std::endl;
     std::cout << "Generated model with " << this->stateNumber << " states" << std::endl;
     std::cout << "Preparing epistemic relation... ";
-    this->model.setNumberOfStates(this->stateNumber+1);
+    this->model.setNumberOfStates(this->stateNumber + 1);
     this->prepareEpistemicRelation();
     std::cout << "Done" << std::endl;
     std::cout << "Generated " << this->model.imperfectInformation[0].size() << " epistemic classes" << std::endl;
@@ -162,7 +169,8 @@ void BridgeModel::generateBeginningStates() {
         std::sort(newHands[1].begin(), newHands[1].end());
         std::sort(newHands[3].begin(), newHands[3].end());
 
-        State state = State(newHands, this->firstState.lefts, this->firstState.next, this->firstState.board, this->firstState.beginning, this->firstState.clock, this->firstState.suit);
+        State state = State(newHands, this->firstState.lefts, this->firstState.next, this->firstState.board,
+                            this->firstState.beginning, this->firstState.clock, this->firstState.suit);
         this->addState(state);
     }
 
@@ -303,7 +311,8 @@ BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State &state) {
     HANDS_TYPE epistemicHands = state.hands;
     epistemicHands[1] = this->keepValuesInList(epistemicHands[1], -1);
     epistemicHands[3] = this->keepValuesInList(epistemicHands[3], -1);
-    State epistemicState = State(epistemicHands, state.lefts, state.next, state.board, state.beginning, state.clock, state.suit);
+    State epistemicState = State(epistemicHands, state.lefts, state.next, state.board, state.beginning, state.clock,
+                                 state.suit);
     return epistemicState;
 }
 
@@ -504,6 +513,16 @@ bool BridgeModel::isWinningState(State &state) {
 
 const std::set<int> &BridgeModel::getWinningStates() const {
     return winningStates;
+}
+
+void BridgeModel::abstractState(BridgeModel::State &state) {
+    for (short i = 0; i < state.hands.size(); ++i) {
+        for (short j = 0; j < state.hands[i].size(); ++j) {
+            if (state.hands[i][j] < this->abstractionLevel) {
+                state.hands[i][j] = (CARD_TYPE) (this->abstractionLevel + state.hands[i][j] % 10);
+            }
+        }
+    }
 }
 
 

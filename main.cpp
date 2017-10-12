@@ -13,15 +13,15 @@
 using namespace std;
 
 int main() {
-//    int noCardsAvailable = 6;
-//    int noEndCards = 6;
-//    int numberOfTests = 1;
-//
-//    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards);
-//    testSuite.startTests();
-//    testSuite.printStatistics();
-//    testSuite.saveStatistics();
-    SeleneModel seleneModel = SeleneModel(2, 2, 2);
+    int noCardsAvailable = 10;
+    int noEndCards = 5;
+    int numberOfTests = 1;
+
+    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 100);
+    testSuite.startTests();
+    testSuite.printStatistics();
+    testSuite.saveStatistics();
+//    SeleneModel seleneModel = SeleneModel(2, 2, 2);
 
 //    int k = 0;
 
