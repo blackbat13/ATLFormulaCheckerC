@@ -13,11 +13,11 @@
 using namespace std;
 
 int main() {
-    int noCardsAvailable = 10;
+    int noCardsAvailable = 5;
     int noEndCards = 5;
-    int numberOfTests = 1;
+    int numberOfTests = 20;
 
-    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 100);
+    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 0);
     testSuite.startTests();
     testSuite.printStatistics();
     testSuite.saveStatistics();

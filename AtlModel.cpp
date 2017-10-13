@@ -229,6 +229,7 @@ AtlModel::basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, 
     }
 
     for(auto state: preImage) {
+
         std::set<std::string> allActions;
         std::set<std::string> badActions;
         std::set<std::string> actionsDifference;
@@ -322,6 +323,7 @@ AtlModel::minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber
     }
 
     while(true) {
+
         currentStates = this->basicFormulaOneAgentMultipleStatesPerfectInformation(agentNumber, currentStates, isWinningState);
         resultStates.insert(currentStates.begin(), currentStates.end());
         if(resultStates.size() == resultStatesLength) {

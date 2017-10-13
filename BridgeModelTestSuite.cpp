@@ -118,7 +118,7 @@ void BridgeModelTestSuite::startTests() {
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
 
-        printf("Computed formula in %fs\n", elapsed);
+        printf("Computed formula under imperfect information in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
@@ -131,10 +131,34 @@ void BridgeModelTestSuite::startTests() {
         }
 
         if(isOk) {
-            printf("Formula result: true\n");
+            printf("Formula result (imperfect information): true\n");
         } else {
-            printf("Formula result: false\n");
+            printf("Formula result (imperfect information: false\n");
         }
+
+//        clock_gettime(CLOCK_MONOTONIC, &start);
+//        result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0, bridgeModel.getWinningStates());
+//        clock_gettime(CLOCK_MONOTONIC, &finish);
+//        elapsed = (finish.tv_sec - start.tv_sec);
+//        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+//
+//        printf("Computed formula under perfect information in %fs\n", elapsed);
+//        this->formulaTimeSum += elapsed;
+//        this->totalTimeSum += elapsed;
+//
+//        isOk = true;
+//        for(int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
+//            if(result.find(i) == result.end()) {
+//                isOk = false;
+//                break;
+//            }
+//        }
+//
+//        if(isOk) {
+//            printf("Formula result (perfect information): true\n");
+//        } else {
+//            printf("Formula result (perfect information): false\n");
+//        }
 
         printf("----------TEST NUMBER %d----------\n", testNumber);
         printf("\n\n");
