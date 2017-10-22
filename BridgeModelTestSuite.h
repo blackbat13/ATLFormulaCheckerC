@@ -31,6 +31,9 @@ private:
     double formulaTimeSum;
     double totalTimeSum;
     double modelGenerationTimeSum;
+    double imperfectFormulaTrueCount;
+    double perfectFormulaTrueCount;
+    double formulaResultEqualCount;
     int numberOfTests;
     int noCardsAvailable;
     int noEndCards;

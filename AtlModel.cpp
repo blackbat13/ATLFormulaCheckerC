@@ -91,7 +91,7 @@ void AtlModel::finishEpistemicClasses(int agentNumber) {
         this->findWhereCanGo( this->imperfectInformation[agentNumber][i], i, agentNumber);
     }
 
-    this->transitions.clear();
+//    this->transitions.clear();
 }
 
 void AtlModel::findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNumber, int agentNumber) {
