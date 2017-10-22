@@ -89,6 +89,8 @@ private:
 
     char getWinner(char &beginning, BOARD_TYPE &board);
 
+    std::vector<char> getWinners(char &beginning, BOARD_TYPE &board);
+
     HAND_TYPE keepValuesInList(HAND_TYPE &list, CARD_TYPE value);
     std::vector<std::string> generateReadableCardsArray();
     void generateCardsDictionary();

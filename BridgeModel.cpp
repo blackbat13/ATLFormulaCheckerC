@@ -208,19 +208,22 @@ void BridgeModel::generateRestOfModel() {
                 this->model.addTransition(currentStateNumber, newStateNumber, actions);
             }
         } else if(state.clock == 4) {
-            char winner = this->getWinner(state.beginning, state.board);
-            LEFTS_TYPE newLefts = state.lefts;
-            ++newLefts[winner % 2];
-            char newNext = winner;
-            char newClock = 0;
-            char newBeginning = winner;
-            char newSuit = -1;
-            BOARD_TYPE newBoard(4, -1);
-            std::vector<std::string> actions(1, "wait");
-            State newState = State(state.hands, newLefts, newNext, newBoard, newBeginning, newClock, newSuit);
+//            char winner = this->getWinner(state.beginning, state.board);
+            std::vector<char> winners = this->getWinners(state.beginning, state.board);
+            for (auto winner : winners) {
+                LEFTS_TYPE newLefts = state.lefts;
+                ++newLefts[winner % 2];
+                char newNext = winner;
+                char newClock = 0;
+                char newBeginning = winner;
+                char newSuit = -1;
+                BOARD_TYPE newBoard(4, -1);
+                std::vector<std::string> actions(1, "wait");
+                State newState = State(state.hands, newLefts, newNext, newBoard, newBeginning, newClock, newSuit);
 
-            int newStateNumber = this->addState(newState);
-            this->model.addTransition(currentStateNumber, newStateNumber, actions);
+                int newStateNumber = this->addState(newState);
+                this->model.addTransition(currentStateNumber, newStateNumber, actions);
+            }
         } else {
             int color = state.board[state.beginning] % 10;
             bool haveColor = false;
@@ -264,17 +267,6 @@ int BridgeModel::addState(BridgeModel::State &state) {
 
 int BridgeModel::getStateNumber(BridgeModel::State &state) {
     int newStateNumber = this->nextLevelStates[state];
-//    std::cout << this->nextLevelStates.size() << " ";
-//
-//    for(int i = 0 ; i < this->nextLevelStates.size(); ++i) {
-//        if(this->nextLevelStates[i].first == state) {
-//            newStateNumber = nextLevelStates[i].second;
-//            std::cout << i;
-//            break;
-//        }
-//    }
-//
-//    std::cout << std::endl;
 
     if(newStateNumber == 0) {
         newStateNumber = this->stateNumber;
@@ -378,6 +370,34 @@ char BridgeModel::getWinner(char &beginning, BOARD_TYPE &board) {
     }
 
     return winner;
+}
+
+std::vector<char> BridgeModel::getWinners(char &beginning, BOARD_TYPE &board) {
+    std::vector<CARD_TYPE> cards;
+    cards.reserve(4);
+    for (int i = 0; i < 4; ++i) {
+        cards.push_back(board[(beginning + i) % 4]);
+    }
+
+    char winner = beginning;
+    CARD_TYPE winningCard = cards[0];
+    auto color = (char) (cards[0] % 10);
+    for (char i = 1; i < 4; ++i) {
+        if (cards[i] % 10 == color && cards[i] > winningCard) {
+            winningCard = cards[i];
+            winner = (char) ((beginning + i) % 4);
+        }
+    }
+
+    std::vector<char> winners;
+
+    for (char i = 1; i < 4; ++i) {
+        if (cards[i] == winningCard) {
+            winners.push_back((char) ((beginning + i) % 4));
+        }
+    }
+
+    return winners;
 }
 
 HAND_TYPE BridgeModel::keepValuesInList(HAND_TYPE &list, CARD_TYPE value) {
