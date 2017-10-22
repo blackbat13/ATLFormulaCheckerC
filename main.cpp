@@ -15,7 +15,7 @@ using namespace std;
 int main() {
     int noCardsAvailable = 13;
     int noEndCards = 5;
-    int numberOfTests = 20;
+    int numberOfTests = 1;
 
     BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 100);
     testSuite.startTests();

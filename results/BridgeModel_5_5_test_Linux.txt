@@ -204,3 +204,35 @@ Generating beginning states... Done
 Generated 252 beginning states
 Generating rest of model... Done
 Generated model with 63454086 states
+Preparing epistemic relation... Done
+Generated 495463 epistemic classes
+Clearing old data... Done
+Generated model in 48786.000049s
+Current Virtual Memory used: 36197.304688 MB
+Current Physical Memory used: 30266.480469 MB
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+
+
+
+
+
+
+
+
+  /home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+  ----------TEST NUMBER 1----------
+  threeSpade sixDiamond nineHeart tenSpade QueenDiamond twoDiamond sixHeart eightSpade nineDiamond JackDiamond twoHeart twoSpade sevenHeart tenDiamond JackHeart threeHeart sevenDiamond QueenSpade KingClub KingHeart
+  tenSpade tenDiamond tenHeart tenSpade QueenDiamond tenDiamond tenHeart tenSpade tenDiamond JackDiamond tenHeart tenSpade tenHeart tenDiamond JackHeart tenHeart tenDiamond QueenSpade KingClub KingHeart
+  Generating beginning states... Done
+  Generated 83 beginning states
+  Generating rest of model... Done
+  Generated model with 10976760 states
+  Preparing epistemic relation... Done
+  Generated 167152 epistemic classes
+  Clearing old data... Done
+  Generated model in 229.000000s
+  Current Virtual Memory used: 7895.906250 MB
+  Current Physical Memory used: 7386.421875 MB
+  Number of iterations: 18
+  Computed formula under imperfect information in 4.000000s
