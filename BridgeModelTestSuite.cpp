@@ -88,16 +88,17 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
     this->perfectFormulaTrueCount = 0;
     this->imperfectFormulaTrueCount = 0;
     this->formulaResultEqualCount = 0;
+    this->path = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" +
+                 std::to_string(this->noEndCards) + "_" + std::to_string(this->abstractionLevel) + "/";
 }
 
 void BridgeModelTestSuite::startTests2() {
     for (int testNumber = 1; testNumber <= this->numberOfTests; ++testNumber) {
+        printf("----------TEST NUMBER %d----------\n", testNumber);
         struct timespec start, finish;
         double elapsed;
         std::ifstream file;
-        std::string path = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" +
-                           std::to_string(this->noEndCards) + "_" + this->abstractionLevel + "/";
-        std::string filename = path + "Model_" + testNumber + ".txt";
+        std::string filename = this->path + "Model_" + std::to_string(testNumber) + ".txt";
         file.open(filename);
         if (!file.good()) {
             clock_gettime(CLOCK_MONOTONIC, &start);
@@ -132,10 +133,59 @@ void BridgeModelTestSuite::startTests2() {
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+        printf("Computed formula under perfect information in %fs\n", elapsed);
+        this->formulaTimeSum += elapsed;
+        this->totalTimeSum += elapsed;
+
+        bool isOk2 = true;
+        for (int i = 0; i < atlModel.getBeginningStatesCount(); ++i) {
+            if (result.find(i) == result.end()) {
+                isOk2 = false;
+                break;
+            }
+        }
+
+        if (isOk2) {
+            printf("Formula result (perfect information): true\n");
+            this->perfectFormulaTrueCount++;
+        } else {
+            printf("Formula result (perfect information): false\n");
+        }
 
         atlModel = AtlModel(1, 1);
+        file.close();
+        file.open(filename);
         atlModel.loadFromFile(file, true);
+        clock_gettime(CLOCK_MONOTONIC, &start);
         result = atlModel.minimumFormulaOneAgentMultipleStatesDisjoint(0, atlModel.getWinningStates());
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        elapsed = (finish.tv_sec - start.tv_sec);
+        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+
+        printf("Computed formula under imperfect information in %fs\n", elapsed);
+        this->formulaTimeSum += elapsed;
+        this->totalTimeSum += elapsed;
+        bool isOk = true;
+        for (int i = 0; i < atlModel.getBeginningStatesCount(); ++i) {
+            if (result.find(i) == result.end()) {
+                isOk = false;
+                break;
+            }
+        }
+
+        if (isOk) {
+            printf("Formula result (imperfect information): true\n");
+            this->imperfectFormulaTrueCount++;
+        } else {
+            printf("Formula result (imperfect information: false\n");
+        }
+
+        if (isOk == isOk2) {
+            this->formulaResultEqualCount++;
+        }
+
+        printf("----------TEST NUMBER %d----------\n", testNumber);
+        printf("\n\n");
     }
 }
 
@@ -190,7 +240,8 @@ void BridgeModelTestSuite::startTests() {
         }
 
         clock_gettime(CLOCK_MONOTONIC, &start);
-        result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0, bridgeModel.getWinningStates());
+        result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0,
+                                                                                               bridgeModel.getWinningStates());
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
@@ -200,21 +251,21 @@ void BridgeModelTestSuite::startTests() {
         this->totalTimeSum += elapsed;
 
         bool isOk2 = true;
-        for(int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
-            if(result.find(i) == result.end()) {
+        for (int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
+            if (result.find(i) == result.end()) {
                 isOk2 = false;
                 break;
             }
         }
 
-        if(isOk2) {
+        if (isOk2) {
             printf("Formula result (perfect information): true\n");
             this->perfectFormulaTrueCount++;
         } else {
             printf("Formula result (perfect information): false\n");
         }
 
-        if(isOk == isOk2) {
+        if (isOk == isOk2) {
             this->formulaResultEqualCount++;
         }
 
@@ -232,15 +283,17 @@ void BridgeModelTestSuite::printStatistics() {
     printf("Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
     printf("Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
     printf("Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
-    printf("Imperfect formula true percentage: %.2f%%\n", 100*this->imperfectFormulaTrueCount / (double)this->numberOfTests);
-    printf("Perfect formula true percentage: %.2f%%\n", 100*this->perfectFormulaTrueCount / (double)this->numberOfTests);
-    printf("Formula equality percentage: %.2f%%\n", 100*this->formulaResultEqualCount / (double)this->numberOfTests);
+    printf("Imperfect formula true percentage: %.2f%%\n",
+           100 * this->imperfectFormulaTrueCount / (double) this->numberOfTests);
+    printf("Perfect formula true percentage: %.2f%%\n",
+           100 * this->perfectFormulaTrueCount / (double) this->numberOfTests);
+    printf("Formula equality percentage: %.2f%%\n", 100 * this->formulaResultEqualCount / (double) this->numberOfTests);
     printf("----------TEST STATISTICS----------\n");
     printf("\n\n");
 }
 
 void BridgeModelTestSuite::saveStatistics() {
-    std::string filename = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" + std::to_string(this->noEndCards) + "_test_" + getCurrentDateTime() + "_" + OS + ".txt";
+    std::string filename = this->path + "Test_" + getCurrentDateTime() + "_" + OS + ".txt";
     FILE* file = fopen(filename.c_str(), "w");
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
@@ -250,9 +303,12 @@ void BridgeModelTestSuite::saveStatistics() {
     fprintf(file, "Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
     fprintf(file, "Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
     fprintf(file, "Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Imperfect formula true percentage: %.2f%%\n", 100*this->imperfectFormulaTrueCount / (double)this->numberOfTests);
-    fprintf(file, "Perfect formula true percentage: %.2f%%\n", 100*this->perfectFormulaTrueCount / (double)this->numberOfTests);
-    fprintf(file, "Formula equality percentage: %.2f%%\n", 100*this->formulaResultEqualCount / (double)this->numberOfTests);
+    fprintf(file, "Imperfect formula true percentage: %.2f%%\n",
+            100 * this->imperfectFormulaTrueCount / (double) this->numberOfTests);
+    fprintf(file, "Perfect formula true percentage: %.2f%%\n",
+            100 * this->perfectFormulaTrueCount / (double) this->numberOfTests);
+    fprintf(file, "Formula equality percentage: %.2f%%\n",
+            100 * this->formulaResultEqualCount / (double) this->numberOfTests);
     fprintf(file, "----------TEST STATISTICS----------\n");
     fprintf(file, "\n\n");
     fclose(file);

@@ -45,6 +45,11 @@ class AtlModel {
     std::vector<DisjointUnion> epistemicClassDisjoint;
     std::vector<std::vector<std::map<std::string, std::set<int> > > > canGoThere;
     std::set<int> winningStates;
+    unsigned long beginningStatesCount;
+public:
+    unsigned long getBeginningStatesCount() const;
+
+    void setBeginningStatesCount(unsigned long beginningStatesCount);
 
 public:
     std::vector<std::vector<std::set<int> > > imperfectInformation;
@@ -87,9 +92,9 @@ public:
 
     void setNumberOfStates(int numberOfStates);
 
-    void saveToFile(std::ofstream file);
+    void saveToFile(std::ofstream &file);
 
-    void loadFromFile(std::ifstream file, bool imperfect = true);
+    void loadFromFile(std::ifstream &file, bool imperfect = true);
 
     void clearTransitions();
 

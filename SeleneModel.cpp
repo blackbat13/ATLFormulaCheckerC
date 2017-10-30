@@ -270,7 +270,7 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced) : no
     this->stateNumber = 1;
     this->addActions();
     this->generateModel();
-    printf("Number of states: %d\n", this->states.size());
+    printf("Number of states: %lu\n", this->states.size());
 
 //    for(State state: this->states) {
 //        state.print();

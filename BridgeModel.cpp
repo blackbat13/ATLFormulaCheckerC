@@ -90,6 +90,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     std::cout << "Generating beginning states... ";
     this->generateBeginningStates();
     this->beginningStatesCount = this->states.size();
+    this->model.setBeginningStatesCount(this->beginningStatesCount);
     std::cout << "Done" << std::endl;
     std::cout << "Generated " << this->beginningStatesCount << " beginning states" << std::endl;
     std::cout << "Generating rest of model... ";
@@ -311,7 +312,7 @@ BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State &state) {
 
 void BridgeModel::prepareEpistemicRelation() {
     this->model.finishEpistemicClasses(0);
-    this->model.clearTransitions();
+//    this->model.clearTransitions();
 }
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State &state, char cardIndex) {
@@ -530,7 +531,7 @@ void BridgeModel::clear() {
 }
 
 bool BridgeModel::isWinningState(State &state) {
-    return (state.lefts[0] > this->noEndCards/2 && state.lefts[0] + state.lefts[1] == this->noEndCards);
+    return (state.lefts[0] > this->noEndCards / 2 && state.lefts[0] + state.lefts[1] == this->noEndCards);
 }
 
 const std::set<int> &BridgeModel::getWinningStates() const {

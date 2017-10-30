@@ -354,12 +354,13 @@ void AtlModel::setNumberOfStates(int numberOfStates) {
     this->preStates.resize((unsigned long) numberOfStates);
 }
 
-void AtlModel::saveToFile(std::ofstream file) {
+void AtlModel::saveToFile(std::ofstream &file) {
     // Number of states
     file << this->numberOfStates << std::endl;
     // Number of transitions
     file << this->numberOfTransitions << std::endl;
     file << this->numberOfAgents << std::endl;
+    file << this->beginningStatesCount << std::endl;
     for (int i = 0; i < this->transitions.size(); ++i) {
         for (auto t : this->transitions[i]) {
             file << i << " " << t.nextState << " " << t.actions[0] << std::endl;
@@ -387,10 +388,10 @@ void AtlModel::saveToFile(std::ofstream file) {
     }
 }
 
-void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
+void AtlModel::loadFromFile(std::ifstream &file, bool imperfect) {
     int numberOfStates, numberOfTransitions, numberOfAgents;
     int numberOfEpistemicClasses, numberOFWinningStates;
-    file >> numberOfStates >> numberOfTransitions >> numberOfAgents;
+    file >> numberOfStates >> numberOfTransitions >> numberOfAgents >> this->beginningStatesCount;
     this->numberOfTransitions = numberOfTransitions;
     this->numberOfStates = numberOfStates;
     this->numberOfAgents = numberOfAgents;
@@ -437,7 +438,9 @@ void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
         this->imperfectInformation[i] = std::vector<std::set<int> >((unsigned long) numberOfEpistemicClasses);
         for (int j = 0; j < numberOfStates; ++j) {
             file >> this->epistemicClassMembership[i][j];
-            this->imperfectInformation[i][this->epistemicClassMembership[i][j]].insert(j);
+            if (this->epistemicClassMembership[i][j] != -1) {
+                this->imperfectInformation[i][this->epistemicClassMembership[i][j]].insert(j);
+            }
         }
 
         this->finishEpistemicClasses(i);
@@ -456,6 +459,14 @@ const std::set<int> &AtlModel::getWinningStates() const {
 
 void AtlModel::setWinningStates(const std::set<int> &winningStates) {
     AtlModel::winningStates = winningStates;
+}
+
+unsigned long AtlModel::getBeginningStatesCount() const {
+    return beginningStatesCount;
+}
+
+void AtlModel::setBeginningStatesCount(unsigned long beginningStatesCount) {
+    AtlModel::beginningStatesCount = beginningStatesCount;
 }
 
 

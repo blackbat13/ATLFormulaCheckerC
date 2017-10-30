@@ -39,6 +39,7 @@ private:
     int noCardsAvailable;
     int noEndCards;
     int abstractionLevel;
+    std::string path;
 
     int parseLine(char* line);
     double getVirtualMemory();
