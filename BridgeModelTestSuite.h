@@ -10,6 +10,7 @@
 #include <cstring>
 #include <set>
 #include <ctime>
+#include <fstream>
 
 #ifdef _WIN32
 #define OS "Windows"
@@ -45,6 +46,8 @@ private:
 public:
     BridgeModelTestSuite(int numberOfTests, int noCardsAvailable, int noEndCards, int abstractionLevel = 0);
     void startTests();
+
+    void startTests2();
     void printStatistics();
     void saveStatistics();
 };

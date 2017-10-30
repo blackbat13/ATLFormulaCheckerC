@@ -87,6 +87,55 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
     this->virtualMemorySum = 0;
 }
 
+void BridgeModelTestSuite::startTests2() {
+    for (int testNumber = 1; testNumber <= this->numberOfTests; ++testNumber) {
+        struct timespec start, finish;
+        double elapsed;
+        std::ifstream file;
+        std::string path = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" +
+                           std::to_string(this->noEndCards) + "_" + this->abstractionLevel + "/";
+        std::string filename = path + "Model_" + testNumber + ".txt";
+        file.open(filename);
+        if (!file.good()) {
+            clock_gettime(CLOCK_MONOTONIC, &start);
+            BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards,
+                                                  BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0,
+                                                                     BOARD_TYPE(4, -1),
+                                                                     0, 0, -1), this->abstractionLevel);
+            clock_gettime(CLOCK_MONOTONIC, &finish);
+            elapsed = (finish.tv_sec - start.tv_sec);
+            elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+            printf("Generated model in %fs\n", elapsed);
+            this->modelGenerationTimeSum += elapsed;
+            this->totalTimeSum += elapsed;
+            this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
+            this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
+            printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
+            printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
+
+            std::ofstream fileOut;
+            fileOut.open(filename);
+            bridgeModel.getModel().saveToFile(fileOut);
+            fileOut.close();
+            file.open(filename);
+        }
+
+        std::set<int> result;
+
+        AtlModel atlModel = AtlModel(1, 1);
+        atlModel.loadFromFile(file, false);
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        result = atlModel.minimumFormulaOneAgentMultipleStatesPerfectInformation(0, atlModel.getWinningStates());
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        elapsed = (finish.tv_sec - start.tv_sec);
+        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+
+        atlModel = AtlModel(1, 1);
+        atlModel.loadFromFile(file, true);
+        result = atlModel.minimumFormulaOneAgentMultipleStatesDisjoint(0, atlModel.getWinningStates());
+    }
+}
+
 void BridgeModelTestSuite::startTests() {
     for (int testNumber = 1; testNumber <= this->numberOfTests; ++testNumber) {
         printf("----------TEST NUMBER %d----------\n", testNumber);
@@ -136,29 +185,30 @@ void BridgeModelTestSuite::startTests() {
             printf("Formula result (imperfect information: false\n");
         }
 
-//        clock_gettime(CLOCK_MONOTONIC, &start);
-//        result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0, bridgeModel.getWinningStates());
-//        clock_gettime(CLOCK_MONOTONIC, &finish);
-//        elapsed = (finish.tv_sec - start.tv_sec);
-//        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
-//
-//        printf("Computed formula under perfect information in %fs\n", elapsed);
-//        this->formulaTimeSum += elapsed;
-//        this->totalTimeSum += elapsed;
-//
-//        isOk = true;
-//        for(int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
-//            if(result.find(i) == result.end()) {
-//                isOk = false;
-//                break;
-//            }
-//        }
-//
-//        if(isOk) {
-//            printf("Formula result (perfect information): true\n");
-//        } else {
-//            printf("Formula result (perfect information): false\n");
-//        }
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0,
+                                                                                               bridgeModel.getWinningStates());
+        clock_gettime(CLOCK_MONOTONIC, &finish);
+        elapsed = (finish.tv_sec - start.tv_sec);
+        elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+
+        printf("Computed formula under perfect information in %fs\n", elapsed);
+        this->formulaTimeSum += elapsed;
+        this->totalTimeSum += elapsed;
+
+        isOk = true;
+        for (int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
+            if (result.find(i) == result.end()) {
+                isOk = false;
+                break;
+            }
+        }
+
+        if (isOk) {
+            printf("Formula result (perfect information): true\n");
+        } else {
+            printf("Formula result (perfect information): false\n");
+        }
 
         printf("----------TEST NUMBER %d----------\n", testNumber);
         printf("\n\n");
