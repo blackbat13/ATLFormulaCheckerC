@@ -374,6 +374,11 @@ void AtlModel::saveToFile(std::ofstream file) {
         }
     }
 
+    file << this->winningStates.size() << std::endl;
+    for (auto state : this->winningStates) {
+        file << state << std::endl;
+    }
+
     for (int i = 0; i < this->numberOfAgents; ++i) {
         file << this->imperfectInformation[i].size() << std::endl;
         for (int j = 0; j < this->epistemicClassMembership[i].size(); ++j) {
@@ -384,7 +389,7 @@ void AtlModel::saveToFile(std::ofstream file) {
 
 void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
     int numberOfStates, numberOfTransitions, numberOfAgents;
-    int numberOfEpistemicClasses;
+    int numberOfEpistemicClasses, numberOFWinningStates;
     file >> numberOfStates >> numberOfTransitions >> numberOfAgents;
     this->numberOfTransitions = numberOfTransitions;
     this->numberOfStates = numberOfStates;
@@ -394,6 +399,7 @@ void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
     this->transitions = std::vector<std::set<Transition> >((unsigned long) numberOfStates);
     this->preStates = std::vector<std::set<int> >((unsigned long) numberOfStates);
     this->agentsActions = std::vector<std::vector<std::string> >((unsigned long) numberOfAgents);
+    this->winningStates = std::set<int>();
 
     for (int i = 0; i < numberOfTransitions; ++i) {
         int state, nextState;
@@ -409,6 +415,13 @@ void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
         for (int j = 0; j < numberOfActions; ++j) {
             file >> this->agentsActions[i][j];
         }
+    }
+
+    file >> numberOFWinningStates;
+    for (int i = 0; i < numberOFWinningStates; ++i) {
+        int winningState;
+        file >> winningState;
+        this->winningStates.insert(winningState);
     }
 
     if (!imperfect) {
@@ -435,6 +448,14 @@ void AtlModel::loadFromFile(std::ifstream file, bool imperfect) {
 
 void AtlModel::clearTransitions() {
     this->transitions.clear();
+}
+
+const std::set<int> &AtlModel::getWinningStates() const {
+    return winningStates;
+}
+
+void AtlModel::setWinningStates(const std::set<int> &winningStates) {
+    AtlModel::winningStates = winningStates;
 }
 
 

@@ -94,6 +94,7 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     std::cout << "Generated " << this->beginningStatesCount << " beginning states" << std::endl;
     std::cout << "Generating rest of model... ";
     this->generateRestOfModel();
+    this->model.setWinningStates(this->winningStates);
     std::cout << "Done" << std::endl;
     std::cout << "Generated model with " << this->stateNumber << " states" << std::endl;
     std::cout << "Preparing epistemic relation... ";
