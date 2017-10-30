@@ -393,7 +393,7 @@ std::vector<char> BridgeModel::getWinners(char &beginning, BOARD_TYPE &board) {
 
     std::vector<char> winners;
 
-    for (char i = 1; i < 4; ++i) {
+    for (char i = 0; i < 4; ++i) {
         if (cards[i] == winningCard) {
             winners.push_back((char) ((beginning + i) % 4));
         }
@@ -530,7 +530,7 @@ void BridgeModel::clear() {
 }
 
 bool BridgeModel::isWinningState(State &state) {
-    return (state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable);
+    return (state.lefts[0] > this->noEndCards/2 && state.lefts[0] + state.lefts[1] == this->noEndCards);
 }
 
 const std::set<int> &BridgeModel::getWinningStates() const {

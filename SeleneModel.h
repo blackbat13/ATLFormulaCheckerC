@@ -18,6 +18,8 @@
 
 class SeleneModel {
 public:
+    struct CoercerEpistemicState;
+
     struct State{
         // Environment
         std::vector<short> publicVotes;
@@ -70,6 +72,8 @@ public:
         bool operator<=(const State &rhs) const;
 
         bool operator>=(const State &rhs) const;
+
+        CoercerEpistemicState toCoercerState();
     };
     struct CoercerEpistemicState {
         bool votesPublished;
@@ -81,7 +85,15 @@ public:
         short maxCoerced;
         std::vector<short> coercerVotesDemanded;
 
-        void operator=(const State &rhs);
+        CoercerEpistemicState& operator=(const State &rhs);
+
+        bool operator<(const CoercerEpistemicState &rhs) const;
+
+        bool operator>(const CoercerEpistemicState &rhs) const;
+
+        bool operator<=(const CoercerEpistemicState &rhs) const;
+
+        bool operator>=(const CoercerEpistemicState &rhs) const;
     };
 private:
     AtlModel model;
@@ -90,12 +102,14 @@ private:
     short maxCoerced;
     int stateNumber;
     std::map<State, int> stateToNumber;
+    std::map<CoercerEpistemicState, std::set<int> > coercerEpistemicClasses;
     std::vector<State> states;
     void generateModel();
     int addState(State state);
     std::string toString(short a);
     std::vector<std::vector<short> > cartessianProduct(std::vector<std::vector<short> > &array);
     void addActions();
+    void addEpistemicState(State state, int stateNumber);
 
 public:
     SeleneModel(short noVoters, short noBallots, short maxCoerced);

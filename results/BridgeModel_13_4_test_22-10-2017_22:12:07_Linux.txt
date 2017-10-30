@@ -1,0 +1,457 @@
+/home/blackbat/CLionProjects/ATLFormulaCheckerC/cmake-build-release/ATLFormulaChecker
+----------TEST NUMBER 1----------
+twoSpade sevenClub nineDiamond QueenSpade sevenHeart eightClub tenDiamond KingHeart threeDiamond fourHeart eightDiamond KingSpade twoClub threeClub tenClub AceDiamond
+tenSpade tenClub tenDiamond QueenSpade tenHeart tenClub tenDiamond KingHeart tenDiamond tenHeart tenDiamond KingSpade tenClub tenClub tenClub AceDiamond
+Generating beginning states... Done
+Generated 17 beginning states
+Generating rest of model... Done
+Generated model with 285324 states
+Preparing epistemic relation... Done
+Generated 16289 epistemic classes
+Clearing old data... Done
+Generated model in 4.000000s
+Current Virtual Memory used: 303.519531 MB
+Current Physical Memory used: 275.789062 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 16
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+sevenDiamond sevenHeart JackHeart AceHeart fiveClub tenClub QueenHeart AceClub threeSpade fiveSpade eightHeart JackDiamond twoClub twoDiamond nineDiamond nineHeart
+tenDiamond tenHeart JackHeart AceHeart tenClub tenClub QueenHeart AceClub tenSpade tenSpade tenHeart JackDiamond tenClub tenDiamond tenDiamond tenHeart
+Generating beginning states... Done
+Generated 23 beginning states
+Generating rest of model... Done
+Generated model with 167530 states
+Preparing epistemic relation... Done
+Generated 9641 epistemic classes
+Clearing old data... Done
+Generated model in 2.000000s
+Current Virtual Memory used: 178.687500 MB
+Current Physical Memory used: 162.156250 MB
+Number of iterations: 20
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+fiveClub eightSpade nineClub tenDiamond fiveSpade sixDiamond eightClub JackHeart fourSpade JackClub KingHeart AceHeart threeClub threeDiamond tenClub QueenHeart
+tenClub tenSpade tenClub tenDiamond tenSpade tenDiamond tenClub JackHeart tenSpade JackClub KingHeart AceHeart tenClub tenDiamond tenClub QueenHeart
+Generating beginning states... Done
+Generated 23 beginning states
+Generating rest of model... Done
+Generated model with 264385 states
+Preparing epistemic relation... Done
+Generated 14278 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 280.457031 MB
+Current Physical Memory used: 249.527344 MB
+Number of iterations: 20
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+twoHeart tenHeart KingClub KingDiamond fiveDiamond nineClub JackHeart KingHeart threeHeart fourHeart sevenClub eightSpade fourDiamond QueenDiamond AceDiamond AceSpade
+tenHeart tenHeart KingClub KingDiamond tenDiamond tenClub JackHeart KingHeart tenHeart tenHeart tenClub tenSpade tenDiamond QueenDiamond AceDiamond AceSpade
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 260168 states
+Preparing epistemic relation... Done
+Generated 16639 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 288.054688 MB
+Current Physical Memory used: 257.453125 MB
+Number of iterations: 6
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 18
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------
+threeDiamond tenHeart QueenDiamond QueenHeart threeClub sixClub eightSpade nineHeart tenDiamond JackClub JackHeart AceHeart sixDiamond sevenSpade JackSpade KingDiamond
+tenDiamond tenHeart QueenDiamond QueenHeart tenClub tenClub tenSpade tenHeart tenDiamond JackClub JackHeart AceHeart tenDiamond tenSpade JackSpade KingDiamond
+Generating beginning states... Done
+Generated 37 beginning states
+Generating rest of model... Done
+Generated model with 239675 states
+Preparing epistemic relation... Done
+Generated 15780 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 248.898438 MB
+Current Physical Memory used: 237.433594 MB
+Number of iterations: 20
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 5----------
+
+
+----------TEST NUMBER 6----------
+twoHeart threeHeart fourHeart fiveClub fiveHeart sevenClub tenClub JackDiamond eightClub nineClub JackHeart QueenSpade twoDiamond fiveSpade eightDiamond tenDiamond
+tenHeart tenHeart tenHeart tenClub tenHeart tenClub tenClub JackDiamond tenClub tenClub JackHeart QueenSpade tenDiamond tenSpade tenDiamond tenDiamond
+Generating beginning states... Done
+Generated 22 beginning states
+Generating rest of model... Done
+Generated model with 141747 states
+Preparing epistemic relation... Done
+Generated 6979 epistemic classes
+Clearing old data... Done
+Generated model in 2.000000s
+Current Virtual Memory used: 151.167969 MB
+Current Physical Memory used: 132.902344 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 15
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 6----------
+
+
+----------TEST NUMBER 7----------
+threeClub sevenClub nineSpade AceDiamond fourDiamond eightClub nineDiamond QueenDiamond threeSpade sixSpade eightHeart tenHeart fiveClub fiveDiamond sixClub nineClub
+tenClub tenClub tenSpade AceDiamond tenDiamond tenClub tenDiamond QueenDiamond tenSpade tenSpade tenHeart tenHeart tenClub tenDiamond tenClub tenClub
+Generating beginning states... Done
+Generated 9 beginning states
+Generating rest of model... Done
+Generated model with 175605 states
+Preparing epistemic relation... Done
+Generated 6624 epistemic classes
+Clearing old data... Done
+Generated model in 2.000000s
+Current Virtual Memory used: 169.136719 MB
+Current Physical Memory used: 154.750000 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 16
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 7----------
+
+
+----------TEST NUMBER 8----------
+threeClub fourHeart tenClub AceSpade threeDiamond eightHeart nineSpade JackDiamond threeSpade fiveDiamond fiveHeart KingClub sixClub eightDiamond KingHeart AceClub
+tenClub tenHeart tenClub AceSpade tenDiamond tenHeart tenSpade JackDiamond tenSpade tenDiamond tenHeart KingClub tenClub tenDiamond KingHeart AceClub
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 217415 states
+Preparing epistemic relation... Done
+Generated 17109 epistemic classes
+Clearing old data... Done
+Generated model in 3.000000s
+Current Virtual Memory used: 250.312500 MB
+Current Physical Memory used: 238.015625 MB
+Number of iterations: 11
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 15
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 8----------
+
+
+----------TEST NUMBER 9----------
+threeClub nineClub tenSpade JackHeart threeDiamond threeHeart sevenClub tenDiamond fourClub fiveClub fiveHeart KingDiamond twoHeart fiveDiamond sixHeart tenClub
+tenClub tenClub tenSpade JackHeart tenDiamond tenHeart tenClub tenDiamond tenClub tenClub tenHeart KingDiamond tenHeart tenDiamond tenHeart tenClub
+Generating beginning states... Done
+Generated 11 beginning states
+Generating rest of model... Done
+Generated model with 110366 states
+Preparing epistemic relation... Done
+Generated 4072 epistemic classes
+Clearing old data... Done
+Generated model in 1.000000s
+Current Virtual Memory used: 103.933594 MB
+Current Physical Memory used: 93.347656 MB
+Number of iterations: 15
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information: false
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 9----------
+
+
+----------TEST NUMBER 10----------
+twoDiamond fiveClub KingDiamond AceDiamond threeClub eightDiamond nineSpade QueenDiamond fourDiamond sixDiamond tenClub tenDiamond threeHeart fiveHeart sevenDiamond AceClub
+tenDiamond tenClub KingDiamond AceDiamond tenClub tenDiamond tenSpade QueenDiamond tenDiamond tenDiamond tenClub tenDiamond tenHeart tenHeart tenDiamond AceClub
+Generating beginning states... Done
+Generated 37 beginning states
+Generating rest of model... Done
+Generated model with 357654 states
+Preparing epistemic relation... Done
+Generated 17894 epistemic classes
+Clearing old data... Done
+Generated model in 4.000000s
+Current Virtual Memory used: 350.867188 MB
+Current Physical Memory used: 330.265625 MB
+Number of iterations: 15
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information: false
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 10----------
+
+
+----------TEST NUMBER 11----------
+sevenClub QueenDiamond KingClub AceSpade twoDiamond fiveSpade sixDiamond eightClub fourClub fourDiamond JackClub KingSpade twoHeart fiveClub sixClub QueenSpade
+tenClub QueenDiamond KingClub AceSpade tenDiamond tenSpade tenDiamond tenClub tenClub tenDiamond JackClub KingSpade tenHeart tenClub tenClub QueenSpade
+Generating beginning states... Done
+Generated 23 beginning states
+Generating rest of model... Done
+Generated model with 90605 states
+Preparing epistemic relation... Done
+Generated 5756 epistemic classes
+Clearing old data... Done
+Generated model in 1.000000s
+Current Virtual Memory used: 102.843750 MB
+Current Physical Memory used: 91.164062 MB
+Number of iterations: 20
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 11----------
+
+
+----------TEST NUMBER 12----------
+fiveHeart tenSpade AceDiamond AceHeart fiveSpade sevenDiamond nineHeart QueenSpade twoHeart sevenClub nineDiamond tenHeart fiveClub sixHeart KingDiamond AceClub
+tenHeart tenSpade AceDiamond AceHeart tenSpade tenDiamond tenHeart QueenSpade tenHeart tenClub tenDiamond tenHeart tenClub tenHeart KingDiamond AceClub
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 564358 states
+Preparing epistemic relation... Done
+Generated 29736 epistemic classes
+Clearing old data... Done
+Generated model in 7.000000s
+Current Virtual Memory used: 561.023438 MB
+Current Physical Memory used: 511.046875 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 12----------
+
+
+----------TEST NUMBER 13----------
+nineDiamond tenClub tenDiamond tenSpade fourDiamond fiveSpade tenHeart QueenDiamond fourHeart sixHeart eightHeart KingDiamond threeClub threeHeart JackHeart KingSpade
+tenDiamond tenClub tenDiamond tenSpade tenDiamond tenSpade tenHeart QueenDiamond tenHeart tenHeart tenHeart KingDiamond tenClub tenHeart JackHeart KingSpade
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 641609 states
+Preparing epistemic relation... Done
+Generated 26939 epistemic classes
+Clearing old data... Done
+Generated model in 9.000000s
+Current Virtual Memory used: 595.882812 MB
+Current Physical Memory used: 551.800781 MB
+Number of iterations: 11
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 15
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 13----------
+
+
+----------TEST NUMBER 14----------
+twoDiamond nineClub tenSpade KingHeart threeClub fiveClub eightDiamond eightHeart threeHeart sevenSpade tenDiamond AceHeart twoClub threeSpade eightSpade QueenHeart
+tenDiamond tenClub tenSpade KingHeart tenClub tenClub tenDiamond tenHeart tenHeart tenSpade tenDiamond AceHeart tenClub tenSpade tenSpade QueenHeart
+Generating beginning states... Done
+Generated 23 beginning states
+Generating rest of model... Done
+Generated model with 301793 states
+Preparing epistemic relation... Done
+Generated 17265 epistemic classes
+Clearing old data... Done
+Generated model in 4.000000s
+Current Virtual Memory used: 319.078125 MB
+Current Physical Memory used: 291.894531 MB
+Number of iterations: 11
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 15
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 14----------
+
+
+----------TEST NUMBER 15----------
+threeHeart fiveSpade sevenSpade KingDiamond threeClub sixSpade nineSpade QueenClub twoSpade sevenDiamond JackHeart AceClub sixClub nineClub QueenSpade AceSpade
+tenHeart tenSpade tenSpade KingDiamond tenClub tenSpade tenSpade QueenClub tenSpade tenDiamond JackHeart AceClub tenClub tenClub QueenSpade AceSpade
+Generating beginning states... Done
+Generated 23 beginning states
+Generating rest of model... Done
+Generated model with 142867 states
+Preparing epistemic relation... Done
+Generated 6668 epistemic classes
+Clearing old data... Done
+Generated model in 1.000000s
+Current Virtual Memory used: 146.464844 MB
+Current Physical Memory used: 129.699219 MB
+Number of iterations: 20
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 15----------
+
+
+----------TEST NUMBER 16----------
+fourDiamond fourSpade sixClub JackSpade twoDiamond fiveSpade eightHeart AceSpade twoHeart fiveDiamond QueenClub QueenHeart threeDiamond sevenClub nineSpade JackDiamond
+tenDiamond tenSpade tenClub JackSpade tenDiamond tenSpade tenHeart AceSpade tenHeart tenDiamond QueenClub QueenHeart tenDiamond tenClub tenSpade JackDiamond
+Generating beginning states... Done
+Generated 37 beginning states
+Generating rest of model... Done
+Generated model with 495574 states
+Preparing epistemic relation... Done
+Generated 31682 epistemic classes
+Clearing old data... Done
+Generated model in 6.000000s
+Current Virtual Memory used: 502.117188 MB
+Current Physical Memory used: 491.457031 MB
+Number of iterations: 20
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 16----------
+
+
+----------TEST NUMBER 17----------
+fourDiamond sixHeart JackSpade AceClub fourClub sevenHeart sevenSpade KingSpade fiveHeart nineSpade tenHeart AceSpade fourHeart nineDiamond KingClub AceDiamond
+tenDiamond tenHeart JackSpade AceClub tenClub tenHeart tenSpade KingSpade tenHeart tenSpade tenHeart AceSpade tenHeart tenDiamond KingClub AceDiamond
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 711178 states
+Preparing epistemic relation... Done
+Generated 37369 epistemic classes
+Clearing old data... Done
+Generated model in 9.000000s
+Current Virtual Memory used: 683.328125 MB
+Current Physical Memory used: 647.714844 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 20
+Computed formula under perfect information in 1.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 17----------
+
+
+----------TEST NUMBER 18----------
+fourHeart fourSpade fiveHeart eightHeart threeSpade sixDiamond JackDiamond KingHeart twoDiamond threeClub nineSpade QueenClub fourDiamond sevenHeart KingDiamond AceSpade
+tenHeart tenSpade tenHeart tenHeart tenSpade tenDiamond JackDiamond KingHeart tenDiamond tenClub tenSpade QueenClub tenDiamond tenHeart KingDiamond AceSpade
+Generating beginning states... Done
+Generated 51 beginning states
+Generating rest of model... Done
+Generated model with 567668 states
+Preparing epistemic relation... Done
+Generated 28726 epistemic classes
+Clearing old data... Done
+Generated model in 7.000000s
+Current Virtual Memory used: 570.742188 MB
+Current Physical Memory used: 521.148438 MB
+Number of iterations: 15
+Computed formula under imperfect information in 1.000000s
+Formula result (imperfect information: false
+Number of iterations: 15
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 18----------
+
+
+----------TEST NUMBER 19----------
+fourClub fourHeart QueenHeart AceSpade twoClub JackSpade QueenSpade AceDiamond fiveDiamond eightClub tenHeart KingHeart fourSpade sixDiamond sixSpade KingClub
+tenClub tenHeart QueenHeart AceSpade tenClub JackSpade QueenSpade AceDiamond tenDiamond tenClub tenHeart KingHeart tenSpade tenDiamond tenSpade KingClub
+Generating beginning states... Done
+Generated 50 beginning states
+Generating rest of model... Done
+Generated model with 781671 states
+Preparing epistemic relation... Done
+Generated 25697 epistemic classes
+Clearing old data... Done
+Generated model in 11.000000s
+Current Virtual Memory used: 637.226562 MB
+Current Physical Memory used: 607.011719 MB
+Number of iterations: 20
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+Number of iterations: 20
+Computed formula under perfect information in 1.000000s
+Formula result (perfect information): true
+----------TEST NUMBER 19----------
+
+
+----------TEST NUMBER 20----------
+twoSpade sixDiamond tenHeart QueenSpade fiveClub sevenSpade nineHeart AceHeart threeDiamond eightDiamond tenClub AceSpade fourClub sixClub QueenClub KingDiamond
+tenSpade tenDiamond tenHeart QueenSpade tenClub tenSpade tenHeart AceHeart tenDiamond tenDiamond tenClub AceSpade tenClub tenClub QueenClub KingDiamond
+Generating beginning states... Done
+Generated 31 beginning states
+Generating rest of model... Done
+Generated model with 297500 states
+Preparing epistemic relation... Done
+Generated 18767 epistemic classes
+Clearing old data... Done
+Generated model in 4.000000s
+Current Virtual Memory used: 323.984375 MB
+Current Physical Memory used: 314.207031 MB
+Number of iterations: 15
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+Number of iterations: 18
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+----------TEST NUMBER 20----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (13, 4)
+Number of tests: 20
+Virtual memory: 338.386328 MB
+Physical memory: 314.439258 MB
+Formula time: 0.400000s
+Generation time: 4.300000s
+Total time: 4.700000s
+Imperfect formula true percentage: 35.00%
+Perfect formula true percentage: 35.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+
+
+Process finished with exit code 0
