@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <set>
 #include <map>
 #include <cstdio>
@@ -34,6 +35,7 @@ class AtlModel {
 
     int numberOfAgents;
     int numberOfStates;
+    int numberOfTransitions;
     std::vector<std::set<Transition> > transitions;
     std::vector<std::set<int> > preStates;
 
@@ -67,6 +69,12 @@ public:
     std::set<int> minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> winningStates);
 
     void setNumberOfStates(int numberOfStates);
+
+    void saveToFile(std::ofstream file);
+
+    void loadFromFile(std::ifstream file, bool imperfect = true);
+
+    void clearTransitions();
 };
 
 

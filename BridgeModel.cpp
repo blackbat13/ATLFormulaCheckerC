@@ -310,6 +310,7 @@ BridgeModel::State BridgeModel::getEpistemicState(BridgeModel::State &state) {
 
 void BridgeModel::prepareEpistemicRelation() {
     this->model.finishEpistemicClasses(0);
+    this->model.clearTransitions();
 }
 
 BridgeModel::State BridgeModel::newStateAfterPlay(BridgeModel::State &state, char cardIndex) {
