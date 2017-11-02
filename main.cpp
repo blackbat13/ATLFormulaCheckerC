@@ -10,6 +10,8 @@
 #include "BridgeModelTestSuite.h"
 #include "SeleneModel.h"
 
+#include "cppitertools/itertools.hpp"
+
 using namespace std;
 
 int main() {

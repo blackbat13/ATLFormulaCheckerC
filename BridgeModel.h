@@ -12,6 +12,7 @@
 #include <ctime>
 #include <random>
 #include <queue>
+#include <fstream>
 #include "cppitertools/itertools.hpp"
 
 typedef short CARD_TYPE;
@@ -64,6 +65,7 @@ private:
     std::map<State, int> nextLevelStates;
     std::map<State, int> epistemicStateClassNumber;
     CARD_TYPE abstractionLevel;
+    std::ofstream outputFile;
 
     void createAtlModel();
     void generateAvailableCards();
@@ -101,7 +103,8 @@ private:
     void abstractState(State &state);
 
 public:
-    BridgeModel(int noCardsAvailable, int noEndCards, State firstState, CARD_TYPE abstractionLevel = 0);
+    BridgeModel(int noCardsAvailable, int noEndCards, State firstState, std::string outputFileName,
+                CARD_TYPE abstractionLevel = 0);
 
     HANDS_TYPE generateRandomHands(int &noCardsAvailable, int &noCardsInHand);
 

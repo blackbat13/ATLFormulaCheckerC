@@ -1,0 +1,14 @@
+----------TEST STATISTICS----------
+Bridge Model (1, 1)
+Number of tests: 20
+Virtual memory: 0.000000 MB
+Physical memory: 0.000000 MB
+Formula time: 0.000000s
+Generation time: 0.000000s
+Total time: 0.000000s
+Imperfect formula true percentage: 100.00%
+Perfect formula true percentage: 100.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+

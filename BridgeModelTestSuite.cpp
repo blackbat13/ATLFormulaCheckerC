@@ -90,32 +90,36 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
     this->formulaResultEqualCount = 0;
     this->path = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" +
                  std::to_string(this->noEndCards) + "_" + std::to_string(this->abstractionLevel) + "/";
+    std::string resultFilename = this->path + "Test_" + getCurrentDateTime() + "_" + OS + ".txt";
+    this->resultFile = fopen(resultFilename.c_str(), "a");
 }
 
 void BridgeModelTestSuite::startTests2() {
     for (int testNumber = 1; testNumber <= this->numberOfTests; ++testNumber) {
-        printf("----------TEST NUMBER %d----------\n", testNumber);
+        fprintf(resultFile, "----------TEST NUMBER %d----------\n", testNumber);
         struct timespec start, finish;
         double elapsed;
         std::ifstream file;
         std::string filename = this->path + "Model_" + std::to_string(testNumber) + ".txt";
         file.open(filename);
         if (!file.good()) {
+            std::string modelFileName = this->path + "Test_Model_" + std::to_string(testNumber) + ".txt";
             clock_gettime(CLOCK_MONOTONIC, &start);
             BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards,
                                                   BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0,
                                                                      BOARD_TYPE(4, -1),
-                                                                     0, 0, -1), this->abstractionLevel);
+                                                                     0, 0, -1), modelFileName,
+                                                  this->abstractionLevel);
             clock_gettime(CLOCK_MONOTONIC, &finish);
             elapsed = (finish.tv_sec - start.tv_sec);
             elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
-            printf("Generated model in %fs\n", elapsed);
+            fprintf(resultFile, "Generated model in %fs\n", elapsed);
             this->modelGenerationTimeSum += elapsed;
             this->totalTimeSum += elapsed;
             this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
             this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
-            printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
-            printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
+            fprintf(resultFile, "Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
+            fprintf(resultFile, "Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
 
             std::ofstream fileOut;
             fileOut.open(filename);
@@ -133,7 +137,7 @@ void BridgeModelTestSuite::startTests2() {
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
-        printf("Computed formula under perfect information in %fs\n", elapsed);
+        fprintf(resultFile, "Computed formula under perfect information in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
@@ -146,10 +150,10 @@ void BridgeModelTestSuite::startTests2() {
         }
 
         if (isOk2) {
-            printf("Formula result (perfect information): true\n");
+            fprintf(resultFile, "Formula result (perfect information): true\n");
             this->perfectFormulaTrueCount++;
         } else {
-            printf("Formula result (perfect information): false\n");
+            fprintf(resultFile, "Formula result (perfect information): false\n");
         }
 
         atlModel = AtlModel(1, 1);
@@ -162,7 +166,7 @@ void BridgeModelTestSuite::startTests2() {
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
 
-        printf("Computed formula under imperfect information in %fs\n", elapsed);
+        fprintf(resultFile, "Computed formula under imperfect information in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
         bool isOk = true;
@@ -174,18 +178,18 @@ void BridgeModelTestSuite::startTests2() {
         }
 
         if (isOk) {
-            printf("Formula result (imperfect information): true\n");
+            fprintf(resultFile, "Formula result (imperfect information): true\n");
             this->imperfectFormulaTrueCount++;
         } else {
-            printf("Formula result (imperfect information: false\n");
+            fprintf(resultFile, "Formula result (imperfect information: false\n");
         }
 
         if (isOk == isOk2) {
             this->formulaResultEqualCount++;
         }
 
-        printf("----------TEST NUMBER %d----------\n", testNumber);
-        printf("\n\n");
+        fprintf(resultFile, "----------TEST NUMBER %d----------\n", testNumber);
+        fprintf(resultFile, "\n\n");
     }
 }
 
@@ -199,7 +203,7 @@ void BridgeModelTestSuite::startTests() {
 
         BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards,
                                               BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0, BOARD_TYPE(4, -1),
-                                                                 0, 0, -1), this->abstractionLevel);
+                                                                 0, 0, -1), "", this->abstractionLevel);
 
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
@@ -210,8 +214,8 @@ void BridgeModelTestSuite::startTests() {
 
         this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
         this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
-        printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION()/1024);
-        printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION()/1024);
+        printf("Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
+        printf("Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
 
         clock_gettime(CLOCK_MONOTONIC, &start);
         std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0,
@@ -225,14 +229,14 @@ void BridgeModelTestSuite::startTests() {
         this->totalTimeSum += elapsed;
 
         bool isOk = true;
-        for(int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
-            if(result.find(i) == result.end()) {
+        for (int i = 0; i < bridgeModel.getBeginningStatesCount(); ++i) {
+            if (result.find(i) == result.end()) {
                 isOk = false;
                 break;
             }
         }
 
-        if(isOk) {
+        if (isOk) {
             printf("Formula result (imperfect information): true\n");
             this->imperfectFormulaTrueCount++;
         } else {
@@ -278,11 +282,11 @@ void BridgeModelTestSuite::printStatistics() {
     printf("----------TEST STATISTICS----------\n");
     printf("Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
     printf("Number of tests: %d\n", this->numberOfTests);
-    printf("Virtual memory: %f MB\n", ((double)this->virtualMemorySum / (double)this->numberOfTests) / 1024);
-    printf("Physical memory: %f MB\n", ((double)this->physicalMemorySum / (double)this->numberOfTests) / 1024);
-    printf("Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
-    printf("Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
-    printf("Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
+    printf("Virtual memory: %f MB\n", ((double) this->virtualMemorySum / (double) this->numberOfTests) / 1024);
+    printf("Physical memory: %f MB\n", ((double) this->physicalMemorySum / (double) this->numberOfTests) / 1024);
+    printf("Formula time: %fs\n", this->formulaTimeSum / (double) this->numberOfTests);
+    printf("Generation time: %fs\n", this->modelGenerationTimeSum / (double) this->numberOfTests);
+    printf("Total time: %fs\n", this->totalTimeSum / (double) this->numberOfTests);
     printf("Imperfect formula true percentage: %.2f%%\n",
            100 * this->imperfectFormulaTrueCount / (double) this->numberOfTests);
     printf("Perfect formula true percentage: %.2f%%\n",
@@ -293,36 +297,36 @@ void BridgeModelTestSuite::printStatistics() {
 }
 
 void BridgeModelTestSuite::saveStatistics() {
-    std::string filename = this->path + "Test_" + getCurrentDateTime() + "_" + OS + ".txt";
-    FILE* file = fopen(filename.c_str(), "w");
-    fprintf(file, "----------TEST STATISTICS----------\n");
-    fprintf(file, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
-    fprintf(file, "Number of tests: %d\n", this->numberOfTests);
-    fprintf(file, "Virtual memory: %f MB\n", ((double)this->virtualMemorySum / (double)this->numberOfTests) / 1024);
-    fprintf(file, "Physical memory: %f MB\n", ((double)this->physicalMemorySum / (double)this->numberOfTests) / 1024);
-    fprintf(file, "Formula time: %fs\n", this->formulaTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Generation time: %fs\n", this->modelGenerationTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Total time: %fs\n", this->totalTimeSum / (double)this->numberOfTests);
-    fprintf(file, "Imperfect formula true percentage: %.2f%%\n",
+    fprintf(resultFile, "----------TEST STATISTICS----------\n");
+    fprintf(resultFile, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
+    fprintf(resultFile, "Number of tests: %d\n", this->numberOfTests);
+    fprintf(resultFile, "Virtual memory: %f MB\n",
+            ((double) this->virtualMemorySum / (double) this->numberOfTests) / 1024);
+    fprintf(resultFile, "Physical memory: %f MB\n",
+            ((double) this->physicalMemorySum / (double) this->numberOfTests) / 1024);
+    fprintf(resultFile, "Formula time: %fs\n", this->formulaTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Generation time: %fs\n", this->modelGenerationTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Total time: %fs\n", this->totalTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Imperfect formula true percentage: %.2f%%\n",
             100 * this->imperfectFormulaTrueCount / (double) this->numberOfTests);
-    fprintf(file, "Perfect formula true percentage: %.2f%%\n",
+    fprintf(resultFile, "Perfect formula true percentage: %.2f%%\n",
             100 * this->perfectFormulaTrueCount / (double) this->numberOfTests);
-    fprintf(file, "Formula equality percentage: %.2f%%\n",
+    fprintf(resultFile, "Formula equality percentage: %.2f%%\n",
             100 * this->formulaResultEqualCount / (double) this->numberOfTests);
-    fprintf(file, "----------TEST STATISTICS----------\n");
-    fprintf(file, "\n\n");
-    fclose(file);
+    fprintf(resultFile, "----------TEST STATISTICS----------\n");
+    fprintf(resultFile, "\n\n");
+    fclose(resultFile);
 }
 
 std::string BridgeModelTestSuite::getCurrentDateTime() {
     time_t rawtime;
-    struct tm * timeinfo;
+    struct tm *timeinfo;
     char buffer[80];
 
-    time (&rawtime);
+    time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer,sizeof(buffer),"%d-%m-%Y_%H:%M:%S",timeinfo);
+    strftime(buffer, sizeof(buffer), "%d-%m-%Y_%H:%M:%S", timeinfo);
     std::string str(buffer);
     return str;
 }

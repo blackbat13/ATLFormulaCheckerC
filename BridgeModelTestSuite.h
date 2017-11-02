@@ -40,6 +40,7 @@ private:
     int noEndCards;
     int abstractionLevel;
     std::string path;
+    FILE *resultFile;
 
     int parseLine(char* line);
     double getVirtualMemory();
