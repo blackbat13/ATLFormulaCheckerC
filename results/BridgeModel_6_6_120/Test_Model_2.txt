@@ -1,0 +1,4 @@
+tenClub JackDiamond JackSpade QueenClub QueenSpade KingSpade nineHeart nineSpade tenSpade JackClub AceClub AceSpade tenDiamond JackHeart QueenDiamond QueenHeart KingClub KingHeart nineClub nineDiamond tenHeart KingDiamond AceDiamond AceHeart 
+QueenClub QueenDiamond QueenSpade QueenClub QueenSpade KingSpade QueenHeart QueenSpade QueenSpade QueenClub AceClub AceSpade QueenDiamond QueenHeart QueenDiamond QueenHeart KingClub KingHeart QueenClub QueenDiamond QueenHeart KingDiamond AceDiamond AceHeart 
+Generating beginning states... Done
+Generated 359 beginning states

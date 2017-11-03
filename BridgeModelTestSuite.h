@@ -30,6 +30,8 @@ private:
     long long virtualMemorySum;
     long long physicalMemorySum;
     double formulaTimeSum;
+    double perfectFormulaTimeSum;
+    double imperfectFormulaTimeSum;
     double totalTimeSum;
     double modelGenerationTimeSum;
     double imperfectFormulaTrueCount;

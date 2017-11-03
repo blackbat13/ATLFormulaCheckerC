@@ -1,0 +1,9 @@
+fourDiamond nineHeart sevenClub eightSpade fourSpade eightDiamond threeDiamond fourClub 
+nineDiamond nineHeart nineClub nineSpade nineSpade nineDiamond nineDiamond nineClub 
+Generating beginning states... Done
+Generated 5 beginning states
+Generating rest of model... Done
+Generated model with 280 states
+Preparing epistemic relation... Done
+Generated 113 epistemic classes
+Clearing old data... Done

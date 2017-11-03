@@ -1,0 +1,7683 @@
+3434
+4184
+1
+15
+0 15 nineDiamond
+0 16 QueenSpade
+0 17 KingClub
+1 18 nineDiamond
+1 19 QueenSpade
+1 20 KingClub
+2 21 nineDiamond
+2 22 QueenSpade
+2 23 KingClub
+3 24 nineDiamond
+3 25 QueenSpade
+3 26 KingClub
+4 27 nineDiamond
+4 28 QueenSpade
+4 29 KingClub
+5 30 nineDiamond
+5 31 QueenSpade
+5 32 KingClub
+6 33 nineDiamond
+6 34 QueenSpade
+6 35 KingClub
+7 36 nineDiamond
+7 37 QueenSpade
+7 38 KingClub
+8 39 nineDiamond
+8 40 QueenSpade
+8 41 KingClub
+9 42 nineDiamond
+9 43 QueenSpade
+9 44 KingClub
+10 45 nineDiamond
+10 46 QueenSpade
+10 47 KingClub
+11 15 nineDiamond
+11 16 QueenSpade
+11 17 KingClub
+12 48 nineDiamond
+12 49 QueenSpade
+12 50 KingClub
+13 51 nineDiamond
+13 52 QueenSpade
+13 53 KingClub
+14 54 nineDiamond
+14 55 QueenSpade
+14 56 KingClub
+15 57 wait
+16 58 wait
+16 59 wait
+16 60 wait
+17 61 wait
+18 62 wait
+18 63 wait
+18 64 wait
+19 65 wait
+20 66 wait
+21 67 wait
+21 68 wait
+21 69 wait
+22 70 wait
+22 71 wait
+22 72 wait
+23 73 wait
+23 74 wait
+24 75 wait
+24 76 wait
+24 77 wait
+25 78 wait
+25 79 wait
+25 80 wait
+26 81 wait
+27 82 wait
+28 83 wait
+29 84 wait
+30 85 wait
+31 86 wait
+31 87 wait
+31 88 wait
+32 89 wait
+32 90 wait
+33 91 wait
+34 92 wait
+34 93 wait
+34 94 wait
+35 95 wait
+36 96 wait
+36 97 wait
+36 98 wait
+37 99 wait
+38 100 wait
+38 101 wait
+39 102 wait
+39 103 wait
+39 104 wait
+40 105 wait
+41 106 wait
+42 107 wait
+42 108 wait
+42 109 wait
+43 110 wait
+43 111 wait
+43 112 wait
+44 113 wait
+44 114 wait
+45 115 wait
+46 116 wait
+47 117 wait
+47 118 wait
+47 119 wait
+48 120 wait
+49 121 wait
+49 122 wait
+49 123 wait
+50 124 wait
+50 125 wait
+50 126 wait
+51 127 wait
+51 128 wait
+51 129 wait
+52 130 wait
+53 131 wait
+53 132 wait
+53 133 wait
+54 134 wait
+55 135 wait
+56 136 wait
+56 137 wait
+56 138 wait
+57 139 nineDiamond
+58 140 nineSpade
+59 141 nineSpade
+60 142 nineSpade
+61 143 tenClub
+62 144 nineDiamond
+63 145 nineDiamond
+64 146 nineDiamond
+65 147 nineSpade
+66 148 tenClub
+67 149 nineDiamond
+68 150 nineDiamond
+69 151 nineDiamond
+70 152 nineSpade
+71 153 nineSpade
+72 154 nineSpade
+73 155 tenClub
+74 156 tenClub
+75 157 nineDiamond
+76 158 nineDiamond
+77 159 nineDiamond
+78 160 nineSpade
+79 161 nineSpade
+80 162 nineSpade
+81 163 tenClub
+82 164 nineDiamond
+83 165 nineSpade
+84 166 tenClub
+85 167 nineDiamond
+86 168 nineSpade
+87 169 nineSpade
+88 170 nineSpade
+89 171 tenClub
+90 172 tenClub
+91 173 nineDiamond
+92 174 nineSpade
+93 175 nineSpade
+94 176 nineSpade
+95 177 tenClub
+96 178 nineDiamond
+97 179 nineDiamond
+98 180 nineDiamond
+99 181 nineSpade
+100 182 tenClub
+101 183 tenClub
+102 184 nineDiamond
+103 185 nineDiamond
+104 186 nineDiamond
+105 187 nineSpade
+106 188 tenClub
+107 189 nineDiamond
+108 190 nineDiamond
+109 191 nineDiamond
+110 192 nineSpade
+111 193 nineSpade
+112 194 nineSpade
+113 195 tenClub
+114 196 tenClub
+115 197 nineDiamond
+116 198 nineSpade
+117 199 tenClub
+118 200 tenClub
+119 201 tenClub
+120 202 nineDiamond
+121 203 nineSpade
+122 204 nineSpade
+123 205 nineSpade
+124 206 tenClub
+125 207 tenClub
+126 208 tenClub
+127 209 nineDiamond
+128 210 nineDiamond
+129 211 nineDiamond
+130 212 nineSpade
+131 213 tenClub
+132 214 tenClub
+133 215 tenClub
+134 216 nineDiamond
+135 217 nineSpade
+136 218 tenClub
+137 219 tenClub
+138 220 tenClub
+139 221 wait
+139 222 wait
+139 223 wait
+140 224 wait
+141 225 wait
+142 226 wait
+143 227 wait
+144 228 wait
+145 229 wait
+146 230 wait
+147 231 wait
+147 232 wait
+147 233 wait
+148 234 wait
+149 235 wait
+150 236 wait
+151 237 wait
+152 238 wait
+153 239 wait
+154 240 wait
+155 241 wait
+155 242 wait
+155 243 wait
+156 244 wait
+156 245 wait
+156 246 wait
+157 247 wait
+158 248 wait
+159 249 wait
+160 250 wait
+161 251 wait
+162 252 wait
+163 253 wait
+164 254 wait
+164 255 wait
+164 256 wait
+165 257 wait
+165 258 wait
+165 259 wait
+166 260 wait
+167 261 wait
+167 262 wait
+167 263 wait
+168 264 wait
+169 265 wait
+170 266 wait
+171 267 wait
+171 268 wait
+171 269 wait
+172 270 wait
+172 271 wait
+172 272 wait
+173 273 wait
+173 274 wait
+173 275 wait
+174 276 wait
+175 277 wait
+176 278 wait
+177 279 wait
+178 280 wait
+179 281 wait
+180 282 wait
+181 283 wait
+181 284 wait
+181 285 wait
+182 286 wait
+182 287 wait
+182 288 wait
+183 289 wait
+183 290 wait
+183 291 wait
+184 292 wait
+185 293 wait
+186 294 wait
+187 295 wait
+187 296 wait
+187 297 wait
+188 298 wait
+189 299 wait
+190 300 wait
+191 301 wait
+192 302 wait
+193 303 wait
+194 304 wait
+195 305 wait
+195 306 wait
+195 307 wait
+196 308 wait
+196 309 wait
+196 310 wait
+197 311 wait
+197 312 wait
+197 313 wait
+198 314 wait
+198 315 wait
+198 316 wait
+199 317 wait
+199 318 wait
+200 319 wait
+200 320 wait
+201 321 wait
+201 322 wait
+202 323 wait
+202 324 wait
+202 325 wait
+203 326 wait
+204 327 wait
+205 328 wait
+206 329 wait
+206 330 wait
+207 331 wait
+207 332 wait
+208 333 wait
+208 334 wait
+209 335 wait
+210 336 wait
+211 337 wait
+212 338 wait
+212 339 wait
+212 340 wait
+213 341 wait
+213 342 wait
+214 343 wait
+214 344 wait
+215 345 wait
+215 346 wait
+216 347 wait
+216 348 wait
+216 349 wait
+217 350 wait
+217 351 wait
+217 352 wait
+218 353 wait
+218 354 wait
+219 355 wait
+219 356 wait
+220 357 wait
+220 358 wait
+221 359 wait
+222 360 wait
+223 361 wait
+224 362 wait
+225 363 wait
+226 364 wait
+227 365 wait
+228 366 wait
+229 367 wait
+230 368 wait
+231 369 wait
+232 364 wait
+233 370 wait
+234 371 wait
+235 372 wait
+236 373 wait
+237 374 wait
+238 375 wait
+239 376 wait
+240 377 wait
+241 378 wait
+242 379 wait
+243 380 wait
+244 381 wait
+245 382 wait
+246 383 wait
+247 384 wait
+248 385 wait
+249 386 wait
+250 387 wait
+251 388 wait
+252 389 wait
+253 390 wait
+254 391 wait
+255 392 wait
+256 393 wait
+257 394 wait
+258 363 wait
+259 395 wait
+260 396 wait
+261 397 wait
+262 398 wait
+263 399 wait
+264 400 wait
+265 401 wait
+266 402 wait
+267 403 wait
+268 404 wait
+269 405 wait
+270 406 wait
+271 407 wait
+272 408 wait
+273 409 wait
+274 410 wait
+275 411 wait
+276 412 wait
+277 413 wait
+278 414 wait
+279 415 wait
+280 416 wait
+281 417 wait
+282 418 wait
+283 377 wait
+284 402 wait
+285 419 wait
+286 420 wait
+287 421 wait
+288 422 wait
+289 423 wait
+290 424 wait
+291 425 wait
+292 426 wait
+293 427 wait
+294 428 wait
+295 429 wait
+296 388 wait
+297 413 wait
+298 430 wait
+299 431 wait
+300 432 wait
+301 433 wait
+302 434 wait
+303 435 wait
+304 436 wait
+305 437 wait
+306 438 wait
+307 439 wait
+308 440 wait
+309 441 wait
+310 442 wait
+311 443 wait
+312 444 wait
+313 445 wait
+314 446 wait
+315 447 wait
+316 448 wait
+317 449 wait
+318 450 wait
+319 451 wait
+320 452 wait
+321 453 wait
+322 454 wait
+323 455 wait
+324 456 wait
+325 457 wait
+326 458 wait
+327 459 wait
+328 460 wait
+329 461 wait
+330 462 wait
+331 463 wait
+332 464 wait
+333 465 wait
+334 466 wait
+335 467 wait
+336 468 wait
+337 469 wait
+338 470 wait
+339 471 wait
+340 459 wait
+341 472 wait
+342 473 wait
+343 474 wait
+344 475 wait
+345 476 wait
+346 477 wait
+347 478 wait
+348 479 wait
+349 480 wait
+350 481 wait
+351 482 wait
+352 458 wait
+353 483 wait
+354 484 wait
+355 485 wait
+356 486 wait
+357 487 wait
+358 488 wait
+359 489 wait
+359 490 wait
+360 491 wait
+360 492 wait
+361 493 wait
+361 494 wait
+362 495 nineDiamond
+362 496 KingClub
+363 497 nineDiamond
+363 498 KingClub
+364 499 nineDiamond
+364 500 KingClub
+365 501 nineDiamond
+365 502 QueenSpade
+366 503 wait
+366 504 wait
+367 505 wait
+367 506 wait
+368 507 wait
+368 508 wait
+369 509 nineDiamond
+369 510 KingClub
+370 511 nineDiamond
+370 512 KingClub
+371 513 nineDiamond
+371 514 QueenSpade
+372 515 wait
+372 516 wait
+373 517 wait
+373 518 wait
+374 519 wait
+374 520 wait
+375 521 nineDiamond
+375 522 KingClub
+376 523 nineDiamond
+376 524 KingClub
+377 525 nineDiamond
+377 526 KingClub
+378 527 nineDiamond
+378 528 QueenSpade
+379 529 nineDiamond
+379 530 QueenSpade
+380 531 nineDiamond
+380 532 QueenSpade
+381 533 nineDiamond
+381 534 QueenSpade
+382 535 nineDiamond
+382 536 QueenSpade
+383 537 nineDiamond
+383 538 QueenSpade
+384 539 wait
+384 540 wait
+385 541 wait
+385 542 wait
+386 543 wait
+386 544 wait
+387 545 nineDiamond
+387 546 KingClub
+388 547 nineDiamond
+388 548 KingClub
+389 549 nineDiamond
+389 550 KingClub
+390 551 nineDiamond
+390 552 QueenSpade
+391 553 wait
+391 554 wait
+392 555 wait
+392 556 wait
+393 557 wait
+393 558 wait
+394 559 nineDiamond
+394 560 KingClub
+395 561 nineDiamond
+395 562 KingClub
+396 563 nineDiamond
+396 564 QueenSpade
+397 565 wait
+397 566 wait
+398 567 wait
+398 568 wait
+399 569 wait
+399 570 wait
+400 571 nineDiamond
+400 572 KingClub
+401 573 nineDiamond
+401 574 KingClub
+402 575 nineDiamond
+402 576 KingClub
+403 577 nineDiamond
+403 578 QueenSpade
+404 579 nineDiamond
+404 580 QueenSpade
+405 581 nineDiamond
+405 582 QueenSpade
+406 583 nineDiamond
+406 584 QueenSpade
+407 585 nineDiamond
+407 586 QueenSpade
+408 587 nineDiamond
+408 588 QueenSpade
+409 589 wait
+409 590 wait
+410 591 wait
+410 592 wait
+411 593 wait
+411 594 wait
+412 595 nineDiamond
+412 596 KingClub
+413 597 nineDiamond
+413 598 KingClub
+414 599 nineDiamond
+414 600 KingClub
+415 601 nineDiamond
+415 602 QueenSpade
+416 603 wait
+416 604 wait
+417 605 wait
+417 606 wait
+418 607 wait
+418 608 wait
+419 609 nineDiamond
+419 610 KingClub
+420 611 nineDiamond
+420 612 QueenSpade
+421 613 nineDiamond
+421 614 QueenSpade
+422 615 nineDiamond
+422 616 QueenSpade
+423 617 nineDiamond
+423 618 QueenSpade
+424 619 nineDiamond
+424 620 QueenSpade
+425 621 nineDiamond
+425 622 QueenSpade
+426 623 wait
+426 624 wait
+427 625 wait
+427 626 wait
+428 627 wait
+428 628 wait
+429 629 nineDiamond
+429 630 KingClub
+430 631 nineDiamond
+430 632 QueenSpade
+431 633 wait
+431 634 wait
+432 635 wait
+432 636 wait
+433 637 wait
+433 638 wait
+434 639 nineDiamond
+434 640 KingClub
+435 641 nineDiamond
+435 642 KingClub
+436 643 nineDiamond
+436 644 KingClub
+437 645 nineDiamond
+437 646 QueenSpade
+438 647 nineDiamond
+438 648 QueenSpade
+439 649 nineDiamond
+439 650 QueenSpade
+440 651 nineDiamond
+440 652 QueenSpade
+441 653 nineDiamond
+441 654 QueenSpade
+442 655 nineDiamond
+442 656 QueenSpade
+443 657 wait
+443 658 wait
+444 659 wait
+444 660 wait
+445 661 wait
+445 662 wait
+446 663 nineDiamond
+446 664 KingClub
+447 665 nineDiamond
+447 666 KingClub
+448 667 nineDiamond
+448 668 KingClub
+449 669 nineDiamond
+449 670 QueenSpade
+450 671 nineDiamond
+450 672 QueenSpade
+451 673 nineDiamond
+451 674 QueenSpade
+452 675 nineDiamond
+452 676 QueenSpade
+453 677 nineDiamond
+453 678 QueenSpade
+454 679 nineDiamond
+454 680 QueenSpade
+455 681 wait
+455 682 wait
+456 683 wait
+456 684 wait
+457 685 wait
+457 686 wait
+458 687 nineDiamond
+458 688 KingClub
+459 689 nineDiamond
+459 690 KingClub
+460 691 nineDiamond
+460 692 KingClub
+461 693 nineDiamond
+461 694 QueenSpade
+462 695 nineDiamond
+462 696 QueenSpade
+463 697 nineDiamond
+463 698 QueenSpade
+464 699 nineDiamond
+464 700 QueenSpade
+465 701 nineDiamond
+465 702 QueenSpade
+466 703 nineDiamond
+466 704 QueenSpade
+467 705 wait
+467 706 wait
+468 707 wait
+468 708 wait
+469 709 wait
+469 710 wait
+470 711 nineDiamond
+470 712 KingClub
+471 713 nineDiamond
+471 714 KingClub
+472 715 nineDiamond
+472 716 QueenSpade
+473 717 nineDiamond
+473 718 QueenSpade
+474 719 nineDiamond
+474 720 QueenSpade
+475 721 nineDiamond
+475 722 QueenSpade
+476 723 nineDiamond
+476 724 QueenSpade
+477 725 nineDiamond
+477 726 QueenSpade
+478 727 wait
+478 728 wait
+479 729 wait
+479 730 wait
+480 731 wait
+480 732 wait
+481 733 nineDiamond
+481 734 KingClub
+482 735 nineDiamond
+482 736 KingClub
+483 737 nineDiamond
+483 738 QueenSpade
+484 739 nineDiamond
+484 740 QueenSpade
+485 741 nineDiamond
+485 742 QueenSpade
+486 743 nineDiamond
+486 744 QueenSpade
+487 745 nineDiamond
+487 746 QueenSpade
+488 747 nineDiamond
+488 748 QueenSpade
+489 749 tenClub
+490 750 nineSpade
+490 751 tenClub
+491 752 tenClub
+492 753 nineSpade
+492 754 tenClub
+493 755 tenClub
+494 756 nineSpade
+494 757 tenClub
+495 758 wait
+496 759 wait
+496 760 wait
+497 761 wait
+498 762 wait
+499 763 wait
+499 764 wait
+500 765 wait
+501 766 wait
+502 767 wait
+502 768 wait
+503 769 KingClub
+504 770 QueenSpade
+504 771 KingClub
+505 772 KingClub
+506 773 QueenSpade
+506 774 KingClub
+507 775 KingClub
+508 776 QueenSpade
+508 777 KingClub
+509 778 wait
+509 779 wait
+510 780 wait
+511 781 wait
+511 782 wait
+512 783 wait
+513 784 wait
+513 785 wait
+514 786 wait
+515 787 QueenSpade
+516 788 QueenSpade
+516 789 KingClub
+517 790 QueenSpade
+518 791 QueenSpade
+518 792 KingClub
+519 793 QueenSpade
+520 794 QueenSpade
+520 795 KingClub
+521 796 wait
+521 797 wait
+522 798 wait
+523 779 wait
+523 796 wait
+524 798 wait
+525 799 wait
+525 800 wait
+526 801 wait
+526 802 wait
+527 803 wait
+527 804 wait
+528 805 wait
+528 806 wait
+529 807 wait
+529 808 wait
+530 809 wait
+530 810 wait
+531 811 wait
+531 812 wait
+532 813 wait
+532 814 wait
+533 803 wait
+533 815 wait
+534 805 wait
+534 816 wait
+535 807 wait
+535 817 wait
+536 809 wait
+536 818 wait
+537 811 wait
+537 819 wait
+538 813 wait
+538 820 wait
+539 821 KingClub
+540 822 QueenSpade
+541 823 KingClub
+542 824 QueenSpade
+543 825 KingClub
+544 826 QueenSpade
+545 827 wait
+545 828 wait
+546 829 wait
+546 830 wait
+547 831 wait
+547 832 wait
+548 833 wait
+549 834 wait
+549 835 wait
+550 836 wait
+551 837 wait
+551 838 wait
+552 839 wait
+552 840 wait
+553 841 tenClub
+554 842 nineSpade
+555 843 tenClub
+556 844 nineSpade
+557 845 tenClub
+558 846 nineSpade
+559 847 wait
+560 848 wait
+561 849 wait
+562 850 wait
+563 851 wait
+564 852 wait
+565 853 tenClub
+566 854 tenClub
+567 855 tenClub
+568 856 tenClub
+569 857 tenClub
+570 858 tenClub
+571 859 wait
+572 860 wait
+573 861 wait
+574 860 wait
+575 862 wait
+575 863 wait
+576 864 wait
+576 865 wait
+577 866 wait
+578 867 wait
+578 868 wait
+579 869 wait
+580 870 wait
+580 871 wait
+581 872 wait
+582 873 wait
+582 874 wait
+583 875 wait
+584 867 wait
+584 876 wait
+585 877 wait
+586 870 wait
+586 878 wait
+587 879 wait
+588 873 wait
+588 880 wait
+589 881 tenClub
+590 882 nineSpade
+590 883 tenClub
+591 884 tenClub
+592 885 nineSpade
+592 886 tenClub
+593 887 tenClub
+594 888 nineSpade
+594 889 tenClub
+595 890 wait
+596 891 wait
+596 892 wait
+597 893 wait
+597 894 wait
+598 895 wait
+599 849 wait
+600 896 wait
+601 897 wait
+602 898 wait
+602 899 wait
+603 900 QueenSpade
+603 901 KingClub
+604 902 QueenSpade
+604 903 KingClub
+605 904 QueenSpade
+605 905 KingClub
+606 906 QueenSpade
+606 907 KingClub
+607 908 QueenSpade
+607 909 KingClub
+608 910 QueenSpade
+608 911 KingClub
+609 912 wait
+609 913 wait
+610 914 wait
+610 915 wait
+611 916 wait
+611 917 wait
+612 918 wait
+613 919 wait
+613 920 wait
+614 921 wait
+615 922 wait
+615 923 wait
+616 924 wait
+617 916 wait
+617 925 wait
+618 926 wait
+619 919 wait
+619 927 wait
+620 928 wait
+621 922 wait
+621 929 wait
+622 930 wait
+623 931 KingClub
+624 932 QueenSpade
+624 933 KingClub
+625 934 KingClub
+626 935 QueenSpade
+626 936 KingClub
+627 937 KingClub
+628 938 QueenSpade
+628 939 KingClub
+629 940 wait
+629 941 wait
+630 942 wait
+631 943 wait
+631 944 wait
+632 945 wait
+633 946 QueenSpade
+633 947 KingClub
+634 948 QueenSpade
+635 949 QueenSpade
+635 950 KingClub
+636 951 QueenSpade
+637 952 QueenSpade
+637 953 KingClub
+638 954 QueenSpade
+639 955 wait
+639 956 wait
+640 957 wait
+641 955 wait
+641 958 wait
+642 957 wait
+643 959 wait
+643 960 wait
+644 961 wait
+644 962 wait
+645 963 wait
+645 964 wait
+646 965 wait
+646 966 wait
+647 967 wait
+647 968 wait
+648 969 wait
+648 970 wait
+649 971 wait
+649 972 wait
+650 973 wait
+650 974 wait
+651 963 wait
+651 975 wait
+652 965 wait
+652 976 wait
+653 967 wait
+653 977 wait
+654 969 wait
+654 978 wait
+655 971 wait
+655 979 wait
+656 973 wait
+656 980 wait
+657 981 nineSpade
+657 982 tenClub
+658 983 nineSpade
+659 984 nineSpade
+659 985 tenClub
+660 986 nineSpade
+661 987 nineSpade
+661 988 tenClub
+662 989 nineSpade
+663 990 wait
+664 991 wait
+664 992 wait
+665 993 wait
+666 759 wait
+666 994 wait
+667 995 wait
+668 996 wait
+668 997 wait
+669 998 wait
+670 999 wait
+671 1000 wait
+672 1001 wait
+673 1002 wait
+674 1003 wait
+674 1004 wait
+675 1005 wait
+676 1006 wait
+676 1007 wait
+677 1008 wait
+677 1009 wait
+678 1010 wait
+679 1011 wait
+679 1012 wait
+680 1013 wait
+681 1014 nineSpade
+681 1015 tenClub
+682 1016 nineSpade
+682 1017 tenClub
+683 1018 nineSpade
+683 1019 tenClub
+684 1020 nineSpade
+684 1021 tenClub
+685 1022 nineSpade
+685 1023 tenClub
+686 1024 nineSpade
+686 1025 tenClub
+687 1026 wait
+688 1027 wait
+688 1028 wait
+689 1029 wait
+689 1030 wait
+690 1031 wait
+690 1032 wait
+691 995 wait
+692 997 wait
+692 1033 wait
+693 1034 wait
+694 1035 wait
+694 1036 wait
+695 1037 wait
+696 1038 wait
+696 1039 wait
+697 1040 wait
+697 1041 wait
+698 1042 wait
+698 1043 wait
+699 1044 wait
+699 1045 wait
+700 1046 wait
+700 1047 wait
+701 1048 wait
+702 1049 wait
+702 1050 wait
+703 1051 wait
+704 1052 wait
+704 1053 wait
+705 1054 KingClub
+706 1055 KingClub
+707 1056 KingClub
+708 1057 KingClub
+709 1058 KingClub
+710 1059 KingClub
+711 1060 wait
+711 1061 wait
+712 1062 wait
+712 1063 wait
+713 827 wait
+713 1064 wait
+714 829 wait
+714 1065 wait
+715 1066 wait
+715 1067 wait
+716 1068 wait
+717 1069 wait
+717 1070 wait
+718 1071 wait
+719 1072 wait
+719 1073 wait
+720 1074 wait
+720 1075 wait
+721 1076 wait
+721 1077 wait
+722 1078 wait
+722 1079 wait
+723 1080 wait
+723 1081 wait
+724 1082 wait
+725 1083 wait
+725 1084 wait
+726 1085 wait
+727 1086 nineSpade
+728 1087 nineSpade
+728 1088 tenClub
+729 1089 nineSpade
+730 1090 nineSpade
+730 1091 tenClub
+731 1092 nineSpade
+732 1093 nineSpade
+732 1094 tenClub
+733 1095 wait
+734 1096 wait
+734 1097 wait
+735 1098 wait
+736 1099 wait
+736 1100 wait
+737 1101 wait
+738 1102 wait
+738 1103 wait
+739 1104 wait
+740 1105 wait
+740 1106 wait
+741 1107 wait
+741 1108 wait
+742 1109 wait
+743 1110 wait
+743 1111 wait
+744 1112 wait
+745 1113 wait
+746 1114 wait
+747 1115 wait
+748 1116 wait
+749 1117 wait
+749 1118 wait
+750 1119 wait
+751 1120 wait
+752 1121 wait
+753 1122 wait
+754 1123 wait
+755 1124 wait
+756 1125 wait
+756 1126 wait
+757 1127 wait
+757 1128 wait
+758 1129 nineDiamond
+759 1130 tenClub
+760 1131 tenClub
+761 1132 nineDiamond
+762 1133 tenClub
+763 1134 nineDiamond
+764 1135 nineDiamond
+765 1136 tenClub
+766 1137 nineDiamond
+767 1138 nineSpade
+768 1139 nineSpade
+769 1140 wait
+769 1141 wait
+770 1142 wait
+771 1143 wait
+772 1144 wait
+773 1145 wait
+773 1146 wait
+774 1147 wait
+774 1148 wait
+775 1149 wait
+776 1150 wait
+777 1151 wait
+778 1152 nineDiamond
+779 1153 nineDiamond
+780 1154 tenClub
+781 1155 nineDiamond
+782 1156 nineDiamond
+783 1157 tenClub
+784 1158 nineDiamond
+785 1159 nineDiamond
+786 1160 nineSpade
+787 1161 wait
+787 1162 wait
+788 1163 wait
+789 1164 wait
+790 1161 wait
+790 1165 wait
+791 1166 wait
+792 1167 wait
+793 1168 wait
+793 1169 wait
+794 1170 wait
+794 1171 wait
+795 1172 wait
+795 1173 wait
+796 1174 nineDiamond
+797 1175 nineDiamond
+798 1176 tenClub
+799 1177 nineDiamond
+800 1178 nineDiamond
+801 1179 tenClub
+802 1180 tenClub
+803 1181 nineDiamond
+804 1182 nineDiamond
+805 1183 nineSpade
+806 1184 nineSpade
+807 1185 nineDiamond
+808 1186 nineDiamond
+809 1187 nineSpade
+810 1188 nineSpade
+811 1189 nineDiamond
+812 1190 nineDiamond
+813 1191 nineSpade
+814 1192 nineSpade
+815 1193 nineDiamond
+816 1194 nineSpade
+817 1195 nineDiamond
+818 1196 nineSpade
+819 1197 nineDiamond
+820 1198 nineSpade
+821 1199 wait
+821 1200 wait
+822 1201 wait
+822 1202 wait
+823 1203 wait
+824 1204 wait
+824 1205 wait
+825 1206 wait
+826 1207 wait
+826 1208 wait
+827 1209 nineDiamond
+828 1210 nineDiamond
+829 1211 tenClub
+830 1212 tenClub
+831 1213 nineDiamond
+832 1214 nineDiamond
+833 1215 tenClub
+834 1216 nineDiamond
+835 1217 nineDiamond
+836 1218 tenClub
+837 1219 nineDiamond
+838 1220 nineDiamond
+839 1221 nineSpade
+840 1222 nineSpade
+841 1223 wait
+841 1224 wait
+842 1225 wait
+842 1226 wait
+843 1227 wait
+844 1228 wait
+844 1229 wait
+845 1230 wait
+846 1231 wait
+846 1232 wait
+847 1233 nineDiamond
+848 1234 tenClub
+849 1235 nineDiamond
+850 1236 tenClub
+851 1237 nineDiamond
+852 1238 nineSpade
+853 1239 wait
+853 1240 wait
+854 1241 wait
+854 1242 wait
+855 1243 wait
+855 1244 wait
+856 1245 wait
+856 1246 wait
+857 1247 wait
+857 1248 wait
+858 1249 wait
+858 1250 wait
+859 1251 nineDiamond
+860 1252 tenClub
+861 1253 nineDiamond
+862 1254 nineDiamond
+863 1255 nineDiamond
+864 1256 tenClub
+865 1257 tenClub
+866 1258 nineDiamond
+867 1259 nineSpade
+868 1260 nineSpade
+869 1261 nineDiamond
+870 1262 nineSpade
+871 1263 nineSpade
+872 1264 nineDiamond
+873 1265 nineSpade
+874 1266 nineSpade
+875 1267 nineDiamond
+876 1268 nineSpade
+877 1269 nineDiamond
+878 1270 nineSpade
+879 1271 nineDiamond
+880 1272 nineSpade
+881 1273 wait
+881 1274 wait
+882 1275 wait
+883 1276 wait
+884 1277 wait
+885 1278 wait
+885 1279 wait
+886 1280 wait
+886 1281 wait
+887 1282 wait
+888 1283 wait
+889 1284 wait
+890 1285 nineDiamond
+891 1286 tenClub
+892 1287 tenClub
+893 1288 nineDiamond
+894 1289 nineDiamond
+895 1290 tenClub
+896 1291 tenClub
+897 1292 nineDiamond
+898 1293 nineSpade
+899 1294 nineSpade
+900 1295 wait
+900 1296 wait
+901 1297 wait
+901 1298 wait
+902 1299 wait
+902 1300 wait
+903 1301 wait
+903 1302 wait
+904 1295 wait
+904 1303 wait
+905 1297 wait
+905 1304 wait
+906 1299 wait
+906 1305 wait
+907 1301 wait
+907 1306 wait
+908 1307 wait
+908 1308 wait
+909 1309 wait
+909 1310 wait
+910 1311 wait
+910 1312 wait
+911 1313 wait
+911 1314 wait
+912 1315 nineDiamond
+913 1316 nineDiamond
+914 1317 tenClub
+915 1318 tenClub
+916 1319 nineDiamond
+917 1320 nineDiamond
+918 1321 nineSpade
+919 1322 nineDiamond
+920 1323 nineDiamond
+921 1324 nineSpade
+922 1325 nineDiamond
+923 1326 nineDiamond
+924 1327 nineSpade
+925 1328 nineDiamond
+926 1329 nineSpade
+927 1330 nineDiamond
+928 1331 nineSpade
+929 1332 nineDiamond
+930 1333 nineSpade
+931 1334 wait
+931 1335 wait
+932 1336 wait
+933 1337 wait
+934 1338 wait
+935 1339 wait
+936 1340 wait
+937 1341 wait
+938 1342 wait
+938 1343 wait
+939 1344 wait
+939 1345 wait
+940 1346 nineDiamond
+941 1347 nineDiamond
+942 1348 tenClub
+943 1349 nineDiamond
+944 1350 nineDiamond
+945 1351 nineSpade
+946 1352 wait
+947 1353 wait
+948 1354 wait
+948 1355 wait
+949 1356 wait
+950 1357 wait
+951 1354 wait
+951 1358 wait
+952 1359 wait
+952 1360 wait
+953 1361 wait
+953 1362 wait
+954 1363 wait
+954 1364 wait
+955 1365 nineDiamond
+956 1366 nineDiamond
+957 1367 tenClub
+958 1368 nineDiamond
+959 1369 nineDiamond
+960 1370 nineDiamond
+961 1371 tenClub
+962 1372 tenClub
+963 1373 nineDiamond
+964 1374 nineDiamond
+965 1375 nineSpade
+966 1376 nineSpade
+967 1377 nineDiamond
+968 1378 nineDiamond
+969 1379 nineSpade
+970 1380 nineSpade
+971 1381 nineDiamond
+972 1382 nineDiamond
+973 1383 nineSpade
+974 1384 nineSpade
+975 1385 nineDiamond
+976 1386 nineSpade
+977 1387 nineDiamond
+978 1388 nineSpade
+979 1389 nineDiamond
+980 1390 nineSpade
+981 1391 wait
+982 1392 wait
+983 1393 wait
+983 1394 wait
+984 1395 wait
+985 1396 wait
+986 1393 wait
+986 1397 wait
+987 1398 wait
+987 1399 wait
+988 1400 wait
+988 1401 wait
+989 1402 wait
+989 1403 wait
+990 1404 nineDiamond
+991 1405 tenClub
+992 1406 tenClub
+993 1407 nineDiamond
+994 1408 tenClub
+995 1409 nineDiamond
+996 1410 tenClub
+997 1411 tenClub
+998 1412 nineDiamond
+999 1413 nineSpade
+1000 1414 nineDiamond
+1001 1415 nineSpade
+1002 1416 nineDiamond
+1003 1417 nineSpade
+1004 1418 nineSpade
+1005 1419 nineDiamond
+1006 1420 nineSpade
+1007 1421 nineSpade
+1008 1422 nineDiamond
+1009 1423 nineDiamond
+1010 1424 nineSpade
+1011 1425 nineDiamond
+1012 1426 nineDiamond
+1013 1427 nineSpade
+1014 1428 wait
+1014 1429 wait
+1015 1430 wait
+1015 1431 wait
+1016 1432 wait
+1016 1433 wait
+1017 1434 wait
+1017 1435 wait
+1018 1428 wait
+1018 1436 wait
+1019 1430 wait
+1019 1437 wait
+1020 1432 wait
+1020 1438 wait
+1021 1434 wait
+1021 1439 wait
+1022 1440 wait
+1022 1441 wait
+1023 1442 wait
+1023 1443 wait
+1024 1444 wait
+1024 1445 wait
+1025 1446 wait
+1025 1447 wait
+1026 1448 nineDiamond
+1027 1449 tenClub
+1028 1450 tenClub
+1029 1451 nineDiamond
+1030 1452 nineDiamond
+1031 1453 tenClub
+1032 1454 tenClub
+1033 1455 tenClub
+1034 1456 nineDiamond
+1035 1457 nineSpade
+1036 1458 nineSpade
+1037 1459 nineDiamond
+1038 1460 nineSpade
+1039 1461 nineSpade
+1040 1462 nineDiamond
+1041 1463 nineDiamond
+1042 1464 nineSpade
+1043 1465 nineSpade
+1044 1466 nineDiamond
+1045 1467 nineDiamond
+1046 1468 nineSpade
+1047 1469 nineSpade
+1048 1470 nineDiamond
+1049 1471 nineSpade
+1050 1472 nineSpade
+1051 1473 nineDiamond
+1052 1474 nineSpade
+1053 1475 nineSpade
+1054 1476 wait
+1054 1477 wait
+1055 1478 wait
+1055 1479 wait
+1056 1480 wait
+1056 1481 wait
+1057 1482 wait
+1057 1483 wait
+1058 1484 wait
+1058 1485 wait
+1059 1486 wait
+1059 1487 wait
+1060 1488 nineDiamond
+1061 1489 nineDiamond
+1062 1490 tenClub
+1063 1491 tenClub
+1064 1492 nineDiamond
+1065 1493 tenClub
+1066 1494 nineDiamond
+1067 1495 nineDiamond
+1068 1496 nineSpade
+1069 1497 nineDiamond
+1070 1498 nineDiamond
+1071 1499 nineSpade
+1072 1500 nineDiamond
+1073 1501 nineDiamond
+1074 1502 nineSpade
+1075 1503 nineSpade
+1076 1504 nineDiamond
+1077 1505 nineDiamond
+1078 1506 nineSpade
+1079 1507 nineSpade
+1080 1508 nineDiamond
+1081 1509 nineDiamond
+1082 1510 nineSpade
+1083 1511 nineDiamond
+1084 1512 nineDiamond
+1085 1513 nineSpade
+1086 1514 wait
+1086 1515 wait
+1087 1516 wait
+1088 1517 wait
+1089 1514 wait
+1089 1518 wait
+1090 1519 wait
+1091 1520 wait
+1092 1521 wait
+1092 1522 wait
+1093 1523 wait
+1093 1524 wait
+1094 1525 wait
+1094 1526 wait
+1095 1527 nineDiamond
+1096 1528 tenClub
+1097 1529 tenClub
+1098 1530 nineDiamond
+1099 1531 tenClub
+1100 1532 tenClub
+1101 1533 nineDiamond
+1102 1534 nineSpade
+1103 1535 nineSpade
+1104 1536 nineDiamond
+1105 1537 nineSpade
+1106 1538 nineSpade
+1107 1539 nineDiamond
+1108 1540 nineDiamond
+1109 1541 nineSpade
+1110 1542 nineDiamond
+1111 1543 nineDiamond
+1112 1544 nineSpade
+1113 1545 nineDiamond
+1114 1546 nineSpade
+1115 1547 nineDiamond
+1116 1548 nineSpade
+1117 1549 KingClub
+1118 1550 KingClub
+1119 1551 QueenSpade
+1119 1552 KingClub
+1120 1553 QueenSpade
+1120 1554 KingClub
+1121 1555 KingClub
+1122 1556 QueenSpade
+1122 1557 KingClub
+1123 1558 QueenSpade
+1123 1559 KingClub
+1124 1560 KingClub
+1125 1561 QueenSpade
+1125 1562 KingClub
+1126 1563 QueenSpade
+1126 1564 KingClub
+1127 1565 QueenSpade
+1127 1566 KingClub
+1128 1567 QueenSpade
+1128 1568 KingClub
+1129 1569 wait
+1129 1570 wait
+1130 1571 wait
+1131 1572 wait
+1132 1573 wait
+1132 1574 wait
+1133 1575 wait
+1134 1576 wait
+1134 1577 wait
+1135 1578 wait
+1135 1579 wait
+1136 1580 wait
+1137 1581 wait
+1137 1582 wait
+1138 1583 wait
+1139 1584 wait
+1140 1585 tenClub
+1141 1586 tenClub
+1142 1587 nineSpade
+1142 1588 tenClub
+1143 1589 nineSpade
+1143 1590 tenClub
+1144 1591 tenClub
+1145 1592 nineSpade
+1145 1593 tenClub
+1146 1594 nineSpade
+1146 1595 tenClub
+1147 1596 nineSpade
+1147 1597 tenClub
+1148 1598 nineSpade
+1148 1599 tenClub
+1149 1600 tenClub
+1150 1601 nineSpade
+1150 1602 tenClub
+1151 1603 nineSpade
+1151 1604 tenClub
+1152 1605 wait
+1153 1606 wait
+1154 1607 wait
+1154 1608 wait
+1155 1609 wait
+1156 1610 wait
+1157 1611 wait
+1158 1612 wait
+1159 1613 wait
+1160 1614 wait
+1160 1615 wait
+1161 1616 nineSpade
+1162 1617 nineSpade
+1163 1618 nineSpade
+1163 1619 tenClub
+1164 1620 nineSpade
+1164 1621 tenClub
+1165 1622 nineSpade
+1166 1623 nineSpade
+1166 1624 tenClub
+1167 1625 nineSpade
+1167 1626 tenClub
+1168 1627 nineSpade
+1169 1628 nineSpade
+1170 1629 nineSpade
+1170 1630 tenClub
+1171 1631 nineSpade
+1171 1632 tenClub
+1172 1633 nineSpade
+1172 1634 tenClub
+1173 1635 nineSpade
+1173 1636 tenClub
+1174 1637 wait
+1175 1638 wait
+1176 1639 wait
+1176 1640 wait
+1177 1641 wait
+1178 1642 wait
+1179 1643 wait
+1179 1644 wait
+1180 1645 wait
+1180 1646 wait
+1181 1647 wait
+1182 1648 wait
+1183 1649 wait
+1183 1650 wait
+1184 1651 wait
+1184 1652 wait
+1185 1653 wait
+1185 1654 wait
+1186 1655 wait
+1186 1656 wait
+1187 1657 wait
+1188 1658 wait
+1189 1659 wait
+1190 1660 wait
+1191 1661 wait
+1192 1662 wait
+1193 1663 wait
+1194 1664 wait
+1194 1665 wait
+1195 1666 wait
+1195 1667 wait
+1196 1668 wait
+1197 1669 wait
+1198 1670 wait
+1199 1671 tenClub
+1200 1672 tenClub
+1201 1673 nineSpade
+1202 1674 nineSpade
+1203 1675 tenClub
+1204 1676 nineSpade
+1205 1677 nineSpade
+1206 1678 tenClub
+1207 1679 nineSpade
+1208 1680 nineSpade
+1209 1681 wait
+1210 1682 wait
+1211 1683 wait
+1212 1684 wait
+1213 1685 wait
+1214 1686 wait
+1215 1687 wait
+1216 1609 wait
+1217 1610 wait
+1218 1688 wait
+1219 1689 wait
+1220 1690 wait
+1221 1691 wait
+1222 1692 wait
+1223 1693 KingClub
+1224 1694 KingClub
+1225 1695 QueenSpade
+1226 1696 QueenSpade
+1227 1697 KingClub
+1228 1698 QueenSpade
+1229 1699 QueenSpade
+1230 1700 KingClub
+1231 1701 QueenSpade
+1232 1702 QueenSpade
+1233 1703 wait
+1233 1704 wait
+1234 1705 wait
+1234 1706 wait
+1235 1707 wait
+1235 1708 wait
+1236 1709 wait
+1237 1710 wait
+1237 1711 wait
+1238 1712 wait
+1238 1713 wait
+1239 1714 KingClub
+1240 1715 KingClub
+1241 1716 KingClub
+1242 1717 KingClub
+1243 1718 KingClub
+1244 1719 KingClub
+1245 1720 KingClub
+1246 1721 KingClub
+1247 1722 KingClub
+1248 1723 KingClub
+1249 1724 KingClub
+1250 1725 KingClub
+1251 1726 wait
+1251 1727 wait
+1252 1705 wait
+1252 1728 wait
+1253 1703 wait
+1253 1729 wait
+1254 1730 wait
+1254 1731 wait
+1255 1732 wait
+1255 1733 wait
+1256 1734 wait
+1256 1735 wait
+1257 1736 wait
+1257 1737 wait
+1258 1738 wait
+1258 1739 wait
+1259 1740 wait
+1260 1741 wait
+1261 1742 wait
+1261 1743 wait
+1262 1744 wait
+1262 1745 wait
+1263 1746 wait
+1263 1747 wait
+1264 1748 wait
+1264 1749 wait
+1265 1750 wait
+1266 1751 wait
+1267 1752 wait
+1267 1753 wait
+1268 1754 wait
+1269 1755 wait
+1269 1756 wait
+1270 1757 wait
+1270 1758 wait
+1271 1759 wait
+1271 1760 wait
+1272 1761 wait
+1273 1762 KingClub
+1274 1763 KingClub
+1275 1764 QueenSpade
+1275 1765 KingClub
+1276 1766 QueenSpade
+1276 1767 KingClub
+1277 1768 KingClub
+1278 1769 QueenSpade
+1278 1770 KingClub
+1279 1771 QueenSpade
+1279 1772 KingClub
+1280 1773 QueenSpade
+1280 1774 KingClub
+1281 1775 QueenSpade
+1281 1776 KingClub
+1282 1777 KingClub
+1283 1778 QueenSpade
+1283 1779 KingClub
+1284 1780 QueenSpade
+1284 1781 KingClub
+1285 1782 wait
+1285 1783 wait
+1286 1784 wait
+1287 1785 wait
+1288 1786 wait
+1288 1787 wait
+1289 1788 wait
+1289 1789 wait
+1290 1790 wait
+1291 1791 wait
+1292 1792 wait
+1292 1793 wait
+1293 1794 wait
+1294 1795 wait
+1295 1796 nineSpade
+1295 1797 tenClub
+1296 1798 nineSpade
+1296 1799 tenClub
+1297 1800 nineSpade
+1297 1801 tenClub
+1298 1802 nineSpade
+1298 1803 tenClub
+1299 1804 nineSpade
+1299 1805 tenClub
+1300 1806 nineSpade
+1300 1807 tenClub
+1301 1808 nineSpade
+1301 1809 tenClub
+1302 1810 nineSpade
+1302 1811 tenClub
+1303 1812 nineSpade
+1303 1813 tenClub
+1304 1814 nineSpade
+1304 1815 tenClub
+1305 1816 nineSpade
+1305 1817 tenClub
+1306 1818 nineSpade
+1306 1819 tenClub
+1307 1820 nineSpade
+1307 1821 tenClub
+1308 1822 nineSpade
+1308 1823 tenClub
+1309 1824 nineSpade
+1309 1825 tenClub
+1310 1826 nineSpade
+1310 1827 tenClub
+1311 1828 nineSpade
+1311 1829 tenClub
+1312 1830 nineSpade
+1312 1831 tenClub
+1313 1832 nineSpade
+1313 1833 tenClub
+1314 1834 nineSpade
+1314 1835 tenClub
+1315 1836 wait
+1316 1837 wait
+1317 1838 wait
+1317 1839 wait
+1318 1840 wait
+1318 1841 wait
+1319 1842 wait
+1320 1843 wait
+1321 1844 wait
+1321 1845 wait
+1322 1846 wait
+1322 1847 wait
+1323 1848 wait
+1323 1849 wait
+1324 1850 wait
+1324 1851 wait
+1325 1852 wait
+1326 1853 wait
+1327 1854 wait
+1327 1855 wait
+1328 1856 wait
+1329 1857 wait
+1329 1858 wait
+1330 1859 wait
+1330 1860 wait
+1331 1861 wait
+1331 1862 wait
+1332 1863 wait
+1333 1864 wait
+1333 1865 wait
+1334 1866 tenClub
+1335 1867 tenClub
+1336 1868 nineSpade
+1336 1869 tenClub
+1337 1870 nineSpade
+1337 1871 tenClub
+1338 1872 tenClub
+1339 1873 nineSpade
+1339 1874 tenClub
+1340 1875 nineSpade
+1340 1876 tenClub
+1341 1877 tenClub
+1342 1878 nineSpade
+1342 1879 tenClub
+1343 1880 nineSpade
+1343 1881 tenClub
+1344 1882 nineSpade
+1344 1883 tenClub
+1345 1884 nineSpade
+1345 1885 tenClub
+1346 1886 wait
+1347 1887 wait
+1348 1888 wait
+1348 1889 wait
+1349 1890 wait
+1350 1891 wait
+1351 1892 wait
+1351 1893 wait
+1352 1894 nineSpade
+1352 1895 tenClub
+1353 1896 nineSpade
+1353 1897 tenClub
+1354 1898 nineSpade
+1355 1899 nineSpade
+1356 1900 nineSpade
+1356 1901 tenClub
+1357 1902 nineSpade
+1357 1903 tenClub
+1358 1904 nineSpade
+1359 1905 nineSpade
+1359 1906 tenClub
+1360 1907 nineSpade
+1360 1908 tenClub
+1361 1909 nineSpade
+1361 1910 tenClub
+1362 1911 nineSpade
+1362 1912 tenClub
+1363 1913 nineSpade
+1364 1914 nineSpade
+1365 1915 wait
+1366 1916 wait
+1367 1888 wait
+1367 1917 wait
+1368 1918 wait
+1369 1836 wait
+1370 1837 wait
+1371 1839 wait
+1371 1919 wait
+1372 1841 wait
+1372 1920 wait
+1373 1921 wait
+1374 1922 wait
+1375 1923 wait
+1376 1924 wait
+1377 1925 wait
+1378 1926 wait
+1379 1927 wait
+1379 1928 wait
+1380 1929 wait
+1380 1930 wait
+1381 1931 wait
+1381 1932 wait
+1382 1933 wait
+1382 1934 wait
+1383 1935 wait
+1384 1936 wait
+1385 1937 wait
+1386 1938 wait
+1387 1939 wait
+1388 1940 wait
+1388 1941 wait
+1389 1942 wait
+1389 1943 wait
+1390 1944 wait
+1391 1945 QueenSpade
+1391 1946 KingClub
+1392 1947 QueenSpade
+1392 1948 KingClub
+1393 1949 QueenSpade
+1394 1950 QueenSpade
+1395 1951 QueenSpade
+1395 1952 KingClub
+1396 1953 QueenSpade
+1396 1954 KingClub
+1397 1955 QueenSpade
+1398 1956 QueenSpade
+1398 1957 KingClub
+1399 1958 QueenSpade
+1399 1959 KingClub
+1400 1960 QueenSpade
+1400 1961 KingClub
+1401 1962 QueenSpade
+1401 1963 KingClub
+1402 1964 QueenSpade
+1403 1965 QueenSpade
+1404 1966 wait
+1404 1967 wait
+1405 1571 wait
+1406 1968 wait
+1407 1966 wait
+1407 1969 wait
+1408 1968 wait
+1409 1970 wait
+1409 1971 wait
+1410 1972 wait
+1410 1973 wait
+1411 1974 wait
+1411 1975 wait
+1412 1976 wait
+1412 1977 wait
+1413 1978 wait
+1413 1979 wait
+1414 1976 wait
+1414 1980 wait
+1415 1978 wait
+1415 1981 wait
+1416 1982 wait
+1416 1983 wait
+1417 1984 wait
+1417 1985 wait
+1418 1986 wait
+1418 1987 wait
+1419 1982 wait
+1419 1988 wait
+1420 1984 wait
+1420 1989 wait
+1421 1986 wait
+1421 1990 wait
+1422 1991 wait
+1422 1992 wait
+1423 1993 wait
+1423 1994 wait
+1424 1995 wait
+1424 1996 wait
+1425 1991 wait
+1425 1997 wait
+1426 1993 wait
+1426 1998 wait
+1427 1995 wait
+1427 1999 wait
+1428 2000 QueenSpade
+1428 2001 KingClub
+1429 2002 QueenSpade
+1429 2003 KingClub
+1430 2004 QueenSpade
+1430 2005 KingClub
+1431 2006 QueenSpade
+1431 2007 KingClub
+1432 2008 QueenSpade
+1432 2009 KingClub
+1433 2010 QueenSpade
+1433 2011 KingClub
+1434 2012 QueenSpade
+1434 2013 KingClub
+1435 2014 QueenSpade
+1435 2015 KingClub
+1436 2016 QueenSpade
+1436 2017 KingClub
+1437 2018 QueenSpade
+1437 2019 KingClub
+1438 2020 QueenSpade
+1438 2021 KingClub
+1439 2022 QueenSpade
+1439 2023 KingClub
+1440 2024 QueenSpade
+1440 2025 KingClub
+1441 2026 QueenSpade
+1441 2027 KingClub
+1442 2028 QueenSpade
+1442 2029 KingClub
+1443 2030 QueenSpade
+1443 2031 KingClub
+1444 2032 QueenSpade
+1444 2033 KingClub
+1445 2034 QueenSpade
+1445 2035 KingClub
+1446 2036 QueenSpade
+1446 2037 KingClub
+1447 2038 QueenSpade
+1447 2039 KingClub
+1448 2040 wait
+1448 2041 wait
+1449 2042 wait
+1449 2043 wait
+1450 2044 wait
+1450 2045 wait
+1451 2046 wait
+1451 2047 wait
+1452 2048 wait
+1452 2049 wait
+1453 2050 wait
+1453 2051 wait
+1454 2052 wait
+1454 2053 wait
+1455 2054 wait
+1455 2055 wait
+1456 2056 wait
+1456 2057 wait
+1457 2058 wait
+1458 2059 wait
+1459 2056 wait
+1459 2060 wait
+1460 2061 wait
+1461 2062 wait
+1462 2063 wait
+1462 2064 wait
+1463 2065 wait
+1463 2066 wait
+1464 2067 wait
+1465 2068 wait
+1466 2063 wait
+1466 2069 wait
+1467 2065 wait
+1467 2070 wait
+1468 2071 wait
+1469 2072 wait
+1470 2073 wait
+1470 2074 wait
+1471 2075 wait
+1472 2076 wait
+1473 2073 wait
+1473 2077 wait
+1474 2078 wait
+1475 2079 wait
+1476 2080 tenClub
+1477 2081 tenClub
+1478 2082 tenClub
+1479 2083 tenClub
+1480 2084 tenClub
+1481 2085 tenClub
+1482 2086 tenClub
+1483 2087 tenClub
+1484 2088 tenClub
+1485 2089 tenClub
+1486 2090 tenClub
+1487 2091 tenClub
+1488 2092 wait
+1489 2093 wait
+1490 1683 wait
+1491 2094 wait
+1492 2095 wait
+1493 2094 wait
+1494 2096 wait
+1495 2097 wait
+1496 2098 wait
+1496 2099 wait
+1497 2100 wait
+1498 2101 wait
+1499 2098 wait
+1499 2102 wait
+1500 2103 wait
+1501 2104 wait
+1502 2105 wait
+1502 2106 wait
+1503 2107 wait
+1503 2108 wait
+1504 2109 wait
+1505 2110 wait
+1506 2105 wait
+1506 2111 wait
+1507 2107 wait
+1507 2112 wait
+1508 2113 wait
+1509 2114 wait
+1510 2115 wait
+1510 2116 wait
+1511 2117 wait
+1512 2118 wait
+1513 2115 wait
+1513 2119 wait
+1514 2120 QueenSpade
+1515 2121 QueenSpade
+1516 2122 QueenSpade
+1516 2123 KingClub
+1517 2124 QueenSpade
+1517 2125 KingClub
+1518 2126 QueenSpade
+1519 2127 QueenSpade
+1519 2128 KingClub
+1520 2129 QueenSpade
+1520 2130 KingClub
+1521 2131 QueenSpade
+1522 2132 QueenSpade
+1523 2133 QueenSpade
+1523 2134 KingClub
+1524 2135 QueenSpade
+1524 2136 KingClub
+1525 2137 QueenSpade
+1525 2138 KingClub
+1526 2139 QueenSpade
+1526 2140 KingClub
+1527 2141 wait
+1527 2142 wait
+1528 2143 wait
+1529 2144 wait
+1530 1783 wait
+1530 2141 wait
+1531 2143 wait
+1532 2144 wait
+1533 2145 wait
+1533 2146 wait
+1534 2147 wait
+1534 2148 wait
+1535 2149 wait
+1535 2150 wait
+1536 2145 wait
+1536 2151 wait
+1537 2147 wait
+1537 2152 wait
+1538 2149 wait
+1538 2153 wait
+1539 2154 wait
+1539 2155 wait
+1540 2156 wait
+1540 2157 wait
+1541 2158 wait
+1541 2159 wait
+1542 2154 wait
+1542 2160 wait
+1543 2156 wait
+1543 2161 wait
+1544 2158 wait
+1544 2162 wait
+1545 2163 wait
+1545 2164 wait
+1546 2165 wait
+1546 2166 wait
+1547 2163 wait
+1547 2167 wait
+1548 2165 wait
+1548 2168 wait
+1549 2169 wait
+1550 2170 wait
+1551 2171 wait
+1552 2172 wait
+1553 2173 wait
+1554 2174 wait
+1555 2169 wait
+1556 2175 wait
+1557 2176 wait
+1558 2177 wait
+1559 2178 wait
+1560 2170 wait
+1561 2179 wait
+1562 2180 wait
+1563 2181 wait
+1564 2182 wait
+1565 2183 wait
+1566 2184 wait
+1567 2185 wait
+1568 2186 wait
+1569 2187 wait
+1570 2188 wait
+1571 2189 wait
+1572 2190 wait
+1573 2191 wait
+1574 2192 wait
+1575 2189 wait
+1576 2193 wait
+1576 2194 wait
+1577 2195 wait
+1577 2196 wait
+1578 2197 wait
+1578 2198 wait
+1579 2199 wait
+1579 2200 wait
+1580 2190 wait
+1581 2201 wait
+1582 2202 wait
+1583 2189 wait
+1584 2190 wait
+1585 2203 wait
+1586 2169 wait
+1587 2204 wait
+1588 2205 wait
+1589 2206 wait
+1590 2207 wait
+1591 2203 wait
+1592 2204 wait
+1593 2205 wait
+1594 2175 wait
+1595 2177 wait
+1596 2206 wait
+1597 2207 wait
+1598 2176 wait
+1599 2178 wait
+1600 2169 wait
+1601 2175 wait
+1602 2177 wait
+1603 2176 wait
+1604 2178 wait
+1605 2208 wait
+1606 2209 wait
+1607 2190 wait
+1608 2210 wait
+1609 2211 wait
+1610 2212 wait
+1611 2210 wait
+1612 2213 wait
+1613 2214 wait
+1614 2190 wait
+1615 2210 wait
+1616 2215 wait
+1617 2216 wait
+1618 2217 wait
+1619 2218 wait
+1620 2219 wait
+1621 2220 wait
+1622 2221 wait
+1623 2222 wait
+1624 2223 wait
+1625 2224 wait
+1626 2225 wait
+1627 2216 wait
+1628 2221 wait
+1629 2217 wait
+1630 2218 wait
+1631 2222 wait
+1632 2223 wait
+1633 2219 wait
+1634 2220 wait
+1635 2224 wait
+1636 2225 wait
+1637 2226 wait
+1638 2227 wait
+1639 2228 wait
+1640 2229 wait
+1641 2227 wait
+1642 2209 wait
+1643 2230 wait
+1644 2231 wait
+1645 2232 wait
+1646 2233 wait
+1647 2234 wait
+1648 2235 wait
+1649 2228 wait
+1650 2229 wait
+1651 2230 wait
+1652 2231 wait
+1653 2236 wait
+1653 2237 wait
+1654 2238 wait
+1654 2239 wait
+1655 2240 wait
+1655 2241 wait
+1656 2242 wait
+1656 2243 wait
+1657 2228 wait
+1658 2230 wait
+1659 2244 wait
+1660 2245 wait
+1661 2229 wait
+1662 2231 wait
+1663 2246 wait
+1664 2232 wait
+1665 2233 wait
+1666 2247 wait
+1666 2248 wait
+1667 2249 wait
+1667 2250 wait
+1668 2232 wait
+1669 2251 wait
+1670 2233 wait
+1671 2252 wait
+1672 2170 wait
+1673 2253 wait
+1674 2254 wait
+1675 2252 wait
+1676 2253 wait
+1677 2255 wait
+1678 2170 wait
+1679 2254 wait
+1680 2255 wait
+1681 2256 wait
+1682 2211 wait
+1683 2257 wait
+1684 2258 wait
+1685 2256 wait
+1686 2212 wait
+1687 2257 wait
+1688 2258 wait
+1689 2259 wait
+1690 2260 wait
+1691 2257 wait
+1692 2258 wait
+1693 2261 wait
+1694 2262 wait
+1695 2221 wait
+1696 2263 wait
+1697 2261 wait
+1698 2221 wait
+1699 2255 wait
+1700 2262 wait
+1701 2263 wait
+1702 2255 wait
+1703 2191 wait
+1704 2264 wait
+1705 2189 wait
+1706 2265 wait
+1707 2264 wait
+1708 2192 wait
+1709 2265 wait
+1710 2266 wait
+1711 2267 wait
+1712 2189 wait
+1713 2265 wait
+1714 2268 wait
+1715 2269 wait
+1716 2270 wait
+1717 2271 wait
+1718 2268 wait
+1719 2272 wait
+1720 2270 wait
+1721 2273 wait
+1722 2269 wait
+1723 2272 wait
+1724 2271 wait
+1725 2273 wait
+1726 2274 wait
+1727 2275 wait
+1728 2276 wait
+1729 2277 wait
+1730 2278 wait
+1730 2279 wait
+1731 2280 wait
+1731 2281 wait
+1732 2197 wait
+1732 2198 wait
+1733 2282 wait
+1733 2283 wait
+1734 2230 wait
+1735 2284 wait
+1736 2232 wait
+1737 2285 wait
+1738 2286 wait
+1739 2287 wait
+1740 2189 wait
+1741 2230 wait
+1742 2286 wait
+1743 2288 wait
+1744 2189 wait
+1745 2276 wait
+1746 2230 wait
+1747 2284 wait
+1748 2287 wait
+1749 2288 wait
+1750 2276 wait
+1751 2284 wait
+1752 2289 wait
+1753 2290 wait
+1754 2232 wait
+1755 2289 wait
+1756 2291 wait
+1757 2232 wait
+1758 2285 wait
+1759 2290 wait
+1760 2291 wait
+1761 2285 wait
+1762 2292 wait
+1763 2293 wait
+1764 2294 wait
+1765 2295 wait
+1766 2296 wait
+1767 2297 wait
+1768 2292 wait
+1769 2294 wait
+1770 2295 wait
+1771 2181 wait
+1772 2182 wait
+1773 2296 wait
+1774 2297 wait
+1775 2185 wait
+1776 2186 wait
+1777 2293 wait
+1778 2181 wait
+1779 2182 wait
+1780 2185 wait
+1781 2186 wait
+1782 2298 wait
+1783 2299 wait
+1784 2300 wait
+1785 2301 wait
+1786 2302 wait
+1786 2303 wait
+1787 2304 wait
+1787 2305 wait
+1788 2306 wait
+1788 2307 wait
+1789 2199 wait
+1789 2200 wait
+1790 2300 wait
+1791 2301 wait
+1792 2308 wait
+1793 2309 wait
+1794 2300 wait
+1795 2301 wait
+1796 2310 wait
+1797 2311 wait
+1798 2312 wait
+1799 2313 wait
+1800 2314 wait
+1801 2315 wait
+1802 2316 wait
+1803 2317 wait
+1804 2318 wait
+1805 2319 wait
+1806 2320 wait
+1807 2321 wait
+1808 2322 wait
+1809 2323 wait
+1810 2324 wait
+1811 2325 wait
+1812 2326 wait
+1813 2327 wait
+1814 2328 wait
+1815 2329 wait
+1816 2330 wait
+1817 2331 wait
+1818 2332 wait
+1819 2333 wait
+1820 2312 wait
+1821 2313 wait
+1822 2326 wait
+1823 2327 wait
+1824 2316 wait
+1825 2317 wait
+1826 2328 wait
+1827 2329 wait
+1828 2320 wait
+1829 2321 wait
+1830 2330 wait
+1831 2331 wait
+1832 2324 wait
+1833 2325 wait
+1834 2332 wait
+1835 2333 wait
+1836 2334 wait
+1837 2335 wait
+1838 2231 wait
+1839 2284 wait
+1840 2233 wait
+1841 2285 wait
+1842 2213 wait
+1843 2235 wait
+1844 2230 wait
+1845 2231 wait
+1846 2336 wait
+1846 2337 wait
+1847 2338 wait
+1847 2339 wait
+1848 2240 wait
+1848 2241 wait
+1849 2340 wait
+1849 2341 wait
+1850 2230 wait
+1851 2284 wait
+1852 2342 wait
+1853 2343 wait
+1854 2231 wait
+1855 2284 wait
+1856 2246 wait
+1857 2232 wait
+1858 2233 wait
+1859 2247 wait
+1859 2248 wait
+1860 2344 wait
+1860 2345 wait
+1861 2232 wait
+1862 2285 wait
+1863 2346 wait
+1864 2233 wait
+1865 2285 wait
+1866 2293 wait
+1867 2262 wait
+1868 2347 wait
+1869 2348 wait
+1870 2349 wait
+1871 2350 wait
+1872 2293 wait
+1873 2181 wait
+1874 2185 wait
+1875 2182 wait
+1876 2186 wait
+1877 2262 wait
+1878 2351 wait
+1879 2352 wait
+1880 2175 wait
+1881 2177 wait
+1882 2353 wait
+1883 2354 wait
+1884 2176 wait
+1885 2178 wait
+1886 2355 wait
+1887 2356 wait
+1888 2257 wait
+1889 2300 wait
+1890 2357 wait
+1891 2358 wait
+1892 2257 wait
+1893 2300 wait
+1894 2359 wait
+1895 2360 wait
+1896 2361 wait
+1897 2362 wait
+1898 2363 wait
+1899 2364 wait
+1900 2179 wait
+1901 2183 wait
+1902 2180 wait
+1903 2184 wait
+1904 2365 wait
+1905 2366 wait
+1906 2367 wait
+1907 2171 wait
+1908 2173 wait
+1909 2368 wait
+1910 2369 wait
+1911 2172 wait
+1912 2174 wait
+1913 2364 wait
+1914 2365 wait
+1915 2370 wait
+1916 2334 wait
+1917 2371 wait
+1918 2335 wait
+1919 2372 wait
+1920 2373 wait
+1921 2259 wait
+1922 2374 wait
+1923 2257 wait
+1924 2372 wait
+1925 2375 wait
+1926 2343 wait
+1927 2257 wait
+1928 2371 wait
+1929 2372 wait
+1930 2284 wait
+1931 2376 wait
+1931 2377 wait
+1932 2378 wait
+1932 2379 wait
+1933 2380 wait
+1933 2381 wait
+1934 2340 wait
+1934 2341 wait
+1935 2371 wait
+1936 2284 wait
+1937 2382 wait
+1938 2373 wait
+1939 2346 wait
+1940 2373 wait
+1941 2285 wait
+1942 2383 wait
+1942 2384 wait
+1943 2344 wait
+1943 2345 wait
+1944 2285 wait
+1945 2385 wait
+1946 2386 wait
+1947 2387 wait
+1948 2388 wait
+1949 2389 wait
+1950 2390 wait
+1951 2351 wait
+1952 2353 wait
+1953 2352 wait
+1954 2354 wait
+1955 2391 wait
+1956 2392 wait
+1957 2393 wait
+1958 2347 wait
+1959 2349 wait
+1960 2394 wait
+1961 2395 wait
+1962 2348 wait
+1963 2350 wait
+1964 2390 wait
+1965 2391 wait
+1966 2396 wait
+1967 2397 wait
+1968 2398 wait
+1969 2399 wait
+1970 2397 wait
+1971 2399 wait
+1972 2400 wait
+1973 2401 wait
+1974 2402 wait
+1975 2403 wait
+1976 2266 wait
+1977 2404 wait
+1978 2189 wait
+1979 2400 wait
+1980 2405 wait
+1981 2401 wait
+1982 2406 wait
+1983 2407 wait
+1984 2189 wait
+1985 2400 wait
+1986 2398 wait
+1987 2402 wait
+1988 2408 wait
+1989 2401 wait
+1990 2403 wait
+1991 2409 wait
+1991 2410 wait
+1992 2411 wait
+1992 2412 wait
+1993 2413 wait
+1993 2414 wait
+1994 2415 wait
+1994 2416 wait
+1995 2398 wait
+1996 2402 wait
+1997 2417 wait
+1997 2418 wait
+1998 2419 wait
+1998 2420 wait
+1999 2403 wait
+2000 2421 wait
+2001 2422 wait
+2002 2423 wait
+2003 2424 wait
+2004 2425 wait
+2005 2426 wait
+2006 2427 wait
+2007 2428 wait
+2008 2429 wait
+2009 2430 wait
+2010 2431 wait
+2011 2432 wait
+2012 2433 wait
+2013 2434 wait
+2014 2435 wait
+2015 2436 wait
+2016 2437 wait
+2017 2438 wait
+2018 2439 wait
+2019 2440 wait
+2020 2441 wait
+2021 2442 wait
+2022 2443 wait
+2023 2444 wait
+2024 2423 wait
+2025 2424 wait
+2026 2437 wait
+2027 2438 wait
+2028 2427 wait
+2029 2428 wait
+2030 2439 wait
+2031 2440 wait
+2032 2431 wait
+2033 2432 wait
+2034 2441 wait
+2035 2442 wait
+2036 2435 wait
+2037 2436 wait
+2038 2443 wait
+2039 2444 wait
+2040 2445 wait
+2041 2299 wait
+2042 2446 wait
+2043 2447 wait
+2044 2448 wait
+2045 2449 wait
+2046 2450 wait
+2046 2451 wait
+2047 2304 wait
+2047 2305 wait
+2048 2452 wait
+2048 2453 wait
+2049 2454 wait
+2049 2455 wait
+2050 2446 wait
+2051 2447 wait
+2052 2402 wait
+2053 2403 wait
+2054 2448 wait
+2055 2449 wait
+2056 2308 wait
+2057 2456 wait
+2058 2446 wait
+2059 2448 wait
+2060 2457 wait
+2061 2447 wait
+2062 2449 wait
+2063 2458 wait
+2063 2459 wait
+2064 2460 wait
+2064 2461 wait
+2065 2462 wait
+2065 2463 wait
+2066 2415 wait
+2066 2416 wait
+2067 2446 wait
+2068 2402 wait
+2069 2464 wait
+2069 2465 wait
+2070 2419 wait
+2070 2420 wait
+2071 2447 wait
+2072 2403 wait
+2073 2466 wait
+2074 2407 wait
+2075 2448 wait
+2076 2402 wait
+2077 2408 wait
+2078 2449 wait
+2079 2403 wait
+2080 2467 wait
+2081 2468 wait
+2082 2469 wait
+2083 2470 wait
+2084 2467 wait
+2085 2471 wait
+2086 2469 wait
+2087 2472 wait
+2088 2468 wait
+2089 2471 wait
+2090 2470 wait
+2091 2472 wait
+2092 2473 wait
+2093 2474 wait
+2094 2475 wait
+2095 2476 wait
+2096 2477 wait
+2097 2478 wait
+2098 2257 wait
+2099 2446 wait
+2100 2479 wait
+2101 2480 wait
+2102 2447 wait
+2103 2477 wait
+2104 2481 wait
+2105 2257 wait
+2106 2446 wait
+2107 2475 wait
+2108 2402 wait
+2109 2479 wait
+2110 2482 wait
+2111 2447 wait
+2112 2403 wait
+2113 2478 wait
+2114 2481 wait
+2115 2475 wait
+2116 2402 wait
+2117 2480 wait
+2118 2482 wait
+2119 2403 wait
+2120 2483 wait
+2121 2484 wait
+2122 2485 wait
+2123 2486 wait
+2124 2487 wait
+2125 2488 wait
+2126 2253 wait
+2127 2489 wait
+2128 2490 wait
+2129 2491 wait
+2130 2492 wait
+2131 2484 wait
+2132 2253 wait
+2133 2485 wait
+2134 2486 wait
+2135 2489 wait
+2136 2490 wait
+2137 2487 wait
+2138 2488 wait
+2139 2491 wait
+2140 2492 wait
+2141 2493 wait
+2142 2445 wait
+2143 2494 wait
+2144 2495 wait
+2145 2496 wait
+2146 2456 wait
+2147 2494 wait
+2148 2446 wait
+2149 2495 wait
+2150 2448 wait
+2151 2457 wait
+2152 2447 wait
+2153 2449 wait
+2154 2497 wait
+2154 2498 wait
+2155 2460 wait
+2155 2461 wait
+2156 2499 wait
+2156 2500 wait
+2157 2501 wait
+2157 2502 wait
+2158 2494 wait
+2159 2446 wait
+2160 2464 wait
+2160 2465 wait
+2161 2503 wait
+2161 2504 wait
+2162 2447 wait
+2163 2505 wait
+2164 2506 wait
+2165 2495 wait
+2166 2448 wait
+2167 2507 wait
+2168 2449 wait
+2169 2508 QueenSpade
+2170 2509 QueenSpade
+2171 2510 wait
+2172 2511 wait
+2173 2512 wait
+2174 2513 wait
+2175 2514 wait
+2176 2515 wait
+2177 2516 wait
+2178 2517 wait
+2179 2518 wait
+2180 2519 wait
+2181 2520 wait
+2182 2521 wait
+2183 2522 wait
+2184 2523 wait
+2185 2524 wait
+2186 2525 wait
+2187 2526 wait
+2188 2527 wait
+2189 2528 nineDiamond
+2190 2529 nineDiamond
+2191 2530 wait
+2192 2531 wait
+2193 2532 KingClub
+2194 2533 tenClub
+2195 2534 KingClub
+2196 2535 tenClub
+2197 2536 KingClub
+2198 2537 tenClub
+2199 2538 KingClub
+2200 2539 tenClub
+2201 2540 wait
+2202 2541 wait
+2203 2542 QueenSpade
+2204 2543 wait
+2205 2544 wait
+2206 2545 wait
+2207 2546 wait
+2208 2547 wait
+2209 2548 wait
+2210 2549 nineDiamond
+2211 2550 wait
+2212 2551 wait
+2213 2552 wait
+2214 2553 wait
+2215 2554 KingClub
+2216 2555 KingClub
+2217 2556 wait
+2218 2557 wait
+2219 2558 wait
+2220 2559 wait
+2221 2560 KingClub
+2222 2510 wait
+2223 2512 wait
+2224 2511 wait
+2225 2513 wait
+2226 2561 wait
+2227 2562 wait
+2228 2563 nineDiamond
+2229 2564 nineDiamond
+2230 2565 nineDiamond
+2231 2566 nineDiamond
+2232 2567 nineDiamond
+2233 2568 nineDiamond
+2234 2569 wait
+2235 2570 wait
+2236 2571 QueenSpade
+2237 2572 nineSpade
+2238 2573 QueenSpade
+2239 2574 nineSpade
+2240 2575 QueenSpade
+2241 2576 nineSpade
+2242 2577 QueenSpade
+2243 2578 nineSpade
+2244 2579 wait
+2245 2580 wait
+2246 2581 wait
+2247 2582 QueenSpade
+2248 2583 nineSpade
+2249 2584 QueenSpade
+2250 2585 nineSpade
+2251 2586 wait
+2252 2587 QueenSpade
+2253 2588 KingClub
+2254 2589 KingClub
+2255 2590 KingClub
+2256 2591 wait
+2257 2592 nineDiamond
+2258 2593 nineDiamond
+2259 2594 wait
+2260 2595 wait
+2261 2596 QueenSpade
+2262 2597 QueenSpade
+2263 2598 KingClub
+2264 2599 wait
+2265 2600 nineDiamond
+2266 2601 wait
+2267 2602 wait
+2268 2603 QueenSpade
+2269 2604 QueenSpade
+2270 2605 QueenSpade
+2271 2606 QueenSpade
+2272 2607 QueenSpade
+2273 2608 QueenSpade
+2274 2530 wait
+2275 2609 wait
+2276 2610 nineDiamond
+2277 2609 wait
+2278 2611 KingClub
+2279 2612 tenClub
+2280 2613 KingClub
+2281 2614 tenClub
+2282 2615 KingClub
+2283 2616 tenClub
+2284 2617 nineDiamond
+2285 2618 nineDiamond
+2286 2619 wait
+2287 2620 wait
+2288 2621 wait
+2289 2619 wait
+2290 2620 wait
+2291 2621 wait
+2292 2622 QueenSpade
+2293 2623 QueenSpade
+2294 2624 wait
+2295 2625 wait
+2296 2626 wait
+2297 2627 wait
+2298 2628 wait
+2299 2629 wait
+2300 2630 nineDiamond
+2301 2631 nineDiamond
+2302 2632 KingClub
+2303 2633 tenClub
+2304 2634 KingClub
+2305 2635 tenClub
+2306 2636 KingClub
+2307 2637 tenClub
+2308 2638 wait
+2309 2639 wait
+2310 2640 wait
+2311 2641 wait
+2312 2642 wait
+2313 2643 wait
+2314 2644 wait
+2315 2645 wait
+2316 2646 wait
+2317 2647 wait
+2318 2648 wait
+2319 2649 wait
+2320 2650 wait
+2321 2651 wait
+2322 2652 wait
+2323 2653 wait
+2324 2654 wait
+2325 2655 wait
+2326 2656 wait
+2327 2657 wait
+2328 2658 wait
+2329 2659 wait
+2330 2660 wait
+2331 2661 wait
+2332 2662 wait
+2333 2663 wait
+2334 2664 wait
+2335 2665 wait
+2336 2666 QueenSpade
+2337 2667 nineSpade
+2338 2668 QueenSpade
+2339 2669 nineSpade
+2340 2670 QueenSpade
+2341 2671 nineSpade
+2342 2672 wait
+2343 2673 wait
+2344 2674 QueenSpade
+2345 2675 nineSpade
+2346 2676 wait
+2347 2677 wait
+2348 2678 wait
+2349 2679 wait
+2350 2680 wait
+2351 2681 wait
+2352 2682 wait
+2353 2683 wait
+2354 2684 wait
+2355 2685 wait
+2356 2665 wait
+2357 2686 wait
+2358 2687 wait
+2359 2518 wait
+2360 2522 wait
+2361 2519 wait
+2362 2523 wait
+2363 2688 KingClub
+2364 2689 KingClub
+2365 2690 KingClub
+2366 2556 wait
+2367 2557 wait
+2368 2558 wait
+2369 2559 wait
+2370 2685 wait
+2371 2691 nineDiamond
+2372 2692 nineDiamond
+2373 2693 nineDiamond
+2374 2580 wait
+2375 2686 wait
+2376 2694 QueenSpade
+2377 2695 nineSpade
+2378 2696 QueenSpade
+2379 2697 nineSpade
+2380 2698 QueenSpade
+2381 2699 nineSpade
+2382 2586 wait
+2383 2700 QueenSpade
+2384 2701 nineSpade
+2385 2681 wait
+2386 2683 wait
+2387 2682 wait
+2388 2684 wait
+2389 2702 KingClub
+2390 2703 KingClub
+2391 2704 KingClub
+2392 2705 wait
+2393 2706 wait
+2394 2707 wait
+2395 2708 wait
+2396 2526 wait
+2397 2709 wait
+2398 2710 nineDiamond
+2399 2527 wait
+2400 2711 nineDiamond
+2401 2712 nineDiamond
+2402 2713 nineDiamond
+2403 2714 nineDiamond
+2404 2715 wait
+2405 2716 wait
+2406 2540 wait
+2407 2717 wait
+2408 2718 wait
+2409 2719 QueenSpade
+2410 2720 nineSpade
+2411 2721 QueenSpade
+2412 2722 nineSpade
+2413 2723 QueenSpade
+2414 2724 nineSpade
+2415 2725 QueenSpade
+2416 2726 nineSpade
+2417 2727 QueenSpade
+2418 2728 nineSpade
+2419 2729 QueenSpade
+2420 2730 nineSpade
+2421 2731 wait
+2422 2732 wait
+2423 2733 wait
+2424 2734 wait
+2425 2735 wait
+2426 2736 wait
+2427 2737 wait
+2428 2738 wait
+2429 2739 wait
+2430 2740 wait
+2431 2741 wait
+2432 2742 wait
+2433 2743 wait
+2434 2744 wait
+2435 2745 wait
+2436 2746 wait
+2437 2747 wait
+2438 2748 wait
+2439 2749 wait
+2440 2750 wait
+2441 2751 wait
+2442 2752 wait
+2443 2753 wait
+2444 2754 wait
+2445 2755 wait
+2446 2756 nineDiamond
+2447 2757 nineDiamond
+2448 2758 nineDiamond
+2449 2759 nineDiamond
+2450 2760 KingClub
+2451 2761 tenClub
+2452 2762 KingClub
+2453 2763 tenClub
+2454 2764 KingClub
+2455 2765 tenClub
+2456 2766 wait
+2457 2767 wait
+2458 2768 QueenSpade
+2459 2769 nineSpade
+2460 2770 QueenSpade
+2461 2771 nineSpade
+2462 2772 QueenSpade
+2463 2773 nineSpade
+2464 2774 QueenSpade
+2465 2775 nineSpade
+2466 2776 wait
+2467 2777 QueenSpade
+2468 2778 QueenSpade
+2469 2779 QueenSpade
+2470 2780 QueenSpade
+2471 2781 QueenSpade
+2472 2782 QueenSpade
+2473 2591 wait
+2474 2783 wait
+2475 2784 nineDiamond
+2476 2783 wait
+2477 2785 wait
+2478 2786 wait
+2479 2785 wait
+2480 2786 wait
+2481 2787 wait
+2482 2787 wait
+2483 2788 KingClub
+2484 2789 KingClub
+2485 2705 wait
+2486 2706 wait
+2487 2707 wait
+2488 2708 wait
+2489 2677 wait
+2490 2679 wait
+2491 2678 wait
+2492 2680 wait
+2493 2790 wait
+2494 2791 nineDiamond
+2495 2792 nineDiamond
+2496 2793 wait
+2497 2794 QueenSpade
+2498 2795 nineSpade
+2499 2796 QueenSpade
+2500 2797 nineSpade
+2501 2798 QueenSpade
+2502 2799 nineSpade
+2503 2800 QueenSpade
+2504 2801 nineSpade
+2505 2802 wait
+2506 2715 wait
+2507 2716 wait
+2508 2803 wait
+2509 2804 wait
+2510 2805 KingClub
+2511 2806 QueenSpade
+2512 2807 KingClub
+2513 2808 QueenSpade
+2514 2809 KingClub
+2515 2810 QueenSpade
+2516 2811 KingClub
+2517 2812 QueenSpade
+2518 2813 tenClub
+2519 2814 tenClub
+2520 2815 tenClub
+2521 2816 tenClub
+2522 2817 nineSpade
+2523 2818 nineSpade
+2524 2819 nineSpade
+2525 2820 nineSpade
+2526 2821 tenClub
+2527 2822 tenClub
+2528 2823 wait
+2529 2824 wait
+2530 2825 tenClub
+2531 2826 tenClub
+2532 2827 wait
+2533 2828 wait
+2534 2829 wait
+2535 2830 wait
+2536 2831 wait
+2537 2832 wait
+2538 2833 wait
+2539 2834 wait
+2540 2835 nineSpade
+2541 2836 nineSpade
+2542 2837 wait
+2543 2838 KingClub
+2544 2839 KingClub
+2545 2840 QueenSpade
+2546 2841 QueenSpade
+2547 2842 KingClub
+2548 2843 KingClub
+2549 2844 wait
+2550 2845 KingClub
+2551 2846 KingClub
+2552 2847 QueenSpade
+2553 2848 QueenSpade
+2554 2849 wait
+2555 2850 wait
+2556 2851 KingClub
+2557 2852 KingClub
+2558 2853 QueenSpade
+2559 2854 QueenSpade
+2560 2850 wait
+2561 2855 KingClub
+2562 2856 KingClub
+2563 2824 wait
+2564 2844 wait
+2565 2857 wait
+2566 2858 wait
+2567 2857 wait
+2568 2858 wait
+2569 2859 QueenSpade
+2570 2860 QueenSpade
+2571 2861 wait
+2572 2862 wait
+2573 2863 wait
+2574 2864 wait
+2575 2865 wait
+2576 2866 wait
+2577 2867 wait
+2578 2868 wait
+2579 2869 QueenSpade
+2580 2870 QueenSpade
+2581 2871 QueenSpade
+2582 2865 wait
+2583 2872 wait
+2584 2867 wait
+2585 2873 wait
+2586 2874 QueenSpade
+2587 2875 wait
+2588 2876 wait
+2589 2877 wait
+2590 2878 wait
+2591 2879 KingClub
+2592 2880 wait
+2593 2881 wait
+2594 2882 QueenSpade
+2595 2883 QueenSpade
+2596 2837 wait
+2597 2884 wait
+2598 2885 wait
+2599 2886 tenClub
+2600 2887 wait
+2601 2888 nineSpade
+2602 2889 nineSpade
+2603 2890 wait
+2604 2891 wait
+2605 2890 wait
+2606 2891 wait
+2607 2892 wait
+2608 2892 wait
+2609 2893 tenClub
+2610 2894 wait
+2611 2831 wait
+2612 2895 wait
+2613 2896 wait
+2614 2897 wait
+2615 2896 wait
+2616 2898 wait
+2617 2899 wait
+2618 2899 wait
+2619 2900 nineSpade
+2620 2901 nineSpade
+2621 2902 nineSpade
+2622 2903 wait
+2623 2904 wait
+2624 2905 tenClub
+2625 2906 tenClub
+2626 2907 nineSpade
+2627 2908 nineSpade
+2628 2909 tenClub
+2629 2910 tenClub
+2630 2911 wait
+2631 2887 wait
+2632 2912 wait
+2633 2913 wait
+2634 2914 wait
+2635 2915 wait
+2636 2916 wait
+2637 2898 wait
+2638 2917 nineSpade
+2639 2918 nineSpade
+2640 2919 KingClub
+2641 2920 KingClub
+2642 2921 KingClub
+2643 2922 KingClub
+2644 2923 QueenSpade
+2645 2924 QueenSpade
+2646 2925 QueenSpade
+2647 2926 QueenSpade
+2648 2927 KingClub
+2649 2928 KingClub
+2650 2929 KingClub
+2651 2930 KingClub
+2652 2931 QueenSpade
+2653 2932 QueenSpade
+2654 2933 QueenSpade
+2655 2934 QueenSpade
+2656 2935 KingClub
+2657 2936 KingClub
+2658 2937 QueenSpade
+2659 2938 QueenSpade
+2660 2939 KingClub
+2661 2940 KingClub
+2662 2941 QueenSpade
+2663 2942 QueenSpade
+2664 2943 KingClub
+2665 2944 KingClub
+2666 2945 wait
+2667 2946 wait
+2668 2947 wait
+2669 2948 wait
+2670 2949 wait
+2671 2950 wait
+2672 2951 QueenSpade
+2673 2952 QueenSpade
+2674 2949 wait
+2675 2953 wait
+2676 2954 QueenSpade
+2677 2955 tenClub
+2678 2956 nineSpade
+2679 2957 tenClub
+2680 2958 nineSpade
+2681 2959 KingClub
+2682 2960 KingClub
+2683 2961 QueenSpade
+2684 2962 QueenSpade
+2685 2963 KingClub
+2686 2964 QueenSpade
+2687 2965 QueenSpade
+2688 2966 wait
+2689 2967 wait
+2690 2967 wait
+2691 2968 wait
+2692 2969 wait
+2693 2969 wait
+2694 2970 wait
+2695 2971 wait
+2696 2972 wait
+2697 2973 wait
+2698 2974 wait
+2699 2868 wait
+2700 2974 wait
+2701 2873 wait
+2702 2849 wait
+2703 2975 wait
+2704 2877 wait
+2705 2976 tenClub
+2706 2977 tenClub
+2707 2978 nineSpade
+2708 2979 nineSpade
+2709 2980 tenClub
+2710 2824 wait
+2711 2981 wait
+2712 2982 wait
+2713 2983 wait
+2714 2984 wait
+2715 2985 nineSpade
+2716 2986 nineSpade
+2717 2987 nineSpade
+2718 2988 nineSpade
+2719 2945 wait
+2720 2989 wait
+2721 2990 wait
+2722 2991 wait
+2723 2861 wait
+2724 2992 wait
+2725 2993 wait
+2726 2994 wait
+2727 2995 wait
+2728 2991 wait
+2729 2996 wait
+2730 2994 wait
+2731 2997 tenClub
+2732 2998 tenClub
+2733 2999 tenClub
+2734 3000 tenClub
+2735 3001 nineSpade
+2736 3002 nineSpade
+2737 3003 nineSpade
+2738 3004 nineSpade
+2739 3005 tenClub
+2740 3006 tenClub
+2741 3007 tenClub
+2742 3008 tenClub
+2743 3009 nineSpade
+2744 3010 nineSpade
+2745 3011 nineSpade
+2746 3012 nineSpade
+2747 3013 tenClub
+2748 3014 tenClub
+2749 3015 nineSpade
+2750 3016 nineSpade
+2751 3017 tenClub
+2752 3018 tenClub
+2753 3019 nineSpade
+2754 3020 nineSpade
+2755 3021 tenClub
+2756 3022 wait
+2757 3023 wait
+2758 2981 wait
+2759 2982 wait
+2760 3024 wait
+2761 2915 wait
+2762 3025 wait
+2763 3026 wait
+2764 2829 wait
+2765 3026 wait
+2766 3027 nineSpade
+2767 3028 nineSpade
+2768 3029 wait
+2769 2971 wait
+2770 3030 wait
+2771 3031 wait
+2772 3032 wait
+2773 3033 wait
+2774 3034 wait
+2775 3031 wait
+2776 3035 nineSpade
+2777 3036 wait
+2778 3037 wait
+2779 3038 wait
+2780 3039 wait
+2781 3040 wait
+2782 3041 wait
+2783 3042 KingClub
+2784 2881 wait
+2785 3043 QueenSpade
+2786 3044 QueenSpade
+2787 3045 QueenSpade
+2788 3046 wait
+2789 3047 wait
+2790 3048 tenClub
+2791 3049 wait
+2792 3050 wait
+2793 3051 nineSpade
+2794 3052 wait
+2795 2973 wait
+2796 3053 wait
+2797 3054 wait
+2798 2990 wait
+2799 3055 wait
+2800 2995 wait
+2801 3055 wait
+2802 3056 nineSpade
+2803 3057 nineSpade
+2804 3058 nineSpade
+2805 3059 wait
+2806 3060 wait
+2807 3061 wait
+2808 3062 wait
+2809 3063 wait
+2810 3064 wait
+2811 3065 wait
+2812 3066 wait
+2813 3067 wait
+2814 3068 wait
+2815 3069 wait
+2816 3070 wait
+2817 3071 wait
+2818 3072 wait
+2819 3073 wait
+2820 3074 wait
+2821 3075 wait
+2822 3076 wait
+2823 3077 nineDiamond
+2824 3078 nineDiamond
+2825 3079 wait
+2826 3080 wait
+2827 3081 tenClub
+2828 3082 KingClub
+2829 3083 tenClub
+2830 3084 KingClub
+2831 3085 tenClub
+2832 3086 KingClub
+2833 3087 tenClub
+2834 3088 KingClub
+2835 3089 wait
+2836 3090 wait
+2837 3091 nineSpade
+2838 3092 wait
+2839 3093 wait
+2840 3094 wait
+2841 3095 wait
+2842 3096 wait
+2843 3097 wait
+2844 3098 nineDiamond
+2845 3099 wait
+2846 3100 wait
+2847 3101 wait
+2848 3102 wait
+2849 3103 tenClub
+2850 3104 tenClub
+2851 3059 wait
+2852 3061 wait
+2853 3060 wait
+2854 3062 wait
+2855 3096 wait
+2856 3097 wait
+2857 3105 nineDiamond
+2858 3106 nineDiamond
+2859 3102 wait
+2860 3107 wait
+2861 3108 nineSpade
+2862 3109 QueenSpade
+2863 3110 nineSpade
+2864 3111 QueenSpade
+2865 3112 nineSpade
+2866 3113 QueenSpade
+2867 3114 nineSpade
+2868 3115 QueenSpade
+2869 3116 wait
+2870 3117 wait
+2871 3107 wait
+2872 3118 QueenSpade
+2873 3119 QueenSpade
+2874 3117 wait
+2875 3120 nineSpade
+2876 3121 tenClub
+2877 3122 tenClub
+2878 3123 tenClub
+2879 3124 wait
+2880 3125 nineDiamond
+2881 3126 nineDiamond
+2882 3127 wait
+2883 3116 wait
+2884 3128 nineSpade
+2885 3129 tenClub
+2886 3130 wait
+2887 3131 nineDiamond
+2888 3132 wait
+2889 3133 wait
+2890 3134 nineSpade
+2891 3135 nineSpade
+2892 3136 nineSpade
+2893 3130 wait
+2894 3137 nineDiamond
+2895 3138 KingClub
+2896 3139 tenClub
+2897 3140 KingClub
+2898 3141 KingClub
+2899 3142 nineDiamond
+2900 3143 wait
+2901 3144 wait
+2902 3145 wait
+2903 3146 nineSpade
+2904 3147 nineSpade
+2905 3067 wait
+2906 3068 wait
+2907 3071 wait
+2908 3072 wait
+2909 3148 wait
+2910 3149 wait
+2911 3150 nineDiamond
+2912 3151 tenClub
+2913 3152 KingClub
+2914 3153 tenClub
+2915 3154 KingClub
+2916 3155 tenClub
+2917 3156 wait
+2918 3157 wait
+2919 3158 wait
+2920 3159 wait
+2921 3160 wait
+2922 3161 wait
+2923 3162 wait
+2924 3163 wait
+2925 3164 wait
+2926 3165 wait
+2927 3166 wait
+2928 3167 wait
+2929 3168 wait
+2930 3169 wait
+2931 3170 wait
+2932 3171 wait
+2933 3172 wait
+2934 3173 wait
+2935 3160 wait
+2936 3161 wait
+2937 3164 wait
+2938 3165 wait
+2939 3168 wait
+2940 3169 wait
+2941 3172 wait
+2942 3173 wait
+2943 3174 wait
+2944 3174 wait
+2945 3175 nineSpade
+2946 3176 QueenSpade
+2947 3177 nineSpade
+2948 3178 QueenSpade
+2949 3179 nineSpade
+2950 3180 QueenSpade
+2951 3181 wait
+2952 3182 wait
+2953 3183 QueenSpade
+2954 3182 wait
+2955 3184 wait
+2956 3185 wait
+2957 3186 wait
+2958 3187 wait
+2959 3092 wait
+2960 3093 wait
+2961 3094 wait
+2962 3095 wait
+2963 3188 wait
+2964 3189 wait
+2965 3181 wait
+2966 3190 tenClub
+2967 3191 tenClub
+2968 3192 nineDiamond
+2969 3193 nineDiamond
+2970 3194 nineSpade
+2971 3195 QueenSpade
+2972 3196 nineSpade
+2973 3197 QueenSpade
+2974 3198 nineSpade
+2975 3199 tenClub
+2976 3184 wait
+2977 3186 wait
+2978 3185 wait
+2979 3187 wait
+2980 3076 wait
+2981 3200 nineDiamond
+2982 3201 nineDiamond
+2983 3202 nineDiamond
+2984 3203 nineDiamond
+2985 3204 wait
+2986 3204 wait
+2987 3205 wait
+2988 3205 wait
+2989 3206 QueenSpade
+2990 3207 nineSpade
+2991 3208 QueenSpade
+2992 3209 QueenSpade
+2993 3210 nineSpade
+2994 3211 QueenSpade
+2995 3212 nineSpade
+2996 3213 nineSpade
+2997 3214 wait
+2998 3215 wait
+2999 3216 wait
+3000 3217 wait
+3001 3218 wait
+3002 3219 wait
+3003 3220 wait
+3004 3221 wait
+3005 3222 wait
+3006 3223 wait
+3007 3224 wait
+3008 3225 wait
+3009 3226 wait
+3010 3227 wait
+3011 3228 wait
+3012 3229 wait
+3013 3216 wait
+3014 3217 wait
+3015 3220 wait
+3016 3221 wait
+3017 3224 wait
+3018 3225 wait
+3019 3228 wait
+3020 3229 wait
+3021 3149 wait
+3022 3230 nineDiamond
+3023 3231 nineDiamond
+3024 3232 tenClub
+3025 3233 tenClub
+3026 3234 KingClub
+3027 3235 wait
+3028 3235 wait
+3029 3236 nineSpade
+3030 3237 nineSpade
+3031 3238 QueenSpade
+3032 3239 nineSpade
+3033 3240 QueenSpade
+3034 3241 nineSpade
+3035 3090 wait
+3036 3242 nineSpade
+3037 3243 nineSpade
+3038 3244 nineSpade
+3039 3245 nineSpade
+3040 3246 nineSpade
+3041 3247 nineSpade
+3042 3099 wait
+3043 3248 wait
+3044 3249 wait
+3045 3250 wait
+3046 3251 tenClub
+3047 3252 tenClub
+3048 3148 wait
+3049 3253 nineDiamond
+3050 3254 nineDiamond
+3051 3157 wait
+3052 3255 nineSpade
+3053 3256 nineSpade
+3054 3257 QueenSpade
+3055 3258 QueenSpade
+3056 3133 wait
+3057 3259 wait
+3058 3260 wait
+3059 3261 tenClub
+3060 3262 tenClub
+3061 3263 nineSpade
+3062 3264 nineSpade
+3063 3265 tenClub
+3064 3266 tenClub
+3065 3267 nineSpade
+3066 3268 nineSpade
+3067 3269 KingClub
+3068 3270 QueenSpade
+3069 3271 KingClub
+3070 3272 QueenSpade
+3071 3273 KingClub
+3072 3274 QueenSpade
+3073 3275 KingClub
+3074 3276 QueenSpade
+3075 3277 KingClub
+3076 3278 KingClub
+3077 3279 wait
+3078 3280 wait
+3079 3281 KingClub
+3080 3282 KingClub
+3081 3283 wait
+3082 3284 wait
+3083 3285 wait
+3084 3286 wait
+3085 3287 wait
+3086 3288 wait
+3087 3289 wait
+3088 3290 wait
+3089 3291 QueenSpade
+3090 3292 QueenSpade
+3091 3293 wait
+3092 3294 tenClub
+3093 3295 nineSpade
+3094 3296 tenClub
+3095 3297 nineSpade
+3096 3298 tenClub
+3097 3299 tenClub
+3098 3300 wait
+3099 3301 tenClub
+3100 3302 tenClub
+3101 3303 nineSpade
+3102 3304 nineSpade
+3103 3305 wait
+3104 3306 wait
+3105 3307 wait
+3106 3308 wait
+3107 3309 nineSpade
+3108 3310 wait
+3109 3311 wait
+3110 3312 wait
+3111 3313 wait
+3112 3314 wait
+3113 3315 wait
+3114 3316 wait
+3115 3317 wait
+3116 3318 nineSpade
+3117 3319 nineSpade
+3118 3315 wait
+3119 3317 wait
+3120 3320 wait
+3121 3321 wait
+3122 3322 wait
+3123 3323 wait
+3124 3324 tenClub
+3125 3325 wait
+3126 3300 wait
+3127 3326 nineSpade
+3128 3327 wait
+3129 3328 wait
+3130 3329 KingClub
+3131 3330 wait
+3132 3331 QueenSpade
+3133 3332 QueenSpade
+3134 3333 wait
+3135 3334 wait
+3136 3335 wait
+3137 3330 wait
+3138 3288 wait
+3139 3336 wait
+3140 3337 wait
+3141 3337 wait
+3142 3338 wait
+3143 3339 QueenSpade
+3144 3340 QueenSpade
+3145 3341 QueenSpade
+3146 3320 wait
+3147 3342 wait
+3148 3343 KingClub
+3149 3344 KingClub
+3150 3345 wait
+3151 3346 wait
+3152 3347 wait
+3153 3348 wait
+3154 3349 wait
+3155 3336 wait
+3156 3350 QueenSpade
+3157 3351 QueenSpade
+3158 3352 tenClub
+3159 3353 nineSpade
+3160 3354 tenClub
+3161 3355 nineSpade
+3162 3356 tenClub
+3163 3357 nineSpade
+3164 3358 tenClub
+3165 3359 nineSpade
+3166 3360 tenClub
+3167 3361 nineSpade
+3168 3362 tenClub
+3169 3363 nineSpade
+3170 3364 tenClub
+3171 3365 nineSpade
+3172 3366 tenClub
+3173 3367 nineSpade
+3174 3368 tenClub
+3175 3369 wait
+3176 3370 wait
+3177 3371 wait
+3178 3372 wait
+3179 3373 wait
+3180 3374 wait
+3181 3375 nineSpade
+3182 3376 nineSpade
+3183 3374 wait
+3184 3377 KingClub
+3185 3378 KingClub
+3186 3379 QueenSpade
+3187 3380 QueenSpade
+3188 3381 tenClub
+3189 3382 nineSpade
+3190 3383 wait
+3191 3328 wait
+3192 3345 wait
+3193 3308 wait
+3194 3384 wait
+3195 3385 wait
+3196 3386 wait
+3197 3387 wait
+3198 3316 wait
+3199 3322 wait
+3200 3388 wait
+3201 3388 wait
+3202 3389 wait
+3203 3389 wait
+3204 3390 QueenSpade
+3205 3391 QueenSpade
+3206 3370 wait
+3207 3392 wait
+3208 3393 wait
+3209 3311 wait
+3210 3394 wait
+3211 3395 wait
+3212 3392 wait
+3213 3394 wait
+3214 3396 KingClub
+3215 3397 QueenSpade
+3216 3398 KingClub
+3217 3399 QueenSpade
+3218 3400 KingClub
+3219 3401 QueenSpade
+3220 3402 KingClub
+3221 3403 QueenSpade
+3222 3404 KingClub
+3223 3405 QueenSpade
+3224 3406 KingClub
+3225 3407 QueenSpade
+3226 3408 KingClub
+3227 3409 QueenSpade
+3228 3410 KingClub
+3229 3411 QueenSpade
+3230 3412 wait
+3231 3412 wait
+3232 3348 wait
+3233 3285 wait
+3234 3286 wait
+3235 3413 QueenSpade
+3236 3384 wait
+3237 3414 wait
+3238 3415 wait
+3239 3312 wait
+3240 3313 wait
+3241 3414 wait
+3242 3416 wait
+3243 3417 wait
+3244 3416 wait
+3245 3417 wait
+3246 3418 wait
+3247 3418 wait
+3248 3419 nineSpade
+3249 3420 nineSpade
+3250 3421 nineSpade
+3251 3383 wait
+3252 3321 wait
+3253 3345 wait
+3254 3330 wait
+3255 3386 wait
+3256 3371 wait
+3257 3372 wait
+3258 3393 wait
+3259 3422 wait
+3260 3422 wait
+3261 3423 wait
+3262 3424 wait
+3263 3423 wait
+3263 3425 wait
+3264 3424 wait
+3265 3424 wait
+3266 3425 wait
+3267 3424 wait
+3268 3423 wait
+3268 3426 wait
+3269 3424 wait
+3270 3425 wait
+3271 3424 wait
+3272 3425 wait
+3273 3424 wait
+3274 3426 wait
+3275 3424 wait
+3276 3423 wait
+3276 3426 wait
+3277 3427 wait
+3278 3428 wait
+3279 3429 wait
+3280 3430 wait
+3280 3431 wait
+3281 3422 wait
+3282 3422 wait
+3283 3430 wait
+3284 3430 wait
+3285 3430 wait
+3286 3430 wait
+3287 3430 wait
+3288 3430 wait
+3289 3430 wait
+3290 3430 wait
+3291 3427 wait
+3292 3428 wait
+3293 3422 wait
+3294 3424 wait
+3295 3424 wait
+3296 3425 wait
+3297 3423 wait
+3298 3427 wait
+3299 3427 wait
+3300 3432 wait
+3301 3422 wait
+3302 3422 wait
+3303 3427 wait
+3304 3427 wait
+3305 3422 wait
+3306 3422 wait
+3307 3430 wait
+3307 3431 wait
+3308 3432 wait
+3309 3427 wait
+3310 3430 wait
+3311 3430 wait
+3312 3430 wait
+3313 3430 wait
+3314 3430 wait
+3315 3430 wait
+3316 3430 wait
+3317 3430 wait
+3318 3422 wait
+3319 3422 wait
+3320 3422 wait
+3321 3422 wait
+3322 3422 wait
+3323 3422 wait
+3324 3422 wait
+3325 3432 wait
+3326 3422 wait
+3327 3422 wait
+3328 3422 wait
+3329 3422 wait
+3330 3429 wait
+3331 3422 wait
+3332 3422 wait
+3333 3422 wait
+3334 3422 wait
+3335 3422 wait
+3336 3430 wait
+3337 3430 wait
+3338 3430 wait
+3338 3431 wait
+3339 3428 wait
+3340 3428 wait
+3341 3428 wait
+3342 3422 wait
+3343 3428 wait
+3344 3428 wait
+3345 3430 wait
+3345 3431 wait
+3346 3430 wait
+3347 3430 wait
+3348 3430 wait
+3349 3430 wait
+3350 3428 wait
+3351 3428 wait
+3352 3423 wait
+3353 3423 wait
+3354 3423 wait
+3355 3423 wait
+3356 3423 wait
+3357 3423 wait
+3358 3423 wait
+3359 3423 wait
+3360 3423 wait
+3361 3423 wait
+3362 3423 wait
+3363 3423 wait
+3364 3423 wait
+3365 3423 wait
+3366 3423 wait
+3367 3423 wait
+3368 3427 wait
+3369 3430 wait
+3370 3430 wait
+3371 3430 wait
+3372 3430 wait
+3373 3430 wait
+3374 3430 wait
+3375 3427 wait
+3376 3427 wait
+3377 3426 wait
+3378 3425 wait
+3378 3426 wait
+3379 3424 wait
+3380 3424 wait
+3381 3428 wait
+3382 3428 wait
+3383 3422 wait
+3384 3430 wait
+3385 3430 wait
+3386 3430 wait
+3387 3430 wait
+3388 3429 wait
+3389 3430 wait
+3389 3431 wait
+3390 3422 wait
+3391 3428 wait
+3392 3430 wait
+3393 3430 wait
+3394 3430 wait
+3395 3430 wait
+3396 3426 wait
+3397 3426 wait
+3398 3426 wait
+3399 3426 wait
+3400 3426 wait
+3401 3426 wait
+3402 3426 wait
+3403 3426 wait
+3404 3426 wait
+3405 3426 wait
+3406 3426 wait
+3407 3426 wait
+3408 3426 wait
+3409 3426 wait
+3410 3426 wait
+3411 3426 wait
+3412 3430 wait
+3412 3431 wait
+3413 3428 wait
+3414 3430 wait
+3415 3430 wait
+3416 3422 wait
+3417 3422 wait
+3418 3422 wait
+3419 3427 wait
+3420 3427 wait
+3421 3427 wait
+53
+wait
+AceSpade
+AceHeart
+AceDiamond
+AceClub
+KingSpade
+KingHeart
+KingDiamond
+KingClub
+QueenSpade
+QueenHeart
+QueenDiamond
+QueenClub
+JackSpade
+JackHeart
+JackDiamond
+JackClub
+tenSpade
+tenHeart
+tenDiamond
+tenClub
+nineSpade
+nineHeart
+nineDiamond
+nineClub
+eightSpade
+eightHeart
+eightDiamond
+eightClub
+sevenSpade
+sevenHeart
+sevenDiamond
+sevenClub
+sixSpade
+sixHeart
+sixDiamond
+sixClub
+fiveSpade
+fiveHeart
+fiveDiamond
+fiveClub
+fourSpade
+fourHeart
+fourDiamond
+fourClub
+threeSpade
+threeHeart
+threeDiamond
+threeClub
+twoSpade
+twoHeart
+twoDiamond
+twoClub
+5
+3422
+3429
+3430
+3431
+3432
+719
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+8
+9
+9
+10
+5
+5
+6
+8
+8
+9
+10
+13
+5
+6
+14
+8
+4
+12
+8
+4
+5
+5
+7
+8
+8
+4
+5
+7
+14
+8
+9
+9
+11
+12
+8
+8
+9
+11
+13
+12
+8
+9
+9
+13
+5
+5
+14
+8
+8
+4
+12
+15
+16
+17
+4
+6
+7
+14
+15
+17
+18
+10
+11
+13
+12
+15
+16
+18
+4
+12
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+23
+24
+24
+25
+20
+20
+21
+23
+23
+24
+25
+28
+20
+21
+29
+23
+19
+27
+23
+19
+20
+20
+22
+23
+23
+19
+20
+22
+29
+23
+24
+24
+26
+27
+23
+23
+24
+26
+28
+27
+23
+24
+24
+28
+20
+20
+29
+23
+23
+19
+27
+30
+31
+32
+19
+21
+22
+29
+30
+32
+33
+25
+26
+28
+27
+30
+31
+33
+19
+27
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+40
+41
+41
+42
+37
+37
+38
+47
+48
+49
+47
+48
+49
+41
+42
+50
+37
+38
+51
+40
+34
+52
+36
+44
+53
+46
+40
+52
+35
+36
+37
+37
+39
+54
+47
+49
+54
+47
+49
+34
+52
+35
+37
+39
+51
+40
+41
+41
+43
+53
+45
+46
+54
+48
+49
+54
+48
+49
+41
+43
+50
+44
+53
+45
+40
+41
+41
+50
+37
+37
+51
+54
+47
+48
+54
+47
+48
+34
+34
+36
+44
+44
+46
+55
+55
+56
+56
+57
+57
+34
+34
+35
+38
+39
+51
+55
+55
+57
+57
+58
+58
+42
+43
+50
+44
+44
+45
+55
+55
+56
+56
+58
+58
+34
+34
+52
+44
+44
+53
+56
+56
+57
+57
+58
+58
+59
+59
+59
+60
+60
+60
+61
+62
+62
+62
+60
+60
+61
+62
+62
+62
+60
+60
+60
+61
+61
+61
+61
+61
+61
+62
+62
+62
+60
+60
+60
+61
+59
+59
+59
+60
+60
+61
+59
+59
+59
+60
+60
+60
+61
+61
+61
+61
+61
+61
+59
+59
+59
+60
+60
+60
+61
+62
+62
+62
+60
+61
+61
+61
+61
+61
+61
+62
+62
+62
+60
+61
+62
+62
+62
+60
+60
+60
+61
+61
+61
+61
+61
+61
+59
+59
+59
+60
+60
+60
+61
+61
+61
+61
+61
+61
+59
+59
+59
+60
+60
+60
+61
+61
+61
+61
+61
+61
+62
+62
+62
+60
+60
+61
+61
+61
+61
+61
+61
+59
+59
+59
+60
+60
+61
+61
+61
+61
+61
+61
+63
+64
+63
+64
+63
+64
+65
+66
+65
+66
+65
+66
+67
+68
+69
+70
+69
+70
+69
+70
+65
+66
+65
+66
+67
+68
+71
+70
+71
+70
+71
+70
+65
+66
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+69
+71
+69
+71
+69
+71
+65
+66
+65
+66
+65
+66
+67
+68
+63
+72
+63
+72
+63
+72
+65
+66
+65
+66
+67
+68
+63
+63
+63
+63
+63
+63
+65
+66
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+63
+73
+63
+73
+63
+73
+65
+66
+65
+66
+65
+66
+67
+68
+74
+70
+74
+70
+74
+70
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+69
+74
+69
+74
+69
+74
+65
+66
+67
+68
+74
+71
+74
+71
+74
+71
+65
+66
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+64
+72
+64
+72
+64
+72
+65
+66
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+64
+73
+64
+73
+64
+73
+65
+66
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+69
+69
+69
+69
+69
+69
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+72
+73
+72
+73
+72
+73
+65
+66
+65
+66
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+67
+68
+75
+76
+77
+75
+76
+77
+75
+76
+77
+78
+79
+80
+78
+81
+82
+83
+81
+84
+85
+86
+87
+88
+89
+87
+88
+89
+87
+88
+89
+82
+83
+81
+82
+83
+81
+90
+91
+92
+93
+88
+89
+93
+88
+89
+93
+88
+89
+82
+83
+81
+82
+82
+81
+81
+94
+90
+95
+85
+94
+90
+95
+85
+94
+90
+95
+85
+90
+85
+90
+85
+90
+85
+87
+93
+87
+93
+87
+93
+83
+96
+79
+97
+82
+96
+81
+82
+83
+81
+90
+98
+85
+99
+75
+100
+75
+100
+75
+100
+78
+81
+78
+81
+84
+92
+75
+75
+75
+75
+75
+75
+78
+81
+78
+82
+82
+81
+81
+84
+95
+86
+84
+95
+86
+84
+95
+86
+84
+86
+84
+86
+84
+86
+75
+101
+102
+75
+101
+102
+75
+101
+102
+78
+80
+97
+82
+96
+81
+81
+84
+86
+99
+103
+104
+88
+89
+103
+104
+88
+89
+103
+104
+88
+89
+82
+82
+81
+81
+94
+91
+92
+94
+91
+92
+94
+91
+92
+91
+92
+91
+92
+91
+92
+87
+103
+104
+87
+103
+104
+87
+103
+104
+82
+96
+81
+91
+98
+92
+103
+104
+93
+103
+104
+93
+103
+104
+93
+82
+96
+81
+96
+82
+82
+81
+81
+94
+98
+95
+99
+94
+98
+95
+99
+94
+98
+95
+99
+98
+99
+98
+99
+98
+99
+76
+77
+100
+76
+77
+100
+76
+77
+100
+78
+79
+80
+78
+80
+78
+79
+80
+84
+92
+84
+92
+84
+85
+86
+84
+85
+86
+90
+91
+92
+90
+91
+92
+76
+77
+101
+102
+76
+77
+101
+102
+76
+77
+101
+102
+78
+80
+97
+83
+96
+79
+97
+79
+84
+86
+99
+84
+86
+99
+90
+98
+85
+99
+90
+98
+85
+99
+84
+85
+86
+84
+85
+86
+87
+87
+87
+87
+87
+87
+83
+96
+79
+97
+96
+97
+91
+98
+92
+91
+98
+92
+90
+98
+85
+99
+90
+98
+85
+99
+90
+91
+92
+90
+91
+92
+100
+101
+102
+100
+101
+102
+100
+101
+102
+78
+80
+97
+78
+80
+97
+84
+86
+99
+84
+86
+99
+91
+98
+92
+91
+98
+92
+84
+92
+84
+92
+105
+106
+107
+108
+109
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+114
+117
+118
+119
+117
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+127
+125
+126
+118
+119
+117
+118
+119
+117
+132
+133
+134
+135
+136
+125
+126
+136
+125
+126
+135
+135
+128
+128
+130
+130
+118
+119
+117
+118
+118
+117
+117
+137
+132
+138
+121
+137
+132
+138
+121
+137
+132
+138
+121
+132
+121
+132
+121
+132
+121
+123
+139
+136
+140
+127
+135
+140
+127
+135
+136
+119
+141
+115
+142
+118
+141
+117
+118
+119
+117
+132
+143
+121
+144
+145
+106
+146
+147
+109
+148
+147
+109
+148
+146
+114
+117
+114
+117
+120
+134
+105
+106
+105
+106
+145
+106
+145
+106
+145
+105
+145
+105
+114
+117
+114
+118
+118
+117
+117
+120
+138
+122
+120
+138
+122
+120
+138
+122
+120
+122
+120
+122
+120
+122
+145
+105
+149
+150
+109
+151
+152
+153
+154
+109
+149
+150
+114
+116
+142
+118
+141
+117
+117
+120
+122
+144
+155
+156
+157
+158
+128
+129
+130
+131
+156
+158
+129
+131
+155
+155
+157
+157
+128
+128
+130
+130
+118
+118
+117
+117
+137
+133
+134
+137
+133
+134
+137
+133
+134
+133
+134
+133
+134
+133
+134
+124
+139
+159
+160
+127
+159
+160
+127
+155
+156
+157
+158
+118
+141
+117
+133
+143
+134
+159
+160
+135
+140
+159
+160
+140
+155
+155
+157
+157
+135
+135
+118
+141
+117
+141
+118
+118
+117
+117
+137
+143
+138
+144
+137
+143
+138
+144
+137
+143
+138
+144
+143
+144
+143
+144
+143
+144
+107
+108
+148
+147
+107
+108
+147
+110
+110
+112
+112
+148
+148
+114
+115
+116
+114
+116
+114
+115
+116
+120
+134
+120
+134
+120
+121
+122
+120
+121
+122
+132
+133
+134
+132
+133
+134
+110
+111
+112
+113
+151
+152
+153
+154
+111
+113
+152
+154
+110
+110
+112
+112
+151
+151
+153
+153
+114
+116
+142
+119
+141
+115
+142
+115
+120
+122
+144
+120
+122
+144
+132
+143
+121
+144
+132
+143
+121
+144
+120
+121
+122
+120
+121
+122
+124
+139
+124
+139
+123
+139
+123
+139
+123
+124
+123
+124
+119
+141
+115
+142
+141
+142
+133
+143
+134
+133
+143
+134
+132
+143
+121
+144
+132
+143
+121
+144
+132
+133
+134
+132
+133
+134
+148
+146
+149
+150
+146
+149
+150
+148
+148
+151
+151
+153
+153
+114
+116
+142
+114
+116
+142
+120
+122
+144
+120
+122
+144
+133
+143
+134
+133
+143
+134
+120
+134
+120
+134
+161
+162
+163
+164
+165
+166
+167
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+176
+177
+180
+181
+182
+183
+184
+180
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+195
+191
+192
+193
+194
+204
+205
+206
+207
+204
+205
+180
+208
+209
+210
+211
+212
+213
+191
+192
+193
+194
+213
+191
+192
+193
+194
+212
+212
+196
+197
+196
+197
+200
+201
+200
+201
+204
+205
+206
+207
+204
+204
+206
+207
+206
+207
+214
+208
+215
+216
+217
+218
+219
+220
+221
+222
+223
+187
+214
+208
+223
+187
+208
+217
+218
+221
+222
+187
+208
+187
+189
+224
+213
+225
+195
+212
+225
+195
+212
+213
+205
+226
+178
+227
+204
+226
+180
+180
+208
+228
+187
+229
+230
+162
+231
+232
+167
+233
+232
+167
+233
+231
+234
+177
+235
+207
+176
+234
+180
+236
+186
+237
+211
+161
+162
+161
+162
+230
+162
+230
+162
+230
+161
+230
+161
+234
+177
+207
+177
+238
+182
+238
+182
+235
+207
+235
+207
+185
+186
+223
+188
+236
+186
+239
+216
+240
+241
+236
+185
+223
+188
+185
+186
+188
+236
+186
+240
+241
+236
+185
+188
+230
+161
+242
+243
+244
+245
+167
+246
+247
+248
+249
+250
+251
+252
+253
+167
+242
+243
+244
+245
+176
+234
+179
+227
+181
+238
+254
+255
+180
+180
+236
+185
+188
+229
+256
+257
+258
+259
+260
+261
+262
+263
+196
+197
+198
+199
+200
+201
+202
+203
+258
+259
+262
+263
+198
+199
+202
+203
+256
+257
+256
+257
+260
+261
+260
+261
+196
+197
+196
+197
+200
+201
+200
+201
+204
+204
+235
+206
+235
+206
+214
+209
+210
+211
+264
+220
+265
+266
+237
+211
+214
+209
+237
+210
+209
+210
+211
+265
+266
+237
+211
+209
+237
+210
+190
+224
+267
+268
+269
+270
+195
+267
+268
+269
+270
+195
+256
+257
+258
+259
+260
+261
+262
+263
+204
+226
+235
+206
+209
+228
+237
+210
+267
+268
+269
+270
+212
+225
+267
+268
+269
+270
+225
+256
+257
+256
+257
+260
+261
+260
+261
+212
+212
+204
+226
+206
+226
+235
+235
+214
+228
+223
+229
+214
+228
+239
+215
+271
+272
+264
+219
+273
+274
+223
+229
+228
+229
+228
+271
+272
+273
+274
+229
+163
+164
+165
+166
+233
+232
+163
+164
+165
+166
+232
+168
+169
+168
+169
+172
+173
+172
+173
+233
+233
+176
+177
+179
+177
+176
+176
+178
+178
+179
+179
+275
+186
+276
+211
+186
+211
+275
+186
+277
+218
+278
+241
+186
+218
+241
+279
+222
+280
+266
+276
+211
+222
+266
+211
+168
+169
+170
+171
+172
+173
+174
+175
+246
+247
+248
+249
+250
+251
+252
+253
+170
+171
+174
+175
+248
+249
+252
+253
+168
+169
+168
+169
+172
+173
+172
+173
+246
+247
+246
+247
+250
+251
+250
+251
+176
+176
+179
+179
+227
+227
+183
+183
+254
+254
+178
+178
+227
+227
+178
+178
+275
+185
+188
+229
+185
+188
+229
+279
+221
+281
+274
+187
+229
+221
+274
+187
+229
+275
+185
+187
+188
+185
+187
+188
+190
+224
+190
+224
+189
+224
+189
+224
+189
+190
+189
+190
+205
+226
+227
+226
+209
+228
+276
+210
+209
+228
+210
+208
+228
+277
+217
+282
+272
+208
+228
+217
+272
+208
+209
+276
+210
+208
+209
+210
+233
+231
+242
+243
+244
+245
+231
+242
+243
+244
+245
+233
+233
+246
+247
+246
+247
+250
+251
+250
+251
+176
+234
+179
+227
+275
+236
+278
+240
+282
+271
+236
+240
+271
+280
+265
+281
+273
+276
+237
+265
+273
+237
+275
+236
+276
+237
+236
+237
+283
+283
+284
+285
+286
+287
+284
+285
+286
+287
+288
+289
+288
+289
+290
+291
+290
+291
+292
+292
+293
+293
+292
+292
+294
+295
+294
+295
+294
+295
+294
+295
+296
+296
+283
+284
+286
+285
+287
+297
+297
+293
+297
+297
+298
+298
+299
+299
+284
+286
+285
+287
+299
+284
+286
+285
+287
+297
+297
+293
+293
+293
+293
+293
+293
+298
+298
+300
+301
+300
+301
+300
+301
+300
+301
+298
+298
+298
+300
+301
+300
+301
+298
+283
+299
+299
+299
+297
+293
+293
+298
+298
+283
+283
+299
+292
+293
+296
+296
+283
+283
+283
+283
+283
+283
+292
+292
+293
+292
+294
+295
+294
+295
+294
+295
+293
+293
+296
+296
+296
+296
+296
+296
+283
+283
+288
+289
+290
+291
+292
+292
+293
+293
+294
+295
+294
+295
+294
+295
+296
+296
+284
+286
+284
+286
+285
+287
+285
+287
+284
+286
+284
+286
+285
+287
+285
+287
+284
+286
+285
+287
+284
+286
+285
+287
+297
+297
+300
+301
+300
+301
+300
+301
+298
+298
+300
+301
+298
+288
+290
+289
+291
+284
+286
+285
+287
+297
+297
+298
+298
+288
+290
+289
+291
+299
+299
+299
+284
+286
+285
+287
+297
+293
+293
+293
+298
+298
+300
+301
+300
+301
+300
+301
+298
+300
+301
+284
+285
+286
+287
+299
+299
+299
+288
+289
+290
+291
+292
+292
+293
+292
+293
+293
+293
+293
+296
+296
+296
+296
+296
+300
+301
+300
+301
+300
+301
+300
+301
+300
+301
+300
+301
+288
+289
+288
+289
+290
+291
+290
+291
+288
+289
+288
+289
+290
+291
+290
+291
+288
+289
+290
+291
+288
+289
+290
+291
+292
+293
+293
+293
+293
+294
+295
+294
+295
+294
+295
+296
+296
+300
+301
+300
+301
+300
+301
+300
+301
+296
+283
+283
+283
+283
+283
+283
+297
+297
+293
+297
+298
+298
+298
+298
+298
+298
+299
+299
+288
+289
+290
+291
+288
+289
+290
+291
+292
+293
+293
+296
+300
+301
+300
+301
+300
+301
+300
+301
+296
+296
+296
+302
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+311
+312
+313
+314
+313
+314
+315
+315
+316
+316
+317
+317
+318
+319
+318
+319
+318
+319
+318
+319
+320
+320
+302
+307
+309
+308
+310
+321
+321
+316
+322
+322
+323
+323
+324
+324
+303
+305
+304
+306
+324
+321
+321
+316
+316
+316
+316
+316
+316
+323
+323
+325
+326
+325
+326
+325
+326
+325
+326
+327
+327
+323
+325
+326
+325
+326
+327
+302
+324
+324
+324
+322
+316
+316
+327
+327
+302
+302
+324
+317
+316
+328
+328
+302
+302
+302
+302
+302
+302
+317
+316
+318
+319
+318
+319
+318
+319
+316
+316
+329
+329
+329
+302
+302
+311
+312
+313
+314
+330
+330
+316
+316
+318
+319
+318
+319
+318
+319
+331
+331
+332
+333
+332
+333
+334
+335
+334
+335
+336
+337
+336
+337
+338
+339
+338
+339
+332
+333
+334
+335
+336
+337
+338
+339
+340
+340
+325
+326
+325
+326
+325
+326
+341
+341
+325
+326
+341
+342
+343
+344
+345
+307
+309
+308
+310
+340
+341
+341
+324
+324
+324
+316
+316
+316
+325
+326
+325
+326
+325
+326
+325
+326
+324
+324
+324
+342
+344
+343
+345
+315
+316
+316
+316
+316
+316
+328
+328
+320
+320
+325
+326
+325
+326
+325
+326
+325
+326
+325
+326
+325
+326
+346
+347
+346
+347
+348
+349
+348
+349
+350
+351
+350
+351
+352
+353
+352
+353
+346
+347
+348
+349
+350
+351
+352
+353
+330
+316
+316
+316
+316
+318
+319
+318
+319
+318
+319
+331
+331
+325
+326
+325
+326
+325
+326
+325
+326
+320
+302
+302
+302
+302
+302
+302
+322
+316
+354
+354
+354
+324
+324
+330
+316
+316
+331
+325
+326
+325
+326
+325
+326
+325
+326
+328
+355
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+364
+365
+366
+367
+366
+367
+368
+368
+369
+370
+371
+371
+372
+373
+372
+374
+375
+373
+375
+374
+376
+376
+377
+360
+362
+361
+363
+378
+378
+370
+379
+379
+380
+380
+381
+382
+356
+358
+357
+359
+378
+378
+383
+383
+380
+380
+384
+385
+384
+386
+387
+385
+387
+386
+388
+388
+380
+385
+386
+388
+389
+390
+381
+382
+379
+391
+370
+388
+388
+377
+382
+371
+369
+392
+392
+393
+393
+393
+371
+369
+373
+375
+394
+394
+383
+395
+395
+395
+389
+389
+364
+365
+366
+367
+396
+396
+391
+397
+394
+397
+374
+375
+398
+398
+399
+400
+399
+400
+401
+402
+401
+402
+403
+404
+403
+404
+405
+406
+405
+406
+399
+400
+401
+402
+403
+404
+405
+406
+407
+407
+408
+385
+408
+409
+387
+409
+410
+410
+409
+410
+411
+412
+413
+414
+360
+362
+361
+363
+407
+410
+410
+390
+382
+391
+383
+415
+386
+415
+409
+387
+381
+411
+413
+412
+414
+368
+369
+369
+370
+370
+392
+392
+376
+376
+385
+408
+416
+385
+384
+416
+408
+384
+417
+418
+417
+418
+419
+420
+419
+420
+421
+422
+421
+422
+423
+424
+423
+424
+417
+418
+419
+420
+421
+422
+423
+424
+396
+391
+391
+397
+372
+374
+398
+398
+415
+415
+416
+384
+386
+415
+376
+389
+377
+389
+377
+355
+355
+379
+425
+425
+425
+390
+390
+396
+391
+369
+398
+415
+408
+409
+416
+392
+426
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+449
+451
+452
+450
+452
+451
+453
+454
+455
+456
+457
+458
+459
+460
+461
+446
+462
+463
+464
+465
+466
+467
+468
+468
+469
+470
+471
+470
+472
+473
+471
+473
+472
+474
+475
+471
+472
+476
+477
+466
+467
+478
+479
+446
+480
+455
+467
+481
+445
+482
+483
+484
+484
+484
+445
+450
+452
+485
+485
+468
+486
+487
+488
+476
+476
+489
+490
+479
+491
+485
+491
+451
+452
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+471
+511
+512
+473
+512
+513
+514
+512
+515
+516
+517
+518
+519
+520
+477
+467
+479
+468
+521
+472
+521
+512
+473
+466
+445
+445
+446
+446
+522
+523
+471
+511
+524
+471
+470
+524
+511
+470
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+479
+479
+491
+449
+451
+541
+521
+521
+524
+470
+472
+521
+476
+455
+476
+455
+426
+426
+542
+543
+544
+477
+477
+479
+445
+521
+511
+512
+524
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+-1

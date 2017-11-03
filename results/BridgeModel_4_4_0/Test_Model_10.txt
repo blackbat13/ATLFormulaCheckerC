@@ -1,0 +1,9 @@
+QueenClub QueenSpade KingSpade AceSpade JackSpade QueenHeart KingHeart AceHeart JackDiamond JackHeart KingClub AceClub JackClub QueenDiamond KingDiamond AceDiamond 
+QueenClub QueenSpade KingSpade AceSpade JackSpade QueenHeart KingHeart AceHeart JackDiamond JackHeart KingClub AceClub JackClub QueenDiamond KingDiamond AceDiamond 
+Generating beginning states... Done
+Generated 70 beginning states
+Generating rest of model... Done
+Generated model with 817052 states
+Preparing epistemic relation... Done
+Generated 21526 epistemic classes
+Clearing old data... Done

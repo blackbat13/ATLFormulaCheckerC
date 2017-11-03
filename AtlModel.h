@@ -84,7 +84,7 @@ public:
                                                std::vector<std::map<std::string, std::set<int> > > &customCanGoThere);
 
     std::set<int> basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> currentStates,
-                                                                       bool isWinningState[]);
+                                                                       std::vector<bool> &isWinningState);
 
     std::set<int> minimumFormulaOneAgentMultipleStatesDisjoint(int agentNumber, const std::set<int> &winningStates);
 

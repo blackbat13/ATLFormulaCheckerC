@@ -222,7 +222,7 @@ AtlModel::basicFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set<i
 
 std::set<int>
 AtlModel::basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> currentStates,
-                                                               bool *isWinningState) {
+                                                               std::vector<bool> &isWinningState) {
     std::set<int> resultStates;
     std::vector<std::string> actions = this->agentsActions[agentNumber];
     std::set<int> preImage;
@@ -320,10 +320,10 @@ AtlModel::minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber
     unsigned long resultStatesLength = resultStates.size();
     int numberOfIterations = 0;
     std::set<int> currentStates = winningStates;
-    bool isWinningState[this->numberOfStates];
-    for (int i = 0; i < this->numberOfStates; ++i) {
-        isWinningState[i] = false;
-    }
+    std::vector<bool> isWinningState = std::vector<bool>(this->numberOfStates, false);
+//    for (int i = 0; i < this->numberOfStates; ++i) {
+//        isWinningState[i] = false;
+//    }
 
     for (auto stateNumber: winningStates) {
         isWinningState[stateNumber] = true;

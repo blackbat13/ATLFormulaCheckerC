@@ -88,6 +88,9 @@ BridgeModelTestSuite::BridgeModelTestSuite(int numberOfTests, int noCardsAvailab
     this->perfectFormulaTrueCount = 0;
     this->imperfectFormulaTrueCount = 0;
     this->formulaResultEqualCount = 0;
+    this->formulaTimeSum = 0;
+    this->imperfectFormulaTimeSum = 0;
+    this->perfectFormulaTimeSum = 0;
     this->path = "../results/BridgeModel_" + std::to_string(this->noCardsAvailable) + "_" +
                  std::to_string(this->noEndCards) + "_" + std::to_string(this->abstractionLevel) + "/";
     std::string resultFilename = this->path + "Test_" + getCurrentDateTime() + "_" + OS + ".txt";
@@ -105,7 +108,7 @@ void BridgeModelTestSuite::startTests2() {
         if (!file.good()) {
             std::string modelFileName = this->path + "Test_Model_" + std::to_string(testNumber) + ".txt";
             clock_gettime(CLOCK_MONOTONIC, &start);
-            BridgeModel bridgeModel = BridgeModel(this->noCardsAvailable, this->noEndCards,
+            BridgeModel *bridgeModel = new BridgeModel(this->noCardsAvailable, this->noEndCards,
                                                   BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0,
                                                                      BOARD_TYPE(4, -1),
                                                                      0, 0, -1), modelFileName,
@@ -123,26 +126,28 @@ void BridgeModelTestSuite::startTests2() {
 
             std::ofstream fileOut;
             fileOut.open(filename);
-            bridgeModel.getModel().saveToFile(fileOut);
+            bridgeModel->getModel().saveToFile(fileOut);
             fileOut.close();
+            delete(bridgeModel);
             file.open(filename);
         }
 
         std::set<int> result;
 
-        AtlModel atlModel = AtlModel(1, 1);
-        atlModel.loadFromFile(file, false);
+        AtlModel *atlModel = new AtlModel(1, 1);
+        atlModel->loadFromFile(file, false);
         clock_gettime(CLOCK_MONOTONIC, &start);
-        result = atlModel.minimumFormulaOneAgentMultipleStatesPerfectInformation(0, atlModel.getWinningStates());
+        result = atlModel->minimumFormulaOneAgentMultipleStatesPerfectInformation(0, atlModel->getWinningStates());
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
         fprintf(resultFile, "Computed formula under perfect information in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
+        this->perfectFormulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
 
         bool isOk2 = true;
-        for (int i = 0; i < atlModel.getBeginningStatesCount(); ++i) {
+        for (int i = 0; i < atlModel->getBeginningStatesCount(); ++i) {
             if (result.find(i) == result.end()) {
                 isOk2 = false;
                 break;
@@ -156,26 +161,31 @@ void BridgeModelTestSuite::startTests2() {
             fprintf(resultFile, "Formula result (perfect information): false\n");
         }
 
-        atlModel = AtlModel(1, 1);
+        delete(atlModel);
+
+        atlModel = new AtlModel(1, 1);
         file.close();
         file.open(filename);
-        atlModel.loadFromFile(file, true);
+        atlModel->loadFromFile(file, true);
         clock_gettime(CLOCK_MONOTONIC, &start);
-        result = atlModel.minimumFormulaOneAgentMultipleStatesDisjoint(0, atlModel.getWinningStates());
+        result = atlModel->minimumFormulaOneAgentMultipleStatesDisjoint(0, atlModel->getWinningStates());
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
 
         fprintf(resultFile, "Computed formula under imperfect information in %fs\n", elapsed);
         this->formulaTimeSum += elapsed;
+        this->imperfectFormulaTimeSum += elapsed;
         this->totalTimeSum += elapsed;
         bool isOk = true;
-        for (int i = 0; i < atlModel.getBeginningStatesCount(); ++i) {
+        for (int i = 0; i < atlModel->getBeginningStatesCount(); ++i) {
             if (result.find(i) == result.end()) {
                 isOk = false;
                 break;
             }
         }
+
+        delete(atlModel);
 
         if (isOk) {
             fprintf(resultFile, "Formula result (imperfect information): true\n");
@@ -300,13 +310,15 @@ void BridgeModelTestSuite::saveStatistics() {
     fprintf(resultFile, "----------TEST STATISTICS----------\n");
     fprintf(resultFile, "Bridge Model (%d, %d)\n", this->noCardsAvailable, this->noEndCards);
     fprintf(resultFile, "Number of tests: %d\n", this->numberOfTests);
-    fprintf(resultFile, "Virtual memory: %f MB\n",
+    fprintf(resultFile, "Virtual memory: %.20f MB\n",
             ((double) this->virtualMemorySum / (double) this->numberOfTests) / 1024);
-    fprintf(resultFile, "Physical memory: %f MB\n",
+    fprintf(resultFile, "Physical memory: %.20f MB\n",
             ((double) this->physicalMemorySum / (double) this->numberOfTests) / 1024);
-    fprintf(resultFile, "Formula time: %fs\n", this->formulaTimeSum / (double) this->numberOfTests);
-    fprintf(resultFile, "Generation time: %fs\n", this->modelGenerationTimeSum / (double) this->numberOfTests);
-    fprintf(resultFile, "Total time: %fs\n", this->totalTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Perfect Formula time: %.20fs\n", this->perfectFormulaTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Imperfect Formula time: %.20fs\n", this->imperfectFormulaTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Total Formula time: %.20fs\n", this->formulaTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Generation time: %.20fs\n", this->modelGenerationTimeSum / (double) this->numberOfTests);
+    fprintf(resultFile, "Total time: %.20fs\n", this->totalTimeSum / (double) this->numberOfTests);
     fprintf(resultFile, "Imperfect formula true percentage: %.2f%%\n",
             100 * this->imperfectFormulaTrueCount / (double) this->numberOfTests);
     fprintf(resultFile, "Perfect formula true percentage: %.2f%%\n",

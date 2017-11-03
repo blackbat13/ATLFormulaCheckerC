@@ -1,0 +1,845 @@
+349
+434
+1
+6
+0 6 nineSpade
+0 7 nineSpade
+1 8 nineSpade
+1 9 nineSpade
+2 10 nineSpade
+2 11 nineSpade
+3 12 nineSpade
+3 13 nineSpade
+4 14 nineSpade
+4 15 nineSpade
+5 16 nineSpade
+5 17 nineSpade
+6 18 wait
+6 19 wait
+7 20 wait
+7 21 wait
+8 22 wait
+8 23 wait
+9 24 wait
+9 25 wait
+10 26 wait
+10 27 wait
+11 28 wait
+11 29 wait
+12 30 wait
+12 31 wait
+13 32 wait
+13 33 wait
+14 34 wait
+14 35 wait
+15 36 wait
+15 37 wait
+16 38 wait
+16 39 wait
+17 40 wait
+17 41 wait
+18 42 nineSpade
+19 43 nineSpade
+20 44 nineSpade
+21 45 nineSpade
+22 46 nineSpade
+23 47 nineSpade
+24 48 nineSpade
+25 49 nineSpade
+26 50 nineSpade
+27 51 nineSpade
+28 52 nineSpade
+29 53 nineSpade
+30 54 nineSpade
+31 55 nineSpade
+32 56 nineSpade
+33 57 nineSpade
+34 58 nineSpade
+35 59 nineSpade
+36 60 nineSpade
+37 61 nineSpade
+38 62 nineSpade
+39 63 nineSpade
+40 64 nineSpade
+41 65 nineSpade
+42 66 wait
+42 67 wait
+43 68 wait
+43 69 wait
+44 70 wait
+44 71 wait
+45 72 wait
+45 73 wait
+46 74 wait
+46 75 wait
+47 76 wait
+47 77 wait
+48 78 wait
+48 79 wait
+49 80 wait
+49 81 wait
+50 82 wait
+50 83 wait
+51 84 wait
+51 85 wait
+52 86 wait
+52 87 wait
+53 88 wait
+53 89 wait
+54 90 wait
+54 91 wait
+55 92 wait
+55 93 wait
+56 94 wait
+56 95 wait
+57 96 wait
+57 97 wait
+58 98 wait
+58 99 wait
+59 100 wait
+59 101 wait
+60 102 wait
+60 103 wait
+61 104 wait
+61 105 wait
+62 106 wait
+62 107 wait
+63 108 wait
+63 109 wait
+64 110 wait
+64 111 wait
+65 112 wait
+65 113 wait
+66 114 wait
+66 115 wait
+67 116 wait
+67 117 wait
+68 118 wait
+68 119 wait
+69 120 wait
+69 121 wait
+70 122 wait
+70 123 wait
+71 124 wait
+71 125 wait
+72 126 wait
+72 127 wait
+73 128 wait
+73 129 wait
+74 130 wait
+74 131 wait
+75 132 wait
+75 133 wait
+76 134 wait
+76 135 wait
+77 136 wait
+77 137 wait
+78 138 wait
+78 139 wait
+79 140 wait
+79 141 wait
+80 142 wait
+80 143 wait
+81 144 wait
+81 145 wait
+82 146 wait
+82 147 wait
+83 148 wait
+83 149 wait
+84 150 wait
+84 151 wait
+85 120 wait
+85 121 wait
+86 152 wait
+86 153 wait
+87 154 wait
+87 155 wait
+88 156 wait
+88 157 wait
+89 128 wait
+89 129 wait
+90 114 wait
+90 115 wait
+91 158 wait
+91 159 wait
+92 134 wait
+92 135 wait
+93 160 wait
+93 161 wait
+94 122 wait
+94 123 wait
+95 162 wait
+95 163 wait
+96 142 wait
+96 143 wait
+97 164 wait
+97 165 wait
+98 166 wait
+98 167 wait
+99 148 wait
+99 149 wait
+100 168 wait
+100 169 wait
+101 170 wait
+101 171 wait
+102 172 wait
+102 173 wait
+103 154 wait
+103 155 wait
+104 174 wait
+104 175 wait
+105 176 wait
+105 177 wait
+106 146 wait
+106 147 wait
+107 178 wait
+107 179 wait
+108 180 wait
+108 181 wait
+109 160 wait
+109 161 wait
+110 152 wait
+110 153 wait
+111 182 wait
+111 183 wait
+112 184 wait
+112 185 wait
+113 164 wait
+113 165 wait
+114 186 nineSpade
+115 187 nineHeart
+116 188 nineSpade
+117 189 nineHeart
+118 190 nineSpade
+119 191 nineHeart
+120 192 nineSpade
+121 193 nineHeart
+122 186 nineSpade
+123 194 nineHeart
+124 188 nineSpade
+125 195 nineHeart
+126 190 nineSpade
+127 196 nineHeart
+128 192 nineSpade
+129 197 nineHeart
+130 198 nineSpade
+131 199 nineHeart
+132 200 nineSpade
+133 201 nineHeart
+134 202 nineSpade
+135 203 nineHeart
+136 204 nineSpade
+137 205 nineHeart
+138 198 nineSpade
+139 206 nineHeart
+140 200 nineSpade
+141 207 nineHeart
+142 202 nineSpade
+143 208 nineHeart
+144 204 nineSpade
+145 209 nineHeart
+146 210 nineSpade
+147 211 nineHeart
+148 212 nineSpade
+149 213 nineHeart
+150 214 nineSpade
+151 215 nineHeart
+152 210 nineSpade
+153 216 nineHeart
+154 212 nineSpade
+155 217 nineHeart
+156 214 nineSpade
+157 218 nineHeart
+158 219 nineSpade
+159 220 nineHeart
+160 221 nineSpade
+161 222 nineHeart
+162 219 nineSpade
+163 223 nineHeart
+164 221 nineSpade
+165 224 nineHeart
+166 225 nineSpade
+167 226 nineHeart
+168 227 nineSpade
+169 228 nineHeart
+170 229 nineSpade
+171 230 nineHeart
+172 225 nineSpade
+173 231 nineHeart
+174 227 nineSpade
+175 232 nineHeart
+176 229 nineSpade
+177 233 nineHeart
+178 234 nineSpade
+179 235 nineHeart
+180 236 nineSpade
+181 237 nineHeart
+182 234 nineSpade
+183 238 nineHeart
+184 236 nineSpade
+185 239 nineHeart
+186 240 wait
+187 241 wait
+188 242 wait
+189 243 wait
+190 244 wait
+191 245 wait
+192 246 wait
+193 247 wait
+194 248 wait
+195 249 wait
+196 250 wait
+197 251 wait
+198 244 wait
+199 252 wait
+200 253 wait
+201 254 wait
+202 255 wait
+203 256 wait
+204 257 wait
+205 258 wait
+206 259 wait
+207 260 wait
+208 261 wait
+209 262 wait
+210 263 wait
+211 264 wait
+212 265 wait
+213 266 wait
+214 267 wait
+215 268 wait
+216 269 wait
+217 270 wait
+218 271 wait
+219 272 wait
+220 273 wait
+221 274 wait
+222 275 wait
+223 276 wait
+224 277 wait
+225 278 wait
+226 279 wait
+227 280 wait
+228 281 wait
+229 242 wait
+230 282 wait
+231 283 wait
+232 284 wait
+233 285 wait
+234 286 wait
+235 279 wait
+236 287 wait
+237 258 wait
+238 283 wait
+239 262 wait
+240 288 nineHeart
+241 289 nineSpade
+242 290 nineHeart
+243 291 nineSpade
+244 292 nineHeart
+245 293 nineSpade
+246 294 nineHeart
+247 295 nineSpade
+248 289 nineSpade
+249 291 nineSpade
+250 293 nineSpade
+251 295 nineSpade
+252 296 nineSpade
+253 297 nineHeart
+254 298 nineSpade
+255 299 nineHeart
+256 300 nineSpade
+257 301 nineHeart
+258 302 nineSpade
+259 296 nineSpade
+260 298 nineSpade
+261 300 nineSpade
+262 302 nineSpade
+263 303 nineHeart
+264 304 nineSpade
+265 305 nineHeart
+266 306 nineSpade
+267 307 nineHeart
+268 308 nineSpade
+269 304 nineSpade
+270 306 nineSpade
+271 308 nineSpade
+272 309 nineHeart
+273 310 nineSpade
+274 311 nineHeart
+275 312 nineSpade
+276 310 nineSpade
+277 312 nineSpade
+278 313 nineHeart
+279 314 nineSpade
+280 315 nineHeart
+281 316 nineSpade
+282 317 nineSpade
+283 314 nineSpade
+284 316 nineSpade
+285 317 nineSpade
+286 318 nineHeart
+287 319 nineHeart
+288 320 wait
+289 321 wait
+290 322 wait
+291 323 wait
+292 324 wait
+293 325 wait
+294 326 wait
+295 327 wait
+296 325 wait
+297 328 wait
+298 329 wait
+299 330 wait
+300 331 wait
+301 332 wait
+302 333 wait
+303 334 wait
+304 335 wait
+305 336 wait
+306 337 wait
+307 328 wait
+308 329 wait
+309 338 wait
+310 339 wait
+311 340 wait
+312 341 wait
+313 342 wait
+314 343 wait
+315 338 wait
+316 339 wait
+317 323 wait
+318 342 wait
+319 332 wait
+320 344 wait
+321 345 wait
+322 344 wait
+323 346 wait
+324 344 wait
+325 345 wait
+326 344 wait
+327 347 wait
+328 344 wait
+329 345 wait
+330 344 wait
+331 345 wait
+332 344 wait
+333 345 wait
+334 344 wait
+335 346 wait
+336 344 wait
+337 346 wait
+338 344 wait
+339 346 wait
+340 344 wait
+341 347 wait
+342 344 wait
+343 346 wait
+53
+wait
+AceSpade
+AceHeart
+AceDiamond
+AceClub
+KingSpade
+KingHeart
+KingDiamond
+KingClub
+QueenSpade
+QueenHeart
+QueenDiamond
+QueenClub
+JackSpade
+JackHeart
+JackDiamond
+JackClub
+tenSpade
+tenHeart
+tenDiamond
+tenClub
+nineSpade
+nineHeart
+nineDiamond
+nineClub
+eightSpade
+eightHeart
+eightDiamond
+eightClub
+sevenSpade
+sevenHeart
+sevenDiamond
+sevenClub
+sixSpade
+sixHeart
+sixDiamond
+sixClub
+fiveSpade
+fiveHeart
+fiveDiamond
+fiveClub
+fourSpade
+fourHeart
+fourDiamond
+fourClub
+threeSpade
+threeHeart
+threeDiamond
+threeClub
+twoSpade
+twoHeart
+twoDiamond
+twoClub
+2
+344
+347
+98
+0
+0
+0
+0
+0
+0
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+3
+4
+5
+6
+7
+3
+8
+5
+3
+9
+5
+10
+7
+4
+8
+6
+4
+9
+6
+10
+7
+9
+8
+10
+11
+12
+13
+14
+15
+11
+16
+13
+11
+17
+13
+18
+15
+12
+16
+14
+12
+17
+14
+18
+15
+17
+16
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+20
+30
+31
+32
+24
+19
+29
+33
+34
+23
+32
+35
+36
+37
+28
+38
+22
+39
+31
+40
+26
+21
+38
+33
+41
+25
+40
+35
+42
+37
+27
+41
+34
+39
+30
+42
+36
+43
+44
+43
+44
+43
+44
+43
+44
+45
+46
+45
+46
+45
+46
+45
+46
+43
+44
+43
+44
+43
+44
+43
+44
+45
+46
+45
+46
+45
+46
+45
+46
+43
+44
+43
+44
+43
+44
+45
+46
+45
+46
+45
+46
+43
+44
+43
+44
+45
+46
+45
+46
+43
+44
+43
+44
+43
+44
+45
+46
+45
+46
+45
+46
+43
+44
+43
+44
+45
+46
+45
+46
+47
+48
+47
+48
+47
+48
+47
+48
+49
+49
+49
+49
+47
+48
+47
+48
+47
+48
+47
+48
+49
+49
+49
+49
+47
+48
+47
+48
+47
+48
+49
+49
+49
+47
+48
+47
+48
+49
+49
+47
+48
+47
+48
+47
+48
+49
+49
+49
+47
+48
+47
+48
+49
+49
+50
+51
+50
+52
+53
+51
+53
+52
+54
+55
+54
+55
+51
+53
+56
+57
+51
+57
+56
+54
+58
+54
+58
+59
+56
+59
+52
+53
+56
+58
+55
+58
+50
+60
+57
+60
+61
+61
+59
+60
+50
+60
+52
+61
+61
+55
+59
+57
+62
+63
+62
+64
+65
+63
+65
+64
+63
+65
+66
+67
+63
+67
+66
+68
+66
+68
+64
+65
+66
+62
+69
+67
+69
+68
+69
+62
+69
+64
+68
+67
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+-1

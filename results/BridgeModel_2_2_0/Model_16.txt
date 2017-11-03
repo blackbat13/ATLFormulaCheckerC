@@ -1,0 +1,699 @@
+323
+359
+1
+6
+0 6 KingClub
+0 7 KingDiamond
+1 8 KingClub
+1 9 KingDiamond
+2 10 KingClub
+2 11 KingDiamond
+3 12 KingClub
+3 13 KingDiamond
+4 14 KingClub
+4 15 KingDiamond
+5 16 KingClub
+5 17 KingDiamond
+6 18 wait
+7 19 wait
+7 20 wait
+8 21 wait
+8 22 wait
+9 23 wait
+9 24 wait
+10 25 wait
+10 26 wait
+11 27 wait
+11 28 wait
+12 29 wait
+13 30 wait
+13 31 wait
+14 32 wait
+15 33 wait
+15 34 wait
+16 35 wait
+16 36 wait
+17 37 wait
+17 38 wait
+18 39 KingSpade
+18 40 AceDiamond
+19 41 AceDiamond
+20 42 AceDiamond
+21 43 KingSpade
+21 44 AceDiamond
+22 45 KingSpade
+22 46 AceDiamond
+23 47 AceDiamond
+24 48 AceDiamond
+25 49 KingSpade
+25 50 AceDiamond
+26 51 KingSpade
+26 52 AceDiamond
+27 53 AceDiamond
+28 54 AceDiamond
+29 55 KingSpade
+29 56 AceDiamond
+30 57 AceDiamond
+31 58 AceDiamond
+32 59 KingSpade
+32 60 AceDiamond
+33 61 AceDiamond
+34 62 AceDiamond
+35 63 KingSpade
+35 64 AceDiamond
+36 65 KingSpade
+36 66 AceDiamond
+37 67 AceDiamond
+38 68 AceDiamond
+39 69 wait
+39 70 wait
+40 71 wait
+40 72 wait
+41 73 wait
+41 74 wait
+42 75 wait
+42 76 wait
+43 77 wait
+44 78 wait
+45 79 wait
+46 80 wait
+47 81 wait
+47 82 wait
+48 83 wait
+48 84 wait
+49 85 wait
+50 86 wait
+51 87 wait
+52 88 wait
+53 89 wait
+53 90 wait
+54 91 wait
+54 92 wait
+55 93 wait
+55 94 wait
+56 95 wait
+56 96 wait
+57 97 wait
+57 98 wait
+58 99 wait
+58 100 wait
+59 101 wait
+59 102 wait
+60 103 wait
+60 104 wait
+61 105 wait
+61 106 wait
+62 107 wait
+62 108 wait
+63 109 wait
+64 110 wait
+65 111 wait
+66 112 wait
+67 113 wait
+67 114 wait
+68 115 wait
+68 116 wait
+69 117 wait
+70 118 wait
+71 119 wait
+72 120 wait
+73 121 wait
+74 122 wait
+75 123 wait
+76 124 wait
+77 125 wait
+78 126 wait
+79 127 wait
+80 128 wait
+81 129 wait
+82 130 wait
+83 123 wait
+84 131 wait
+85 132 wait
+86 133 wait
+87 134 wait
+88 135 wait
+89 136 wait
+90 137 wait
+91 138 wait
+92 131 wait
+93 139 wait
+94 140 wait
+95 141 wait
+96 142 wait
+97 129 wait
+98 143 wait
+99 144 wait
+100 145 wait
+101 146 wait
+102 147 wait
+103 148 wait
+104 149 wait
+105 136 wait
+106 150 wait
+107 151 wait
+108 145 wait
+109 152 wait
+110 153 wait
+111 154 wait
+112 155 wait
+113 156 wait
+114 150 wait
+115 157 wait
+116 158 wait
+117 159 wait
+118 160 wait
+119 161 wait
+120 162 wait
+121 163 KingSpade
+122 164 KingSpade
+123 165 KingSpade
+124 166 KingSpade
+125 167 wait
+126 168 wait
+127 169 wait
+128 170 wait
+129 171 KingSpade
+130 172 KingSpade
+131 173 KingSpade
+132 174 wait
+133 175 wait
+134 176 wait
+135 177 wait
+136 178 KingSpade
+137 179 KingSpade
+138 180 KingSpade
+139 181 wait
+140 182 wait
+141 183 wait
+142 184 wait
+143 185 KingSpade
+144 186 KingSpade
+145 187 KingSpade
+146 188 wait
+147 189 wait
+148 190 wait
+149 191 wait
+150 192 KingSpade
+151 193 KingSpade
+152 194 wait
+153 195 wait
+154 196 wait
+155 197 wait
+156 198 KingSpade
+157 199 KingSpade
+158 200 KingSpade
+159 201 AceDiamond
+160 202 AceDiamond
+161 203 KingSpade
+162 204 KingSpade
+163 205 wait
+164 206 wait
+165 207 wait
+166 208 wait
+167 209 KingDiamond
+168 210 KingDiamond
+169 211 KingDiamond
+170 212 KingDiamond
+171 213 wait
+172 214 wait
+173 215 wait
+174 216 KingDiamond
+175 217 KingDiamond
+176 218 KingDiamond
+177 219 KingDiamond
+178 220 wait
+179 221 wait
+180 208 wait
+181 222 AceDiamond
+182 223 AceDiamond
+183 224 KingSpade
+184 225 KingSpade
+185 226 wait
+186 227 wait
+187 228 wait
+188 229 AceDiamond
+189 230 AceDiamond
+190 231 KingSpade
+191 232 KingSpade
+192 233 wait
+193 234 wait
+194 235 KingDiamond
+195 236 KingDiamond
+196 237 KingDiamond
+197 238 KingDiamond
+198 221 wait
+199 239 wait
+200 240 wait
+201 241 wait
+202 242 wait
+203 243 wait
+204 244 wait
+205 245 KingClub
+206 246 KingClub
+207 247 KingClub
+208 248 KingClub
+209 249 wait
+210 250 wait
+211 251 wait
+212 252 wait
+213 253 KingClub
+214 254 KingClub
+215 255 KingClub
+216 256 wait
+217 257 wait
+218 258 wait
+219 259 wait
+220 260 KingClub
+221 261 KingClub
+222 262 wait
+223 263 wait
+224 264 wait
+225 265 wait
+226 266 KingClub
+227 267 KingClub
+228 268 KingClub
+229 269 wait
+230 270 wait
+231 271 wait
+232 272 wait
+233 273 KingClub
+234 274 KingClub
+235 275 wait
+236 276 wait
+237 277 wait
+238 278 wait
+239 279 KingClub
+240 280 KingClub
+241 281 KingDiamond
+242 282 KingDiamond
+243 283 KingDiamond
+244 284 KingDiamond
+245 285 wait
+246 286 wait
+247 287 wait
+248 288 wait
+249 289 AceDiamond
+250 290 KingSpade
+251 291 AceDiamond
+252 292 KingSpade
+253 293 wait
+254 294 wait
+255 295 wait
+256 296 AceDiamond
+257 297 KingSpade
+258 298 AceDiamond
+259 299 KingSpade
+260 300 wait
+261 301 wait
+262 302 KingDiamond
+263 303 KingDiamond
+264 304 KingDiamond
+265 305 KingDiamond
+266 306 wait
+267 285 wait
+268 307 wait
+269 308 KingDiamond
+270 309 KingDiamond
+271 310 KingDiamond
+272 311 KingDiamond
+273 312 wait
+274 286 wait
+275 313 AceDiamond
+276 314 KingSpade
+277 315 AceDiamond
+278 316 KingSpade
+279 294 wait
+280 306 wait
+281 317 wait
+282 318 wait
+283 317 wait
+284 318 wait
+285 319 wait
+286 320 wait
+287 319 wait
+288 320 wait
+289 318 wait
+290 318 wait
+291 318 wait
+292 318 wait
+293 319 wait
+294 320 wait
+295 320 wait
+296 318 wait
+297 318 wait
+298 318 wait
+299 318 wait
+300 321 wait
+301 321 wait
+302 317 wait
+303 317 wait
+304 317 wait
+305 317 wait
+306 320 wait
+307 320 wait
+308 317 wait
+309 317 wait
+310 317 wait
+311 317 wait
+312 321 wait
+313 318 wait
+314 318 wait
+315 317 wait
+316 317 wait
+9
+wait
+AceSpade
+AceHeart
+AceDiamond
+AceClub
+KingSpade
+KingHeart
+KingDiamond
+KingClub
+1
+320
+150
+0
+0
+0
+0
+0
+0
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+3
+4
+5
+6
+7
+4
+8
+6
+9
+4
+10
+3
+5
+8
+3
+5
+10
+7
+9
+8
+10
+11
+12
+13
+14
+15
+16
+17
+18
+13
+19
+15
+16
+20
+21
+13
+22
+11
+12
+14
+19
+11
+12
+14
+22
+17
+18
+20
+21
+19
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+28
+36
+37
+31
+32
+38
+39
+35
+27
+40
+41
+42
+24
+43
+26
+44
+30
+45
+37
+42
+23
+43
+25
+44
+29
+46
+41
+33
+34
+38
+39
+45
+36
+46
+40
+47
+47
+48
+48
+49
+49
+49
+49
+50
+51
+50
+51
+49
+49
+49
+50
+51
+50
+51
+49
+49
+49
+47
+47
+48
+48
+49
+49
+49
+47
+47
+48
+48
+49
+49
+50
+51
+50
+51
+49
+49
+49
+52
+52
+53
+53
+54
+54
+54
+54
+55
+56
+55
+56
+54
+54
+54
+57
+58
+57
+58
+54
+54
+54
+59
+59
+60
+60
+54
+54
+54
+61
+61
+62
+62
+54
+54
+63
+64
+63
+64
+54
+54
+54
+65
+65
+66
+66
+67
+68
+67
+68
+69
+70
+69
+70
+67
+71
+71
+72
+73
+72
+73
+68
+71
+74
+74
+75
+75
+76
+67
+76
+77
+77
+78
+78
+76
+68
+79
+80
+79
+80
+71
+76
+81
+82
+83
+84
+85
+86
+85
+86
+87
+88
+89
+90
+85
+91
+91
+92
+93
+94
+95
+86
+91
+96
+97
+98
+99
+100
+85
+100
+101
+102
+103
+104
+100
+86
+105
+106
+107
+108
+91
+100
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+-1
