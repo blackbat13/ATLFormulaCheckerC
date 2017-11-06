@@ -26,6 +26,8 @@ public:
         bool votesPublished;
         bool votingFinished;
         bool votingStarted;
+        short voteWait;
+        short defenseTimer;
         std::vector<short> falseCopTrackVot;
         std::vector<short> trackers;
         std::vector<short> envVoteDemanded;
@@ -101,6 +103,8 @@ private:
     short noBallots;
     short maxCoerced;
     int stateNumber;
+    short maxWaitingForVotes;
+    short maxWaitingForHelp;
     std::map<State, int> stateToNumber;
     std::map<CoercerEpistemicState, std::set<int> > coercerEpistemicClasses;
     std::vector<State> states;
@@ -112,7 +116,7 @@ private:
     void addEpistemicState(State state, int stateNumber);
 
 public:
-    SeleneModel(short noVoters, short noBallots, short maxCoerced);
+    SeleneModel(short noVoters, short noBallots, short maxCoerced, short maxWaitingForVotes, short maxWaitingForHelp);
     AtlModel &getModel();
 };
 
