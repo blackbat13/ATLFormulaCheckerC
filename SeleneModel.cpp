@@ -484,17 +484,17 @@ void SeleneModel::generateModel() {
         } else if (!state.votingFinished) {
             std::vector<std::pair<short, short> > coercerActions;
             coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
-            if (state.coercedVoters < state.maxCoerced) {
-                for (int i = 0; i < this->noVoters; ++i) {
-                    if (state.coercerVotesDemanded[i] != -1) {
-                        continue;
-                    }
-
-                    for (int j = 0; j < this->noBallots; ++j) {
-                        coercerActions.push_back(std::make_pair(i, j));
-                    }
-                }
-            }
+//            if (state.coercedVoters < state.maxCoerced) {
+//                for (int i = 0; i < this->noVoters; ++i) {
+//                    if (state.coercerVotesDemanded[i] != -1) {
+//                        continue;
+//                    }
+//
+//                    for (int j = 0; j < this->noBallots; ++j) {
+//                        coercerActions.push_back(std::make_pair(i, j));
+//                    }
+//                }
+//            }
 
             std::vector<std::pair<short, short> > defenseActions;
             defenseActions.push_back(std::make_pair(-1, -1)); // Wait action
@@ -613,17 +613,17 @@ void SeleneModel::generateModel() {
         } else {
             std::vector<std::pair<short, short> > coercerActions;
             coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
-            if (state.coercedVoters < state.maxCoerced) {
-                for (int i = 0; i < this->noVoters; ++i) {
-                    if (state.coercerVotesDemanded[i] != -1) {
-                        continue;
-                    }
-
-                    for (int j = 0; j < this->noBallots; ++j) {
-                        coercerActions.push_back(std::make_pair(i, j));
-                    }
-                }
-            }
+//            if (state.coercedVoters < state.maxCoerced) {
+//                for (int i = 0; i < this->noVoters; ++i) {
+//                    if (state.coercerVotesDemanded[i] != -1) {
+//                        continue;
+//                    }
+//
+//                    for (int j = 0; j < this->noBallots; ++j) {
+//                        coercerActions.push_back(std::make_pair(i, j));
+//                    }
+//                }
+//            }
 
             for (auto &coercerAction: coercerActions) {
                 State newState = state;
