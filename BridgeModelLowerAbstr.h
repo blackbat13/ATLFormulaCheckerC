@@ -111,6 +111,8 @@ private:
 
     void abstractState(State &state);
 
+    CARD_TYPE abstractCard(CARD_TYPE card);
+
 public:
     BridgeModelLowerAbstr(int noCardsAvailable, int noEndCards, State firstState, std::string outputFileName,
                           CARD_TYPE abstractionLevel = 0);

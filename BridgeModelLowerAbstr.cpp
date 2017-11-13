@@ -206,7 +206,7 @@ void BridgeModelLowerAbstr::generateRestOfModel() {
                 }
 
                 for (int i = 0; i < contentState.hands[contentState.next].size(); ++i) {
-                    int card = contentState.hands[contentState.next][i];
+                    CARD_TYPE card = contentState.hands[contentState.next][i];
                     if (card == -1) {
                         continue;
                     }
@@ -219,7 +219,7 @@ void BridgeModelLowerAbstr::generateRestOfModel() {
 
                     std::vector<std::string> actions(1, "wait");
                     if (agentNumber == 0) {
-                        actions[agentNumber] = this->cardsDictionary[card];
+                        actions[agentNumber] = this->cardsDictionary[this->abstractCard(card)];
                     }
 
                     int newStateNumber = this->addState(newState);
@@ -254,7 +254,7 @@ void BridgeModelLowerAbstr::generateRestOfModel() {
                 }
 
                 for (int i = 0; i < contentState.hands[contentState.next].size(); ++i) {
-                    int card = contentState.hands[contentState.next][i];
+                    CARD_TYPE card = contentState.hands[contentState.next][i];
                     if (!(!haveColor || card % 10 == color) || card == -1) {
                         continue;
                     }
@@ -267,7 +267,7 @@ void BridgeModelLowerAbstr::generateRestOfModel() {
 
                     std::vector<std::string> actions(1, "wait");
                     if (agentNumber == 0) {
-                        actions[agentNumber] = this->cardsDictionary[card];
+                        actions[agentNumber] = this->cardsDictionary[this->abstractCard(card)];
                     }
 
                     int newStateNumber = this->addState(newState);
@@ -570,6 +570,14 @@ void BridgeModelLowerAbstr::abstractState(BridgeModelLowerAbstr::State &state) {
                 state.hands[i][j] = (CARD_TYPE) (this->abstractionLevel + state.hands[i][j] % 10);
             }
         }
+    }
+}
+
+CARD_TYPE BridgeModelLowerAbstr::abstractCard(CARD_TYPE card) {
+    if (card < this->abstractionLevel) {
+        return (CARD_TYPE) (this->abstractionLevel + card % 10);
+    } else {
+        return card;
     }
 }
 
