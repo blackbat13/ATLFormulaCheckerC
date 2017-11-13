@@ -108,28 +108,57 @@ void BridgeModelTestSuite::startTests2() {
         if (!file.good()) {
             std::string modelFileName = this->path + "Test_Model_" + std::to_string(testNumber) + ".txt";
             clock_gettime(CLOCK_MONOTONIC, &start);
-            BridgeModel *bridgeModel = new BridgeModel(this->noCardsAvailable, this->noEndCards,
-                                                  BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0,
-                                                                     BOARD_TYPE(4, -1),
-                                                                     0, 0, -1), modelFileName,
-                                                  this->abstractionLevel);
-            clock_gettime(CLOCK_MONOTONIC, &finish);
-            elapsed = (finish.tv_sec - start.tv_sec);
-            elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
-            fprintf(resultFile, "Generated model in %fs\n", elapsed);
-            this->modelGenerationTimeSum += elapsed;
-            this->totalTimeSum += elapsed;
-            this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
-            this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
-            fprintf(resultFile, "Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
-            fprintf(resultFile, "Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
+            if (this->abstractionLevel != 0) {
+                BridgeModelLowerAbstr *bridgeModelLowerAbstr = new BridgeModelLowerAbstr(this->noCardsAvailable,
+                                                                                         this->noEndCards,
+                                                                                         BridgeModelLowerAbstr::State(
+                                                                                                 HANDS_TYPE(),
+                                                                                                 LEFTS_TYPE(2, 0), 0,
+                                                                                                 BOARD_TYPE(4, -1),
+                                                                                                 0, 0, -1),
+                                                                                         modelFileName,
+                                                                                         this->abstractionLevel);
+                clock_gettime(CLOCK_MONOTONIC, &finish);
+                elapsed = (finish.tv_sec - start.tv_sec);
+                elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+                fprintf(resultFile, "Generated model in %fs\n", elapsed);
+                this->modelGenerationTimeSum += elapsed;
+                this->totalTimeSum += elapsed;
+                this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
+                this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
+                fprintf(resultFile, "Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
+                fprintf(resultFile, "Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
 
-            std::ofstream fileOut;
-            fileOut.open(filename);
-            bridgeModel->getModel().saveToFile(fileOut);
-            fileOut.close();
-            delete(bridgeModel);
-            file.open(filename);
+                std::ofstream fileOut;
+                fileOut.open(filename);
+                bridgeModelLowerAbstr->getModel().saveToFile(fileOut);
+                fileOut.close();
+                delete (bridgeModelLowerAbstr);
+                file.open(filename);
+            } else {
+                BridgeModel *bridgeModel = new BridgeModel(this->noCardsAvailable, this->noEndCards,
+                                                           BridgeModel::State(HANDS_TYPE(), LEFTS_TYPE(2, 0), 0,
+                                                                              BOARD_TYPE(4, -1),
+                                                                              0, 0, -1), modelFileName,
+                                                           this->abstractionLevel);
+                clock_gettime(CLOCK_MONOTONIC, &finish);
+                elapsed = (finish.tv_sec - start.tv_sec);
+                elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
+                fprintf(resultFile, "Generated model in %fs\n", elapsed);
+                this->modelGenerationTimeSum += elapsed;
+                this->totalTimeSum += elapsed;
+                this->physicalMemorySum += GET_PHYSICAL_MEMORY_FUNCTION();
+                this->virtualMemorySum += GET_VIRTUAL_MEMORY_FUNCTION();
+                fprintf(resultFile, "Current Virtual Memory used: %f MB\n", GET_VIRTUAL_MEMORY_FUNCTION() / 1024);
+                fprintf(resultFile, "Current Physical Memory used: %f MB\n", GET_PHYSICAL_MEMORY_FUNCTION() / 1024);
+
+                std::ofstream fileOut;
+                fileOut.open(filename);
+                bridgeModel->getModel().saveToFile(fileOut);
+                fileOut.close();
+                delete (bridgeModel);
+                file.open(filename);
+            }
         }
 
         std::set<int> result;
