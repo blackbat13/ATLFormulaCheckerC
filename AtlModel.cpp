@@ -57,7 +57,7 @@ void AtlModel::addTransition(int from, int to, std::vector<std::string> actions)
 
     this->transitions[from].insert(transition);
     this->preStates[to].insert(from);
-    this->numberOfTransitions++;
+//    this->numberOfTransitions++;
 }
 
 void AtlModel::addEpistemicClass(int agentNumber, std::set<int> epistemicClass) {
@@ -358,6 +358,11 @@ void AtlModel::saveToFile(std::ofstream &file) {
     // Number of states
     file << this->numberOfStates << std::endl;
     // Number of transitions
+    this->numberOfTransitions = 0;
+    for (int i = 0; i < this->transitions.size(); ++i) {
+        this->numberOfTransitions += this->transitions[i].size();
+    }
+
     file << this->numberOfTransitions << std::endl;
     file << this->numberOfAgents << std::endl;
     file << this->beginningStatesCount << std::endl;
