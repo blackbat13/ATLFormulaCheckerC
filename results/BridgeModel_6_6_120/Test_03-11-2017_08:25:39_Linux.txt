@@ -1,0 +1,24 @@
+----------TEST NUMBER 1----------
+Computed formula under perfect information in 9.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 11.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 1----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (6, 6)
+Number of tests: 1
+Virtual memory: 0.00000000000000000000 MB
+Physical memory: 0.00000000000000000000 MB
+Perfect Formula time: 9.00000000900000074466s
+Imperfect Formula time: 11.00000001099999913379s
+Total Formula time: 20.00000002000000165481s
+Generation time: 0.00000000000000000000s
+Total time: 20.00000002000000165481s
+Imperfect formula true percentage: 100.00%
+Perfect formula true percentage: 100.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+

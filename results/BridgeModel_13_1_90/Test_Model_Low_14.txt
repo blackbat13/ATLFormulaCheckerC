@@ -1,0 +1,9 @@
+tenHeart KingHeart threeHeart JackClub 
+tenHeart KingHeart nineHeart JackClub 
+Generating beginning states... Done
+Generated 2 beginning states
+Generating rest of model... Done
+Generated model with 12 states
+Preparing epistemic relation... Done
+Generated 10 epistemic classes
+Clearing old data... Done

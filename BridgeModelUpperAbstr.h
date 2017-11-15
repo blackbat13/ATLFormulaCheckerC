@@ -57,7 +57,7 @@ private:
     int noCardsAvailable;
     int noEndCards;
     std::vector<CARD_TYPE> cardsAvailable;
-    int stateNumber = 0;
+    int stateNumber = 1;
     State firstState;
     unsigned long beginningStatesCount;
     std::queue<State> states;
@@ -69,7 +69,6 @@ private:
     std::map<State, std::set<State> > abstractStateContent;
     CARD_TYPE abstractionLevel;
     std::ofstream outputFile;
-
     void createAtlModel();
 
     void generateAvailableCards();

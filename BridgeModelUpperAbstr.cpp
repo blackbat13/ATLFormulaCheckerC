@@ -80,7 +80,7 @@ BridgeModelUpperAbstr::BridgeModelUpperAbstr(int noCardsAvailable, int noEndCard
 
                                                                                                        abstractionLevel(
                                                                                                                abstractionLevel) {
-//    this->winningStates.insert(0);
+    this->winningStates.insert(0);
 
 
     this->outputFile.open(outputFileName);
@@ -103,9 +103,9 @@ BridgeModelUpperAbstr::BridgeModelUpperAbstr(int noCardsAvailable, int noEndCard
     this->createAtlModel();
     this->model.addAction(0, "wait");
 
-//    std::set<int> newEpistemicClass;
-//    newEpistemicClass.insert(0);
-//    this->model.imperfectInformation[0].push_back(newEpistemicClass);
+    std::set<int> newEpistemicClass;
+    newEpistemicClass.insert(0);
+    this->model.imperfectInformation[0].push_back(newEpistemicClass);
 
     this->generateAvailableCards();
     this->outputFile << "Generating beginning states... ";
@@ -201,7 +201,7 @@ void BridgeModelUpperAbstr::generateBeginningStates() {
 }
 
 void BridgeModelUpperAbstr::generateRestOfModel() {
-    int currentStateNumber = -1;
+    int currentStateNumber = 0;
     while (!this->states.empty()) {
         State state = this->states.front();
         this->states.pop();
@@ -298,8 +298,8 @@ void BridgeModelUpperAbstr::generateRestOfModel() {
                 this->model.addTransition(currentStateNumber, newStateNumber, actions);
             } else {
                 // Transition to recycle bin winning state
-//                std::vector<std::string> actions(1, "wait");
-//                this->model.addTransition(currentStateNumber, 0, actions);
+                std::vector<std::string> actions(1, "wait");
+                this->model.addTransition(currentStateNumber, 0, actions);
             }
         }
 

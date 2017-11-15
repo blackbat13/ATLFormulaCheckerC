@@ -157,7 +157,7 @@ void BridgeModelAbstrTestSuite::startTests() {
         this->totalTimeSum += elapsed;
 
         bool isOk2 = true;
-        for (int i = 0; i < atlModel->getBeginningStatesCount(); ++i) {
+        for (int i = 1; i <= atlModel->getBeginningStatesCount(); ++i) {
             if (result.find(i) == result.end()) {
                 isOk2 = false;
                 break;

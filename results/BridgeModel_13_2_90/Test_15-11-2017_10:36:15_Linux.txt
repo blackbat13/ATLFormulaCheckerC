@@ -1,0 +1,296 @@
+----------TEST NUMBER 1----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.199219 MB
+Current Physical Memory used: 4.273438 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.609375 MB
+Current Physical Memory used: 4.675781 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.609375 MB
+Current Physical Memory used: 4.675781 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.867188 MB
+Current Physical Memory used: 4.933594 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.125000 MB
+Current Physical Memory used: 5.191406 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 16.066406 MB
+Current Physical Memory used: 6.265625 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.683594 MB
+Current Physical Memory used: 6.015625 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.808594 MB
+Current Physical Memory used: 6.007812 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.808594 MB
+Current Physical Memory used: 6.007812 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.421875 MB
+Current Physical Memory used: 5.750000 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 5----------
+
+
+----------TEST NUMBER 6----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.421875 MB
+Current Physical Memory used: 5.750000 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 16.582031 MB
+Current Physical Memory used: 6.781250 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 6----------
+
+
+----------TEST NUMBER 7----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.164062 MB
+Current Physical Memory used: 5.234375 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 16.066406 MB
+Current Physical Memory used: 6.265625 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 7----------
+
+
+----------TEST NUMBER 8----------
+Generated model in 0.000000s
+Current Virtual Memory used: 16.066406 MB
+Current Physical Memory used: 6.265625 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 8----------
+
+
+----------TEST NUMBER 9----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.906250 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 15.679688 MB
+Current Physical Memory used: 5.750000 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 9----------
+
+
+----------TEST NUMBER 10----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.679688 MB
+Current Physical Memory used: 5.750000 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.421875 MB
+Current Physical Memory used: 5.492188 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 10----------
+
+
+----------TEST NUMBER 11----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.906250 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.679688 MB
+Current Physical Memory used: 5.750000 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 11----------
+
+
+----------TEST NUMBER 12----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 12----------
+
+
+----------TEST NUMBER 13----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.292969 MB
+Current Physical Memory used: 5.492188 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 13----------
+
+
+----------TEST NUMBER 14----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.292969 MB
+Current Physical Memory used: 5.492188 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 14----------
+
+
+----------TEST NUMBER 15----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 15----------
+
+
+----------TEST NUMBER 16----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.292969 MB
+Current Physical Memory used: 5.492188 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 16----------
+
+
+----------TEST NUMBER 17----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.292969 MB
+Current Physical Memory used: 5.492188 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 17----------
+
+
+----------TEST NUMBER 18----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.292969 MB
+Current Physical Memory used: 5.492188 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): false
+Generated model in 0.000000s
+Current Virtual Memory used: 15.808594 MB
+Current Physical Memory used: 6.007812 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 18----------
+
+
+----------TEST NUMBER 19----------
+Generated model in 0.000000s
+Current Virtual Memory used: 15.808594 MB
+Current Physical Memory used: 6.007812 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 19----------
+
+
+----------TEST NUMBER 20----------
+Generated model in 0.000000s
+Current Virtual Memory used: 14.648438 MB
+Current Physical Memory used: 4.980469 MB
+Computed upper abstraction formula in 0.000000s
+Formula result (upper abstraction): true
+Generated model in 0.000000s
+Current Virtual Memory used: 14.777344 MB
+Current Physical Memory used: 4.980469 MB
+Computed lower abstraction formula in 0.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 20----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (13, 2)
+Number of tests: 20
+Virtual memory: 30.38828124999999857891 MB
+Physical memory: 10.80195312500000071054 MB
+Upper Abstraction Formula time: 0.00000000000000000000s
+Lower Abstraction Formula time: 0.00000000000000000000s
+Total Formula time: 0.00000000000000000000s
+Generation time: 0.00000000000000000000s
+Total time: 0.00000000000000000000s
+Imperfect formula true percentage: 30.00%
+Perfect formula true percentage: 40.00%
+Formula equality percentage: 90.00%
+----------TEST STATISTICS----------
+
+
