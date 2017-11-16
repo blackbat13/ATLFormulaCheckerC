@@ -1,0 +1,506 @@
+----------TEST NUMBER 1----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 5----------
+
+
+----------TEST NUMBER 6----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 6----------
+
+
+----------TEST NUMBER 7----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 7----------
+
+
+----------TEST NUMBER 8----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 8----------
+
+
+----------TEST NUMBER 9----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 9----------
+
+
+----------TEST NUMBER 10----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 10----------
+
+
+----------TEST NUMBER 11----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 11----------
+
+
+----------TEST NUMBER 12----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 12----------
+
+
+----------TEST NUMBER 13----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 13----------
+
+
+----------TEST NUMBER 14----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 14----------
+
+
+----------TEST NUMBER 15----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 15----------
+
+
+----------TEST NUMBER 16----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 16----------
+
+
+----------TEST NUMBER 17----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 17----------
+
+
+----------TEST NUMBER 18----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 18----------
+
+
+----------TEST NUMBER 19----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 19----------
+
+
+----------TEST NUMBER 20----------
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 20----------
+
+
+----------TEST NUMBER 21----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.261719 MB
+Current Physical Memory used: 16.734375 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 21----------
+
+
+----------TEST NUMBER 22----------
+Generated model in 0.000000s
+Current Virtual Memory used: 23.625000 MB
+Current Physical Memory used: 13.390625 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 22----------
+
+
+----------TEST NUMBER 23----------
+Generated model in 0.000000s
+Current Virtual Memory used: 25.406250 MB
+Current Physical Memory used: 15.195312 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 23----------
+
+
+----------TEST NUMBER 24----------
+Generated model in 0.000000s
+Current Virtual Memory used: 23.718750 MB
+Current Physical Memory used: 13.132812 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 24----------
+
+
+----------TEST NUMBER 25----------
+Generated model in 0.000000s
+Current Virtual Memory used: 24.335938 MB
+Current Physical Memory used: 14.289062 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 25----------
+
+
+----------TEST NUMBER 26----------
+Generated model in 1.000000s
+Current Virtual Memory used: 23.812500 MB
+Current Physical Memory used: 13.359375 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 26----------
+
+
+----------TEST NUMBER 27----------
+Generated model in 0.000000s
+Current Virtual Memory used: 25.550781 MB
+Current Physical Memory used: 15.453125 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 27----------
+
+
+----------TEST NUMBER 28----------
+Generated model in 0.000000s
+Current Virtual Memory used: 17.945312 MB
+Current Physical Memory used: 7.781250 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 28----------
+
+
+----------TEST NUMBER 29----------
+Generated model in 0.000000s
+Current Virtual Memory used: 29.410156 MB
+Current Physical Memory used: 17.835938 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 29----------
+
+
+----------TEST NUMBER 30----------
+Generated model in 0.000000s
+Current Virtual Memory used: 31.140625 MB
+Current Physical Memory used: 21.125000 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 30----------
+
+
+----------TEST NUMBER 31----------
+Generated model in 0.000000s
+Current Virtual Memory used: 32.304688 MB
+Current Physical Memory used: 22.156250 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 31----------
+
+
+----------TEST NUMBER 32----------
+Generated model in 1.000000s
+Current Virtual Memory used: 21.035156 MB
+Current Physical Memory used: 10.296875 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 32----------
+
+
+----------TEST NUMBER 33----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.074219 MB
+Current Physical Memory used: 16.742188 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 33----------
+
+
+----------TEST NUMBER 34----------
+Generated model in 0.000000s
+Current Virtual Memory used: 29.351562 MB
+Current Physical Memory used: 19.320312 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 34----------
+
+
+----------TEST NUMBER 35----------
+Generated model in 0.000000s
+Current Virtual Memory used: 30.484375 MB
+Current Physical Memory used: 19.835938 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 35----------
+
+
+----------TEST NUMBER 36----------
+Generated model in 0.000000s
+Current Virtual Memory used: 27.957031 MB
+Current Physical Memory used: 17.898438 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 36----------
+
+
+----------TEST NUMBER 37----------
+Generated model in 1.000000s
+Current Virtual Memory used: 26.292969 MB
+Current Physical Memory used: 16.210938 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 37----------
+
+
+----------TEST NUMBER 38----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.933594 MB
+Current Physical Memory used: 18.804688 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 38----------
+
+
+----------TEST NUMBER 39----------
+Generated model in 0.000000s
+Current Virtual Memory used: 26.339844 MB
+Current Physical Memory used: 15.968750 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 39----------
+
+
+----------TEST NUMBER 40----------
+Generated model in 0.000000s
+Current Virtual Memory used: 23.312500 MB
+Current Physical Memory used: 12.617188 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 40----------
+
+
+----------TEST NUMBER 41----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.914062 MB
+Current Physical Memory used: 18.546875 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 41----------
+
+
+----------TEST NUMBER 42----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.316406 MB
+Current Physical Memory used: 16.843750 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 42----------
+
+
+----------TEST NUMBER 43----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.226562 MB
+Current Physical Memory used: 18.289062 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 43----------
+
+
+----------TEST NUMBER 44----------
+Generated model in 0.000000s
+Current Virtual Memory used: 32.734375 MB
+Current Physical Memory used: 21.640625 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 44----------
+
+
+----------TEST NUMBER 45----------
+Generated model in 0.000000s
+Current Virtual Memory used: 35.785156 MB
+Current Physical Memory used: 25.765625 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 45----------
+
+
+----------TEST NUMBER 46----------
+Generated model in 0.000000s
+Current Virtual Memory used: 20.558594 MB
+Current Physical Memory used: 10.628906 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 46----------
+
+
+----------TEST NUMBER 47----------
+Generated model in 0.000000s
+Current Virtual Memory used: 26.355469 MB
+Current Physical Memory used: 16.226562 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 47----------
+
+
+----------TEST NUMBER 48----------
+Generated model in 0.000000s
+Current Virtual Memory used: 23.546875 MB
+Current Physical Memory used: 13.031250 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 48----------
+
+
+----------TEST NUMBER 49----------
+Generated model in 0.000000s
+Current Virtual Memory used: 24.773438 MB
+Current Physical Memory used: 14.417969 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 49----------
+
+
+----------TEST NUMBER 50----------
+Generated model in 0.000000s
+Current Virtual Memory used: 28.980469 MB
+Current Physical Memory used: 17.515625 MB
+Computed formula under perfect information in 0.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 0.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 50----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (3, 3)
+Number of tests: 50
+Virtual memory: 16.10968749999999971578 MB
+Physical memory: 9.82109374999999928946 MB
+Perfect Formula time: 0.00000000000000000000s
+Imperfect Formula time: 0.00000000000000000000s
+Total Formula time: 0.00000000000000000000s
+Generation time: 0.06000000006000000274s
+Total time: 0.06000000006000000274s
+Imperfect formula true percentage: 62.00%
+Perfect formula true percentage: 62.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+

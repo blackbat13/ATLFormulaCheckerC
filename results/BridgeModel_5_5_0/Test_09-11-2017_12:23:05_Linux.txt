@@ -1,0 +1,48 @@
+----------TEST NUMBER 1----------
+Computed formula under perfect information in 8.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 11.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+Computed formula under perfect information in 2.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 4.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+Computed formula under perfect information in 5.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 7.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+Computed formula under perfect information in 9.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 12.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 4----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (5, 5)
+Number of tests: 4
+Virtual memory: 0.00000000000000000000 MB
+Physical memory: 0.00000000000000000000 MB
+Perfect Formula time: 6.00000000600000049644s
+Imperfect Formula time: 8.50000000849999892694s
+Total Formula time: 14.50000001449999942338s
+Generation time: 0.00000000000000000000s
+Total time: 14.50000001449999942338s
+Imperfect formula true percentage: 50.00%
+Perfect formula true percentage: 50.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+

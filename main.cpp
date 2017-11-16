@@ -16,19 +16,19 @@
 using namespace std;
 
 int main() {
-    int noCardsAvailable = 13;
+    int noCardsAvailable = 5;
     int noEndCards = 5;
     int numberOfTests = 20;
 
-//    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 90);
-//    testSuite.startTests2();
-//    testSuite.printStatistics();
-//    testSuite.saveStatistics();
-
-    BridgeModelAbstrTestSuite testSuite = BridgeModelAbstrTestSuite(numberOfTests, noCardsAvailable, noEndCards, 90);
-    testSuite.startTests();
+    BridgeModelTestSuite testSuite = BridgeModelTestSuite(numberOfTests, noCardsAvailable, noEndCards, 0);
+    testSuite.startTests2();
     testSuite.printStatistics();
     testSuite.saveStatistics();
+
+   // BridgeModelAbstrTestSuite testSuite = BridgeModelAbstrTestSuite(numberOfTests, noCardsAvailable, noEndCards, 90);
+   // testSuite.startTests();
+   // testSuite.printStatistics();
+   // testSuite.saveStatistics();
 
 //    SeleneModel seleneModel = SeleneModel(2, 2, 2);
 

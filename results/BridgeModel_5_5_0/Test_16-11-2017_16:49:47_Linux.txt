@@ -1,0 +1,33 @@
+----------TEST NUMBER 1----------
+Computed formula under perfect information in 7.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 10.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+Computed formula under perfect information in 2.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 4.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+Computed formula under perfect information in 5.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 7.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 3----------
+
+
+----------TEST NUMBER 4----------
+Computed formula under perfect information in 9.000000s
+Formula result (perfect information): true
+Computed formula under imperfect information in 12.000000s
+Formula result (imperfect information): true
+----------TEST NUMBER 4----------
+
+
+----------TEST NUMBER 5----------

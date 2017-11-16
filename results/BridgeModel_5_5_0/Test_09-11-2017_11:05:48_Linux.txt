@@ -1,0 +1,27 @@
+----------TEST NUMBER 1----------
+Generated model in 455.000000s
+Current Virtual Memory used: 13764.742188 MB
+Current Physical Memory used: 12778.535156 MB
+Computed formula under perfect information in 8.000000s
+Formula result (perfect information): false
+Computed formula under imperfect information in 11.000000s
+Formula result (imperfect information: false
+----------TEST NUMBER 1----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (5, 5)
+Number of tests: 1
+Virtual memory: 13764.74218750000000000000 MB
+Physical memory: 12778.53515625000000000000 MB
+Perfect Formula time: 8.00000000800000066192s
+Imperfect Formula time: 11.00000001099999913379s
+Total Formula time: 19.00000001899999801935s
+Generation time: 455.00000045500001988330s
+Total time: 474.00000047399998948094s
+Imperfect formula true percentage: 0.00%
+Perfect formula true percentage: 0.00%
+Formula equality percentage: 100.00%
+----------TEST STATISTICS----------
+
+

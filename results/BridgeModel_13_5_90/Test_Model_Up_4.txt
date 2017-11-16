@@ -1,0 +1,5 @@
+threeHeart fiveClub sevenClub JackDiamond KingDiamond fourDiamond eightClub eightDiamond tenDiamond QueenSpade threeClub sevenHeart eightHeart JackHeart JackSpade twoSpade fourClub sixSpade sevenDiamond QueenDiamond 
+threeHeart fiveClub sevenClub JackDiamond KingDiamond fourDiamond eightClub eightDiamond tenDiamond QueenSpade threeClub sevenHeart eightHeart JackHeart JackSpade twoSpade fourClub sixSpade sevenDiamond QueenDiamond 
+nineHeart nineClub nineClub JackDiamond KingDiamond nineDiamond nineClub nineDiamond tenDiamond QueenSpade nineClub nineHeart nineHeart JackHeart JackSpade nineSpade nineClub nineSpade nineDiamond QueenDiamond 
+Generating beginning states... Done
+Generated 252 beginning states
