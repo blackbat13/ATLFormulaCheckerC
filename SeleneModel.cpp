@@ -1031,6 +1031,12 @@ void SeleneModel::finishEpistemicRelation() {
     // Clear Transitions
 }
 
+void SeleneModel::clear() {
+    this->states.clear();
+    this->stateToNumber.clear();
+    this->coercerEpistemicClasses.clear();
+}
+
 bool SeleneModel::CoercerEpistemicState::operator<(const SeleneModel::CoercerEpistemicState &rhs) const {
     if (votesPublished < rhs.votesPublished)
         return true;

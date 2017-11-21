@@ -131,6 +131,7 @@ public:
     SeleneModel(short noVoters, short noBallots, short maxCoerced, short maxWaitingForVotes, short maxWaitingForHelp);
 
     void simulate();
+    void clear();
     AtlModel &getModel();
 
     std::vector<State> states;

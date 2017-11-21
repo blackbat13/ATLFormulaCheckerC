@@ -1,0 +1,18 @@
+Generated model in 1 s
+Number of states: 23405
+Formula 1 perfect time: 1 s
+Formula 1 perfect result: true
+Formula 2 perfect time: 1 s
+Formula 2 perfect result: true
+Formula 3 perfect time: 0 s
+Formula 3 perfect result: true
+Formula 4 perfect time: 1 s
+Formula 4 perfect result: true
+Formula 1 imperfect time: 0 s
+Formula 1 imperfect result: true
+Formula 2 imperfect time: 0 s
+Formula 2 imperfect result: true
+Formula 3 imperfect time: 0 s
+Formula 3 imperfect result: true
+Formula 4 imperfect time: 0 s
+Formula 4 imperfect result: true

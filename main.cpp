@@ -63,38 +63,47 @@ int main() {
 
     vector<vector<short> > testsSpec;
     vector<short> test;
-    test.push_back(2);
-    test.push_back(3);
-    test.push_back(4);
-    testsSpec.push_back(test);
-    test.clear();
     test.push_back(1);
     test.push_back(2);
     test.push_back(3);
+    test.push_back(4);
+    test.push_back(5);
+    test.push_back(6);
     testsSpec.push_back(test);
     test.clear();
+
+    test.push_back(1);
+    test.push_back(2);
+    test.push_back(3);
+    test.push_back(4);
+    test.push_back(5);
+    test.push_back(6);
+    testsSpec.push_back(test);
+    test.clear();
+
     test.push_back(1);
     test.push_back(2);
     test.push_back(3);
     test.push_back(4); //if
     testsSpec.push_back(test);
     test.clear();
-    test.push_back(1);
+
+    //test.push_back(1);
     test.push_back(2);
     test.push_back(3);
-    test.push_back(4);
-    test.push_back(5);
-    test.push_back(6);
     testsSpec.push_back(test);
     test.clear();
-    test.push_back(1);
-    test.push_back(2);
+
+
+//    test.push_back(2);
     test.push_back(3);
     test.push_back(4);
-    test.push_back(5);
-    test.push_back(6);
     testsSpec.push_back(test);
     test.clear();
+
+
+
+
 
     auto possibilities = cartessianProduct(testsSpec);
     for (auto possibility : possibilities) {
@@ -102,11 +111,11 @@ int main() {
 
         struct timespec start, finish;
         double elapsed;
-        short noVoters = possibility[0];
-        short noBallots = possibility[1];
+        short noVoters = possibility[4];
+        short noBallots = possibility[3];
         short maxCoerced = possibility[2];
-        short maxWaitingForVotes = possibility[3];
-        short maxWaitingForHelp = possibility[4];
+        short maxWaitingForVotes = possibility[1];
+        short maxWaitingForHelp = possibility[0];
 
         if (maxCoerced > noVoters) {
             continue;
@@ -126,6 +135,8 @@ int main() {
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;
         resultFile << "Generated model in " << elapsed << " s" << endl;
         resultFile << "Number of states: " << seleneModel.states.size() << endl;
+
+        seleneModel.clear();
 
         clock_gettime(CLOCK_MONOTONIC, &start);
         auto result = seleneModel.getModel().minimumFormulaOneAgentMultipleStatesPerfectInformation(0,
