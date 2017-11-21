@@ -46,7 +46,12 @@ void AtlModel::addAction(int agentNumber, std::string action) {
 }
 
 void AtlModel::addTransition(int from, int to, std::vector<std::string> actions) {
+//    if(from == to) {
+//        printf("!!!!: %d\n", from);
+//    }
+
     Transition transition = Transition(to, actions);
+//    printf("%s\n", actions[0].c_str());
     while (from >= this->transitions.size()) {
         this->transitions.resize(this->transitions.size() + 1000);
     }
@@ -61,6 +66,18 @@ void AtlModel::addTransition(int from, int to, std::vector<std::string> actions)
 }
 
 void AtlModel::addEpistemicClass(int agentNumber, std::set<int> epistemicClass) {
+    if (this->epistemicClassMembership.size() == 0) {
+        this->epistemicClassMembership = std::vector<std::vector<int> >((unsigned long) this->numberOfAgents,
+                                                                        std::vector<int>(
+                                                                                (unsigned long) this->numberOfStates,
+                                                                                -1));
+        this->epistemicClassDisjoint = std::vector<DisjointUnion>((unsigned long) this->numberOfAgents,
+                                                                  DisjointUnion(this->numberOfStates));
+        this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<int> > > >(
+                (unsigned long) this->numberOfAgents,
+                std::vector<std::map<std::string, std::set<int> > >((unsigned long) this->numberOfStates));
+    }
+
     this->imperfectInformation[agentNumber].push_back(epistemicClass);
     int epistemicClassNumber = (int) this->imperfectInformation[agentNumber].size() - 1;
     int firstState = *epistemicClass.begin();
@@ -472,6 +489,10 @@ unsigned long AtlModel::getBeginningStatesCount() const {
 
 void AtlModel::setBeginningStatesCount(unsigned long beginningStatesCount) {
     AtlModel::beginningStatesCount = beginningStatesCount;
+}
+
+std::set<AtlModel::Transition> AtlModel::getTransitions(int stateNumber) {
+    return this->transitions[stateNumber];
 }
 
 
