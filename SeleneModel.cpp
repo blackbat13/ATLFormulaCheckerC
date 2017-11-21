@@ -17,6 +17,7 @@ SeleneModel::State::State(short noVoters, short maxCoerced) {
     this->votersOwnedTrackers = std::vector<short>(noVoters, -1);
     this->votersTrackersSet = std::vector<bool>(noVoters);
     this->votes = std::vector<short>(noVoters, -1);
+    this->votersVotes = std::vector<short>(noVoters, -1);
 
     // Election Defense System
     this->falseTrackersSent = std::vector<bool>(noVoters);
@@ -45,6 +46,7 @@ SeleneModel::State::State() {
     this->votersOwnedTrackers = std::vector<short>();
     this->votersTrackersSet = std::vector<bool>();
     this->votes = std::vector<short>();
+    this->votersVotes = std::vector<short>();
 
     // Election Defense System
     this->falseTrackersSent = std::vector<bool>();
@@ -58,6 +60,144 @@ SeleneModel::State::State() {
     this->coercedVoters = 0;
     this->maxCoerced = 0;
     this->coercerVotesDemanded = std::vector<short>();
+}
+
+SeleneModel::State::State(const std::vector<short> &publicVotes, bool votesPublished, bool votingFinished,
+                          bool votingStarted, const std::vector<short> &falseCopTrackVot,
+                          const std::vector<short> &trackers, const std::vector<short> &envVoteDemanded,
+                          const std::vector<short> &votersOwnedTrackers, const std::vector<bool> &votersTrackersSet,
+                          const std::vector<short> &votes, const std::vector<bool> &falseTrackersSent,
+                          const std::vector<short> &votersDemanded, const std::vector<bool> &helpRequestsSent,
+                          const std::vector<bool> &trueTrackersCopied, short coercedVoters, short maxCoerced,
+                          const std::vector<short> &coercerVotesDemanded) : publicVotes(publicVotes),
+                                                                            votesPublished(votesPublished),
+                                                                            votingFinished(votingFinished),
+                                                                            votingStarted(votingStarted),
+                                                                            falseCopTrackVot(falseCopTrackVot),
+                                                                            trackers(trackers),
+                                                                            envVoteDemanded(envVoteDemanded),
+                                                                            votersOwnedTrackers(votersOwnedTrackers),
+                                                                            votersTrackersSet(votersTrackersSet),
+                                                                            votes(votes),
+                                                                            falseTrackersSent(falseTrackersSent),
+                                                                            votersDemanded(votersDemanded),
+                                                                            helpRequestsSent(helpRequestsSent),
+                                                                            trueTrackersCopied(trueTrackersCopied),
+                                                                            coercedVoters(coercedVoters),
+                                                                            maxCoerced(maxCoerced),
+                                                                            coercerVotesDemanded(
+                                                                                    coercerVotesDemanded) {}
+
+SeleneModel::State::State(const SeleneModel::State &copy) {
+    this->publicVotes = copy.publicVotes;
+    this->votesPublished = copy.votesPublished;
+    this->votingFinished = copy.votingFinished;
+    this->votingStarted = copy.votingStarted;
+    this->falseCopTrackVot = copy.falseCopTrackVot;
+    this->trackers = copy.trackers;
+    this->envVoteDemanded = copy.envVoteDemanded;
+    this->votersOwnedTrackers = copy.votersOwnedTrackers;
+    this->votersTrackersSet = copy.votersTrackersSet;
+    this->votes = copy.votes;
+    this->votersVotes = copy.votersVotes;
+    this->voteWait = copy.voteWait;
+    this->defenseTimer = copy.defenseTimer;
+
+    // Election Defense System
+    this->falseTrackersSent = copy.falseTrackersSent;
+
+    // Voters
+    this->votersDemanded = copy.votersDemanded;
+    this->helpRequestsSent = copy.helpRequestsSent;
+    this->trueTrackersCopied = copy.trueTrackersCopied;
+
+    // Coercer
+    this->coercedVoters = copy.coercedVoters;
+    this->maxCoerced = copy.maxCoerced;
+    this->coercerVotesDemanded = copy.coercerVotesDemanded;
+}
+
+void SeleneModel::State::print() {
+    printf("Public Votes: ");
+    printVector(this->publicVotes);
+
+    printf("Votes Published: %d\n", this->votesPublished);
+    printf("Voting Finished: %d\n", this->votingFinished);
+    printf("Voting Started: %d\n", this->votingStarted);
+
+    printf("Vote Wait: %d\n", this->voteWait);
+    printf("Defense Timer: %d\n", this->defenseTimer);
+
+    printf("False Copied Tracker for Voters: ");
+    printVector(this->falseCopTrackVot);
+
+    printf("Trackers: ");
+    printVector(this->trackers);
+
+    printf("Environment Votes Demanded: ");
+    printVector(this->envVoteDemanded);
+
+    printf("Voters Owned Trackers: ");
+    printVector(this->votersOwnedTrackers);
+
+    printf("Voters Trackers Set: ");
+    printVector(this->votersTrackersSet);
+
+    printf("Votes: ");
+    printVector(this->votes);
+
+    printf("Voters Votes: ");
+    printVector(this->votersVotes);
+
+    printf("False Tracker Sent: ");
+    printVector(this->falseTrackersSent);
+
+    printf("Voters Demanded Votes: ");
+    printVector(this->votersDemanded);
+
+    printf("Help Request Sent: ");
+    printVector(this->helpRequestsSent);
+
+    printf("True Trackers Copied: ");
+    printVector(this->trueTrackersCopied);
+
+    printf("Coercer Votes Demanded: ");
+    printVector(this->coercerVotesDemanded);
+
+    printf("Coerced Voters: %d\n", this->coercedVoters);
+
+    printf("Max Coerced: %d\n", this->maxCoerced);
+}
+
+void SeleneModel::State::printVector(std::vector<short> v) {
+    for (short i : v) {
+        printf("%d ", i);
+    }
+
+    printf("\n");
+}
+
+void SeleneModel::State::printVector(std::vector<bool> v) {
+    for (bool i : v) {
+        printf("%d ", i);
+    }
+
+    printf("\n");
+}
+
+SeleneModel::CoercerEpistemicState SeleneModel::State::toCoercerState() {
+    CoercerEpistemicState state;
+    state.votesPublished = this->votesPublished;
+    state.votingFinished = this->votingFinished;
+    state.votingStarted = this->votingStarted;
+    state.falseCopTrackVot = this->falseCopTrackVot;
+    state.publicVotes = this->publicVotes;
+    state.coercedVoters = this->coercedVoters;
+    state.maxCoerced = this->maxCoerced;
+    state.coercerVotesDemanded = this->coercerVotesDemanded;
+    state.voteWait = this->voteWait;
+    state.defenseTimer = this->defenseTimer;
+    return state;
 }
 
 bool SeleneModel::State::operator<(const SeleneModel::State &rhs) const {
@@ -76,6 +216,14 @@ bool SeleneModel::State::operator<(const SeleneModel::State &rhs) const {
     if (votingStarted < rhs.votingStarted)
         return true;
     if (rhs.votingStarted < votingStarted)
+        return false;
+    if (voteWait < rhs.voteWait)
+        return true;
+    if (rhs.voteWait < voteWait)
+        return false;
+    if (defenseTimer < rhs.defenseTimer)
+        return true;
+    if (rhs.defenseTimer < defenseTimer)
         return false;
     if (falseCopTrackVot < rhs.falseCopTrackVot)
         return true;
@@ -125,6 +273,10 @@ bool SeleneModel::State::operator<(const SeleneModel::State &rhs) const {
         return true;
     if (rhs.maxCoerced < maxCoerced)
         return false;
+    if (votersVotes < rhs.votersVotes)
+        return true;
+    if (rhs.votersVotes < votersVotes)
+        return false;
     return coercerVotesDemanded < rhs.coercerVotesDemanded;
 }
 
@@ -133,143 +285,40 @@ bool SeleneModel::State::operator>(const SeleneModel::State &rhs) const {
 }
 
 bool SeleneModel::State::operator<=(const SeleneModel::State &rhs) const {
-    return !(rhs < *this);
+    return (*this == rhs) || (*this < rhs);
+//    return !(rhs < *this);
 }
 
 bool SeleneModel::State::operator>=(const SeleneModel::State &rhs) const {
-    return !(*this < rhs);
+    return (*this == rhs) || (*this > rhs);
+//    return !(*this < rhs);
 }
 
-SeleneModel::State::State(const std::vector<short> &publicVotes, bool votesPublished, bool votingFinished,
-                          bool votingStarted, const std::vector<short> &falseCopTrackVot,
-                          const std::vector<short> &trackers, const std::vector<short> &envVoteDemanded,
-                          const std::vector<short> &votersOwnedTrackers, const std::vector<bool> &votersTrackersSet,
-                          const std::vector<short> &votes, const std::vector<bool> &falseTrackersSent,
-                          const std::vector<short> &votersDemanded, const std::vector<bool> &helpRequestsSent,
-                          const std::vector<bool> &trueTrackersCopied, short coercedVoters, short maxCoerced,
-                          const std::vector<short> &coercerVotesDemanded) : publicVotes(publicVotes),
-                                                                            votesPublished(votesPublished),
-                                                                            votingFinished(votingFinished),
-                                                                            votingStarted(votingStarted),
-                                                                            falseCopTrackVot(falseCopTrackVot),
-                                                                            trackers(trackers),
-                                                                            envVoteDemanded(envVoteDemanded),
-                                                                            votersOwnedTrackers(votersOwnedTrackers),
-                                                                            votersTrackersSet(votersTrackersSet),
-                                                                            votes(votes),
-                                                                            falseTrackersSent(falseTrackersSent),
-                                                                            votersDemanded(votersDemanded),
-                                                                            helpRequestsSent(helpRequestsSent),
-                                                                            trueTrackersCopied(trueTrackersCopied),
-                                                                            coercedVoters(coercedVoters),
-                                                                            maxCoerced(maxCoerced),
-                                                                            coercerVotesDemanded(
-                                                                                    coercerVotesDemanded) {}
-
-SeleneModel::State::State(const SeleneModel::State &copy) {
-    this->publicVotes = copy.publicVotes;
-    this->votesPublished = copy.votesPublished;
-    this->votingFinished = copy.votingFinished;
-    this->votingStarted = copy.votingStarted;
-    this->falseCopTrackVot = copy.falseCopTrackVot;
-    this->trackers = copy.trackers;
-    this->envVoteDemanded = copy.envVoteDemanded;
-    this->votersOwnedTrackers = copy.votersOwnedTrackers;
-    this->votersTrackersSet = copy.votersTrackersSet;
-    this->votes = copy.votes;
-    this->voteWait = copy.voteWait;
-    this->defenseTimer = copy.defenseTimer;
-
-    // Election Defense System
-    this->falseTrackersSent = copy.falseTrackersSent;
-
-    // Voters
-    this->votersDemanded = copy.votersDemanded;
-    this->helpRequestsSent = copy.helpRequestsSent;
-    this->trueTrackersCopied = copy.trueTrackersCopied;
-
-    // Coercer
-    this->coercedVoters = copy.coercedVoters;
-    this->maxCoerced = copy.maxCoerced;
-    this->coercerVotesDemanded = copy.coercerVotesDemanded;
+bool SeleneModel::State::operator==(const SeleneModel::State &rhs) const {
+    return publicVotes == rhs.publicVotes &&
+           votesPublished == rhs.votesPublished &&
+           votingFinished == rhs.votingFinished &&
+           votingStarted == rhs.votingStarted &&
+           voteWait == rhs.voteWait &&
+           defenseTimer == rhs.defenseTimer &&
+           falseCopTrackVot == rhs.falseCopTrackVot &&
+           trackers == rhs.trackers &&
+           envVoteDemanded == rhs.envVoteDemanded &&
+           votersOwnedTrackers == rhs.votersOwnedTrackers &&
+           votersTrackersSet == rhs.votersTrackersSet &&
+           votes == rhs.votes &&
+           votersVotes == rhs.votersVotes &&
+           falseTrackersSent == rhs.falseTrackersSent &&
+           votersDemanded == rhs.votersDemanded &&
+           helpRequestsSent == rhs.helpRequestsSent &&
+           trueTrackersCopied == rhs.trueTrackersCopied &&
+           coercedVoters == rhs.coercedVoters &&
+           maxCoerced == rhs.maxCoerced &&
+           coercerVotesDemanded == rhs.coercerVotesDemanded;
 }
 
-void SeleneModel::State::print() {
-    printf("Public Votes: ");
-    printVector(this->publicVotes);
-
-    printf("Votes Published: %d\n", this->votesPublished);
-    printf("Voting Finished: %d\n", this->votingFinished);
-    printf("Voting Started: %d\n", this->votingStarted);
-
-    printf("Vote Wait: %d\n", this->voteWait);
-    printf("Defense Timer: %d\n", this->defenseTimer);
-
-    printf("False Copied Tracker for Voters: ");
-    printVector(this->falseCopTrackVot);
-
-    printf("Trackers: ");
-    printVector(this->trackers);
-
-    printf("Environment Votes Demanded: ");
-    printVector(this->envVoteDemanded);
-
-    printf("Voters Owned Trackers: ");
-    printVector(this->votersOwnedTrackers);
-
-    printf("Voters Trackers Set: ");
-    printVector(this->votersTrackersSet);
-
-    printf("Votes: ");
-    printVector(this->votes);
-
-    printf("False Tracker Sent: ");
-    printVector(this->falseTrackersSent);
-
-    printf("Voters Demanded Votes: ");
-    printVector(this->votersDemanded);
-
-    printf("Help Request Sent: ");
-    printVector(this->helpRequestsSent);
-
-    printf("True Trackers Copied: ");
-    printVector(this->trueTrackersCopied);
-
-    printf("Coercer Votes Demanded: ");
-    printVector(this->coercerVotesDemanded);
-
-    printf("Coerced Voters: %d\n", this->coercedVoters);
-
-    printf("Max Coerced: %d\n", this->maxCoerced);
-}
-
-void SeleneModel::State::printVector(std::vector<short> v) {
-    for (short i : v) {
-        printf("%d ", i);
-    }
-
-    printf("\n");
-}
-
-void SeleneModel::State::printVector(std::vector<bool> v) {
-    for (bool i : v) {
-        printf("%d ", i);
-    }
-
-    printf("\n");
-}
-
-SeleneModel::CoercerEpistemicState SeleneModel::State::toCoercerState() {
-    CoercerEpistemicState state;
-    state.votesPublished = this->votesPublished;
-    state.votingFinished = this->votingFinished;
-    state.votingStarted = this->votingStarted;
-    state.falseCopTrackVot = this->falseCopTrackVot;
-    state.publicVotes = this->publicVotes;
-    state.coercedVoters = this->coercedVoters;
-    state.maxCoerced = this->maxCoerced;
-    state.coercerVotesDemanded = this->coercerVotesDemanded;
-    return state;
+bool SeleneModel::State::operator!=(const SeleneModel::State &rhs) const {
+    return !(rhs == *this);
 }
 
 SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced, short maxWaitingForVotes,
@@ -278,10 +327,13 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced, shor
                                                     maxWaitingForHelp(maxWaitingForHelp) {
     this->model = AtlModel(2, 1000000);
     this->states = std::vector<State>();
-    this->stateNumber = 1;
+    this->stateNumber = 0;
     this->addActions();
     this->generateModel();
     printf("Number of states: %lu\n", this->states.size());
+    printf("Number of states: %lu\n", this->stateToNumber.size());
+    this->finishEpistemicRelation();
+    this->prepareWinningStates();
 
 //    for(State state: this->states) {
 //        state.print();
@@ -293,10 +345,11 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced, shor
 void SeleneModel::generateModel() {
     State firstState = State(this->noVoters, this->maxCoerced);
     this->addState(firstState);
-    int currentStateNumber = 0;
+    int currentStateNumber = -1;
     for (int state_i = 0; state_i < this->states.size(); ++state_i) {
         ++currentStateNumber;
         State state = this->states[state_i];
+
         if (!state.votingStarted) {
             std::vector<std::pair<short, short> > envActions;
             std::vector<std::pair<short, short> > coercerActions;
@@ -336,15 +389,35 @@ void SeleneModel::generateModel() {
                         newState.coercerVotesDemanded[coercerAction.first] = coercerAction.second;
                         newState.votersDemanded[coercerAction.first] = coercerAction.second;
                         newState.votingStarted = true;
+                        assert(newState.votersDemanded[coercerAction.first] !=
+                               state.votersDemanded[coercerAction.first]);
                         std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                             "FromVoter" + this->toString(coercerAction.first));
-                        actions.push_back("Wait");
+                        for (int i = 0; i < this->noVoters; ++i) {
+                            actions.push_back("Wait");
+                        }
+
+                        actions.push_back("Wait"); //ElectionDefense
+                        actions.push_back("StartVoting");
+
                         int newStateNumber = this->addState(newState);
+
+
+                        assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
                     } else {
                         newState.votingStarted = true;
-                        std::vector<std::string> actions(2, "Wait");
+                        std::vector<std::string> actions(1, "Wait");
+                        for (int i = 0; i < this->noVoters; ++i) {
+                            actions.push_back("Wait");
+                        }
+
+                        actions.push_back("Wait"); //ElectionDefense
+                        actions.push_back("StartVoting");
+
                         int newStateNumber = this->addState(newState);
+
+                        assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
                     }
                 }
@@ -362,14 +435,37 @@ void SeleneModel::generateModel() {
 
                             std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                                 "FromVoter" + this->toString(coercerAction.first));
-                            actions.push_back("Wait");
+                            for (int i = 0; i < this->noVoters; ++i) {
+                                actions.push_back("Wait");
+                            }
+
+                            actions.push_back("Wait"); //ElectionDefense
+
+                            actions.push_back("SetTracker" + this->toString(envAction.first) + "To" +
+                                              this->toString(envAction.second));
+
                             int newStateNumber = this->addState(newState);
+
+
+                            assert(currentStateNumber != newStateNumber);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
                         } else {
                             newState.trackers[envAction.first] = envAction.second;
                             newState.votersTrackersSet[envAction.second] = true;
-                            std::vector<std::string> actions(2, "Wait");
+                            std::vector<std::string> actions(1, "Wait");
+
+                            for (int i = 0; i < this->noVoters; ++i) {
+                                actions.push_back("Wait");
+                            }
+
+                            actions.push_back("Wait");
+                            actions.push_back("SetTracker" + this->toString(envAction.first) + "To" +
+                                              this->toString(envAction.second));
+
                             int newStateNumber = this->addState(State(newState));
+
+
+                            assert(currentStateNumber != newStateNumber);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
                         }
                     }
@@ -395,7 +491,7 @@ void SeleneModel::generateModel() {
             bool allVoted = true;
             for (int i = 0; i < this->noVoters; ++i) {
                 votingProductArray[i].push_back(-1);
-                if (state.votes[i] != -1) {
+                if (state.votersVotes[i] != -1) {
                     continue;
                 }
 
@@ -409,8 +505,9 @@ void SeleneModel::generateModel() {
                 for (auto &coercerAction: coercerActions) {
                     State newState = state;
                     newState.votesPublished = true;
+                    newState.voteWait += 1;
                     for (int i = 0; i < this->noVoters; ++i) {
-                        newState.publicVotes[i] = newState.votes[i];
+                        newState.publicVotes[i] = newState.votersVotes[newState.trackers[i]]; //According to trackers
                     }
 
                     if (coercerAction.first != -1) { // Coerce voter
@@ -419,12 +516,30 @@ void SeleneModel::generateModel() {
                         newState.votersDemanded[coercerAction.first] = coercerAction.second;
                         std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                             "FromVoter" + this->toString(coercerAction.first));
-                        actions.push_back("Wait");
+                        for (int i = 0; i < this->noVoters; ++i) {
+                            actions.push_back("Wait");
+                        }
+
+                        actions.push_back("Wait"); //ElectionDefense
+                        actions.push_back("PublishVotes");
                         int newStateNumber = this->addState(newState);
+
+
+                        assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
                     } else {
-                        std::vector<std::string> actions(2, "Wait");
+                        std::vector<std::string> actions(1, "Wait");
+                        for (int i = 0; i < this->noVoters; ++i) {
+                            actions.push_back("Wait");
+                        }
+
+                        actions.push_back("Wait"); //ElectionDefense
+                        actions.push_back("PublishVotes");
+
                         int newStateNumber = this->addState(newState);
+
+
+                        assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
                     }
                 }
@@ -432,16 +547,19 @@ void SeleneModel::generateModel() {
                 std::vector<std::vector<short> > product = this->cartessianProduct(votingProductArray);
                 for (auto &possibility: product) {
                     State votedState = state;
-                    if (!(votedState.voteWait >= this->maxWaitingForVotes)) {
+//                    if (votedState.voteWait <= this->maxWaitingForVotes) {
                         votedState.voteWait += 1;
-                    }
+//                    }
 
                     bool skipState = false;
 
                     for (int i = 0; i < this->noVoters; ++i) {
-                        if (possibility[i] != -1) {
-                            votedState.votes[i] = possibility[i];
-                        } else if (possibility[i] == -1 && votedState.voteWait >= this->maxWaitingForVotes) {
+                        if (possibility[votedState.trackers[i]] != -1) {
+                            votedState.votes[i] = possibility[votedState.trackers[i]];
+                            votedState.votersVotes[votedState.trackers[i]] = possibility[votedState.trackers[i]];
+                        } else if (votedState.votersVotes[votedState.trackers[i]] == -1 &&
+                                   possibility[votedState.trackers[i]] == -1 &&
+                                   votedState.voteWait > this->maxWaitingForVotes) {
                             skipState = true;
                             break;
                         }
@@ -454,28 +572,46 @@ void SeleneModel::generateModel() {
                     for (auto &coercerAction: coercerActions) {
                         State newState = votedState;
 
-
                         if (coercerAction.first != -1) { // Coerce voter
                             newState.coercedVoters++;
                             newState.coercerVotesDemanded[coercerAction.first] = coercerAction.second;
                             newState.votersDemanded[coercerAction.first] = coercerAction.second;
                             std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                                 "FromVoter" + this->toString(coercerAction.first));
-                            if (possibility[0] == -1) {
-                                actions.push_back("Wait");
-                            } else {
-                                actions.push_back("Vote" + this->toString(possibility[0]));
+
+                            for (int i = 0; i < this->noVoters; ++i) {
+                                if (possibility[i] == -1) {
+                                    actions.push_back("Wait");
+                                } else {
+                                    actions.push_back("Vote" + this->toString(possibility[i]));
+                                }
                             }
+
+                            actions.push_back("Wait"); //ElectionDefense
+                            actions.push_back("Wait");
+
                             int newStateNumber = this->addState(newState);
+
+
+                            assert(currentStateNumber != newStateNumber);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
                         } else {
                             std::vector<std::string> actions(1, "Wait");
-                            if (possibility[0] == -1) {
-                                actions.push_back("Wait");
-                            } else {
-                                actions.push_back("Vote" + this->toString(possibility[0]));
+                            for (int i = 0; i < this->noVoters; ++i) {
+                                if (possibility[i] == -1) {
+                                    actions.push_back("Wait");
+                                } else {
+                                    actions.push_back("Vote" + this->toString(possibility[i]));
+                                }
                             }
+
+                            actions.push_back("Wait"); //ElectionDefense
+                            actions.push_back("Wait");
+
                             int newStateNumber = this->addState(newState);
+
+
+                            assert(currentStateNumber != newStateNumber);
                             this->model.addTransition(currentStateNumber, newStateNumber, actions);
                         }
                     }
@@ -484,23 +620,12 @@ void SeleneModel::generateModel() {
         } else if (!state.votingFinished) {
             std::vector<std::pair<short, short> > coercerActions;
             coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
-//            if (state.coercedVoters < state.maxCoerced) {
-//                for (int i = 0; i < this->noVoters; ++i) {
-//                    if (state.coercerVotesDemanded[i] != -1) {
-//                        continue;
-//                    }
-//
-//                    for (int j = 0; j < this->noBallots; ++j) {
-//                        coercerActions.push_back(std::make_pair(i, j));
-//                    }
-//                }
-//            }
 
             std::vector<std::pair<short, short> > defenseActions;
             defenseActions.push_back(std::make_pair(-1, -1)); // Wait action
             for (int i = 0; i < this->noVoters; ++i) {
                 if (state.helpRequestsSent[i] && !state.falseTrackersSent[i]) {
-                    for (int j = 0; j < this->noBallots; ++j) {
+                    for (int j = 0; j < this->noVoters; ++j) {
                         defenseActions.push_back(std::make_pair(i, j));
                     }
                 }
@@ -508,7 +633,7 @@ void SeleneModel::generateModel() {
 
             std::vector<std::vector<short> > votingProductArray(this->noVoters);
             for (int i = 0; i < this->noVoters; ++i) {
-                if (state.defenseTimer + 1 >= this->maxWaitingForHelp) {
+                if (state.defenseTimer >= this->maxWaitingForHelp) {
                     votingProductArray[i].push_back(-4);
                     continue;
                 }
@@ -526,45 +651,35 @@ void SeleneModel::generateModel() {
                     votingProductArray[i].push_back(-3); // Copy Real Tracker
                 }
 
-                if (state.trueTrackersCopied[i] || state.helpRequestsSent[i]) {
+                if (state.falseCopTrackVot[i] > -1) {
                     votingProductArray[i].push_back(-4); // Finish
                 }
             }
 
             std::vector<std::vector<short> > product = this->cartessianProduct(votingProductArray);
+            if (state.defenseTimer >= this->maxWaitingForHelp) {
+                assert(product.size() == 1);
+            }
+
             for (auto &possibility: product) {
                 for (auto &defenseAction: defenseActions) {
                     for (auto &coercerAction: coercerActions) {
                         State newState = state;
-                        if (!(newState.defenseTimer >= this->maxWaitingForHelp)) {
+//                        if (newState.defenseTimer <= this->maxWaitingForHelp) {
                             newState.defenseTimer += 1;
-                        }
+//                        }
 
                         std::vector<std::string> actions;
-                        if (coercerAction.first != -1) { // Coerce voter
-                            newState.coercedVoters++;
-                            newState.coercerVotesDemanded[coercerAction.first] = coercerAction.second;
-                            newState.votersDemanded[coercerAction.first] = coercerAction.second;
-                            actions = std::vector<std::string>(1, "RequestVote" + this->toString(coercerAction.second) +
-                                                                  "FromVoter" + this->toString(coercerAction.first));
 
-                        } else {
-                            actions = std::vector<std::string>(1, "Wait");
-                        }
+                        actions = std::vector<std::string>(1, "Wait");
 
-                        if (defenseAction.first != -1) {
-                            newState.falseTrackersSent[defenseAction.first] = true;
-                            if (newState.falseCopTrackVot[defenseAction.first] == -1) {
-                                newState.falseCopTrackVot[defenseAction.first] = defenseAction.second;
-                            }
-                        }
 
                         int finished = 0;
                         for (int i = 0; i < this->noVoters; ++i) {
                             if (possibility[i] == -1) { //Wait
-                                if (i == 0) {
+//                                if (i == 0) {
                                     actions.push_back("Wait");
-                                }
+//                                }
 
                             } else if (possibility[i] == -2) { // Fetch Good Tracker
                                 short goodTracker = -1;
@@ -575,27 +690,27 @@ void SeleneModel::generateModel() {
                                     }
                                 }
 
-                                if (i == 0) {
+//                                if (i == 0) {
                                     actions.push_back("FetchGoodTracker");
-                                }
+//                                }
 
                                 newState.votersOwnedTrackers[i] = goodTracker;
 
                             } else if (possibility[i] == -3) { // Copy Real Tracker
-                                if (i == 0) {
+//                                if (i == 0) {
                                     actions.push_back("CopyRealTracker");
-                                }
+//                                }
                                 newState.trueTrackersCopied[i] = true;
                                 newState.falseCopTrackVot[i] = state.votersOwnedTrackers[i];
                             } else if (possibility[i] == -4) { // Finish
-                                if (i == 0) {
+//                                if (i == 0) {
                                     actions.push_back("Finish");
-                                }
+//                                }
                                 ++finished;
                             } else { // Help I Need possibility[i]
-                                if (i == 0) {
-                                    actions.push_back("HelpINeed" + this->toString(possibility[0]));
-                                }
+//                                if (i == 0) {
+                                actions.push_back("HelpINeed" + this->toString(possibility[i]));
+//                                }
                                 newState.helpRequestsSent[i] = true;
                                 newState.envVoteDemanded[i] = possibility[i];
                             }
@@ -605,43 +720,47 @@ void SeleneModel::generateModel() {
                             newState.votingFinished = true;
                         }
 
+                        if (defenseAction.first != -1) {
+                            newState.falseTrackersSent[defenseAction.first] = true;
+                            if (possibility[defenseAction.first] != -3) {
+                                newState.falseCopTrackVot[defenseAction.first] = defenseAction.second;
+//                                newState.votersOwnedTrackers[defenseAction.first] = defenseAction.second;
+                            }
+
+//                            if(newState.votingFinished) {
+//                                newState.print();
+//                                printf("\n\n");
+//                            }
+
+                            actions.push_back("SetFalseTrackerForVoter" + this->toString(defenseAction.first) + "To" +
+                                              this->toString(defenseAction.second));
+                        } else {
+                            actions.push_back("Wait");
+                        }
+
+                        actions.push_back("Wait");
+
+
                         int newStateNumber = this->addState(newState);
+
+
+                        assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
                     }
                 }
             }
         } else {
-            std::vector<std::pair<short, short> > coercerActions;
-            coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
-//            if (state.coercedVoters < state.maxCoerced) {
-//                for (int i = 0; i < this->noVoters; ++i) {
-//                    if (state.coercerVotesDemanded[i] != -1) {
-//                        continue;
-//                    }
-//
-//                    for (int j = 0; j < this->noBallots; ++j) {
-//                        coercerActions.push_back(std::make_pair(i, j));
-//                    }
-//                }
-//            }
 
-            for (auto &coercerAction: coercerActions) {
-                State newState = state;
-                if (coercerAction.first != -1) { // Coerce voter
-                    newState.coercedVoters++;
-                    newState.coercerVotesDemanded[coercerAction.first] = coercerAction.second;
-                    newState.votersDemanded[coercerAction.first] = coercerAction.second;
-                    std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
-                                                        "FromVoter" + this->toString(coercerAction.first));
-                    actions.push_back("Wait");
-                    int newStateNumber = this->addState(newState);
-                    this->model.addTransition(currentStateNumber, newStateNumber, actions);
-                } else {
-                    std::vector<std::string> actions(2, "Wait");
-                    int newStateNumber = this->addState(newState);
-                    this->model.addTransition(currentStateNumber, newStateNumber, actions);
-                }
+            std::vector<std::string> actions(1, "Wait");
+
+            for (int i = 0; i < this->noVoters; ++i) {
+                actions.push_back("Wait");
             }
+
+            actions.push_back("Wait"); //ElectionDefense
+            actions.push_back("Wait");
+
+            this->model.addTransition(currentStateNumber, currentStateNumber, actions);
         }
     }
 }
@@ -649,7 +768,10 @@ void SeleneModel::generateModel() {
 int SeleneModel::addState(SeleneModel::State state) {
     if (this->stateToNumber[state] == 0) {
         this->stateToNumber[state] = this->stateNumber;
+
         this->states.push_back(state);
+//        printf("%d\n", this->states.size()-1 == this->stateNumber);
+        assert(this->states.size() - 1 == this->stateNumber);
         this->addEpistemicState(state, this->stateNumber);
         return this->stateNumber++;
     } else {
@@ -712,6 +834,7 @@ void SeleneModel::addActions() {
         for (int j = 0; j < this->noBallots; ++j) {
             std::string action = "RequestVote" + this->toString(j);
             action += "FromVoter" + this->toString(i);
+            printf("%s\n", action.c_str());
             this->model.addAction(0, action);
         }
     }
@@ -734,16 +857,178 @@ void SeleneModel::addEpistemicState(SeleneModel::State state, int stateNumber) {
     this->coercerEpistemicClasses[coercerEpistemicState].insert(stateNumber);
 }
 
-SeleneModel::CoercerEpistemicState &SeleneModel::CoercerEpistemicState::operator=(const SeleneModel::State &rhs) {
-    this->votesPublished = rhs.votesPublished;
-    this->votingFinished = rhs.votingFinished;
-    this->votingStarted = rhs.votingStarted;
-    this->falseCopTrackVot = rhs.falseCopTrackVot;
-    this->publicVotes = rhs.publicVotes;
-    this->coercedVoters = rhs.coercedVoters;
-    this->maxCoerced = rhs.maxCoerced;
-    this->coercerVotesDemanded = rhs.coercerVotesDemanded;
-    return *this;
+void SeleneModel::simulate() {
+    int currentState = 0;
+    int choice = 0;
+    while (true) {
+        this->states[currentState].print();
+        int i = 0;
+
+        std::vector<AtlModel::Transition> transitions;
+        for (auto t : this->model.getTransitions(currentState)) {
+            printf("%d: NextState: %d ", i, t.nextState);
+            this->printVector(t.actions);
+            transitions.push_back(t);
+            ++i;
+        }
+
+        printf("Your choice: ");
+        scanf("%d", &choice);
+        if (choice == -1) {
+            return;
+        }
+
+        currentState = transitions[choice].nextState;
+    }
+
+}
+
+void SeleneModel::printVector(std::vector<std::string> v) {
+    for (std::string i : v) {
+        printf("%s ", i.c_str());
+    }
+
+    printf("\n");
+}
+
+void SeleneModel::prepareWinningStates() {
+    this->formula1WinningStates = std::set<int>();
+    this->formula2WinningStates = std::set<int>();
+    for (int i = 0; i < this->states.size(); ++i) {
+        assert(this->model.getTransitions(i).size() > 0);
+
+        auto state = this->states[i];
+
+//        state.print();
+//        printf("\n\n");
+
+        bool allNotVoted1 = true;
+        if (state.votingFinished) {
+            for (int v = 0; v < this->noVoters; ++v) {
+                if (state.votes[v] == 0) {
+                    allNotVoted1 = false;
+                    break;
+                }
+            }
+
+//            assert(allNotVoted1 == false);
+            if (!allNotVoted1) {
+                this->formula1WinningStates.insert(i);
+                this->formula2WinningStates.insert(i);
+                continue;
+            }
+
+            auto coercerState = state.toCoercerState();
+            bool isAllOk = true;
+            for (auto stNumber: this->coercerEpistemicClasses[coercerState]) {
+                auto state2 = this->states[stNumber];
+                bool isOk = false;
+                for (int v = 0; v < this->noVoters; ++v) {
+                    if (state2.votersVotes[v] != 0) {
+                        isOk = true;
+                        break;
+                    }
+                }
+
+                if (!isOk) {
+                    isAllOk = false;
+                    break;
+                }
+            }
+
+            if (isAllOk) {
+                this->formula1WinningStates.insert(i);
+            }
+
+            for (int v = 0; v < this->noVoters; ++v) {
+                bool isOk = true;
+                for (auto stNumber: this->coercerEpistemicClasses[coercerState]) {
+                    auto state2 = this->states[stNumber];
+                    if (state2.votersVotes[v] == 0) {
+                        isOk = false;
+                        break;
+                    }
+                }
+                if (isOk) {
+                    this->formula2WinningStates.insert(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    this->formula3WinningStates = std::set<int>();
+    this->formula4WinningStates = std::set<int>();
+    for (int i = 0; i < this->states.size(); ++i) {
+        auto state = this->states[i];
+        bool someNotVoted1 = false;
+        if (state.votingFinished) {
+            for (int v = 0; v < this->noVoters; ++v) {
+                if (state.votes[v] != 0) {
+                    someNotVoted1 = true;
+                    break;
+                }
+            }
+
+            if (!someNotVoted1) {
+                this->formula3WinningStates.insert(i);
+                this->formula4WinningStates.insert(i);
+                continue;
+            }
+
+            auto coercerState = state.toCoercerState();
+            bool isAllOk = true;
+            for (auto stNumber: this->coercerEpistemicClasses[coercerState]) {
+                auto state2 = this->states[stNumber];
+                bool isOk = false;
+                for (int v = 0; v < this->noVoters; ++v) {
+                    if (state2.votersVotes[v] != 0) {
+                        isOk = true;
+                        break;
+                    }
+                }
+
+                if (!isOk) {
+                    isAllOk = false;
+                    break;
+                }
+            }
+
+            if (isAllOk) {
+                this->formula3WinningStates.insert(i);
+            }
+
+            for (int v = 0; v < this->noVoters; ++v) {
+                bool isOk = true;
+                for (auto stNumber: this->coercerEpistemicClasses[coercerState]) {
+                    auto state2 = this->states[stNumber];
+                    if (state2.votersVotes[v] == 0) {
+                        isOk = false;
+                        break;
+                    }
+                }
+                if (isOk) {
+                    this->formula4WinningStates.insert(i);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void SeleneModel::finishEpistemicRelation() {
+    for (auto s: this->coercerEpistemicClasses) {
+        this->model.addEpistemicClass(0, s.second);
+//        for(auto st: s.second) {
+//            this->states[st].print();
+////            printf("\n\n");
+//        }
+//        printf("\n\n\n\n\n");
+    }
+
+//    printf("\n\n\n\n\n");
+
+    // Clear Transitions
 }
 
 bool SeleneModel::CoercerEpistemicState::operator<(const SeleneModel::CoercerEpistemicState &rhs) const {
@@ -774,6 +1059,14 @@ bool SeleneModel::CoercerEpistemicState::operator<(const SeleneModel::CoercerEpi
     if (maxCoerced < rhs.maxCoerced)
         return true;
     if (rhs.maxCoerced < maxCoerced)
+        return false;
+    if (voteWait < rhs.voteWait)
+        return true;
+    if (rhs.voteWait < voteWait)
+        return false;
+    if (defenseTimer < rhs.defenseTimer)
+        return true;
+    if (rhs.defenseTimer < defenseTimer)
         return false;
     return coercerVotesDemanded < rhs.coercerVotesDemanded;
 }

@@ -16,6 +16,7 @@
 #include "DisjointUnion.h"
 
 class AtlModel {
+public:
     struct Transition {
         Transition();
 
@@ -33,6 +34,7 @@ class AtlModel {
         bool operator>=(const Transition &rhs) const;
     };
 
+private:
     int numberOfAgents;
     int numberOfStates;
     int numberOfTransitions;
@@ -47,6 +49,7 @@ class AtlModel {
     std::set<int> winningStates;
     unsigned long beginningStatesCount;
 public:
+
     unsigned long getBeginningStatesCount() const;
 
     void setBeginningStatesCount(unsigned long beginningStatesCount);
@@ -101,6 +104,8 @@ public:
     const std::set<int> &getWinningStates() const;
 
     void setWinningStates(const std::set<int> &winningStates);
+
+    std::set<Transition> getTransitions(int stateNumber);
 };
 
 

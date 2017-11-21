@@ -34,6 +34,7 @@ public:
         std::vector<short> votersOwnedTrackers;
         std::vector<bool> votersTrackersSet;
         std::vector<short> votes;
+        std::vector<short> votersVotes;
 
         // Election Defense System
         std::vector<bool> falseTrackersSent;
@@ -67,6 +68,9 @@ public:
 
         void printVector(std::vector<bool> v);
 
+
+        CoercerEpistemicState toCoercerState();
+
         bool operator<(const State &rhs) const;
 
         bool operator>(const State &rhs) const;
@@ -75,20 +79,11 @@ public:
 
         bool operator>=(const State &rhs) const;
 
-        CoercerEpistemicState toCoercerState();
+        bool operator==(const State &rhs) const;
+
+        bool operator!=(const State &rhs) const;
     };
     struct CoercerEpistemicState {
-        bool votesPublished;
-        bool votingFinished;
-        bool votingStarted;
-        std::vector<short> falseCopTrackVot;
-        std::vector<short> publicVotes;
-        short coercedVoters;
-        short maxCoerced;
-        std::vector<short> coercerVotesDemanded;
-
-        CoercerEpistemicState& operator=(const State &rhs);
-
         bool operator<(const CoercerEpistemicState &rhs) const;
 
         bool operator>(const CoercerEpistemicState &rhs) const;
@@ -96,6 +91,17 @@ public:
         bool operator<=(const CoercerEpistemicState &rhs) const;
 
         bool operator>=(const CoercerEpistemicState &rhs) const;
+
+        bool votesPublished;
+        bool votingFinished;
+        bool votingStarted;
+        std::vector<short> falseCopTrackVot;
+        std::vector<short> publicVotes;
+        short coercedVoters;
+        short maxCoerced;
+        short voteWait;
+        short defenseTimer;
+        std::vector<short> coercerVotesDemanded;
     };
 private:
     AtlModel model;
@@ -107,7 +113,7 @@ private:
     short maxWaitingForHelp;
     std::map<State, int> stateToNumber;
     std::map<CoercerEpistemicState, std::set<int> > coercerEpistemicClasses;
-    std::vector<State> states;
+
     void generateModel();
     int addState(State state);
     std::string toString(short a);
@@ -115,9 +121,23 @@ private:
     void addActions();
     void addEpistemicState(State state, int stateNumber);
 
+    void printVector(std::vector<std::string> v);
+
+    void prepareWinningStates();
+
+    void finishEpistemicRelation();
+
 public:
     SeleneModel(short noVoters, short noBallots, short maxCoerced, short maxWaitingForVotes, short maxWaitingForHelp);
+
+    void simulate();
     AtlModel &getModel();
+
+    std::vector<State> states;
+    std::set<int> formula1WinningStates;
+    std::set<int> formula2WinningStates;
+    std::set<int> formula3WinningStates;
+    std::set<int> formula4WinningStates;
 };
 
 
