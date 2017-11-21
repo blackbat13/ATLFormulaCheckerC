@@ -1,0 +1,40 @@
+----------TEST NUMBER 1----------
+Computed upper abstraction formula in 15.000000s
+Formula result (upper abstraction): true
+Computed lower abstraction formula in 16.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 1----------
+
+
+----------TEST NUMBER 2----------
+Computed upper abstraction formula in 16.000000s
+Formula result (upper abstraction): true
+Computed lower abstraction formula in 18.000000s
+Formula result (lower abstraction): false
+----------TEST NUMBER 2----------
+
+
+----------TEST NUMBER 3----------
+Computed upper abstraction formula in 16.000000s
+Formula result (upper abstraction): true
+Computed lower abstraction formula in 16.000000s
+Formula result (lower abstraction): true
+----------TEST NUMBER 3----------
+
+
+----------TEST STATISTICS----------
+Bridge Model (13, 5)
+Number of tests: 3
+Virtual memory: 0.00000000000000000000 MB
+Physical memory: 0.00000000000000000000 MB
+Upper Abstraction Formula time: 15.66666668233333403748s
+Lower Abstraction Formula time: 16.66666668333333589658s
+Total Formula time: 32.33333336566666815770s
+Generation time: 0.00000000000000000000s
+Total time: 32.33333336566666815770s
+Imperfect formula true percentage: 66.67%
+Perfect formula true percentage: 100.00%
+Formula equality percentage: 66.67%
+----------TEST STATISTICS----------
+
+

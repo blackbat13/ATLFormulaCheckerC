@@ -566,15 +566,16 @@ const std::set<int> &BridgeModelLowerAbstr::getWinningStates() const {
 void BridgeModelLowerAbstr::abstractState(BridgeModelLowerAbstr::State &state) {
     for (short i = 0; i < state.hands.size(); ++i) {
         for (short j = 0; j < state.hands[i].size(); ++j) {
-            if (state.hands[i][j] < this->abstractionLevel) {
+            if (state.hands[i][j] != -1 && state.hands[i][j] < this->abstractionLevel) {
                 state.hands[i][j] = (CARD_TYPE) (this->abstractionLevel + state.hands[i][j] % 10);
             }
         }
+        std::sort(state.hands[i].begin(), state.hands[i].end());
     }
 }
 
 CARD_TYPE BridgeModelLowerAbstr::abstractCard(CARD_TYPE card) {
-    if (card < this->abstractionLevel) {
+    if (card != -1 && card < this->abstractionLevel) {
         return (CARD_TYPE) (this->abstractionLevel + card % 10);
     } else {
         return card;

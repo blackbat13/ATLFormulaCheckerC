@@ -1,9 +1,9 @@
-JackClub JackHeart nineHeart AceClub sevenDiamond tenSpade threeDiamond nineDiamond 
-JackClub JackHeart nineHeart AceClub nineDiamond tenSpade nineDiamond nineDiamond 
+eightClub tenHeart fourDiamond tenClub fourClub JackSpade fourHeart QueenDiamond 
+nineClub tenHeart nineDiamond tenClub nineClub JackSpade nineHeart QueenDiamond 
 Generating beginning states... Done
-Generated 4 beginning states
+Generated 6 beginning states
 Generating rest of model... Done
-Generated model with 269 states
+Generated model with 225 states
 Preparing epistemic relation... Done
-Generated 162 epistemic classes
+Generated 113 epistemic classes
 Clearing old data... Done
