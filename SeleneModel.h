@@ -125,6 +125,8 @@ private:
 
     void prepareWinningStates();
 
+    void prepareWinningStatesForPercent();
+
     void finishEpistemicRelation();
 
 public:
@@ -139,6 +141,7 @@ public:
     std::set<int> formula2WinningStates;
     std::set<int> formula3WinningStates;
     std::set<int> formula4WinningStates;
+    std::set<int> configurationStates;
 };
 
 

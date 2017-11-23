@@ -333,13 +333,8 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced, shor
     printf("Number of states: %lu\n", this->states.size());
     printf("Number of states: %lu\n", this->stateToNumber.size());
     this->finishEpistemicRelation();
-    this->prepareWinningStates();
-
-//    for(State state: this->states) {
-//        state.print();
-//
-//        printf("\n\n");
-//    }
+//    this->prepareWinningStates();
+    this->prepareWinningStatesForPercent();
 }
 
 void SeleneModel::generateModel() {
@@ -524,6 +519,8 @@ void SeleneModel::generateModel() {
                         actions.push_back("PublishVotes");
                         int newStateNumber = this->addState(newState);
 
+                        this->configurationStates.insert(newStateNumber);
+
 
                         assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
@@ -538,6 +535,8 @@ void SeleneModel::generateModel() {
 
                         int newStateNumber = this->addState(newState);
 
+
+                        this->configurationStates.insert(newStateNumber);
 
                         assert(currentStateNumber != newStateNumber);
                         this->model.addTransition(currentStateNumber, newStateNumber, actions);
@@ -1035,6 +1034,45 @@ void SeleneModel::clear() {
     this->states.clear();
     this->stateToNumber.clear();
     this->coercerEpistemicClasses.clear();
+}
+
+void SeleneModel::prepareWinningStatesForPercent() {
+    this->formula4WinningStates = std::set<int>();
+    for (int i = 0; i < this->states.size(); ++i) {
+        auto state = this->states[i];
+        bool someNotVoted1 = false;
+        if (state.votingFinished) {
+            for (int v = 0; v < this->noVoters; ++v) {
+                if (state.votes[v] != 0) {
+                    someNotVoted1 = true;
+                    break;
+                }
+            }
+
+            if (!someNotVoted1) {
+
+//                this->formula4WinningStates.insert(i);
+                continue;
+            }
+
+            auto coercerState = state.toCoercerState();
+
+            for (int v = 0; v < this->noVoters; ++v) {
+                bool isOk = true;
+                for (auto stNumber: this->coercerEpistemicClasses[coercerState]) {
+                    auto state2 = this->states[stNumber];
+                    if (state2.votersVotes[v] == 0) {
+                        isOk = false;
+                        break;
+                    }
+                }
+                if (isOk) {
+                    this->formula4WinningStates.insert(i);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 bool SeleneModel::CoercerEpistemicState::operator<(const SeleneModel::CoercerEpistemicState &rhs) const {
