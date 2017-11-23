@@ -1,0 +1,7 @@
+Generated model in 15 s
+Number of states: 281968
+Formula 4 imperfect time: 0 s
+Formula 4 imperfect result: false
+Number of reached configuration states: 84
+Number of all configuration states: 672
+Percentage of configuration states: 12.5%
