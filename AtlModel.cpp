@@ -3,9 +3,7 @@
 AtlModel::Transition::Transition(int nextState, const std::vector<std::string> &actions) : nextState(nextState),
                                                                                            actions(actions) {}
 
-AtlModel::Transition::Transition() {
-
-}
+AtlModel::Transition::Transition() = default;
 
 bool AtlModel::Transition::operator<(const AtlModel::Transition &rhs) const {
     if (nextState < rhs.nextState)
