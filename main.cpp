@@ -3,7 +3,7 @@
 #include <set>
 #include <ctime>
 #include <iomanip>
-#include "BridgeModel.h"
+#include "Models/BridgeModel.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>

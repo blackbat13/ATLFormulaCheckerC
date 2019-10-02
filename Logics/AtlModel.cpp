@@ -1,30 +1,5 @@
 #include "AtlModel.h"
 
-AtlModel::Transition::Transition(int nextState, const std::vector<std::string> &actions) : nextState(nextState),
-                                                                                           actions(actions) {}
-
-AtlModel::Transition::Transition() = default;
-
-bool AtlModel::Transition::operator<(const AtlModel::Transition &rhs) const {
-    if (nextState < rhs.nextState)
-        return true;
-    if (rhs.nextState < nextState)
-        return false;
-    return actions < rhs.actions;
-}
-
-bool AtlModel::Transition::operator>(const AtlModel::Transition &rhs) const {
-    return rhs < *this;
-}
-
-bool AtlModel::Transition::operator<=(const AtlModel::Transition &rhs) const {
-    return !(rhs < *this);
-}
-
-bool AtlModel::Transition::operator>=(const AtlModel::Transition &rhs) const {
-    return !(*this < rhs);
-}
-
 AtlModel::AtlModel(int numberOfAgents, int numberOfStates) : numberOfAgents(numberOfAgents),
                                                              numberOfStates(numberOfStates) {
     this->imperfectInformation = std::vector<std::vector<std::set<int> > >((unsigned long) numberOfAgents);

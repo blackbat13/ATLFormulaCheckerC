@@ -5,7 +5,7 @@
 #ifndef ATLFORMULACHECKER_BRIDGEMODELTESTSUITE_H
 #define ATLFORMULACHECKER_BRIDGEMODELTESTSUITE_H
 
-#include "BridgeModel.h"
+#include "Models/BridgeModel.h"
 #include <cstdio>
 #include <cstring>
 #include <set>

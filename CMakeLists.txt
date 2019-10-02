@@ -3,5 +3,5 @@ project(ATLFormulaChecker)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES cppitertools/itertools.hpp main.cpp AtlModel.cpp AtlModel.h DisjointUnion.cpp DisjointUnion.h BridgeModel.cpp BridgeModel.h BridgeModelTestSuite.cpp BridgeModelTestSuite.h SeleneModel.cpp SeleneModel.h)
+set(SOURCE_FILES cppitertools/itertools.hpp main.cpp Logics/AtlModel.cpp Logics/AtlModel.h Tools/DisjointUnion.cpp Tools/DisjointUnion.h Models/BridgeModel.cpp Models/BridgeModel.h BridgeModelTestSuite.cpp BridgeModelTestSuite.h Models/SeleneModel.cpp Models/SeleneModel.h Models/ModelGenerator.cpp Models/ModelGenerator.h Models/State.cpp Models/State.h Tools/NumberTools.cpp Tools/NumberTools.h Models/SimpleModel.cpp Models/SimpleModel.h Models/Transition.cpp Models/Transition.h)
 add_executable(ATLFormulaChecker ${SOURCE_FILES})

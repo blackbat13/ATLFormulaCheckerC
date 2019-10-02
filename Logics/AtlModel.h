@@ -9,30 +9,10 @@
 #include <cstdio>
 #include <iterator>
 #include <algorithm>
-#include "DisjointUnion.h"
+#include "../Tools/DisjointUnion.h"
+#include "../Models/Transition.h"
 
 class AtlModel {
-public:
-    struct Transition {
-        Transition();
-
-        /// Identifier of the state.
-        int nextState{};
-
-        /// Vector of agents actions, where action_i corresponds to agent_i.
-        std::vector<std::string> actions;
-
-        Transition(int nextState, const std::vector<std::string> &actions);
-
-        bool operator<(const Transition &rhs) const;
-
-        bool operator>(const Transition &rhs) const;
-
-        bool operator<=(const Transition &rhs) const;
-
-        bool operator>=(const Transition &rhs) const;
-    };
-
 private:
 
     /// Number of agents in the model.
