@@ -17,7 +17,7 @@ public:
         Transition();
 
         /// Identifier of the state.
-        int nextState;
+        int nextState{};
 
         /// Vector of agents actions, where action_i corresponds to agent_i.
         std::vector<std::string> actions;
@@ -62,12 +62,12 @@ private:
     std::set<int> winningStates;
 
     /// Number of initial states
-    unsigned long beginningStatesCount;
+    unsigned long initialStatesCount;
 public:
 
-    unsigned long getBeginningStatesCount() const;
+    unsigned long getInitialStatesCount() const;
 
-    void setBeginningStatesCount(unsigned long beginningStatesCount);
+    void setInitialStatesCount(unsigned long initialStatesCount);
 
 public:
     std::vector<std::vector<std::set<int> > > imperfectInformation;
@@ -82,7 +82,7 @@ public:
      * @param agentNumber agent id
      * @param action action to add
      */
-    void addAction(int agentNumber, std::string action);
+    void addAction(int agentNumber, const std::string& action);
 
     /**
      * Add transition to the model.
@@ -91,7 +91,7 @@ public:
      * @param to end state identifier
      * @param actions vecotr of agents actions
      */
-    void addTransition(int from, int to, std::vector<std::string> actions);
+    void addTransition(int from, int to, const std::vector<std::string>& actions);
 
     /**
      * Add epistemic class.
@@ -99,7 +99,7 @@ public:
      * @param agentNumber agent identifier
      * @param epistemicClass set of state identifiers in the given epistemic class
      */
-    void addEpistemicClass(int agentNumber, std::set<int> epistemicClass);
+    void addEpistemicClass(int agentNumber, const std::set<int>& epistemicClass);
 
     /**
      * Finish creation of the epistemic classes for given agent.
@@ -116,7 +116,7 @@ public:
      * @param epistemicClassNumber
      * @param agentNumber agent identifier
      */
-    void findWhereCanGo(std::set<int> epistemicClass, int epistemicClassNumber, int agentNumber);
+    void findWhereCanGo(const std::set<int>& epistemicClass, unsigned int epistemicClassNumber, int agentNumber);
 
     /**
      * Check if winning states are reachable for agent from the given state, when using given action.
@@ -128,7 +128,7 @@ public:
      * @param winningStates
      * @return true if at least one of the winning states is reachable by agent with given action, false otherwise
      */
-    bool isReachableByAgentDisjoint(std::string action, int fromState, int agentNumber, int firstWinning,
+    bool isReachableByAgentDisjoint(const std::string& action, int fromState, int agentNumber, int firstWinning,
                                     DisjointUnion winningStates);
 
     /**
@@ -140,7 +140,7 @@ public:
      * @param agentNumber
      * @return true if at least one of the winning states is reachable by agent with given action, false otherwise
      */
-    bool isReachableByAgent(std::string action, int fromState, bool isWinningState[], int agentNumber);
+    bool isReachableByAgent(const std::string& action, int fromState, const bool isWinningState[], int agentNumber);
 
     /**
      * Check if winning states are reachable for agent from the given state, when using given action.
@@ -151,7 +151,7 @@ public:
      * @param agentNumber
      * @return true if at least one of the winning states is reachable by agent with given action, false otherwise
      */
-    bool isReachableByAgentInSet(std::string action, int fromState, std::set<int> winningStates, int agentNumber);
+    bool isReachableByAgentInSet(const std::string& action, int fromState, std::set<int> winningStates, int agentNumber);
 
     /**
      * Compute one step of a fixpoint algorithm for singleton coalition under imperfect information
@@ -165,7 +165,7 @@ public:
      * @return
      */
     std::pair<std::set<int>, bool>
-    basicFormulaOneAgentMultipleStatesDisjoint(int agentNumber, std::set<int> currentStates, int firstWinning,
+    basicFormulaOneAgentMultipleStatesDisjoint(int agentNumber, const std::set<int>& currentStates, int firstWinning,
                                                DisjointUnion &winningStatesDisjoint,
                                                std::vector<std::map<std::string, std::set<int> > > &customCanGoThere);
 
@@ -177,7 +177,7 @@ public:
      * @param isWinningState
      * @return
      */
-    std::set<int> basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> currentStates,
+    std::set<int> basicFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, const std::set<int>& currentStates,
                                                                        std::vector<bool> &isWinningState);
 
     /**
@@ -194,7 +194,7 @@ public:
      * @param winningStates
      * @return
      */
-    std::set<int> minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, std::set<int> winningStates);
+    std::set<int> minimumFormulaOneAgentMultipleStatesPerfectInformation(int agentNumber, const std::set<int>& winningStates);
 
     /**
      *
