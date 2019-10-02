@@ -1,7 +1,7 @@
 #ifndef ATLFORMULACHECKER_SELENEMODEL_H
 #define ATLFORMULACHECKER_SELENEMODEL_H
 
-#include "AtlModel.h"
+#include "../Logics/AtlModel.h"
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -10,7 +10,7 @@
 #include <queue>
 #include <tuple>
 #include <cstdio>
-#include "cppitertools/itertools.hpp"
+#include "../cppitertools/itertools.hpp"
 
 class SeleneModel {
 public:
@@ -61,9 +61,9 @@ public:
 
         void print();
 
-        void printVector(std::vector<short> v);
+        static void printVector(const std::vector<short>& v);
 
-        void printVector(std::vector<bool> v);
+        static void printVector(const std::vector<bool>& v);
 
 
         CoercerEpistemicState toCoercerState();
@@ -115,17 +115,17 @@ private:
 
     void generateModel();
 
-    int addState(State state);
+    int addState(const State& state);
 
-    std::string toString(short a);
+    static std::string toString(short a);
 
-    std::vector<std::vector<short> > cartessianProduct(std::vector<std::vector<short> > &array);
+    static std::vector<std::vector<short> > cartessianProduct(std::vector<std::vector<short> > &array);
 
     void addActions();
 
     void addEpistemicState(State state, int stateNumber);
 
-    void printVector(std::vector<std::string> v);
+    static void printVector(const std::vector<std::string>& v);
 
     void prepareWinningStates();
 

@@ -5,13 +5,13 @@
 #ifndef ATLFORMULACHECKER_BRIDGEMODEL_H
 #define ATLFORMULACHECKER_BRIDGEMODEL_H
 
-#include "AtlModel.h"
+#include "../Logics/AtlModel.h"
 #include <vector>
 #include <map>
 #include <algorithm>
 #include <ctime>
 #include <random>
-#include "cppitertools/itertools.hpp"
+#include "../cppitertools/itertools.hpp"
 
 typedef short CARD_TYPE;
 typedef std::vector<CARD_TYPE> HAND_TYPE;

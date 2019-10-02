@@ -165,7 +165,7 @@ void SeleneModel::State::print() {
     printf("Max Coerced: %d\n", this->maxCoerced);
 }
 
-void SeleneModel::State::printVector(std::vector<short> v) {
+void SeleneModel::State::printVector(const std::vector<short>& v) {
     for (short i : v) {
         printf("%d ", i);
     }
@@ -173,7 +173,7 @@ void SeleneModel::State::printVector(std::vector<short> v) {
     printf("\n");
 }
 
-void SeleneModel::State::printVector(std::vector<bool> v) {
+void SeleneModel::State::printVector(const std::vector<bool>& v) {
     for (bool i : v) {
         printf("%d ", i);
     }
@@ -326,8 +326,8 @@ SeleneModel::SeleneModel(short noVoters, short noBallots, short maxCoerced, shor
     this->stateNumber = 0;
     this->addActions();
     this->generateModel();
-    printf("Number of states: %lu\n", this->states.size());
-    printf("Number of states: %lu\n", this->stateToNumber.size());
+    printf("Number of states: %zu\n", this->states.size());
+    printf("Number of states: %u\n", this->stateToNumber.size());
     this->finishEpistemicRelation();
     this->prepareWinningStates();
     this->prepareWinningStatesForPercent();
@@ -337,14 +337,12 @@ void SeleneModel::generateModel() {
     State firstState = State(this->noVoters, this->maxCoerced);
     this->addState(firstState);
     int currentStateNumber = -1;
-    for (int state_i = 0; state_i < this->states.size(); ++state_i) {
+    for (auto state : this->states) {
         ++currentStateNumber;
-        State state = this->states[state_i];
-
         if (!state.votingStarted) {
             std::vector<std::pair<short, short> > envActions;
             std::vector<std::pair<short, short> > coercerActions;
-            coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
+            coercerActions.emplace_back(-1, -1); // Wait action
 
             for (int i = 0; i < this->noVoters; ++i) {
                 if (state.trackers[i] != -1) {
@@ -354,7 +352,7 @@ void SeleneModel::generateModel() {
                     if (state.votersTrackersSet[j]) {
                         continue;
                     }
-                    envActions.push_back(std::make_pair(i, j));
+                    envActions.emplace_back(i, j);
                 }
             }
 
@@ -365,7 +363,7 @@ void SeleneModel::generateModel() {
                     }
 
                     for (int j = 0; j < this->noBallots; ++j) {
-                        coercerActions.push_back(std::make_pair(i, j));
+                        coercerActions.emplace_back(i, j);
                     }
                 }
             }
@@ -385,11 +383,11 @@ void SeleneModel::generateModel() {
                         std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                             "FromVoter" + this->toString(coercerAction.first));
                         for (int i = 0; i < this->noVoters; ++i) {
-                            actions.push_back("Wait");
+                            actions.emplace_back("Wait");
                         }
 
-                        actions.push_back("Wait"); //ElectionDefense
-                        actions.push_back("StartVoting");
+                        actions.emplace_back("Wait"); //ElectionDefense
+                        actions.emplace_back("StartVoting");
 
                         int newStateNumber = this->addState(newState);
 
@@ -400,11 +398,11 @@ void SeleneModel::generateModel() {
                         newState.votingStarted = true;
                         std::vector<std::string> actions(1, "Wait");
                         for (int i = 0; i < this->noVoters; ++i) {
-                            actions.push_back("Wait");
+                            actions.emplace_back("Wait");
                         }
 
-                        actions.push_back("Wait"); //ElectionDefense
-                        actions.push_back("StartVoting");
+                        actions.emplace_back("Wait"); //ElectionDefense
+                        actions.emplace_back("StartVoting");
 
                         int newStateNumber = this->addState(newState);
 
@@ -427,10 +425,10 @@ void SeleneModel::generateModel() {
                             std::vector<std::string> actions(1, "RequestVote" + this->toString(coercerAction.second) +
                                                                 "FromVoter" + this->toString(coercerAction.first));
                             for (int i = 0; i < this->noVoters; ++i) {
-                                actions.push_back("Wait");
+                                actions.emplace_back("Wait");
                             }
 
-                            actions.push_back("Wait"); //ElectionDefense
+                            actions.emplace_back("Wait"); //ElectionDefense
 
                             actions.push_back("SetTracker" + this->toString(envAction.first) + "To" +
                                               this->toString(envAction.second));
@@ -446,10 +444,10 @@ void SeleneModel::generateModel() {
                             std::vector<std::string> actions(1, "Wait");
 
                             for (int i = 0; i < this->noVoters; ++i) {
-                                actions.push_back("Wait");
+                                actions.emplace_back("Wait");
                             }
 
-                            actions.push_back("Wait");
+                            actions.emplace_back("Wait");
                             actions.push_back("SetTracker" + this->toString(envAction.first) + "To" +
                                               this->toString(envAction.second));
 
@@ -465,7 +463,7 @@ void SeleneModel::generateModel() {
             }
         } else if (!state.votesPublished) {
             std::vector<std::pair<short, short> > coercerActions;
-            coercerActions.push_back(std::make_pair(-1, -1)); // Wait action
+            coercerActions.emplace_back(-1, -1); // Wait action
             if (state.coercedVoters < state.maxCoerced) {
                 for (int i = 0; i < this->noVoters; ++i) {
                     if (state.coercerVotesDemanded[i] != -1) {
@@ -473,7 +471,7 @@ void SeleneModel::generateModel() {
                     }
 
                     for (int j = 0; j < this->noBallots; ++j) {
-                        coercerActions.push_back(std::make_pair(i, j));
+                        coercerActions.emplace_back(i, j);
                     }
                 }
             }
@@ -739,7 +737,7 @@ void SeleneModel::generateModel() {
     }
 }
 
-int SeleneModel::addState(SeleneModel::State state) {
+int SeleneModel::addState(const SeleneModel::State& state) {
     if (this->stateToNumber[state] == 0) {
         this->stateToNumber[state] = this->stateNumber;
 
@@ -753,7 +751,7 @@ int SeleneModel::addState(SeleneModel::State state) {
 }
 
 std::string SeleneModel::toString(short a) {
-    std::string str = "";
+    std::string str;
     if (a == 0) {
         return "0";
     }
@@ -771,7 +769,7 @@ std::vector<std::vector<short> > SeleneModel::cartessianProduct(std::vector<std:
     std::vector<int> it(array.size());
     while (true) {
         std::vector<short> product(array.size());
-        for (int i = 0; i < array.size(); ++i) {
+        for (unsigned int i = 0; i < array.size(); ++i) {
             product[i] = array[i][it[i]];
         }
 
@@ -803,8 +801,8 @@ AtlModel &SeleneModel::getModel() {
 void SeleneModel::addActions() {
     this->model.addAction(0, "Wait");
     this->model.addAction(1, "Wait");
-    for (int i = 0; i < this->noVoters; ++i) {
-        for (int j = 0; j < this->noBallots; ++j) {
+    for (short i = 0; i < this->noVoters; ++i) {
+        for (short j = 0; j < this->noBallots; ++j) {
             std::string action = "RequestVote" + this->toString(j);
             action += "FromVoter" + this->toString(i);
             printf("%s\n", action.c_str());
@@ -812,7 +810,7 @@ void SeleneModel::addActions() {
         }
     }
 
-    for (int i = 0; i < this->noBallots; ++i) {
+    for (short i = 0; i < this->noBallots; ++i) {
         this->model.addAction(1, "Vote" + this->toString(i));
         this->model.addAction(1, "HelpINeed" + this->toString(i));
     }
@@ -835,7 +833,7 @@ void SeleneModel::simulate() {
         int i = 0;
 
         std::vector<AtlModel::Transition> transitions;
-        for (auto t : this->model.getTransitions(currentState)) {
+        for (const auto& t : this->model.getTransitions(currentState)) {
             printf("%d: NextState: %d ", i, t.nextState);
             this->printVector(t.actions);
             transitions.push_back(t);
@@ -853,8 +851,8 @@ void SeleneModel::simulate() {
 
 }
 
-void SeleneModel::printVector(std::vector<std::string> v) {
-    for (std::string i : v) {
+void SeleneModel::printVector(const std::vector<std::string>& v) {
+    for (const std::string& i : v) {
         printf("%s ", i.c_str());
     }
 
@@ -864,8 +862,8 @@ void SeleneModel::printVector(std::vector<std::string> v) {
 void SeleneModel::prepareWinningStates() {
     this->formula1WinningStates = std::set<int>();
     this->formula2WinningStates = std::set<int>();
-    for (int i = 0; i < this->states.size(); ++i) {
-        assert(this->model.getTransitions(i).size() > 0);
+    for (unsigned int i = 0; i < this->states.size(); ++i) {
+        assert(!this->model.getTransitions(i).empty());
 
         auto state = this->states[i];
 
@@ -925,7 +923,7 @@ void SeleneModel::prepareWinningStates() {
 
     this->formula3WinningStates = std::set<int>();
     this->formula4WinningStates = std::set<int>();
-    for (int i = 0; i < this->states.size(); ++i) {
+    for (unsigned int i = 0; i < this->states.size(); ++i) {
         auto state = this->states[i];
         bool someNotVoted1 = false;
         if (state.votingFinished) {
@@ -983,7 +981,7 @@ void SeleneModel::prepareWinningStates() {
 }
 
 void SeleneModel::finishEpistemicRelation() {
-    for (auto s: this->coercerEpistemicClasses) {
+    for (const auto& s: this->coercerEpistemicClasses) {
         this->model.addEpistemicClass(0, s.second);
     }
 }
@@ -996,7 +994,7 @@ void SeleneModel::clear() {
 
 void SeleneModel::prepareWinningStatesForPercent() {
     this->formula4PercentageWinningStates = std::set<int>();
-    for (int i = 0; i < this->states.size(); ++i) {
+    for (unsigned int i = 0; i < this->states.size(); ++i) {
         auto state = this->states[i];
         bool someNotVoted1 = false;
         if (state.votingFinished) {
