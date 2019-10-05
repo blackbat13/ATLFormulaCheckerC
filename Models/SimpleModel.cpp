@@ -3,7 +3,7 @@
 
 SimpleModel::SimpleModel(unsigned int noAgents) : noAgents(noAgents) {
     this->noStates = this->noTransitions = this->firstStateId = 0;
-    this->epistemicClasses = std::vector<std::vector<std::set<int> > >(noAgents);
+    this->epistemicClasses = std::vector<std::vector<std::set<unsigned int> > >(noAgents);
     this->epistemicClassMembership = std::vector<std::vector<unsigned int> >(noAgents);
     this->agentsActions = std::vector<std::vector<std::string> >(noAgents);
 }
@@ -23,7 +23,7 @@ void SimpleModel::resizeToState(unsigned int stateId) {
     this->noStates = std::max(this->noStates, stateId + 1);
 }
 
-void SimpleModel::addEpistemicClass(unsigned short agentId, const std::set<int> &epistemicClass) {
+void SimpleModel::addEpistemicClass(unsigned short agentId, const std::set<unsigned int> &epistemicClass) {
     this->epistemicClasses[agentId].push_back(epistemicClass);
     if (this->epistemicClassMembership[agentId].size() <= this->noStates) {
         this->epistemicClassMembership[agentId].resize(this->noStates + 1);
@@ -57,7 +57,6 @@ AtlModel SimpleModel::toAtlImperfect() {
 
         atlModel.finishEpistemicClasses(agentId);
     }
-
 
     return atlModel;
 }

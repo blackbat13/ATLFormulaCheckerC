@@ -13,7 +13,7 @@ protected:
     unsigned int noStates;
     unsigned short noAgents;
     unsigned int noTransitions;
-    std::vector<std::vector<std::set<int> > > epistemicClasses;
+    std::vector<std::vector<std::set<unsigned int> > > epistemicClasses;
     std::vector<std::vector<unsigned int> > epistemicClassMembership;
     std::vector<State> states;
     unsigned int firstStateId;
@@ -23,7 +23,7 @@ public:
     void addTransition(unsigned int fromStateId, unsigned int toStateId, std::vector<std::string> actions);
     void resizeToState(unsigned int stateId);
 //    void addEpistemicRelation(unsigned int stateId1, unsigned int stateId2, unsigned short agentId);
-    void addEpistemicClass(unsigned short agentId, const std::set<int>& epistemicClass);
+    void addEpistemicClass(unsigned short agentId, const std::set<unsigned int>& epistemicClass);
     void addActions(unsigned short agentId, std::vector<std::string> actions);
     AtlModel toAtlImperfect();
 };
