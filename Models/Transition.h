@@ -13,12 +13,12 @@ public:
     Transition();
 
     /// Identifier of the state.
-    int nextState{};
+    unsigned int nextState{};
 
     /// Vector of agents actions, where action_i corresponds to agent_i.
     std::vector<std::string> actions;
 
-    Transition(int nextState, std::vector<std::string> actions);
+    Transition(unsigned int nextState, std::vector<std::string> actions);
 
     bool operator<(const Transition &rhs) const;
 

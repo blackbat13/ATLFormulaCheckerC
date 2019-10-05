@@ -5,8 +5,8 @@
 #include "Transition.h"
 #include <utility>
 
-Transition::Transition(int nextState, std::vector<std::string> actions) : nextState(nextState),
-                                                                                 actions(std::move(actions)) {}
+Transition::Transition(unsigned int nextState, std::vector<std::string> actions) : nextState(nextState),
+                                                                                   actions(std::move(actions)) {}
 
 Transition::Transition() = default;
 
