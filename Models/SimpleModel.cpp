@@ -64,3 +64,7 @@ AtlModel SimpleModel::toAtlImperfect() {
 void SimpleModel::addActions(unsigned short agentId, std::vector<std::string> actions) {
     this->agentsActions[agentId] = std::move(actions);
 }
+
+void SimpleModel::addState(const State& state) {
+    this->states.push_back(state);
+}
