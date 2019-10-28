@@ -76,7 +76,7 @@ void BridgeModelTestSuite::startTests() {
         printf("Current Physical Memory used: %f MB\n", getPhysicalMemory()/1024);
 
 
-        std::set<int> winningStates;
+        std::set<unsigned int> winningStates;
         for(int i = 0; i < bridgeModel.getStates().size(); ++i) {
             BridgeModel::State state = bridgeModel.getStates()[i];
             if(state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable) {
@@ -85,7 +85,7 @@ void BridgeModelTestSuite::startTests() {
         }
 
         clock_gettime(CLOCK_MONOTONIC, &start);
-        std::set<int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, winningStates);
+        std::set<unsigned int> result = bridgeModel.getModel().minimumFormulaOneAgentMultipleStatesDisjoint(0, winningStates);
         clock_gettime(CLOCK_MONOTONIC, &finish);
         elapsed = (finish.tv_sec - start.tv_sec);
         elapsed += (finish.tv_sec - start.tv_sec) / 1000000000.0;

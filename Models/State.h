@@ -14,6 +14,14 @@ protected:
     std::vector<std::string> props;
 public:
     void setProps(std::vector<std::string> props);
+
+    bool operator<(const State &rhs) const;
+
+    bool operator>(const State &rhs) const;
+
+    bool operator<=(const State &rhs) const;
+
+    bool operator>=(const State &rhs) const;
 };
 
 

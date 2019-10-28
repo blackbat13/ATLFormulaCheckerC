@@ -111,7 +111,7 @@ private:
     short maxWaitingForVotes;
     short maxWaitingForHelp;
     std::map<State, int> stateToNumber;
-    std::map<CoercerEpistemicState, std::set<int> > coercerEpistemicClasses;
+    std::map<CoercerEpistemicState, std::set<unsigned int> > coercerEpistemicClasses;
 
     void generateModel();
 

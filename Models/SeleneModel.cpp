@@ -832,7 +832,7 @@ void SeleneModel::simulate() {
         this->states[currentState].print();
         int i = 0;
 
-        std::vector<AtlModel::Transition> transitions;
+        std::vector<Transition> transitions;
         for (const auto& t : this->model.getTransitions(currentState)) {
             printf("%d: NextState: %d ", i, t.nextState);
             this->printVector(t.actions);

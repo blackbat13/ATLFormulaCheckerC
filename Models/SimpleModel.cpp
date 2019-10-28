@@ -10,6 +10,17 @@ SimpleModel::SimpleModel(unsigned int noAgents) : noAgents(noAgents) {
 
 void SimpleModel::addTransition(unsigned int fromStateId, unsigned int toStateId, std::vector<std::string> actions) {
     this->resizeToState(std::max(fromStateId, toStateId));
+    bool exist = false;
+    for(auto & actionTransition : this->actionGraph[fromStateId]) {
+        if(actionTransition.actions == actions) {
+            actionTransition.nextStates.push_back(toStateId);
+            exist = true;
+            break;
+        }
+    }
+    if(!exist) {
+        this->actionGraph[fromStateId].push_back(ActionTransition(actions, toStateId));
+    }
     this->graph[fromStateId].push_back(Transition(toStateId, std::move(actions)));
     this->noTransitions++;
 }
@@ -20,6 +31,7 @@ void SimpleModel::resizeToState(unsigned int stateId) {
     }
 
     this->graph.resize(stateId + 1);
+    this->actionGraph.resize(stateId + 1);
     this->noStates = std::max(this->noStates, stateId + 1);
 }
 

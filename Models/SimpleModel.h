@@ -5,11 +5,13 @@
 #include <set>
 #include "Transition.h"
 #include "State.h"
+#include "ActionTransition.h"
 #include "../Logics/AtlModel.h"
 
 class SimpleModel {
 protected:
     std::vector<std::vector<Transition> > graph;
+    std::vector<std::vector<ActionTransition> > actionGraph;
     unsigned int noStates;
     unsigned short noAgents;
     unsigned int noTransitions;
