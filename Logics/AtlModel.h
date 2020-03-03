@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "../Tools/DisjointUnion.h"
 #include "../Models/Transition.h"
+#include "../Models/ParallelModel.hpp"
 
 class AtlModel {
 private:
@@ -44,6 +45,8 @@ private:
     /// Number of initial states
     unsigned int initialStatesCount;
 public:
+
+    ParallelModel toParallelModel(int agentId);
 
     unsigned long getInitialStatesCount() const;
 

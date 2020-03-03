@@ -82,6 +82,16 @@ BridgeModel::BridgeModel(int noCardsAvailable, int noEndCards, BridgeModel::Stat
     this->prepareEpistemicRelation();
     printf("Done\n");
     printf("Generated %lu epistemic classes\n", this->epistemicStatesDictionary.size());
+
+    std::set<unsigned int> winningStates;
+    for(int i = 0; i < this->states.size(); ++i) {
+        BridgeModel::State state = this->states[i];
+        if(state.lefts[0] > this->noCardsAvailable/2 && state.lefts[0] + state.lefts[1] == this->noCardsAvailable) {
+            winningStates.insert(i);
+        }
+    }
+    this->model.setWinningStates(winningStates);
+
     printf("Clearing old data... ");
     this->clear();
     printf("Done\n");
@@ -223,6 +233,8 @@ void BridgeModel::generateRestOfModel() {
             }
         }
     }
+
+    this->model.setNumberOfStates(this->states.size());
 }
 
 int BridgeModel::addState(BridgeModel::State state) {
