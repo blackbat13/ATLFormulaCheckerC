@@ -9,10 +9,10 @@
 
 class DisjointUnion {
     struct Element {
-        int parent;
-        int rank;
+        unsigned int parent;
+        unsigned int rank;
 
-        Element(int parent, int rank);
+        Element(unsigned int parent, unsigned int rank);
 
         Element();
     };
@@ -20,15 +20,15 @@ class DisjointUnion {
     std::vector<Element> subsets;
 public:
 
-    DisjointUnion(int numberOfNodes);
+    DisjointUnion(unsigned int numberOfNodes);
 
     DisjointUnion(std::vector<Element> subsets);
 
-    int find(int nodeNumber);
+    unsigned int find(unsigned int nodeNumber);
 
-    void unionn(int x, int y);
+    void unionn(unsigned int x, unsigned int y);
 
-    bool isSame(int x, int y);
+    bool isSame(unsigned int x, unsigned int y);
 
     const std::vector<Element> &getSubsets() const;
 
