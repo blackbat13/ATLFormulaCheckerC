@@ -5,7 +5,58 @@
 #include "LocalModelParser.h"
 
 LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentNo) {
-    return LocalModel(0, __cxx11::basic_string(), std::map(), std::vector(), std::map(), std::set());
+    auto lines = StringTools::splitLines(modelStr);
+    std::string agentName = StringTools::split(StringTools::split(lines[0], ' ')[1], '[')[0] + to_string(agentNo);
+    std::string initState = StringTools::split(lines[1], ' ')[1];
+    std::map<std::string, int> states;
+    states["init_state"] = 0;
+    std::map<std::string, std::vector<std::vector<std::string> > > protocols;
+    std::set<std::string> actions;
+    std::vector<std::vector<LocalTransition>> transitions;
+    int stateNum = 1;
+    int transitionId = 0;
+    for (int i = 2; i < lines.size(); i++) {
+        std::string line = StringTools::strip(lines[i], ' ');
+        line = StringTools::replace(line, "aID", agentName);
+        if (isProtocolLine(line)) {
+            auto res = parseProtocol(line);
+            protocols[res.first] = res.second;
+            continue
+        }
+
+
+        auto localTransition = LocalTransitionParser::parse(line);
+        localTransition.id = transitionId;
+        localTransition.agentId = agentId;
+        transitionId++;
+        if (!localTransition.shared) {
+            localTransition.action += "_" + agentName;
+        }
+
+        actions.insert(localTransition.action);
+        auto stateFrom = localTransition.stateFrom;
+        auto stateTo = localTransition.stateTo;
+        if (states.find(stateFrom) == states.end()) {
+            states[stateFrom] = stateNum;
+            stateNum++;
+        }
+
+        if (states.find(stateTo) == states.end()) {
+            states[stateTo] = stateNum;
+            stateNum++;
+        }
+
+        while (transitions.size() <= states[stateFrom]) {
+            transitions.emplace_back();
+        }
+
+        transitions[states[stateFrom]].push_back(localTransition);
+    }
+    while (transitions.size() < states.size()) {
+        transitions.emplace_back();
+    }
+
+    return LocalModel(agentId, agentName, states, transitions, protocols, actions);
 }
 
 bool LocalModelParser::isProtocolLine(std::string line) {
@@ -24,15 +75,14 @@ std::vector<std::vector<std::string> > LocalModelParser::parseProtocolList(std::
     std::string line2 = StringTools::strip(line, ' ');
     line2 = StringTools::strip(line2, '[');
     line2 = StringTools::strip(line2, ']');
-    auto split1 = StringTools::split(']');
-    for(auto arr : split1) {
+    auto split1 = StringTools::split(line2, "],");
+    for (auto arr : split1) {
         auto arr2 = StringTools::strip(arr, ' ');
-        arr2 = StringTools::strip(arr2, ',');
         arr2 = StringTools::strip(arr2, '[');
         arr2 = StringTools::strip(arr2, ']');
         std::vector<std::string> lst;
         auto split2 = StringTools::split(arr2, ',');
-        for(auto element : split2) {
+        for (auto element : split2) {
             lst.push_back(StringTools::strip(element, ' '));
         }
 

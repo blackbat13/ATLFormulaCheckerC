@@ -15,3 +15,15 @@ std::vector<std::string> StringTools::split(std::string str, char delim) {
 
     return cont;
 }
+
+std::vector<std::string> StringTools::split(std::string str, std::string delim) {
+    std::vector<std::string> result;
+
+    int i = 0, p = 0;
+    while(i < str.length() && (i = str.find(delim, i)) != -1) {
+        result.push_back(str.substr(p, i - p - 1));
+        i += delim.length();
+    }
+
+    return result;
+}

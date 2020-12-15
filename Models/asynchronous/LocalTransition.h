@@ -10,7 +10,14 @@
 #include <vector>
 #include "GlobalState.h"
 
+struct Condition {
+    std::string condVar;
+    int condVal;
+    std::string condSym;
+};
+
 class LocalTransition {
+public:
     int id;
     int agentId;
     std::string action;
@@ -18,12 +25,12 @@ class LocalTransition {
     std::string stateFrom;
     std::string stateTo;
     std::map<std::string,std::string> props;
-    std::vector<std::string> cond;
+    std::vector<Condition> cond;
     int i;
     int j;
 
-public:
-    LocalTransition(std::string stateFrom, std::string stateTo, std::string action, bool shared, std::vector<std::string>  cond, std::map<std::string, std::string> dict);
+
+    LocalTransition(std::string stateFrom, std::string stateTo, std::string action, bool shared, std::vector<Condition> cond, std::map<std::string, std::string> dict);
 
     bool checkConditions(GlobalState state);
 

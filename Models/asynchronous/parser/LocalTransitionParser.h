@@ -6,6 +6,7 @@
 #define ATLFORMULACHECKER_LOCALTRANSITIONPARSER_H
 
 #include "../LocalTransition.h"
+#include "../../../Tools/StringTools.h"
 #include <string>
 
 class LocalTransitionParser {
