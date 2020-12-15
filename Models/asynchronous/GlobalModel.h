@@ -1,0 +1,14 @@
+//
+// Created by black on 14.12.2020.
+//
+
+#ifndef ATLFORMULACHECKER_GLOBALMODEL_H
+#define ATLFORMULACHECKER_GLOBALMODEL_H
+
+
+class GlobalModel {
+
+};
+
+
+#endif //ATLFORMULACHECKER_GLOBALMODEL_H
