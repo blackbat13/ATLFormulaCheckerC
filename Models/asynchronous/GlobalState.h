@@ -32,7 +32,7 @@ public:
 
     std::string toString();
 
-    void print();
+    void print() override;
 
     bool operator==(const GlobalState &rhs) const;
 

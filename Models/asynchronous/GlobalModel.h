@@ -8,6 +8,7 @@
 #include "LocalModel.h"
 #include "LocalTransition.h"
 #include "SharedTransition.h"
+#include "../../Tools/SetTools.h"
 #include <vector>
 #include <string>
 #include <set>
@@ -15,6 +16,18 @@
 #include <stack>
 
 struct EpistemicState {
+    bool operator==(const EpistemicState &rhs) const;
+
+    bool operator!=(const EpistemicState &rhs) const;
+
+    bool operator<(const EpistemicState &rhs) const;
+
+    bool operator>(const EpistemicState &rhs) const;
+
+    bool operator<=(const EpistemicState &rhs) const;
+
+    bool operator>=(const EpistemicState &rhs) const;
+
     int localState;
     bool init;
     std::map<std::string, std::string> props;
@@ -88,6 +101,8 @@ public:
     void setCoalition(std::vector<std::string> coalition);
     std::set<unsigned int> getWinningStates(int formulaNo);
     std::pair<std::set<unsigned int>, double> verifyApproximation(bool perfectInf, int formulaNo);
+
+    const SimpleModel &getModel() const;
 };
 
 

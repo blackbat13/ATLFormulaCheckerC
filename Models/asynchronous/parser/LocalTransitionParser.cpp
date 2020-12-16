@@ -32,12 +32,12 @@ LocalTransition LocalTransitionParser::parse(std::string transitionStr) {
             split1 = StringTools::split(conditions, "==");
             auto condVar = split1[0];
             auto condVal = split1[1];
-            cond.push_back({condVar, std::stoi(condVal), "=="});
+            cond.emplace_back(condVar, condVal, "==");
         } else if (conditions.find("!=") != -1) {
             split1 = StringTools::split(conditions, "!=");
             auto condVar = split1[0];
             auto condVal = split1[1];
-            cond.push_back({condVar, std::stoi(condVal), "!="});
+            cond.emplace_back(condVar, condVal, "!=");
         } else {
             printf("ERROR!");
         }

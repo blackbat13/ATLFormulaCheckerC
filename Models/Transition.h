@@ -20,6 +20,8 @@ public:
 
     Transition(unsigned int nextState, std::vector<std::string> actions);
 
+    void print();
+
     bool operator<(const Transition &rhs) const;
 
     bool operator>(const Transition &rhs) const;

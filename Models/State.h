@@ -15,6 +15,8 @@ protected:
 public:
     void setProps(std::vector<std::string> props);
 
+    virtual void print();
+
     bool operator<(const State &rhs) const;
 
     bool operator>(const State &rhs) const;

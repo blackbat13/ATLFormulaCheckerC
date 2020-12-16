@@ -29,3 +29,10 @@ bool Transition::operator<=(const Transition &rhs) const {
 bool Transition::operator>=(const Transition &rhs) const {
     return !(*this < rhs);
 }
+
+void Transition::print() {
+    printf("Next state: %d, actions: ", this->nextState);
+    for(auto act : this->actions) {
+        printf("%s, ", act.c_str());
+    }
+}

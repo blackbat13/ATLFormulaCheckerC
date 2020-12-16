@@ -34,7 +34,7 @@ LocalTransition::LocalTransition(std::string stateFrom, std::string stateTo, std
     this->j = -1;
 }
 
-bool LocalTransition::checkConditions(GlobalState state) {
+bool LocalTransition::checkConditions(GlobalState state) const {
     for(auto cond : this->conditions) {
         if((cond.condSym == "==" && ((state.props.find(cond.condVar) == state.props.end()) || (state.props[cond.condVar] != cond.condVal))) || (cond.condSym == "!=" && (state.props.find(cond.condVar) != state.props.end()) && state.props[cond.condVar] == cond.condVal)) {
             return false;
@@ -67,4 +67,64 @@ void LocalTransition::print() {
     }
 
     printf("\n");
+}
+
+int LocalTransition::getId() const {
+    return id;
+}
+
+int LocalTransition::getAgentId() const {
+    return agentId;
+}
+
+const string &LocalTransition::getAction() const {
+    return action;
+}
+
+bool LocalTransition::isShared() const {
+    return shared;
+}
+
+const string &LocalTransition::getStateFrom() const {
+    return stateFrom;
+}
+
+const string &LocalTransition::getStateTo() const {
+    return stateTo;
+}
+
+const map<std::string, std::string> &LocalTransition::getProps() const {
+    return props;
+}
+
+const vector<Condition> &LocalTransition::getConditions() const {
+    return conditions;
+}
+
+int LocalTransition::getI() const {
+    return i;
+}
+
+int LocalTransition::getJ() const {
+    return j;
+}
+
+void LocalTransition::setId(int id) {
+    LocalTransition::id = id;
+}
+
+void LocalTransition::setAgentId(int agentId) {
+    LocalTransition::agentId = agentId;
+}
+
+void LocalTransition::setAction(const string &action) {
+    LocalTransition::action = action;
+}
+
+void LocalTransition::setI(int i) {
+    LocalTransition::i = i;
+}
+
+void LocalTransition::setJ(int j) {
+    LocalTransition::j = j;
 }

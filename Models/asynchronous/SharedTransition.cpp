@@ -4,17 +4,17 @@
 
 #include "SharedTransition.h"
 
-SharedTransition::SharedTransition(LocalTransition localTransition) : LocalTransition(localTransition.stateFrom,
-                                                                                      localTransition.stateFrom,
-                                                                                      localTransition.action, true,
-                                                                                      localTransition.conditions,
-                                                                                      localTransition.props) {
-    this->id = localTransition.id;
-    this->agentId = localTransition.agentId;
+SharedTransition::SharedTransition(LocalTransition localTransition) : LocalTransition(localTransition.getStateFrom(),
+                                                                                      localTransition.getStateFrom(),
+                                                                                      localTransition.getAction(), true,
+                                                                                      localTransition.getConditions(),
+                                                                                      localTransition.getProps()) {
+    this->id = localTransition.getI();
+    this->agentId = localTransition.getAgentId();
     this->transitionList = std::vector<LocalTransition>();
     this->transitionList.push_back(localTransition);
-    this->i = localTransition.i;
-    this->j = localTransition.j;
+    this->i = localTransition.getI();
+    this->j = localTransition.getJ();
 }
 
 bool SharedTransition::operator==(const SharedTransition &rhs) const {

@@ -77,16 +77,66 @@ void SimpleModel::addActions(unsigned short agentId, std::vector<std::string> ac
     this->agentsActions[agentId] = std::move(actions);
 }
 
-void SimpleModel::addState(const State& state) {
+void SimpleModel::addState(State *state) {
     this->states.push_back(state);
 }
 
 std::set<unsigned int> SimpleModel::epistemicClassForState(int stateId, int agentId) {
-    if(this->epistemicClassMembership[agentId][stateId] == -1) {
+    if(stateId >= this->epistemicClassMembership[agentId].size() || this->epistemicClassMembership[agentId][stateId] == -1) {
         auto result = std::set<unsigned int>();
         result.insert(stateId);
         return result;
     }
 
     return this->epistemicClasses[agentId][this->epistemicClassMembership[agentId][stateId]];
+}
+
+void SimpleModel::simulate(int agentId) {
+    printf("----SIMULATION START-----\n");
+    int current_state = 0;
+    while(true) {
+        printf("\n");
+        this->simulatePrintCurrentState(current_state);
+        this->simulatePrintEpistemicStates(current_state, agentId);
+        if(this->graph[current_state].empty()) {
+            break;
+        }
+
+        this->simulatePrintTransitions(current_state);
+        int choice;
+        printf("Choose transition: ");
+        scanf("%d", &choice);
+        if(choice == -1) {
+            break;
+        }
+
+        current_state = this->graph[current_state][choice].nextState;
+    }
+
+    printf("----SIMULATION END-----\n");
+}
+
+void SimpleModel::simulatePrintCurrentState(int currentState) {
+    printf("Current state:\n");
+    this->states[currentState]->print();
+}
+
+void SimpleModel::simulatePrintEpistemicStates(int currentState, int agentId) {
+    printf("Epistemic states:\n");
+    auto epist = this->epistemicClassForState(currentState, agentId);
+    for(auto state : epist) {
+        printf("%d\n", state);
+        this->states[state]->print();
+    }
+}
+
+void SimpleModel::simulatePrintTransitions(int currentState) {
+    printf("Transitions:\n");
+    int i = 0;
+    for(auto transition : this->graph[currentState]) {
+        printf("%d: ", i);
+        transition.print();
+        printf("\n");
+        i++;
+    }
 }

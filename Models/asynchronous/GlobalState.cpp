@@ -73,8 +73,7 @@ void GlobalState::print() {
 }
 
 bool GlobalState::operator==(const GlobalState &rhs) const {
-    return id == rhs.id &&
-           localStates == rhs.localStates &&
+    return localStates == rhs.localStates &&
            props == rhs.props;
 }
 
@@ -83,10 +82,6 @@ bool GlobalState::operator!=(const GlobalState &rhs) const {
 }
 
 bool GlobalState::operator<(const GlobalState &rhs) const {
-    if (id < rhs.id)
-        return true;
-    if (rhs.id < id)
-        return false;
     if (localStates < rhs.localStates)
         return true;
     if (rhs.localStates < localStates)

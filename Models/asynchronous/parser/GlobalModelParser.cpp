@@ -15,7 +15,7 @@ GlobalModel GlobalModelParser::parse(std::string fileName) {
     std::vector<std::string> goal;
 
     while(std::getline(inputFile, line)) {
-        lines.push_back(line);
+        lines.push_back(line + "\n");
     }
 
     inputFile.close();

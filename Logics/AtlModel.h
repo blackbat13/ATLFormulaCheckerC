@@ -52,7 +52,6 @@ public:
 
     void setInitialStatesCount(unsigned int initialStatesCount);
 
-public:
     std::vector<std::vector<std::set<unsigned int> > > imperfectInformation;
 
     AtlModel(unsigned short numberOfAgents, unsigned int numberOfStates);

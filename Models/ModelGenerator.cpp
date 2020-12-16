@@ -28,7 +28,7 @@ unsigned int ModelGenerator::getStateId(const State &state) {
     if (this->statesMap[state] == 0) {
         this->statesMap[state] = this->stateId + 1;
         newStateId = this->stateId;
-        this->model.addState(state);
+        //this->model.addState(state); // TODO
         this->stateId++;
     } else {
         newStateId = this->statesMap[state] - 1;
