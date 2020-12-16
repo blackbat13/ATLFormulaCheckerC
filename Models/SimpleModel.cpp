@@ -80,3 +80,13 @@ void SimpleModel::addActions(unsigned short agentId, std::vector<std::string> ac
 void SimpleModel::addState(const State& state) {
     this->states.push_back(state);
 }
+
+std::set<unsigned int> SimpleModel::epistemicClassForState(int stateId, int agentId) {
+    if(this->epistemicClassMembership[agentId][stateId] == -1) {
+        auto result = std::set<unsigned int>();
+        result.insert(stateId);
+        return result;
+    }
+
+    return this->epistemicClasses[agentId][this->epistemicClassMembership[agentId][stateId]];
+}

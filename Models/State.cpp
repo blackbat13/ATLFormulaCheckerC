@@ -23,3 +23,8 @@ bool State::operator<=(const State &rhs) const {
 bool State::operator>=(const State &rhs) const {
     return !(*this < rhs);
 }
+
+AsyncState::AsyncState(int id, std::string name) {
+    this->id = id;
+    this->name = name;
+}

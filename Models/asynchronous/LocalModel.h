@@ -11,18 +11,19 @@
 #include <map>
 #include <vector>
 #include <set>
+#include <algorithm>
 
 class LocalModel {
-private:
+public:
     int agentId;
     std::string agentName;
     std::map<std::string, int> states;
     std::vector<std::vector<LocalTransition> > transitions;
     std::set<std::string> actions;
-    std::map<std::string, std::vector<std::vector<LocalTransition> > > protocols;
+    std::map<std::string, std::vector<std::vector<std::string> > > protocols;
     std::vector<std::string> props;
     SimpleModel model;
-public:
+
     LocalModel(int agentId, std::string agentName, std::map<std::string, int> states, std::vector<std::vector<LocalTransition> > transitions, std::map<std::string, std::vector<std::vector<std::string> > > protocols, std::set<std::string> actions);
 
     void generate();

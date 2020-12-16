@@ -9,12 +9,24 @@
 #include <vector>
 
 class SharedTransition: public LocalTransition {
-private:
-    std::vector<LocalTransition> transitionList;
 public:
-    SharedTransition(LocalTransition localTransition);
+    std::vector<LocalTransition> transitionList;
+
+    explicit SharedTransition(LocalTransition localTransition);
 
     void addTransition(LocalTransition localTransition);
+
+    bool operator==(const SharedTransition &rhs) const;
+
+    bool operator!=(const SharedTransition &rhs) const;
+
+    bool operator<(const SharedTransition &rhs) const;
+
+    bool operator>(const SharedTransition &rhs) const;
+
+    bool operator<=(const SharedTransition &rhs) const;
+
+    bool operator>=(const SharedTransition &rhs) const;
 };
 
 

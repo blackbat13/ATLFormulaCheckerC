@@ -24,5 +24,12 @@ public:
     bool operator>=(const State &rhs) const;
 };
 
+class AsyncState: public State {
+public:
+    int id;
+    std::string name;
+
+    AsyncState(int id, std::string name);
+};
 
 #endif //ATLFORMULACHECKER_STATE_H

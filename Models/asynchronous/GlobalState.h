@@ -5,19 +5,20 @@
 #ifndef ATLFORMULACHECKER_GLOBALSTATE_H
 #define ATLFORMULACHECKER_GLOBALSTATE_H
 
+#include "../SimpleModel.h"
 #include <map>
 #include <vector>
+#include <algorithm>
 
-class GlobalState {
-private:
+class GlobalState: public State {
+public:
     int id;
     std::vector<int> localStates;
     std::map<std::string, std::string> props;
-    std::vector<int> counters;
-public:
-    GlobalState(std::vector<int> localStates, std::map<std::string, std::string> props, std::vector<int> counters, int id = -1);
 
-    GlobalState(int agentCount);
+    GlobalState(std::vector<int> localStates, std::map<std::string, std::string> props, int id = -1);
+
+    explicit GlobalState(int agentCount);
 
     static GlobalState copyState(GlobalState state, std::vector<std::string> persistent);
 
@@ -32,6 +33,18 @@ public:
     std::string toString();
 
     void print();
+
+    bool operator==(const GlobalState &rhs) const;
+
+    bool operator!=(const GlobalState &rhs) const;
+
+    bool operator<(const GlobalState &rhs) const;
+
+    bool operator>(const GlobalState &rhs) const;
+
+    bool operator<=(const GlobalState &rhs) const;
+
+    bool operator>=(const GlobalState &rhs) const;
 };
 
 

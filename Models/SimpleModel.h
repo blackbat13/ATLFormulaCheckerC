@@ -29,6 +29,7 @@ public:
     void addActions(unsigned short agentId, std::vector<std::string> actions);
     AtlModel toAtlImperfect();
     void addState(const State& state);
+    std::set<unsigned int> epistemicClassForState(int stateId, int agentId);
 };
 
 

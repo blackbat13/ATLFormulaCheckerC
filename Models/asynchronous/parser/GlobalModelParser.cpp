@@ -5,7 +5,6 @@
 #include "GlobalModelParser.h"
 
 GlobalModel GlobalModelParser::parse(std::string fileName) {
-    // TODO
     auto inputFile = ifstream (fileName);
     std::string line;
     std::vector<std::string> lines;
