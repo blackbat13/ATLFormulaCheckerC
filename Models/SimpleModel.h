@@ -8,6 +8,7 @@
 #include "ActionTransition.h"
 #include "../Logics/AtlModel.h"
 #include "./asynchronous/GlobalState.h"
+#include "ParallelModel.hpp"
 
 class SimpleModel {
 protected:
@@ -20,14 +21,14 @@ protected:
     std::vector<std::vector<unsigned int> > epistemicClassMembership;
     std::vector<GlobalState> states;
     unsigned int firstStateId;
-    std::vector<std::vector<std::string> > agentsActions;
+    std::vector<std::set<std::string> > agentsActions;
 public:
     explicit SimpleModel(unsigned int noAgents);
     void addTransition(unsigned int fromStateId, unsigned int toStateId, std::vector<std::string> actions);
     void resizeToState(unsigned int stateId);
 //    void addEpistemicRelation(unsigned int stateId1, unsigned int stateId2, unsigned short agentId);
     void addEpistemicClass(unsigned short agentId, const std::set<unsigned int>& epistemicClass);
-    void addActions(unsigned short agentId, std::vector<std::string> actions);
+    void addActions(unsigned short agentId, std::set<std::string> actions);
     AtlModel toAtlImperfect();
     void addState(GlobalState state);
     std::set<unsigned int> epistemicClassForState(int stateId, int agentId);
@@ -35,6 +36,7 @@ public:
     void simulatePrintCurrentState(int currentState);
     void simulatePrintEpistemicStates(int currentState, int agentId);
     void simulatePrintTransitions(int currentState);
+    ParallelModel toParallelModel(int agentId, std::set<unsigned int> winningStates);
 };
 
 

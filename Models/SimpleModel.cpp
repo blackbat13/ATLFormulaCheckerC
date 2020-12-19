@@ -5,7 +5,7 @@ SimpleModel::SimpleModel(unsigned int noAgents) : noAgents(noAgents) {
     this->noStates = this->noTransitions = this->firstStateId = 0;
     this->epistemicClasses = std::vector<std::vector<std::set<unsigned int> > >(noAgents);
     this->epistemicClassMembership = std::vector<std::vector<unsigned int> >(noAgents);
-    this->agentsActions = std::vector<std::vector<std::string> >(noAgents);
+    this->agentsActions = std::vector<std::set<std::string> >(noAgents);
 }
 
 void SimpleModel::addTransition(unsigned int fromStateId, unsigned int toStateId, std::vector<std::string> actions) {
@@ -73,7 +73,7 @@ AtlModel SimpleModel::toAtlImperfect() {
     return atlModel;
 }
 
-void SimpleModel::addActions(unsigned short agentId, std::vector<std::string> actions) {
+void SimpleModel::addActions(unsigned short agentId, std::set<std::string> actions) {
     this->agentsActions[agentId] = std::move(actions);
 }
 
@@ -140,4 +140,50 @@ void SimpleModel::simulatePrintTransitions(int currentState) {
         printf("\n");
         i++;
     }
+}
+
+ParallelModel SimpleModel::toParallelModel(int agentId, std::set<unsigned int> winningStates) {
+    ParallelModel parallelModel(this->states.size() + 1);
+    std::map<std::string, int> actionsId;
+    int id = 0;
+    for(auto action : this->agentsActions[agentId]) {
+        actionsId[action] = id;
+        id++;
+    }
+
+    for(int stateId = 0; stateId < this->states.size(); stateId++) {
+        std::vector<std::pair<int, int> > tran;
+        for(auto transition : this->graph[stateId]){
+            tran.emplace_back(actionsId[transition.actions[agentId]], transition.nextState);
+        }
+
+        std::sort(tran.begin(), tran.end());
+        auto it = std::unique (tran.begin(), tran.end());
+        tran.resize( std::distance(tran.begin(),it) );
+        for(auto tr : tran) {
+            if(stateId != tr.second) {
+                parallelModel.states[stateId]->addTransition(tr.first, tr.second);
+            } else {
+                // If there is a loop we go to a not accepting final state - the last one
+                parallelModel.states[stateId]->addTransition(tr.first, this->states.size());
+            }
+
+        }
+    }
+
+    for(int stateId = 0; stateId < this->states.size(); stateId++) {
+        for(auto epistemicState : this->epistemicClassForState(stateId, agentId)) {
+            if(epistemicState == stateId) {
+                continue;
+            }
+
+            parallelModel.unify(stateId, epistemicState);
+        }
+    }
+
+    for(auto stateId : winningStates) {
+        parallelModel.states[stateId]->setAccept();
+    }
+
+    return parallelModel;
 }

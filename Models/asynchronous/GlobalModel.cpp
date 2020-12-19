@@ -40,6 +40,10 @@ void GlobalModel::generate(bool reduction) {
     }
 
     this->prepareEpistemicRelation();
+    auto actions = this->getActions();
+    for(int agentId = 0; agentId < this->localModels.size(); agentId++) {
+        this->model.addActions(agentId, actions[agentId]);
+    }
 }
 
 void GlobalModel::prepareEpistemicRelation() {
@@ -617,11 +621,11 @@ EpistemicState GlobalModel::getEpistemicState(GlobalState state, int agentId) {
         sum += localState;
     }
 
-    if (sum == 0) {
-        return {state.localStates[agentId], true, std::map<std::string, std::string>()};
+    if (sum == 0 && state.props.empty()) {
+        return {state.localStates, true, std::map<std::string, std::string>()};
     }
 
-    EpistemicState epistemicState = {state.localStates[agentId], false, std::map<std::string, std::string>()};
+    EpistemicState epistemicState = {state.localStates, false, std::map<std::string, std::string>()};
     for (auto prop : this->localModels[agentId].props) {
         if (state.props.find(prop) != state.props.end()) {
             epistemicState.props[prop] = state.props[prop];
@@ -752,6 +756,11 @@ std::pair<std::set<unsigned int>, double> GlobalModel::verifyApproximation(bool 
     }
 }
 
+std::pair<bool, double> GlobalModel::verifyParallel(int formulaNo) {
+    auto parallelModel = this->model.toParallelModel(this->agentNameToId(this->coalition[0]), this->getWinningStates(formulaNo));
+    return std::make_pair(parallelModel.recursiveDFS(0, -1, false, 0),0);
+}
+
 const SimpleModel &GlobalModel::getModel() const {
     return model;
 }
@@ -796,4 +805,13 @@ bool EpistemicState::operator<=(const EpistemicState &rhs) const {
 
 bool EpistemicState::operator>=(const EpistemicState &rhs) const {
     return !(*this < rhs);
+}
+
+void EpistemicState::print() {
+    //printf("Local state: %d, Init: %d, Props: ", this->localState, this->init);
+    for(auto el : this->props) {
+        printf("%s:%s, ", el.first.c_str(), el.second.c_str());
+    }
+
+    printf("\n");
 }

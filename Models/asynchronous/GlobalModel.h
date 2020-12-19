@@ -28,9 +28,11 @@ struct EpistemicState {
 
     bool operator>=(const EpistemicState &rhs) const;
 
-    int localState;
+    std::vector<int> localState;
     bool init;
     std::map<std::string, std::string> props;
+
+    void print();
 };
 
 class GlobalModel {
@@ -101,6 +103,7 @@ public:
     void setCoalition(std::vector<std::string> coalition);
     std::set<unsigned int> getWinningStates(int formulaNo);
     std::pair<std::set<unsigned int>, double> verifyApproximation(bool perfectInf, int formulaNo);
+    std::pair<bool, double> verifyParallel(int formulaNo);
     int getStatesCount();
     int getTransitionsCount();
 

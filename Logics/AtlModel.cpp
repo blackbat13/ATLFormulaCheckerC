@@ -181,7 +181,7 @@ AtlModel::basicFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumber,
             bool isOk = true;
             std::set<unsigned int> newStatesCanGo;
             for (auto stateCan: statesCanGo) {
-                int newStateCan = winningStatesDisjoint.find(stateCan);
+                auto newStateCan = winningStatesDisjoint.find(stateCan);
                 if (firstWinning != newStateCan) {
                     isOk = false;
                 }
@@ -254,7 +254,7 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
     int numberOfIterations = 0;
     auto currentStates = winningStates;
     DisjointUnion winningStatesDisjoint = this->epistemicClassDisjoint[agentNumber];
-    int firstWinning = winningStatesDisjoint.find(*winningStates.begin());
+    auto firstWinning = winningStatesDisjoint.find(*winningStates.begin());
     std::set<int> epistemicClassNumbers;
     for (auto stateNumber: winningStates) {
         int epistemicClassNumber = this->epistemicClassMembership[agentNumber][stateNumber];
@@ -461,48 +461,49 @@ std::set<Transition> AtlModel::getTransitions(unsigned int stateNumber) {
 }
 
 ParallelModel AtlModel::toParallelModel(int agentId) {
-    auto parallelModel = ParallelModel();
-    map<string, int> actionToInt;
-    int actionId = 1;
-    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
-        auto pState = ParallelState();
-        pState.state_id = stateId;
-        pState.equivalence_vector.push_back(this->epistemicClassMembership[agentId][stateId]);
-        for(auto transition : this->transitions[stateId]) {
-            auto actionVector = action_vector();
-            string action = transition.actions[agentId];
-            if(actionToInt[action] == 0) {
-                actionToInt[action] = actionId;
-                actionId++;
-            }
-            actionVector.push_back(actionToInt[action]);
-            pState.action_list.push_back(actionVector);
-            pState.state_list.push_back(transition.nextState);
-            for(auto i = pState.action_list.size() - 1; i >= 1; i--) {
-                if(pState.action_list[i][0] < pState.action_list[i-1][0]) {
-                    swap(pState.action_list[i], pState.action_list[i-1]);
-                    swap(pState.state_list[i], pState.state_list[i-1]);
-                } else {
-                    break;
-                }
-            }
-        }
-
-        parallelModel.states.push_back(pState);
-    }
-
-    for(auto stateId : this->winningStates) {
-        parallelModel.states[stateId].winning = true;
-    }
-
-    auto maxEpClass = max_element(this->epistemicClassMembership[agentId].begin(), this->epistemicClassMembership[agentId].end()).operator*();
-    parallelModel.abstraction_classes = vector<equivalence_class>(maxEpClass + 1);
-    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
-        auto epClassId = this->epistemicClassMembership[agentId][stateId];
-        parallelModel.abstraction_classes[epClassId].class_id = epClassId;
-        parallelModel.abstraction_classes[epClassId].members.push_back(stateId);
-    }
-    return parallelModel;
+//    auto parallelModel = ParallelModel();
+//    map<string, int> actionToInt;
+//    int actionId = 1;
+//    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
+//        auto pState = ParallelState();
+//        pState.state_id = stateId;
+//        pState.equivalence_vector.push_back(this->epistemicClassMembership[agentId][stateId]);
+//        for(auto transition : this->transitions[stateId]) {
+//            auto actionVector = action_vector();
+//            string action = transition.actions[agentId];
+//            if(actionToInt[action] == 0) {
+//                actionToInt[action] = actionId;
+//                actionId++;
+//            }
+//            actionVector.push_back(actionToInt[action]);
+//            pState.action_list.push_back(actionVector);
+//            pState.state_list.push_back(transition.nextState);
+//            for(auto i = pState.action_list.size() - 1; i >= 1; i--) {
+//                if(pState.action_list[i][0] < pState.action_list[i-1][0]) {
+//                    swap(pState.action_list[i], pState.action_list[i-1]);
+//                    swap(pState.state_list[i], pState.state_list[i-1]);
+//                } else {
+//                    break;
+//                }
+//            }
+//        }
+//
+//        parallelModel.states.push_back(pState);
+//    }
+//
+//    for(auto stateId : this->winningStates) {
+//        parallelModel.states[stateId].winning = true;
+//    }
+//
+//    auto maxEpClass = max_element(this->epistemicClassMembership[agentId].begin(), this->epistemicClassMembership[agentId].end()).operator*();
+//    parallelModel.abstraction_classes = vector<equivalence_class>(maxEpClass + 1);
+//    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
+//        auto epClassId = this->epistemicClassMembership[agentId][stateId];
+//        parallelModel.abstraction_classes[epClassId].class_id = epClassId;
+//        parallelModel.abstraction_classes[epClassId].members.push_back(stateId);
+//    }
+//    return parallelModel;
+    return ParallelModel();
 }
 
 
