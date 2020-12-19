@@ -1,46 +1,66 @@
 #include <iostream>
 #include "Models/BridgeModel.h"
-#include <cstdio>
 #include "Models/asynchronous/GlobalModel.h"
 #include "Models/asynchronous/parser/GlobalModelParser.h"
+#include <sys/time.h>
+#include <fstream>
 
 using namespace std;
 
 int main() {
-    //auto model = GlobalModelParser::parse("train_controller.txt");
-    auto model = GlobalModelParser::parse("Selene_2_1_2.txt");
+    struct timeval tb, te;
+    ofstream results("results.txt", fstream::app);
+    auto model = GlobalModelParser::parse("Selene_2_2_2.txt");
 
+    gettimeofday(&tb, NULL);
     model.generate(true);
+    gettimeofday(&te, NULL);
 
+    results << "Model generation time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
+         << " milliseconds" << endl;
+    results << "States Count: " << model.getStatesCount() << endl;
+    results << "Transition Count: " << model.getTransitionsCount() << endl;
 
-    printf("States Count: %d\n", model.getStatesCount());
-    printf("Transition Count: %d\n", model.getTransitionsCount());
-
-    printf("Approximation Imperfect Information\n");
+    gettimeofday(&tb, NULL);
     auto result = model.verifyApproximation(true, 1);
-    for(auto stateId : result.first) {
-        printf("%d ", stateId);
+    gettimeofday(&te, NULL);
+
+    results << "Imperfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
+         << " milliseconds" << endl;
+
+    if(*result.first.begin() == 0){
+        results << "Imperfect verification result: TRUE" << endl;
+    } else {
+        results << "Imperfect verification result: FALSE" << endl;
     }
 
-    printf("\n");
-
-    printf("Approximation Perfect Information\n");
+    gettimeofday(&tb, NULL);
     result = model.verifyApproximation(false, 1);
-    for(auto stateId : result.first) {
-        printf("%d ", stateId);
+    gettimeofday(&te, NULL);
+
+    results << "Perfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
+         << " milliseconds" << endl;
+
+    if(*result.first.begin() == 0){
+        results << "Perfect verification result: TRUE" << endl;
+    } else {
+        results << "Perfect verification result: FALSE" << endl;
     }
 
-    printf("\n");
-
-    printf("Recursive verification\n");
+    gettimeofday(&tb, NULL);
     auto result2 = model.verifyParallel(1);
+    gettimeofday(&te, NULL);
 
-    printf("Result: %d\n", result2.first);
+    results << "Recursive DominoDFS time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
+         << " milliseconds" << endl;
 
-//    model.print();
+    if (result2.first) {
+        results << "Recursive DominoDFS result: TRUE" << endl;
+    } else {
+        results << "Recursive DominoDFS result: FALSE" << endl;
+    }
 
-//    auto simpleModel = model.getModel();
-//    simpleModel.simulate(0);
+    results.close();
 
     return 0;
 }
