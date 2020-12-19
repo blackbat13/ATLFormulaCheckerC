@@ -262,10 +262,6 @@ bool ParallelModel::recursiveDFS(int s, int p, bool resume, int threadId) {
 
 
     } else {
-        if(currentState->currentAction == -1){
-            //return false;
-            currentState->currentAction = 0;
-        }
         // flaga resume jest ustawiona, po prostu wchodzimy w pętlę
     }
 

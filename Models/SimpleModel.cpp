@@ -161,13 +161,7 @@ ParallelModel SimpleModel::toParallelModel(int agentId, std::set<unsigned int> w
         auto it = std::unique (tran.begin(), tran.end());
         tran.resize( std::distance(tran.begin(),it) );
         for(auto tr : tran) {
-            if(stateId != tr.second) {
-                parallelModel.states[stateId]->addTransition(tr.first, tr.second);
-            } else {
-                // If there is a loop we go to a not accepting final state - the last one
-                parallelModel.states[stateId]->addTransition(tr.first, this->states.size());
-            }
-
+            parallelModel.states[stateId]->addTransition(tr.first, tr.second);
         }
     }
 
