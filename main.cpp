@@ -62,7 +62,7 @@ int main() {
 
     auto model = GlobalModelParser::parse("train_controller.txt");
 
-    model.generate(false);
+    model.generate(true);
 
     model.print();
 

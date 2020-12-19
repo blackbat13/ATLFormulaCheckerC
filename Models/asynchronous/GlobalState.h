@@ -5,7 +5,7 @@
 #ifndef ATLFORMULACHECKER_GLOBALSTATE_H
 #define ATLFORMULACHECKER_GLOBALSTATE_H
 
-#include "../SimpleModel.h"
+#include "../State.h"
 #include <map>
 #include <vector>
 #include <algorithm>

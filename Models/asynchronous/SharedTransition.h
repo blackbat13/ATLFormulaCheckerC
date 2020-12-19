@@ -10,11 +10,13 @@
 
 class SharedTransition: public LocalTransition {
 public:
-    std::vector<LocalTransition> transitionList;
+    std::vector<LocalTransition*> transitionList;
 
-    explicit SharedTransition(LocalTransition localTransition);
+    bool isShared() const;
 
-    void addTransition(LocalTransition localTransition);
+    explicit SharedTransition(LocalTransition* localTransition);
+
+    void addTransition(LocalTransition* localTransition);
 
     bool operator==(const SharedTransition &rhs) const;
 

@@ -4,17 +4,17 @@
 
 #include "SharedTransition.h"
 
-SharedTransition::SharedTransition(LocalTransition localTransition) : LocalTransition(localTransition.getStateFrom(),
-                                                                                      localTransition.getStateFrom(),
-                                                                                      localTransition.getAction(), true,
-                                                                                      localTransition.getConditions(),
-                                                                                      localTransition.getProps()) {
-    this->id = localTransition.getI();
-    this->agentId = localTransition.getAgentId();
-    this->transitionList = std::vector<LocalTransition>();
+SharedTransition::SharedTransition(LocalTransition* localTransition) : LocalTransition(localTransition->getStateFrom(),
+                                                                                      localTransition->getStateFrom(),
+                                                                                      localTransition->getAction(), true,
+                                                                                      localTransition->getConditions(),
+                                                                                      localTransition->getProps()) {
+    this->id = localTransition->getI();
+    this->agentId = localTransition->getAgentId();
+    this->transitionList = std::vector<LocalTransition*>();
     this->transitionList.push_back(localTransition);
-    this->i = localTransition.getI();
-    this->j = localTransition.getJ();
+    this->i = localTransition->getI();
+    this->j = localTransition->getJ();
 }
 
 bool SharedTransition::operator==(const SharedTransition &rhs) const {
@@ -26,7 +26,7 @@ bool SharedTransition::operator!=(const SharedTransition &rhs) const {
     return !(rhs == *this);
 }
 
-void SharedTransition::addTransition(LocalTransition localTransition) {
+void SharedTransition::addTransition(LocalTransition* localTransition) {
     this->transitionList.push_back(localTransition);
 }
 
@@ -48,4 +48,8 @@ bool SharedTransition::operator<=(const SharedTransition &rhs) const {
 
 bool SharedTransition::operator>=(const SharedTransition &rhs) const {
     return !(*this < rhs);
+}
+
+bool SharedTransition::isShared() const {
+    return true;
 }

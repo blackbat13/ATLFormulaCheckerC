@@ -12,7 +12,7 @@
 class LocalTransitionParser {
 private:
 public:
-    static LocalTransition parse(std::string transitionStr);
+    static LocalTransition* parse(std::string transitionStr);
 };
 
 

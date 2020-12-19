@@ -7,6 +7,7 @@
 #include "State.h"
 #include "ActionTransition.h"
 #include "../Logics/AtlModel.h"
+#include "./asynchronous/GlobalState.h"
 
 class SimpleModel {
 protected:
@@ -17,7 +18,7 @@ protected:
     unsigned int noTransitions;
     std::vector<std::vector<std::set<unsigned int> > > epistemicClasses;
     std::vector<std::vector<unsigned int> > epistemicClassMembership;
-    std::vector<State*> states;
+    std::vector<GlobalState> states;
     unsigned int firstStateId;
     std::vector<std::vector<std::string> > agentsActions;
 public:
@@ -28,7 +29,7 @@ public:
     void addEpistemicClass(unsigned short agentId, const std::set<unsigned int>& epistemicClass);
     void addActions(unsigned short agentId, std::vector<std::string> actions);
     AtlModel toAtlImperfect();
-    void addState(State *state);
+    void addState(GlobalState state);
     std::set<unsigned int> epistemicClassForState(int stateId, int agentId);
     void simulate(int agentId);
     void simulatePrintCurrentState(int currentState);

@@ -12,7 +12,7 @@ LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentN
     states[initState] = 0;
     std::map<std::string, std::vector<std::vector<std::string> > > protocols;
     std::set<std::string> actions;
-    std::vector<std::vector<LocalTransition>> transitions;
+    std::vector<std::vector<LocalTransition*> > transitions;
     int stateNum = 1;
     int transitionId = 0;
     for (int i = 2; i < lines.size(); i++) {
@@ -26,16 +26,16 @@ LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentN
 
 
         auto localTransition = LocalTransitionParser::parse(line);
-        localTransition.setId(transitionId);
-        localTransition.setAgentId(agentId);
+        localTransition->setId(transitionId);
+        localTransition->setAgentId(agentId);
         transitionId++;
-        if (!localTransition.isShared()) {
-            localTransition.setAction(localTransition.getAction() + "_" + agentName);
+        if (!localTransition->isShared()) {
+            localTransition->setAction(localTransition->getAction() + "_" + agentName);
         }
 
-        actions.insert(localTransition.getAction());
-        auto stateFrom = localTransition.getStateFrom();
-        auto stateTo = localTransition.getStateTo();
+        actions.insert(localTransition->getAction());
+        auto stateFrom = localTransition->getStateFrom();
+        auto stateTo = localTransition->getStateTo();
         if (states.find(stateFrom) == states.end()) {
             states[stateFrom] = stateNum;
             stateNum++;

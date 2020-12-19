@@ -77,7 +77,7 @@ void SimpleModel::addActions(unsigned short agentId, std::vector<std::string> ac
     this->agentsActions[agentId] = std::move(actions);
 }
 
-void SimpleModel::addState(State *state) {
+void SimpleModel::addState(GlobalState state) {
     this->states.push_back(state);
 }
 
@@ -118,7 +118,8 @@ void SimpleModel::simulate(int agentId) {
 
 void SimpleModel::simulatePrintCurrentState(int currentState) {
     printf("Current state:\n");
-    this->states[currentState]->print();
+    auto state =  (this->states[currentState]);
+    state.print();
 }
 
 void SimpleModel::simulatePrintEpistemicStates(int currentState, int agentId) {
@@ -126,7 +127,7 @@ void SimpleModel::simulatePrintEpistemicStates(int currentState, int agentId) {
     auto epist = this->epistemicClassForState(currentState, agentId);
     for(auto state : epist) {
         printf("%d\n", state);
-        this->states[state]->print();
+        this->states[state].print();
     }
 }
 

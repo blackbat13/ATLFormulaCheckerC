@@ -4,7 +4,7 @@
 
 #include "LocalTransitionParser.h"
 
-LocalTransition LocalTransitionParser::parse(std::string transitionStr) {
+LocalTransition* LocalTransitionParser::parse(std::string transitionStr) {
     bool shared = false;
     std::string action, stateFrom, stateTo;
     std::vector<Condition> cond;
@@ -76,5 +76,5 @@ LocalTransition LocalTransitionParser::parse(std::string transitionStr) {
 
     stateFrom = StringTools::strip(stateFrom, ' ');
     stateTo = StringTools::strip(stateTo, ' ');
-    return LocalTransition(stateFrom, stateTo, action, shared, cond, props);
+    return new LocalTransition(stateFrom, stateTo, action, shared, cond, props);
 }

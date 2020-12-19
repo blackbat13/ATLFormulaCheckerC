@@ -40,6 +40,37 @@ public:
 
     void print();
 
+
+    int getId() const;
+
+    int getAgentId() const;
+
+    const std::string &getAction() const;
+
+    virtual bool isShared() const;
+
+    const std::string &getStateFrom() const;
+
+    const std::string &getStateTo() const;
+
+    const std::map<std::string, std::string> &getProps() const;
+
+    const std::vector<Condition> &getConditions() const;
+
+    int getI() const;
+
+    int getJ() const;
+
+    void setId(int id);
+
+    void setAgentId(int agentId);
+
+    void setAction(const std::string &action);
+
+    void setI(int i);
+
+    void setJ(int j);
+
     bool operator<(const LocalTransition &rhs) const;
 
     bool operator>(const LocalTransition &rhs) const;
@@ -51,36 +82,6 @@ public:
     bool operator==(const LocalTransition &rhs) const;
 
     bool operator!=(const LocalTransition &rhs) const;
-
-    int getId() const;
-
-    int getAgentId() const;
-
-    const string &getAction() const;
-
-    bool isShared() const;
-
-    const string &getStateFrom() const;
-
-    const string &getStateTo() const;
-
-    const map<std::string, std::string> &getProps() const;
-
-    const vector<Condition> &getConditions() const;
-
-    int getI() const;
-
-    int getJ() const;
-
-    void setId(int id);
-
-    void setAgentId(int agentId);
-
-    void setAction(const string &action);
-
-    void setI(int i);
-
-    void setJ(int j);
 };
 
 

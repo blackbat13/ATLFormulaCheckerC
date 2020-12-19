@@ -4,22 +4,6 @@
 
 #include "LocalTransition.h"
 
-bool LocalTransition::operator<(const LocalTransition &rhs) const {
-    return id < rhs.id;
-}
-
-bool LocalTransition::operator>(const LocalTransition &rhs) const {
-    return rhs < *this;
-}
-
-bool LocalTransition::operator<=(const LocalTransition &rhs) const {
-    return !(rhs < *this);
-}
-
-bool LocalTransition::operator>=(const LocalTransition &rhs) const {
-    return !(*this < rhs);
-}
-
 LocalTransition::LocalTransition(std::string stateFrom, std::string stateTo, std::string action, bool shared,
                                  std::vector<Condition> cond, std::map<std::string, std::string> props) {
     this->id = -1;
@@ -44,17 +28,9 @@ bool LocalTransition::checkConditions(GlobalState state) const {
     return true;
 }
 
-bool LocalTransition::operator==(const LocalTransition &rhs) const {
-    return agentId == rhs.agentId &&
-           action == rhs.action;
-}
-
-bool LocalTransition::operator!=(const LocalTransition &rhs) const {
-    return !(rhs == *this);
-}
-
 void LocalTransition::print() {
     printf("%s: ", this->action.c_str());
+    printf("(Shared: %d) ", this->shared);
     printf("%s -> %s", this->stateFrom.c_str(), this->stateTo.c_str());
     printf("[");
     for(auto el : this->props) {
@@ -77,7 +53,7 @@ int LocalTransition::getAgentId() const {
     return agentId;
 }
 
-const string &LocalTransition::getAction() const {
+const std::string &LocalTransition::getAction() const {
     return action;
 }
 
@@ -85,19 +61,19 @@ bool LocalTransition::isShared() const {
     return shared;
 }
 
-const string &LocalTransition::getStateFrom() const {
+const std::string &LocalTransition::getStateFrom() const {
     return stateFrom;
 }
 
-const string &LocalTransition::getStateTo() const {
+const std::string &LocalTransition::getStateTo() const {
     return stateTo;
 }
 
-const map<std::string, std::string> &LocalTransition::getProps() const {
+const std::map<std::string, std::string> &LocalTransition::getProps() const {
     return props;
 }
 
-const vector<Condition> &LocalTransition::getConditions() const {
+const std::vector<Condition> &LocalTransition::getConditions() const {
     return conditions;
 }
 
@@ -117,7 +93,7 @@ void LocalTransition::setAgentId(int agentId) {
     LocalTransition::agentId = agentId;
 }
 
-void LocalTransition::setAction(const string &action) {
+void LocalTransition::setAction(const std::string &action) {
     LocalTransition::action = action;
 }
 
@@ -128,3 +104,38 @@ void LocalTransition::setI(int i) {
 void LocalTransition::setJ(int j) {
     LocalTransition::j = j;
 }
+
+bool LocalTransition::operator<(const LocalTransition &rhs) const {
+    if (agentId < rhs.agentId)
+        return true;
+    if (rhs.agentId < agentId)
+        return false;
+    if (i < rhs.i)
+        return true;
+    if (rhs.i < i)
+        return false;
+    return j < rhs.j;
+}
+
+bool LocalTransition::operator>(const LocalTransition &rhs) const {
+    return rhs < *this;
+}
+
+bool LocalTransition::operator<=(const LocalTransition &rhs) const {
+    return !(rhs < *this);
+}
+
+bool LocalTransition::operator>=(const LocalTransition &rhs) const {
+    return !(*this < rhs);
+}
+
+bool LocalTransition::operator==(const LocalTransition &rhs) const {
+    return agentId == rhs.agentId &&
+           i == rhs.i &&
+           j == rhs.j;
+}
+
+bool LocalTransition::operator!=(const LocalTransition &rhs) const {
+    return !(rhs == *this);
+}
+
