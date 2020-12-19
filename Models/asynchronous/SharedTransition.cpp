@@ -5,7 +5,7 @@
 #include "SharedTransition.h"
 
 SharedTransition::SharedTransition(LocalTransition* localTransition) : LocalTransition(localTransition->getStateFrom(),
-                                                                                      localTransition->getStateFrom(),
+                                                                                      localTransition->getStateTo(),
                                                                                       localTransition->getAction(), true,
                                                                                       localTransition->getConditions(),
                                                                                       localTransition->getProps()) {

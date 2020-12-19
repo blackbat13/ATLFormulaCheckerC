@@ -24,7 +24,6 @@ LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentN
             continue;
         }
 
-
         auto localTransition = LocalTransitionParser::parse(line);
         localTransition->setId(transitionId);
         localTransition->setAgentId(agentId);

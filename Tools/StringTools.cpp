@@ -21,8 +21,8 @@ std::vector<std::string> StringTools::split(std::string str, std::string delim) 
 
     int i = 0, p = 0;
     while(i < str.length() && (i = str.find(delim, i)) != -1) {
-        result.push_back(str.substr(p, i - p - 1));
-        i += delim.length() + 1;
+        result.push_back(str.substr(p, i - p));
+        i += delim.length();
         p = i;
     }
 

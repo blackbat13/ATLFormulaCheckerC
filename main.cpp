@@ -60,7 +60,8 @@ int main() {
 //    cin >> a;
 
 
-    auto model = GlobalModelParser::parse("train_controller.txt");
+    //auto model = GlobalModelParser::parse("train_controller.txt");
+    auto model = GlobalModelParser::parse("Selene_2_2_2.txt");
 
     model.generate(true);
 
