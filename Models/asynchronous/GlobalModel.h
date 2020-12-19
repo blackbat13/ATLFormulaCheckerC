@@ -42,7 +42,7 @@ private:
     std::vector<std::string> persistent;
     std::vector<std::string> coalition;
     std::vector<std::string> goal;
-    std::vector<GlobalState> states;
+
     std::vector<std::vector<std::vector<int> > > dependent;
     int agentsCount;
     std::map<GlobalState, int> statesDict;
@@ -90,6 +90,7 @@ private:
     std::vector<std::set<std::string> > getActions();
 
 public:
+    std::vector<GlobalState> states;
     GlobalModel(std::vector<LocalModel> localModels, std::vector<std::string> reduction,
                 std::vector<std::string> persistent, std::vector<std::string> coalition, std::vector<std::string> goal);
 
@@ -100,6 +101,8 @@ public:
     void setCoalition(std::vector<std::string> coalition);
     std::set<unsigned int> getWinningStates(int formulaNo);
     std::pair<std::set<unsigned int>, double> verifyApproximation(bool perfectInf, int formulaNo);
+    int getStatesCount();
+    int getTransitionsCount();
 
     const SimpleModel &getModel() const;
 };

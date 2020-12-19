@@ -77,8 +77,9 @@ bool GlobalModelParser::isGoalHeader(std::string line) {
 std::vector<std::string> GlobalModelParser::parseList(std::string line) {
     std::string line2 = StringTools::split(line, ':')[1];
     line2 = StringTools::strip(line2, ' ');
+    line2 = StringTools::strip(line2, '\n');
     line2 = StringTools::strip(line2, '[');
-    StringTools::strip(line2, ']');
+    line2 = StringTools::strip(line2, ']');
     std::vector<std::string> red;
     auto split1 = StringTools::split(line2, ',');
     red.reserve(split1.size());

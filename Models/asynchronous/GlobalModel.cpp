@@ -290,6 +290,10 @@ GlobalState GlobalModel::copyPropsToState(GlobalState state, LocalTransition tra
     for (auto prop : transition.getProps()) {
         if (prop.second == "?") {
             continue;
+        } else if(prop.second == "!") {
+            if (state.props.find(prop.second) != state.props.end()) {
+                state.setProp(prop.first, state.props[prop.second]);
+            }
         } else if (prop.second == "true") {
             state.setProp(prop.first, prop.second);
         } else if (prop.second == "false") {
@@ -750,6 +754,14 @@ std::pair<std::set<unsigned int>, double> GlobalModel::verifyApproximation(bool 
 
 const SimpleModel &GlobalModel::getModel() const {
     return model;
+}
+
+int GlobalModel::getStatesCount() {
+    return this->states.size();
+}
+
+int GlobalModel::getTransitionsCount() {
+    return this->transitionsCount;
 }
 
 bool EpistemicState::operator==(const EpistemicState &rhs) const {

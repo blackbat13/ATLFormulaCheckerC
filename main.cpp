@@ -61,14 +61,35 @@ int main() {
 
 
     //auto model = GlobalModelParser::parse("train_controller.txt");
-    auto model = GlobalModelParser::parse("Selene_2_2_2.txt");
+    auto model = GlobalModelParser::parse("Selene_2_1_2.txt");
 
     model.generate(true);
 
-    model.print();
+    for(auto state : model.states) {
+        state.print();
+    }
 
-    auto simpleModel = model.getModel();
-    simpleModel.simulate(0);
+    printf("States Count: %d\n", model.getStatesCount());
+    printf("Transition Count: %d\n", model.getTransitionsCount());
+
+    auto result = model.verifyApproximation(true, 1);
+    for(auto stateId : result.first) {
+        printf("%d ", stateId);
+    }
+
+    printf("\n");
+
+    result = model.verifyApproximation(false, 1);
+    for(auto stateId : result.first) {
+        printf("%d ", stateId);
+    }
+
+    printf("\n");
+
+//    model.print();
+
+//    auto simpleModel = model.getModel();
+//    simpleModel.simulate(0);
 
     return 0;
 }

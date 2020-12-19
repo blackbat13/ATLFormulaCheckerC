@@ -19,6 +19,10 @@ GlobalState::GlobalState(int agentCount) {
 
 GlobalState GlobalState::copyState(GlobalState state, std::vector<std::string> persistent) {
     std::map<std::string, std::string> newProps;
+    for(auto str : persistent) {
+        printf("%s, ", str.c_str());
+    }
+    printf("\n");
     for(auto prop : state.props) {
         if(std::find(persistent.begin(), persistent.end(), prop.first) != persistent.end()) {
             newProps[prop.first] = prop.second;
