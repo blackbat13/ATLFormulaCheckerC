@@ -4,8 +4,8 @@
 
 #include "SetTools.h"
 
-std::set<LocalTransition*> SetTools::difference(std::set<LocalTransition*> a, std::set<LocalTransition*> b) {
-    std::set<LocalTransition*> result;
+std::set<LocalTransitionTup> SetTools::difference(std::set<LocalTransitionTup> a, std::set<LocalTransitionTup> b) {
+    std::set<LocalTransitionTup> result;
     for(auto el : a) {
         if(b.find(el) == b.end()) {
             result.insert(el);
@@ -15,8 +15,8 @@ std::set<LocalTransition*> SetTools::difference(std::set<LocalTransition*> a, st
     return result;
 }
 
-std::set<LocalTransition*> SetTools::setUnion(std::set<LocalTransition*> a, std::set<LocalTransition*> b) {
-    std::set<LocalTransition*> result;
+std::set<LocalTransitionTup> SetTools::setUnion(const std::set<LocalTransitionTup>& a, std::set<LocalTransitionTup> b) {
+    std::set<LocalTransitionTup> result;
     for(auto el : a) {
         result.insert(el);
     }

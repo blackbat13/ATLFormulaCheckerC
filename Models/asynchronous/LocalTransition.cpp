@@ -139,3 +139,44 @@ bool LocalTransition::operator!=(const LocalTransition &rhs) const {
     return !(rhs == *this);
 }
 
+LocalTransitionTup LocalTransition::toTup() {
+    return {this->agentId, this->i, this->j};
+}
+
+bool LocalTransition::hasProp(std::string key) {
+    return this->props.find(key) != this->props.end();
+}
+
+bool LocalTransitionTup::operator<(const LocalTransitionTup &rhs) const {
+    if (agentId < rhs.agentId)
+        return true;
+    if (rhs.agentId < agentId)
+        return false;
+    if (i < rhs.i)
+        return true;
+    if (rhs.i < i)
+        return false;
+    return j < rhs.j;
+}
+
+bool LocalTransitionTup::operator>(const LocalTransitionTup &rhs) const {
+    return rhs < *this;
+}
+
+bool LocalTransitionTup::operator<=(const LocalTransitionTup &rhs) const {
+    return !(rhs < *this);
+}
+
+bool LocalTransitionTup::operator>=(const LocalTransitionTup &rhs) const {
+    return !(*this < rhs);
+}
+
+bool LocalTransitionTup::operator==(const LocalTransitionTup &rhs) const {
+    return agentId == rhs.agentId &&
+           i == rhs.i &&
+           j == rhs.j;
+}
+
+bool LocalTransitionTup::operator!=(const LocalTransitionTup &rhs) const {
+    return !(rhs == *this);
+}

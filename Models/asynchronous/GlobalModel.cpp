@@ -4,16 +4,18 @@
 
 #include "GlobalModel.h"
 
+#include <utility>
+
 GlobalModel::GlobalModel(std::vector<LocalModel> localModels, std::vector<std::string> reduction,
                          std::vector<std::string> persistent, std::vector<std::string> coalition,
                          std::vector<std::string> goal) : model(SimpleModel(0)) {
-    this->localModels = localModels;
-    this->reduction = reduction;
-    this->persistent = persistent;
-    this->coalition = coalition;
-    this->goal = goal;
+    this->localModels = std::move(localModels);
+    this->reduction = std::move(reduction);
+    this->persistent = std::move(persistent);
+    this->coalition = std::move(coalition);
+    this->goal = std::move(goal);
+    this->dependent = std::vector<std::vector<std::vector<std::vector<int> > > >();
     this->states = std::vector<GlobalState>();
-    this->dependent = std::vector<std::vector<std::vector<int> > >();
     this->agentsCount = 0;
     this->statesDict = std::map<GlobalState, int>();
     this->stack1 = std::vector<GlobalState>();
@@ -31,8 +33,8 @@ void GlobalModel::generate(bool reduction) {
     this->model = SimpleModel(this->agentsCount);
     this->addToStack(GlobalState(this->agentsCount));
     this->addIndexToTransitions();
-    this->computeDependentTransitions();
     this->computeSharedTransitions();
+    this->computeDependentTransitions();
     if (reduction) {
         this->iterPor();
     } else {
@@ -48,7 +50,7 @@ void GlobalModel::generate(bool reduction) {
 
 void GlobalModel::prepareEpistemicRelation() {
     for (int i = 0; i < this->agentsCount; i++) {
-        for (auto el : this->epistemicStatesDictionaries[i]) {
+        for (const auto& el : this->epistemicStatesDictionaries[i]) {
             this->model.addEpistemicClass(i, el.second);
         }
     }
@@ -132,7 +134,7 @@ std::vector<LocalTransition *> GlobalModel::availableTransitionsInStateForAgent(
     return result;
 }
 
-std::vector<std::vector<LocalTransition *> > GlobalModel::enabledTransitionsInState(GlobalState state) {
+std::vector<std::vector<LocalTransition *> > GlobalModel::enabledTransitionsInState(const GlobalState& state) {
     std::vector<std::vector<LocalTransition *> > allTransitions;
     allTransitions.reserve(this->localModels.size());
     for (int agentId = 0; agentId < this->localModels.size(); agentId++) {
@@ -191,12 +193,12 @@ bool GlobalModel::checkIfSharedTransitionIsEnabled(LocalTransition *transition, 
     return true;
 }
 
-std::set<LocalTransition *> GlobalModel::enabledTransitionsInStateSingleItemSet(GlobalState state) {
-    auto enabled = this->enabledTransitionsInState(state);
-    std::set<LocalTransition *> result;
+std::set<LocalTransitionTup> GlobalModel::enabledTransitionsInStateSingleItemSet(GlobalState state) {
+    auto enabled = this->enabledTransitionsInState(std::move(state));
+    std::set<LocalTransitionTup> result;
     for (int agentId = 0; agentId < this->agentsCount; agentId++) {
         for (auto transition : enabled[agentId]) {
-            result.insert(transition);
+            result.insert(transition->toTup());
             if (!transition->isShared()) {
                 continue;
             }
@@ -219,14 +221,14 @@ std::set<LocalTransition *> GlobalModel::enabledTransitionsInStateSingleItemSet(
 
 GlobalState GlobalModel::newStateAfterPrivateTransition(GlobalState state, LocalTransition *transition) {
     auto agentId = transition->getAgentId();
-    auto newState = GlobalState::copyState(state, this->persistent);
+    auto newState = GlobalState::copyState(std::move(state), this->persistent);
     newState.setLocalState(agentId, this->localModels[agentId].getStateId(transition->getStateTo()));
     newState = this->copyPropsToState(newState, *transition);
     return newState;
 }
 
 std::pair<GlobalState, std::vector<int> > GlobalModel::newStateAfterSharedTransition(GlobalState state,
-                                                                                     std::vector<std::pair<int, LocalTransition *> > actualTransition) {
+                                                                                     const std::vector<std::pair<int, LocalTransition *> >& actualTransition) {
     auto newState = GlobalState::copyState(state, this->persistent);
     std::vector<int> agents;
     for (auto actTran : actualTransition) {
@@ -240,7 +242,7 @@ std::pair<GlobalState, std::vector<int> > GlobalModel::newStateAfterSharedTransi
 }
 
 GlobalState
-GlobalModel::newStateAfterSharedTransitionList(GlobalState state, std::vector<LocalTransition *> transitions) {
+GlobalModel::newStateAfterSharedTransitionList(GlobalState state, const std::vector<LocalTransition *>& transitions) {
     auto newState = GlobalState::copyState(state, this->persistent);
     for (auto transition : transitions) {
         newState.setLocalState(transition->getAgentId(),
@@ -251,7 +253,7 @@ GlobalModel::newStateAfterSharedTransitionList(GlobalState state, std::vector<Lo
     return newState;
 }
 
-void GlobalModel::computeNextForState(GlobalState state, int currentStateId) {
+void GlobalModel::computeNextForState(const GlobalState& state, int currentStateId) {
     auto allTransitions = this->enabledTransitionsInState(state);
     std::vector<std::string> visited;
     for (int agentId = 0; agentId < this->localModels.size(); agentId++) {
@@ -259,7 +261,7 @@ void GlobalModel::computeNextForState(GlobalState state, int currentStateId) {
     }
 }
 
-void GlobalModel::computeNextForStateForAgent(GlobalState state, int currentStateId, int agentId,
+void GlobalModel::computeNextForStateForAgent(const GlobalState& state, int currentStateId, int agentId,
                                               std::vector<std::string> &visited,
                                               std::vector<std::vector<LocalTransition *> > allTransitions) {
     for (auto transition : allTransitions[agentId]) {
@@ -292,8 +294,8 @@ void GlobalModel::computeNextForStateForAgent(GlobalState state, int currentStat
     }
 }
 
-GlobalState GlobalModel::copyPropsToState(GlobalState state, LocalTransition transition) {
-    for (auto prop : transition.getProps()) {
+GlobalState GlobalModel::copyPropsToState(GlobalState state, const LocalTransition& transition) {
+    for (const auto& prop : transition.getProps()) {
         if (prop.second == "?") {
             continue;
         } else if (prop.second == "!") {
@@ -314,7 +316,7 @@ GlobalState GlobalModel::copyPropsToState(GlobalState state, LocalTransition tra
     return state;
 }
 
-int GlobalModel::stateFind(GlobalState state) {
+int GlobalModel::stateFind(const GlobalState& state) {
     if (this->statesDict.find(state) != this->statesDict.end()) {
         return this->statesDict[state];
     }
@@ -322,30 +324,9 @@ int GlobalModel::stateFind(GlobalState state) {
     return -1;
 }
 
-void GlobalModel::computeDependentTransitions() {
-    for (int agentId = 0; agentId < this->agentsCount; agentId++) {
-        this->dependent.emplace_back();
-        auto agentTransitions = this->localModels[agentId].getTransitions();
-        for (int i = 0; i < agentTransitions.size(); i++) {
-            std::vector<int> tmp;
-            tmp.push_back(agentId);
-            this->dependent[agentId].push_back(tmp);
-            for (int agent2Id = 0; agent2Id < this->agentsCount; agent2Id++) {
-                if (agent2Id == agentId) {
-                    continue;
-                }
-
-                if (this->localModels[agent2Id].hasAction(agentTransitions[i]->getAction())) {
-                    this->dependent[agentId][i].push_back(agent2Id);
-                }
-            }
-        }
-    }
-}
-
-bool GlobalModel::isInG(GlobalState state) {
-    for (auto st : this->g) {
-        if (st.equal(state)) {
+bool GlobalModel::isInG(const GlobalState& state) {
+    for (const auto& st : this->g) {
+        if (st == state) {
             return true;
         }
     }
@@ -353,7 +334,7 @@ bool GlobalModel::isInG(GlobalState state) {
     return false;
 }
 
-int GlobalModel::findStateOnStack1(GlobalState state) {
+int GlobalModel::findStateOnStack1(const GlobalState& state) {
     if (this->stack1Dict.find(state) != this->stack1Dict.end()) {
         return this->stack1Dict[state];
     }
@@ -361,7 +342,7 @@ int GlobalModel::findStateOnStack1(GlobalState state) {
     return -1;
 }
 
-bool GlobalModel::addToStack(GlobalState state) {
+bool GlobalModel::addToStack(const GlobalState& state) {
     if (this->stack1Dict.find(state) != this->stack1Dict.end()) {
         return false;
     }
@@ -374,6 +355,26 @@ bool GlobalModel::addToStack(GlobalState state) {
 void GlobalModel::popFromStack() {
     this->stack1Dict.erase(this->stack1[this->stack1.size() - 1]);
     this->stack1.pop_back();
+}
+
+void GlobalModel::computeDependentTransitions() {
+    for (int agentId = 0; agentId < this->agentsCount; agentId++) {
+        this->dependent.emplace_back();
+        auto agentTransitions = this->localModels[agentId].getTransitions();
+
+        for(int i = 0; i < this->localModels[agentId].transitions.size(); i++) {
+            this->dependent[agentId].emplace_back();
+            for(int j = 0; j < this->localModels[agentId].transitions[i].size(); j++) {
+                auto transition = this->localModels[agentId].transitions[i][j];
+                this->dependent[agentId][i].emplace_back();
+                for(int agent2Id = 0; agent2Id < this->agentsCount; agent2Id++) {
+                    if(this->localModels[agent2Id].hasAction(transition->getAction())) {
+                        this->dependent[agentId][i][j].push_back(agent2Id);
+                    }
+                }
+            }
+        }
+    }
 }
 
 void GlobalModel::iterPor() {
@@ -409,7 +410,7 @@ void GlobalModel::iterPor() {
 
             this->g.push_back(g);
             auto gStateId = this->addState(g);
-            std::set<LocalTransition *> eG;
+            std::set<LocalTransitionTup> eG;
             auto enG = this->enabledTransitionsInStateSingleItemSet(g);
             if (!enG.empty()) {
                 if (!reexplore) {
@@ -426,7 +427,7 @@ void GlobalModel::iterPor() {
 
                 dfsStack.push(-1);
                 for (auto el : eG) {
-                    auto a = el;
+                    auto a = this->localModels[el.agentId].transitions[el.i][el.j];
                     auto gP = this->successor(g, a);
                     auto gPStateId = this->addState(gP);
 
@@ -465,45 +466,36 @@ void GlobalModel::iterPor() {
     }
 }
 
-std::set<LocalTransition *> GlobalModel::ample(GlobalState state) {
+std::set<LocalTransitionTup> GlobalModel::ample(const GlobalState& state) {
     auto v = this->enabledTransitionsInStateSingleItemSet(state);
     while (!v.empty()) {
-        LocalTransition *alpha = *v.begin();
-        std::set<LocalTransition *> x, u, dis;
+        LocalTransitionTup alpha = *v.begin();
+        std::set<LocalTransitionTup> x, u, dis;
         x.insert(alpha);
         u.insert(alpha);
-        while (!x.empty()) {
-            auto dif = SetTools::difference(x, v);
-            if (!dif.empty()) {
-                break;
-            }
-
+        do {
             auto enabled = this->enabledForX(x);
-            auto uni = SetTools::setUnion(dis, enabled);
-            dis = uni;
-
+            dis = SetTools::setUnion(dis, enabled);
             x = this->dependentForX(x, dis, u);
+            u = SetTools::setUnion(u, x);
+        }while (!x.empty() && (SetTools::difference(x, v)).empty());
 
-            uni.clear();
-            uni = SetTools::setUnion(u, x);
-            u = uni;
-        }
-
-        if (x.empty() && !this->checkForCycle(state, u)) {// && !this->checkForK(state, u)) {
+        if (x.empty() && !checkForVisible(state, u)) {
             return u;
         }
 
-        auto dif = SetTools::difference(v, u);
-        v = dif;
+        v = SetTools::difference(v, u);
     }
 
-    return std::set<LocalTransition *>();
+    return this->enabledTransitionsInStateSingleItemSet(state);
 }
 
-bool GlobalModel::checkForCycle(GlobalState state, std::set<LocalTransition *> x) {
-    for (auto transition : x) {
+bool GlobalModel::checkForCycle(const GlobalState& state, const std::set<LocalTransitionTup>& x) {
+    for (auto el : x) {
+        auto transition = this->localModels[el.agentId].transitions[el.i][el.j];
         auto successorState = this->successor(state, transition);
         if (this->findStateOnStack1(successorState) != -1) {
+            successorState.print();
             return true;
         }
     }
@@ -544,21 +536,22 @@ bool GlobalModel::checkForK(GlobalState state, std::set<LocalTransition *> x) {
     return false;
 }
 
-std::set<LocalTransition *> GlobalModel::enabledForX(std::set<LocalTransition *> x) {
-    std::set<LocalTransition *> result;
-    for (auto transition : x) {
+std::set<LocalTransitionTup> GlobalModel::enabledForX(const std::set<LocalTransitionTup>& x) {
+    std::set<LocalTransitionTup> result;
+    for (auto el : x) {
+        auto transition = this->localModels[el.agentId].transitions[el.i][el.j];
         if (auto sharedTransition = dynamic_cast<SharedTransition *>(transition)) {
             for (auto transition2 : sharedTransition->transitionList) {
                 for (auto tr : this->localModels[transition2->getAgentId()].getTransitions()) {
                     if (tr->getStateFrom() != transition2->getStateFrom()) {
-                        result.insert(tr);
+                        result.insert(tr->toTup());
                     }
                 }
             }
         } else {
             for (auto tr : this->localModels[transition->getAgentId()].getTransitions()) {
                 if (tr->getStateFrom() != transition->getStateFrom()) {
-                    result.insert(tr);
+                    result.insert(tr->toTup());
                 }
             }
         }
@@ -567,23 +560,16 @@ std::set<LocalTransition *> GlobalModel::enabledForX(std::set<LocalTransition *>
     return result;
 }
 
-std::set<LocalTransition *>
-GlobalModel::dependentForX(std::set<LocalTransition *> x, std::set<LocalTransition *> dis,
-                           std::set<LocalTransition *> u) {
-    std::set<LocalTransition *> result;
-    for (auto transition : x) {
-        if (auto sharedTransition = dynamic_cast<SharedTransition *>(transition)) {
-            for (auto transition2 : sharedTransition->transitionList) {
-                for (auto tr : this->localModels[transition2->getAgentId()].getTransitions()) {
-                    if (dis.find(tr) == dis.end() && u.find(tr) == u.end()) {
-                        result.insert(tr);
-                    }
-                }
-            }
-        } else {
-            for (auto tr : this->localModels[transition->getAgentId()].getTransitions()) {
-                if (dis.find(tr) == dis.end() && u.find(tr) == u.end()) {
-                    result.insert(tr);
+std::set<LocalTransitionTup>
+GlobalModel::dependentForX(const std::set<LocalTransitionTup>& x, std::set<LocalTransitionTup> dis,
+                           std::set<LocalTransitionTup> u) {
+    std::set<LocalTransitionTup> result;
+    for (auto el : x) {
+        for(auto agentId : this->dependent[el.agentId][el.i][el.j]) {
+            auto agentTransitions = this->localModels[agentId].getTransitions();
+            for(auto tr : agentTransitions) {
+                if (dis.find(tr->toTup()) == dis.end() && u.find(tr->toTup()) == u.end()) {
+                    result.insert(tr->toTup());
                 }
             }
         }
@@ -592,7 +578,7 @@ GlobalModel::dependentForX(std::set<LocalTransition *> x, std::set<LocalTransiti
     return result;
 }
 
-GlobalState GlobalModel::successor(GlobalState state, LocalTransition *transition) {
+GlobalState GlobalModel::successor(const GlobalState& state, LocalTransition *transition) {
     if (auto sharedTransition = dynamic_cast<SharedTransition *>(transition)) {
         return this->newStateAfterSharedTransitionList(state, sharedTransition->transitionList);
     } else {
@@ -629,7 +615,7 @@ EpistemicState GlobalModel::getEpistemicState(GlobalState state, int agentId) {
     }
 
     EpistemicState epistemicState = {state.localStates, false, std::map<std::string, std::string>()};
-    for (auto prop : this->localModels[agentId].props) {
+    for (const auto& prop : this->localModels[agentId].props) {
         if (state.props.find(prop) != state.props.end()) {
             epistemicState.props[prop] = state.props[prop];
         }
@@ -638,7 +624,7 @@ EpistemicState GlobalModel::getEpistemicState(GlobalState state, int agentId) {
     return epistemicState;
 }
 
-void GlobalModel::addToEpistemicDictionary(EpistemicState state, int newStateId, int agentId) {
+void GlobalModel::addToEpistemicDictionary(const EpistemicState& state, int newStateId, int agentId) {
     if (this->epistemicStatesDictionaries[agentId].find(state) == this->epistemicStatesDictionaries[agentId].end()) {
         this->epistemicStatesDictionaries[agentId][state] = std::set<unsigned int>();
     }
@@ -646,12 +632,12 @@ void GlobalModel::addToEpistemicDictionary(EpistemicState state, int newStateId,
     this->epistemicStatesDictionaries[agentId][state].insert(newStateId);
 }
 
-void GlobalModel::addTransition(int stateFrom, int stateTo, std::string action, std::vector<int> agents) {
+void GlobalModel::addTransition(int stateFrom, int stateTo, const std::string& action, const std::vector<int>& agents) {
     this->transitionsCount++;
     this->model.addTransition(stateFrom, stateTo, this->createListOfActions(action, agents));
 }
 
-std::vector<std::string> GlobalModel::createListOfActions(std::string action, std::vector<int> agents) {
+std::vector<std::string> GlobalModel::createListOfActions(const std::string& action, const std::vector<int>& agents) const {
     std::vector<std::string> actions = std::vector<std::string>(this->agentsCount, "");
     for (auto agentId : agents) {
         actions[agentId] = action;
@@ -673,7 +659,7 @@ void GlobalModel::compute() {
     }
 }
 
-int GlobalModel::agentNameToId(std::string agentName) {
+int GlobalModel::agentNameToId(const std::string& agentName) {
     for (int agentId = 0; agentId < this->localModels.size(); agentId++) {
         if (this->localModels[agentId].agentName == agentName) {
             return agentId;
@@ -683,9 +669,9 @@ int GlobalModel::agentNameToId(std::string agentName) {
     return -1;
 }
 
-std::vector<int> GlobalModel::agentNameCoalitionToIds(std::vector<std::string> agentNames) {
+std::vector<int> GlobalModel::agentNameCoalitionToIds(const std::vector<std::string>& agentNames) {
     auto agentIds = std::vector<int>();
-    for (auto agentName : agentNames) {
+    for (const auto& agentName : agentNames) {
         agentIds.push_back(this->agentNameToId(agentName));
     }
 
@@ -699,7 +685,7 @@ void GlobalModel::print() {
 }
 
 void GlobalModel::setCoalition(std::vector<std::string> coalition) {
-    this->coalition = coalition;
+    this->coalition = std::move(coalition);
 }
 
 std::set<unsigned int> GlobalModel::getWinningStates(int formulaNo) {
@@ -749,7 +735,7 @@ std::set<unsigned int> GlobalModel::getWinningStates(int formulaNo) {
 
 std::vector<std::set<std::string> > GlobalModel::getActions() {
     auto actions = std::vector<std::set<std::string> >();
-    for (auto local : this->localModels) {
+    for (const auto& local : this->localModels) {
         actions.push_back(local.actions);
         actions[actions.size() - 1].insert("");
     }
@@ -780,12 +766,29 @@ const SimpleModel &GlobalModel::getModel() const {
     return model;
 }
 
-int GlobalModel::getStatesCount() {
+int GlobalModel::getStatesCount() const {
     return this->states.size();
 }
 
-int GlobalModel::getTransitionsCount() {
+int GlobalModel::getTransitionsCount() const {
     return this->transitionsCount;
+}
+
+bool GlobalModel::checkForVisible(GlobalState state, const std::set<LocalTransitionTup>& x) {
+    for(auto el : x) {
+        auto transition = this->localModels[el.agentId].transitions[el.i][el.j];
+        if(el.agentId == this->agentNameToId(this->coalition[0])) {
+            return true;
+        }
+
+        for(const auto& prop : this->reduction) {
+            if(transition->hasProp(prop)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 bool EpistemicState::operator==(const EpistemicState &rhs) const {
@@ -824,7 +827,7 @@ bool EpistemicState::operator>=(const EpistemicState &rhs) const {
 
 void EpistemicState::print() {
     //printf("Local state: %d, Init: %d, Props: ", this->localState, this->init);
-    for (auto el : this->props) {
+    for (const auto& el : this->props) {
         printf("%s:%s, ", el.first.c_str(), el.second.c_str());
     }
 

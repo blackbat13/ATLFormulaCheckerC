@@ -10,8 +10,8 @@
 
 class SetTools {
 public:
-    static std::set<LocalTransition*> difference(std::set<LocalTransition*> a, std::set<LocalTransition*> b);
-    static std::set<LocalTransition*> setUnion(std::set<LocalTransition*> a, std::set<LocalTransition*> b);
+    static std::set<LocalTransitionTup> difference(std::set<LocalTransitionTup> a, std::set<LocalTransitionTup> b);
+    static std::set<LocalTransitionTup> setUnion(const std::set<LocalTransitionTup>& a, std::set<LocalTransitionTup> b);
 };
 
 

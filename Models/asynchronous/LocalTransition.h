@@ -19,6 +19,24 @@ struct Condition {
                                                                                condSym(condSym) {}
 };
 
+struct LocalTransitionTup {
+    bool operator<(const LocalTransitionTup &rhs) const;
+
+    bool operator>(const LocalTransitionTup &rhs) const;
+
+    bool operator<=(const LocalTransitionTup &rhs) const;
+
+    bool operator>=(const LocalTransitionTup &rhs) const;
+
+    bool operator==(const LocalTransitionTup &rhs) const;
+
+    bool operator!=(const LocalTransitionTup &rhs) const;
+
+    int agentId;
+    int i;
+    int j;
+};
+
 class LocalTransition {
 protected:
     int id;
@@ -56,6 +74,7 @@ public:
     const std::map<std::string, std::string> &getProps() const;
 
     const std::vector<Condition> &getConditions() const;
+    bool hasProp(std::string key);
 
     int getI() const;
 
@@ -70,6 +89,8 @@ public:
     void setI(int i);
 
     void setJ(int j);
+
+    LocalTransitionTup toTup();
 
     bool operator<(const LocalTransition &rhs) const;
 

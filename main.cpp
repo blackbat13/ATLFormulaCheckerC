@@ -53,6 +53,18 @@ int main(int argc, char **argv) {
     }
 
 
+//    auto model2 = GlobalModelParser::parse("train_controller.txt");
+//    model2.generate(true);
+//    for(auto state : model2.states) {
+//        state.print();
+//    }
+//
+//    auto sModel = model2.getModel();
+//    sModel.simulate(2);
+//
+//    return 0;
+
+
     auto model = GlobalModelParser::parse(
             "Selene_" + to_string(tellers) + "_" + to_string(voters) + "_" + to_string(candidates) + "_" +
             to_string(formula) + ".txt");
@@ -60,6 +72,10 @@ int main(int argc, char **argv) {
     gettimeofday(&tb, NULL);
     model.generate(reductions);
     gettimeofday(&te, NULL);
+
+//    for(auto state : model.states) {
+//        state.print();
+//    }
 
     results << "Model generation time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
             << " milliseconds" << endl;
