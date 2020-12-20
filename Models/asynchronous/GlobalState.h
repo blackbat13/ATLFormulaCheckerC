@@ -28,6 +28,10 @@ public:
 
     void removeProp(std::string key);
 
+    bool hasProp(std::string key);
+
+    std::string getProp(std::string key);
+
     bool equal(GlobalState state);
 
     std::string toString();

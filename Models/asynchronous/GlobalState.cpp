@@ -100,3 +100,11 @@ bool GlobalState::operator<=(const GlobalState &rhs) const {
 bool GlobalState::operator>=(const GlobalState &rhs) const {
     return !(*this < rhs);
 }
+
+bool GlobalState::hasProp(std::string key) {
+    return this->props.find(key) != this->props.end();
+}
+
+std::string GlobalState::getProp(std::string key) {
+    return this->props[key];
+}

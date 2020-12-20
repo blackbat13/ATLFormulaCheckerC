@@ -8,14 +8,19 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    if(argc < 6) {
+    if (argc < 6) {
         cout << "Usage: ./stv tellers voters candidates reductions formula" << endl;
-        cout << "tellers - number of tellers" << endl;
-        cout << "voters - number of voters" << endl;
-        cout << "candidates - number of candidates" << endl;
-        cout << "reductions - 1 for reduced model, 0 otherwise" << endl;
-        cout << "formula - formula id" << endl;
-        cout << "Example: ./stv 2 1 2 1 1" << endl;
+        cout << "tellers (>=1) - number of tellers" << endl;
+        cout << "voters (>=1) - number of voters" << endl;
+        cout << "candidates (>=2) - number of candidates" << endl;
+        cout << "reductions (0-1) - 1 for reduced model, 0 otherwise" << endl;
+        cout << "formula (0-4) - formula id" << endl;
+        cout << "\t0 - <<Coercer>> F pun1" << endl;
+        cout << "\t1 - <<Coercer>> F (end && !v1=1 && K_Coercer !v1=1)" << endl;
+        cout << "\t2 - <<Voter1>> F (end && K_Voter vreg1=1 && K_Voter vreg1!=1)" << endl;
+        cout << "\t3 - phi1" << endl;
+        cout << "\t4 - phi2" << endl;
+        cout << "Example: ./stv 2 1 2 1 0" << endl;
         cout << "Program will now exit" << endl;
         return 0;
     }
@@ -27,22 +32,37 @@ int main(int argc, char **argv) {
     tellers = atoi(argv[1]);
     voters = atoi(argv[2]);
     candidates = atoi(argv[3]);
-    formula = atoi(argv[4]);
-    reductions = argv[5][0] == '1';
+    reductions = argv[4][0] == '1';
+    formula = atoi(argv[5]);
 
     ofstream results("results.txt", fstream::app);
 
-    results << "Configuration: (T: " << tellers << ", V: " << voters << ", C: " << candidates << ", R: " << reductions << ")" << endl;
-    results << "Formula: " << formula << endl;
+    results << "Configuration: (T: " << tellers << ", V: " << voters << ", C: " << candidates << ", R: " << reductions
+            << ")" << endl;
 
-    auto model = GlobalModelParser::parse("Selene_" + to_string(tellers) + "_"+to_string(voters)+"_"+to_string(candidates)+".txt");
+    if(formula == 0) {
+        results << "Formula: <<Coercer>> F pun1" << endl;
+    } else if(formula == 1) {
+        results << "Formula: <<Coercer>> F (end && !v1=1 && K_Coercer !v1=1)" << endl;
+    } else if(formula == 2) {
+        results << "Formula: <<Voter1>> F (end && K_Voter vreg1=1 && K_Voter vreg1!=1)" << endl;
+    } else if(formula == 3) {
+        results << "Formula: phi1" << endl;
+    } else if(formula == 4) {
+        results << "Formula: phi2" << endl;
+    }
+
+
+    auto model = GlobalModelParser::parse(
+            "Selene_" + to_string(tellers) + "_" + to_string(voters) + "_" + to_string(candidates) + "_" +
+            to_string(formula) + ".txt");
 
     gettimeofday(&tb, NULL);
     model.generate(reductions);
     gettimeofday(&te, NULL);
 
     results << "Model generation time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
-         << " milliseconds" << endl;
+            << " milliseconds" << endl;
     results << "States Count: " << model.getStatesCount() << endl;
     results << "Transition Count: " << model.getTransitionsCount() << endl;
 
@@ -51,9 +71,9 @@ int main(int argc, char **argv) {
     gettimeofday(&te, NULL);
 
     results << "Imperfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
-         << " milliseconds" << endl;
+            << " milliseconds" << endl;
 
-    if(*result.first.begin() == 0){
+    if (*result.first.begin() == 0) {
         results << "Imperfect verification result: TRUE" << endl;
     } else {
         results << "Imperfect verification result: FALSE" << endl;
@@ -64,9 +84,9 @@ int main(int argc, char **argv) {
     gettimeofday(&te, NULL);
 
     results << "Perfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
-         << " milliseconds" << endl;
+            << " milliseconds" << endl;
 
-    if(*result.first.begin() == 0){
+    if (*result.first.begin() == 0) {
         results << "Perfect verification result: TRUE" << endl;
     } else {
         results << "Perfect verification result: FALSE" << endl;
@@ -77,7 +97,7 @@ int main(int argc, char **argv) {
     gettimeofday(&te, NULL);
 
     results << "Recursive DominoDFS time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
-         << " milliseconds" << endl;
+            << " milliseconds" << endl;
 
     if (result2.first) {
         results << "Recursive DominoDFS result: TRUE" << endl;

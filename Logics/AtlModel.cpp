@@ -30,7 +30,11 @@ void AtlModel::addTransition(unsigned int from, unsigned int to, const std::vect
 }
 
 void AtlModel::addEpistemicClass(unsigned short agentNumber, const std::set<unsigned int> &epistemicClass) {
-    if (this->epistemicClassMembership.empty()) {
+    this->imperfectInformation[agentNumber].push_back(epistemicClass);
+}
+
+void AtlModel::finishEpistemicClasses(unsigned short agentNumber) {
+    if(epistemicClassMembership.empty()) {
         this->epistemicClassMembership = std::vector<std::vector<unsigned int> >(this->numberOfAgents,
                                                                                  std::vector<unsigned int>(
                                                                                          this->numberOfStates,
@@ -38,31 +42,8 @@ void AtlModel::addEpistemicClass(unsigned short agentNumber, const std::set<unsi
         this->epistemicClassDisjoint = std::vector<DisjointUnion>(this->numberOfAgents,
                                                                   DisjointUnion(this->numberOfStates));
         this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<unsigned int> > > >(
-                this->numberOfAgents,
-                std::vector<std::map<std::string, std::set<unsigned int> > >(this->numberOfStates));
+                this->numberOfAgents);
     }
-
-    this->imperfectInformation[agentNumber].push_back(epistemicClass);
-    int epistemicClassNumber = (int) this->imperfectInformation[agentNumber].size() - 1;
-    int firstState = *epistemicClass.begin();
-    for (auto state: epistemicClass) {
-        this->epistemicClassMembership[agentNumber][state] = epistemicClassNumber;
-        this->epistemicClassDisjoint[agentNumber].unionn(firstState, state);
-    }
-
-    this->findWhereCanGo(epistemicClass, epistemicClassNumber, agentNumber);
-}
-
-void AtlModel::finishEpistemicClasses(unsigned short agentNumber) {
-    this->epistemicClassMembership = std::vector<std::vector<unsigned int> >(this->numberOfAgents,
-                                                                             std::vector<unsigned int>(
-                                                                                     this->numberOfStates,
-                                                                                     -1));
-    this->epistemicClassDisjoint = std::vector<DisjointUnion>(this->numberOfAgents,
-                                                              DisjointUnion(this->numberOfStates));
-    this->canGoThere = std::vector<std::vector<std::map<std::string, std::set<unsigned int> > > >(
-            this->numberOfAgents,
-            std::vector<std::map<std::string, std::set<unsigned int> > >(this->numberOfStates));
 
     for (unsigned int i = 0; i < this->imperfectInformation[agentNumber].size(); ++i) {
         int firstState = *(this->imperfectInformation[agentNumber][i].begin());
@@ -70,7 +51,22 @@ void AtlModel::finishEpistemicClasses(unsigned short agentNumber) {
             this->epistemicClassMembership[agentNumber][state] = i;
             this->epistemicClassDisjoint[agentNumber].unionn(firstState, state);
         }
+    }
 
+    for(int stateId = 0; stateId < this->numberOfStates; stateId++) {
+        if(this->epistemicClassMembership[agentNumber][stateId] != -1) {
+            continue;
+        }
+
+        std::set<unsigned int> epistemicClass;
+        epistemicClass.insert(stateId);
+        this->imperfectInformation[agentNumber].push_back(epistemicClass);
+        this->epistemicClassMembership[agentNumber][stateId] = (int) this->imperfectInformation[agentNumber].size() - 1;
+    }
+
+    this->canGoThere[agentNumber] = std::vector<std::map<std::string, std::set<unsigned int> > >(this->imperfectInformation[agentNumber].size());
+
+    for (unsigned int i = 0; i < this->imperfectInformation[agentNumber].size(); ++i) {
         this->findWhereCanGo(this->imperfectInformation[agentNumber][i], i, agentNumber);
     }
 }
@@ -295,7 +291,6 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
         ++numberOfIterations;
     }
 
-    printf("Number of iterations: %d\n", numberOfIterations);
     return resultStates;
 }
 
@@ -326,7 +321,6 @@ AtlModel::minimumFormulaOneAgentMultipleStatesPerfectInformation(unsigned short 
         ++numberOfIterations;
     }
 
-    printf("Number of iterations: %d\n", numberOfIterations);
     return resultStates;
 }
 
@@ -336,104 +330,6 @@ void AtlModel::setNumberOfStates(unsigned int numberOfStates) {
     this->numberOfStates = numberOfStates;
     this->transitions.resize(numberOfStates);
     this->preStates.resize(numberOfStates);
-}
-
-void AtlModel::saveToFile(std::ofstream &file) {
-    file << this->numberOfStates << std::endl;
-    this->numberOfTransitions = 0;
-    for (auto &transition : this->transitions) {
-        this->numberOfTransitions += transition.size();
-    }
-
-    file << this->numberOfTransitions << std::endl;
-    file << this->numberOfAgents << std::endl;
-    file << this->initialStatesCount << std::endl;
-    for (unsigned int i = 0; i < this->transitions.size(); ++i) {
-        for (auto t : this->transitions[i]) {
-            file << i << " " << t.nextState << " " << t.actions[0] << std::endl;
-        }
-    }
-
-    for (int i = 0; i < this->numberOfAgents; ++i) {
-        file << this->agentsActions[i].size() << std::endl;
-        for (const auto &action : this->agentsActions[i]) {
-            file << action << std::endl;
-        }
-    }
-
-    file << this->winningStates.size() << std::endl;
-    for (auto state : this->winningStates) {
-        file << state << std::endl;
-    }
-
-    for (int i = 0; i < this->numberOfAgents; ++i) {
-        file << this->imperfectInformation[i].size() << std::endl;
-        for (int j : this->epistemicClassMembership[i]) {
-            file << j << std::endl;
-        }
-    }
-}
-
-void AtlModel::loadFromFile(std::ifstream &file, bool imperfect) {
-    unsigned int numberOfStates, numberOfTransitions;
-    unsigned short numberOfAgents;
-    int numberOfEpistemicClasses, numberOFWinningStates;
-    file >> numberOfStates >> numberOfTransitions >> numberOfAgents >> this->initialStatesCount;
-    this->numberOfTransitions = numberOfTransitions;
-    this->numberOfStates = numberOfStates;
-    this->numberOfAgents = numberOfAgents;
-
-    this->agentsActions = std::vector<std::vector<std::string> >(numberOfAgents);
-    this->transitions = std::vector<std::set<Transition> >(numberOfStates);
-    this->preStates = std::vector<std::set<unsigned int> >(numberOfStates);
-    this->agentsActions = std::vector<std::vector<std::string> >(numberOfAgents);
-    this->winningStates = std::set<unsigned int>();
-
-    for (unsigned int i = 0; i < numberOfTransitions; ++i) {
-        int state, nextState;
-        std::vector<std::string> actions(1);
-        file >> state >> nextState >> actions[0];
-        this->addTransition(state, nextState, actions);
-    }
-
-    for (unsigned short i = 0; i < numberOfAgents; ++i) {
-        int numberOfActions;
-        file >> numberOfActions;
-        this->agentsActions[i].resize((unsigned long) numberOfActions);
-        for (int j = 0; j < numberOfActions; ++j) {
-            file >> this->agentsActions[i][j];
-        }
-    }
-
-    file >> numberOFWinningStates;
-    for (unsigned int i = 0; i < numberOFWinningStates; ++i) {
-        unsigned int winningState;
-        file >> winningState;
-        this->winningStates.insert(winningState);
-    }
-
-    if (!imperfect) {
-        return;
-    }
-
-    this->imperfectInformation = std::vector<std::vector<std::set<unsigned int> > >(numberOfAgents);
-    this->epistemicClassMembership = std::vector<std::vector<unsigned int> >(numberOfAgents,
-                                                                             std::vector<unsigned int>(numberOfStates));
-
-    for (int i = 0; i < numberOfAgents; ++i) {
-        file >> numberOfEpistemicClasses;
-        this->imperfectInformation[i] = std::vector<std::set<unsigned int> >(numberOfEpistemicClasses);
-        for (unsigned int j = 0; j < numberOfStates; ++j) {
-            file >> this->epistemicClassMembership[i][j];
-            if (this->epistemicClassMembership[i][j] != -1) {
-                this->imperfectInformation[i][this->epistemicClassMembership[i][j]].insert(j);
-            }
-        }
-
-        this->finishEpistemicClasses(i);
-    }
-
-    this->transitions.clear();
 }
 
 void AtlModel::clearTransitions() {
@@ -458,52 +354,6 @@ void AtlModel::setInitialStatesCount(unsigned int initialStatesCount) {
 
 std::set<Transition> AtlModel::getTransitions(unsigned int stateNumber) {
     return this->transitions[stateNumber];
-}
-
-ParallelModel AtlModel::toParallelModel(int agentId) {
-//    auto parallelModel = ParallelModel();
-//    map<string, int> actionToInt;
-//    int actionId = 1;
-//    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
-//        auto pState = ParallelState();
-//        pState.state_id = stateId;
-//        pState.equivalence_vector.push_back(this->epistemicClassMembership[agentId][stateId]);
-//        for(auto transition : this->transitions[stateId]) {
-//            auto actionVector = action_vector();
-//            string action = transition.actions[agentId];
-//            if(actionToInt[action] == 0) {
-//                actionToInt[action] = actionId;
-//                actionId++;
-//            }
-//            actionVector.push_back(actionToInt[action]);
-//            pState.action_list.push_back(actionVector);
-//            pState.state_list.push_back(transition.nextState);
-//            for(auto i = pState.action_list.size() - 1; i >= 1; i--) {
-//                if(pState.action_list[i][0] < pState.action_list[i-1][0]) {
-//                    swap(pState.action_list[i], pState.action_list[i-1]);
-//                    swap(pState.state_list[i], pState.state_list[i-1]);
-//                } else {
-//                    break;
-//                }
-//            }
-//        }
-//
-//        parallelModel.states.push_back(pState);
-//    }
-//
-//    for(auto stateId : this->winningStates) {
-//        parallelModel.states[stateId].winning = true;
-//    }
-//
-//    auto maxEpClass = max_element(this->epistemicClassMembership[agentId].begin(), this->epistemicClassMembership[agentId].end()).operator*();
-//    parallelModel.abstraction_classes = vector<equivalence_class>(maxEpClass + 1);
-//    for(auto stateId = 0; stateId < this->numberOfStates; stateId++) {
-//        auto epClassId = this->epistemicClassMembership[agentId][stateId];
-//        parallelModel.abstraction_classes[epClassId].class_id = epClassId;
-//        parallelModel.abstraction_classes[epClassId].members.push_back(stateId);
-//    }
-//    return parallelModel;
-    return ParallelModel();
 }
 
 

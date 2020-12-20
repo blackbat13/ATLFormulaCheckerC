@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <iterator>
 #include <algorithm>
+#include <cassert>
 #include "../Tools/DisjointUnion.h"
 #include "../Models/Transition.h"
 #include "../Models/ParallelModel.hpp"
@@ -45,8 +46,6 @@ private:
     /// Number of initial states
     unsigned int initialStatesCount;
 public:
-
-    ParallelModel toParallelModel(int agentId);
 
     unsigned long getInitialStatesCount() const;
 
@@ -183,19 +182,6 @@ public:
      * @param numberOfStates
      */
     void setNumberOfStates(unsigned int numberOfStates);
-
-    /**
-     *
-     * @param file
-     */
-    void saveToFile(std::ofstream &file);
-
-    /**
-     *
-     * @param file
-     * @param imperfect
-     */
-    void loadFromFile(std::ifstream &file, bool imperfect = true);
 
     /**
      * Removes all the transitions from the model.
