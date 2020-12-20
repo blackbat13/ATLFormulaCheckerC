@@ -7,13 +7,38 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char **argv) {
+    if(argc < 6) {
+        cout << "Usage: ./stv tellers voters candidates reductions formula" << endl;
+        cout << "tellers - number of tellers" << endl;
+        cout << "voters - number of voters" << endl;
+        cout << "candidates - number of candidates" << endl;
+        cout << "reductions - 1 for reduced model, 0 otherwise" << endl;
+        cout << "formula - formula id" << endl;
+        cout << "Example: ./stv 2 1 2 1 1" << endl;
+        cout << "Program will now exit" << endl;
+        return 0;
+    }
+
     struct timeval tb, te;
+    int tellers, voters, candidates, formula;
+    bool reductions;
+
+    tellers = atoi(argv[1]);
+    voters = atoi(argv[2]);
+    candidates = atoi(argv[3]);
+    formula = atoi(argv[4]);
+    reductions = argv[5][0] == '1';
+
     ofstream results("results.txt", fstream::app);
-    auto model = GlobalModelParser::parse("Selene_2_2_2.txt");
+
+    results << "Configuration: (T: " << tellers << ", V: " << voters << ", C: " << candidates << ", R: " << reductions << ")" << endl;
+    results << "Formula: " << formula << endl;
+
+    auto model = GlobalModelParser::parse("Selene_" + to_string(tellers) + "_"+to_string(voters)+"_"+to_string(candidates)+".txt");
 
     gettimeofday(&tb, NULL);
-    model.generate(true);
+    model.generate(reductions);
     gettimeofday(&te, NULL);
 
     results << "Model generation time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
@@ -22,7 +47,7 @@ int main() {
     results << "Transition Count: " << model.getTransitionsCount() << endl;
 
     gettimeofday(&tb, NULL);
-    auto result = model.verifyApproximation(true, 1);
+    auto result = model.verifyApproximation(true, formula);
     gettimeofday(&te, NULL);
 
     results << "Imperfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
@@ -35,7 +60,7 @@ int main() {
     }
 
     gettimeofday(&tb, NULL);
-    result = model.verifyApproximation(false, 1);
+    result = model.verifyApproximation(false, formula);
     gettimeofday(&te, NULL);
 
     results << "Perfect verification time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
@@ -48,7 +73,7 @@ int main() {
     }
 
     gettimeofday(&tb, NULL);
-    auto result2 = model.verifyParallel(1);
+    auto result2 = model.verifyParallel(formula);
     gettimeofday(&te, NULL);
 
     results << "Recursive DominoDFS time: " << 1000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) / 1000
@@ -60,6 +85,7 @@ int main() {
         results << "Recursive DominoDFS result: FALSE" << endl;
     }
 
+    results << "Model END" << endl << endl;
     results.close();
 
     return 0;
