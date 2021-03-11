@@ -20,7 +20,7 @@ private:
 public:
     static LocalModel parse(int agentId, std::string modelStr, int agentNo);
     static bool isProtocolLine(std::string line);
-    static std::pair<std::string, std::vector<std::vector<std::string> > > parseProtocol(std::string line);
+    static std::vector<std::vector<std::string> > parseProtocol(std::string line);
     static std::vector<std::vector<std::string> > parseProtocolList(std::string line);
 };
 

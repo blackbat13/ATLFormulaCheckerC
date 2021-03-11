@@ -49,6 +49,11 @@ protected:
     std::vector<Condition> conditions;
     int i;
     int j;
+    std::string protName;
+public:
+    const std::string &getProtName() const;
+
+    void setProtName(const std::string &protName);
 
 public:
     LocalTransition(std::string stateFrom, std::string stateTo, std::string action, bool shared,
@@ -57,7 +62,6 @@ public:
     bool checkConditions(GlobalState state) const;
 
     void print();
-
 
     int getId() const;
 
@@ -74,7 +78,10 @@ public:
     const std::map<std::string, std::string> &getProps() const;
 
     const std::vector<Condition> &getConditions() const;
-    bool hasProp(std::string key);
+
+    bool hasProp(const std::string& key) const;
+
+    std::string getProp(const std::string& key) const;
 
     int getI() const;
 

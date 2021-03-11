@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <set>
+#include <fstream>
 #include "Transition.h"
 #include "State.h"
 #include "ActionTransition.h"
@@ -22,8 +23,11 @@ protected:
     std::vector<GlobalState> states;
     unsigned int firstStateId;
     std::vector<std::set<std::string> > agentsActions;
+    std::vector<unsigned int> winningStates;
+    int agentId;
 public:
     explicit SimpleModel(unsigned int noAgents);
+    explicit SimpleModel(std::string filename);
     void addTransition(unsigned int fromStateId, unsigned int toStateId, std::vector<std::string> actions);
     void resizeToState(unsigned int stateId);
 //    void addEpistemicRelation(unsigned int stateId1, unsigned int stateId2, unsigned short agentId);
@@ -36,7 +40,9 @@ public:
     void simulatePrintCurrentState(int currentState);
     void simulatePrintEpistemicStates(int currentState, int agentId);
     void simulatePrintTransitions(int currentState);
-    ParallelModel toParallelModel(int agentId, std::set<unsigned int> winningStates);
+    ParallelModel* toParallelModel();
+    int getAgentId();
+    void printStats();
 };
 
 

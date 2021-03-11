@@ -15,6 +15,7 @@ SharedTransition::SharedTransition(LocalTransition* localTransition) : LocalTran
     this->transitionList.push_back(localTransition);
     this->i = localTransition->getI();
     this->j = localTransition->getJ();
+    this->protName = localTransition->getProtName();
 }
 
 bool SharedTransition::operator==(const SharedTransition &rhs) const {

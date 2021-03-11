@@ -6,16 +6,17 @@
 
 LocalModel::LocalModel(int agentId, std::string agentName, std::map<std::string, int> states,
                        std::vector<std::vector<LocalTransition*> > transitions,
-                       std::map<std::string, std::vector<std::vector<std::string> > > protocols,
+                       std::vector<std::vector<std::string> >  protocol,
                        std::set<std::string> actions) {
     this->agentId = agentId;
     this->agentName = agentName;
     this->states = states;
     this->transitions = transitions;
     this->actions = actions;
-    this->protocols = protocols;
+    this->protocol = protocol;
     this->props = std::vector<std::string>();
     this->computeProps();
+    this->applyProtocol();
 }
 
 void LocalModel::computeProps() {
@@ -91,6 +92,22 @@ void LocalModel::print() {
             auto transition = this->transitions[i][j];
             printf("%d %d: ", i, j);
             transition->print();
+        }
+    }
+}
+
+void LocalModel::applyProtocol() {
+    int p = 0;
+    for(auto lst : this->protocol) {
+        p++;
+        for(auto trName : lst) {
+            for(int i = 0; i < this->transitions.size(); i++) {
+                for (int j = 0; j < this->transitions[i].size(); j++) {
+                    if(this->transitions[i][j]->getAction() == trName) {
+                        this->transitions[i][j]->setProtName(this->agentName + "_prot_" + to_string(p));
+                    }
+                }
+            }
         }
     }
 }

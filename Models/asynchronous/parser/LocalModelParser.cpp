@@ -10,17 +10,21 @@ LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentN
     std::string initState = StringTools::split(lines[1], ' ')[1];
     std::map<std::string, int> states;
     states[initState] = 0;
-    std::map<std::string, std::vector<std::vector<std::string> > > protocols;
+    std::vector<std::vector<std::string> >  protocol;
     std::set<std::string> actions;
     std::vector<std::vector<LocalTransition*> > transitions;
     int stateNum = 1;
     int transitionId = 0;
     for (int i = 2; i < lines.size(); i++) {
+        if(lines[i].length() <= 1) {
+            break;
+        }
+
         std::string line = StringTools::strip(lines[i], ' ');
+
         line = StringTools::replace(line, "aID", agentName);
         if (isProtocolLine(line)) {
-            auto res = parseProtocol(line);
-            protocols[res.first] = res.second;
+            protocol = parseProtocol(line);
             continue;
         }
 
@@ -51,22 +55,22 @@ LocalModel LocalModelParser::parse(int agentId, std::string modelStr, int agentN
 
         transitions[states[stateFrom]].push_back(localTransition);
     }
+
     while (transitions.size() < states.size()) {
         transitions.emplace_back();
     }
 
-    return LocalModel(agentId, agentName, states, transitions, protocols, actions);
+    return LocalModel(agentId, agentName, states, transitions, protocol, actions);
 }
 
 bool LocalModelParser::isProtocolLine(std::string line) {
     return line.substr(0, 8) == "PROTOCOL";
 }
 
-std::pair<std::string, std::vector<std::vector<std::string> > > LocalModelParser::parseProtocol(std::string line) {
+std::vector<std::vector<std::string> >  LocalModelParser::parseProtocol(std::string line) {
     auto line2 = StringTools::split(line, ':');
-    auto state = StringTools::split(line2[0], ' ')[1];
     auto protocol = parseProtocolList(line2[1]);
-    return std::make_pair(state, protocol);
+    return protocol;
 }
 
 std::vector<std::vector<std::string> > LocalModelParser::parseProtocolList(std::string line) {

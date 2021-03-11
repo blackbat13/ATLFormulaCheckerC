@@ -1,8 +1,11 @@
-#ifndef __PARALLEL_MODEL_HPP
-#define __PARALLEL_MODEL_HPP
+#ifndef __MODEL_HPP
+#define __MODEL_HPP
 
 #include <iostream>
 #include <vector>
+#include <thread>
+#include <pthread.h>
+#include <mutex>
 
 using namespace std;
 
@@ -27,11 +30,14 @@ public:
 
     typedef enum {clear, searching, positive, negative} operation;
     operation opState;
+
     // identyfikator wątka obrabiającego stan (-1 == żaden)
     int threadId;
+    // przy okazji wskaźnik
+    thread *threadPtr;
 
     // konstruktor
-    ParallelState(int _id=0);
+    explicit ParallelState(int _id=0);
 
     // dodaj tranzycję z bieżącego węzła do innego przy zadanej akcji
     virtual int addTransition(int action, int dest);
@@ -39,22 +45,43 @@ public:
     inline void clean(){
         opState = clear;
         threadId = -1;
-        currentAction = -1;
+        currentAction = 0;
         previousStateIdx = -1;
     };
 
     friend ostream& operator<<(ostream &str, ParallelState &s);
+
+    inline string to_string();
 };
 
-class ParallelModel {
-public:
-    int counter;
-    vector<ParallelState*> states;
+#define MUTEX_COUNT 10
 
-    // tworzy pusty model
-    ParallelModel();
+class ParallelModel {
+
+public:
+    // tryb pracy (było bool potrzeba więcej)
+    typedef enum {standard, resume, follow} operationMode;
+
+protected:
+
+    int counter;
+
+    // wektor muteksów dla dostępu do modelu
+    mutex mutexes[MUTEX_COUNT];
+    // bieżący licznik uruchomionych
+    int threadsStarted;
+
+    // metoda dla wątków pomocniczych
+    static bool recursiveHelperThread(int s, int p, operationMode mode, int threadId, ParallelModel *m);
+
+public:
+
+    // wektor stanów
+    vector<ParallelState*> states;
+    vector<thread*> threadsVector;
+
     // tworzy model o zadanej liczbie węzłów
-    explicit ParallelModel(int size);
+    explicit ParallelModel(int size = 0);
 
     // utwórz i dodaj nowy węzeł (automatyczna numeracja)
     virtual int addNewState();
@@ -69,9 +96,10 @@ public:
     virtual void cleanAll();
     virtual void cleanPath(int s, int p, int threadId);
 
-    virtual bool recursiveDFS(int s, int p, bool resume, int threadId);
+    bool recursiveDFS(int s, int p, operationMode mode, int threadId);
+
+    virtual bool parallelRecursiveDFS(int s, int p, operationMode mode, int threadId);
 
     friend ostream& operator<<(ostream &str, ParallelModel &m);
 };
-
-#endif // __PARALLEL_MODEL_HPP
+#endif // __MODEL_HPP

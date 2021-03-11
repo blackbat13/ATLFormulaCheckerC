@@ -16,6 +16,7 @@ LocalTransition::LocalTransition(std::string stateFrom, std::string stateTo, std
     this->conditions = cond;
     this->i = -1;
     this->j = -1;
+    this->protName = action;
 }
 
 bool LocalTransition::checkConditions(GlobalState state) const {
@@ -143,8 +144,20 @@ LocalTransitionTup LocalTransition::toTup() {
     return {this->agentId, this->i, this->j};
 }
 
-bool LocalTransition::hasProp(std::string key) {
+bool LocalTransition::hasProp(const std::string& key) const {
     return this->props.find(key) != this->props.end();
+}
+
+std::string LocalTransition::getProp(const std::string& key) const{
+    return this->props.at(key);
+}
+
+const std::string &LocalTransition::getProtName() const {
+    return protName;
+}
+
+void LocalTransition::setProtName(const std::string &protName) {
+    LocalTransition::protName = protName;
 }
 
 bool LocalTransitionTup::operator<(const LocalTransitionTup &rhs) const {

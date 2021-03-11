@@ -21,10 +21,10 @@ public:
     std::map<std::string, int> states;
     std::vector<std::vector<LocalTransition*> > transitions;
     std::set<std::string> actions;
-    std::map<std::string, std::vector<std::vector<std::string> > > protocols;
+    std::vector<std::vector<std::string> > protocol;
     std::vector<std::string> props;
 
-    LocalModel(int agentId, std::string agentName, std::map<std::string, int> states, std::vector<std::vector<LocalTransition*> > transitions, std::map<std::string, std::vector<std::vector<std::string> > > protocols, std::set<std::string> actions);
+    LocalModel(int agentId, std::string agentName, std::map<std::string, int> states, std::vector<std::vector<LocalTransition*> > transitions, std::vector<std::vector<std::string> > protocol, std::set<std::string> actions);
 
     std::vector<LocalTransition*> transitionsFromState(int stateId);
 
@@ -39,6 +39,8 @@ public:
     std::vector<LocalTransition*> getTransitions();
 
     void print();
+
+    void applyProtocol();
 protected:
     void computeProps();
 };

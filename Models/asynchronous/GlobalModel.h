@@ -28,6 +28,7 @@ struct EpistemicState {
 
     bool operator>=(const EpistemicState &rhs) const;
 
+//    int localState;
     std::vector<int> localState;
     bool init;
     std::map<std::string, std::string> props;
@@ -70,13 +71,14 @@ private:
     GlobalState newStateAfterSharedTransitionList(GlobalState state, const std::vector<LocalTransition*>& transitions);
     void computeNextForState(const GlobalState& state, int currentStateId);
     void computeNextForStateForAgent(const GlobalState& state, int currentStateId, int agentId, std::vector<std::string> &visited, std::vector<std::vector<LocalTransition*> >  allTransitions);
-    static GlobalState copyPropsToState(GlobalState state, const LocalTransition& transition);
+    static GlobalState copyPropsToState(GlobalState state, LocalTransition *transition);
     int stateFind(const GlobalState& state);
     bool isInG(const GlobalState& state);
     int findStateOnStack1(const GlobalState& state);
     bool addToStack(const GlobalState& state);
     void popFromStack();
     void iterPor();
+    void dfsPor();
     std::set<LocalTransitionTup> ample(const GlobalState& state);
     bool checkForVisible(GlobalState state, const std::set<LocalTransitionTup>& x);
     bool checkForCycle(const GlobalState& state, const std::set<LocalTransitionTup>& x);
@@ -87,8 +89,8 @@ private:
     int addState(GlobalState &state);
     EpistemicState getEpistemicState(GlobalState state, int agentId);
     void addToEpistemicDictionary(const EpistemicState& state, int newStateId, int agentId);
-    void addTransition(int stateFrom, int stateTo, const std::string& action, const std::vector<int>& agents);
-    std::vector<std::string> createListOfActions(const std::string& action, const std::vector<int>& agents) const;
+    void addTransition(int stateFrom, int stateTo,  const std::vector<std::pair<int, std::string> > &agents);
+    std::vector<std::string> createListOfActions(const std::vector<std::pair<int, std::string> > &agents) const;
     void compute();
     std::vector<std::set<std::string> > getActions();
 
