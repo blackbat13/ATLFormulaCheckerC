@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 #ifdef __DEBUG__
 inline void trace(string head, string msg) {
     string s;

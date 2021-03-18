@@ -166,7 +166,7 @@ ParallelModel* SimpleModel::toParallelModel() {
                 continue;
             }
 
-//            parallelModel->unify(stateId, epistemicState);
+            parallelModel->unify(stateId, epistemicState);
         }
     }
 

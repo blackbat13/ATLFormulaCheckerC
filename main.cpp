@@ -60,6 +60,8 @@ int main(int argc, char **argv) {
 
     auto parallel = model.toParallelModel();
 
+    cout << "Parallel states size: " << parallel->states.size() << endl;
+
 //    parallel->states[1]->setAccept();
 
     cout << "#" << parallel->threadsVector.size() << endl;
