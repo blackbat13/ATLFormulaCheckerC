@@ -142,7 +142,7 @@ void SimpleModel::simulatePrintTransitions(int currentState) {
     }
 }
 
-ParallelModel* SimpleModel::toParallelModel() {
+ParallelModel* SimpleModel::toParallelModel(bool imperfect) {
     auto parallelModel = new ParallelModel(this->noStates);
     std::map<std::string, int> actionsId;
 
@@ -160,13 +160,16 @@ ParallelModel* SimpleModel::toParallelModel() {
         }
     }
 
-    for(int stateId = 0; stateId < this->noStates; stateId++) {
-        for(auto epistemicState : this->epistemicClassForState(stateId, this->agentId)) {
-            if(epistemicState == stateId || epistemicState < stateId) {
-                continue;
-            }
+    if(imperfect) {
+        for (int stateId = 0; stateId < this->noStates; stateId++) {
+            for (auto epistemicState : this->epistemicClassForState(stateId, this->agentId)) {
+                if (epistemicState == stateId || epistemicState < stateId) {
+                    continue;
+                }
 
-            parallelModel->unify(stateId, epistemicState);
+
+                parallelModel->unify(stateId, epistemicState);
+            }
         }
     }
 
@@ -177,17 +180,23 @@ ParallelModel* SimpleModel::toParallelModel() {
     return parallelModel;
 }
 
+std::set<unsigned int> SimpleModel::verifyApproximationImperfect() {
+    auto model = this->toAtlImperfect();
+    std::set<unsigned int> winningSet;
+    for(auto stateId: this->winningStates) {
+        winningSet.insert(stateId);
+    }
+
+    auto result = model.minimumFormulaOneAgentMultipleStatesDisjoint(this->agentId, winningSet);
+    return result;
+}
+
 SimpleModel::SimpleModel(std::string filename) {
-//    std::cout << "Hello!" << std::endl;
     std::ifstream file;
     file.open (filename, std::fstream::in);
-//    std::cout << file.is_open() << std::endl;
     file >> this->noStates;
-//    std::cout << this->noStates;
     file >> this->noAgents;
-//    std::cout << this->noAgents;
     file >> this->noTransitions;
-//    std::cout << this->noTransitions;
 
     this->graph.resize(this->noStates);
     this->actionGraph.resize(this->noStates);
@@ -200,40 +209,30 @@ SimpleModel::SimpleModel(std::string filename) {
     for(int i = 0; i < this->noTransitions; i++) {
         int from, to;
         file >> from >> to;
-//        cout << from << " " << to;
         std::vector<std::string> actions(this->noAgents);
         for(int j = 0; j < this->noAgents; j++) {
-            int act;
-//            file >> act;
-//            actions[j] = to_string(act);
             file >> actions[j];
-//            cout << " " << actions[j];
+            this->agentsActions[j].insert(actions[j]);
         }
-//        cout << endl;
-//        this->addTransition(from, to, actions);
         this->graph[from].push_back(Transition(to, actions));
     }
-//
+
     for(int i = 0; i < this->noAgents; i++) {
         int epistemicCount;
         file >> epistemicCount;
-//        cout << epistemicCount << endl;
         for(int j = 0; j < epistemicCount; j++) {
             int count;
             std::set<unsigned int> epistemicClass;
             file >> count;
-//            cout <<count << endl;
             for(int k = 0; k < count; k++) {
                 unsigned int stateId;
                 file >> stateId;
-//                cout << stateId << " ";
                 epistemicClass.insert(stateId);
             }
-//            cout << endl;
             this->addEpistemicClass(i, epistemicClass);
         }
     }
-////
+
     int winningStatesCount;
     file >> winningStatesCount;
     this->winningStates = std::vector<unsigned int>(winningStatesCount);

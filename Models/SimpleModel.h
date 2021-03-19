@@ -40,9 +40,10 @@ public:
     void simulatePrintCurrentState(int currentState);
     void simulatePrintEpistemicStates(int currentState, int agentId);
     void simulatePrintTransitions(int currentState);
-    ParallelModel* toParallelModel();
+    ParallelModel* toParallelModel(bool imperfect);
     int getAgentId();
     void printStats();
+    std::set<unsigned int> verifyApproximationImperfect();
 };
 
 

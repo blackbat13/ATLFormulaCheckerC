@@ -886,7 +886,7 @@ std::pair<std::set<unsigned int>, double> GlobalModel::verifyApproximation(bool 
 }
 
 std::pair<bool, double> GlobalModel::verifyParallel(int formulaNo) {
-    auto parallelModel = this->model.toParallelModel();
+    auto parallelModel = this->model.toParallelModel(true);
     return std::make_pair(parallelModel->recursiveDFS(0, -1, ParallelModel::standard, 0), 0);
 }
 

@@ -4,6 +4,7 @@
 #include "Models/asynchronous/parser/GlobalModelParser.h"
 #include <sys/time.h>
 #include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -55,10 +56,23 @@ int main(int argc, char **argv) {
 //
     struct timeval tb,te;
     auto model = SimpleModel(argv[1]);
-    model.printStats();
+//    auto res = model.verifyApproximationImperfect();
+//
+//    for(auto stateId : res) {
+//        cout << stateId << " ";
+//    }
+//    cout << endl;
+//
+//
+    bool imperfect = true;
+    if(argc >= 3 && strcmp(argv[2], "-p") == 0) {
+        imperfect = false;
+    }
+//
+//    model.printStats();
 //    model.simulate(model.getAgentId());
 
-    auto parallel = model.toParallelModel();
+    auto parallel = model.toParallelModel(imperfect);
 
     cout << "Parallel states size: " << parallel->states.size() << endl;
 

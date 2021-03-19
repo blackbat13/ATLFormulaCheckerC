@@ -175,17 +175,65 @@ AtlModel::basicFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumber,
             }
 
             bool isOk = true;
+            bool inEpistemic = true;
             std::set<unsigned int> newStatesCanGo;
             for (auto stateCan: statesCanGo) {
                 auto newStateCan = winningStatesDisjoint.find(stateCan);
                 if (firstWinning != newStateCan) {
                     isOk = false;
+                    if(newStateCan != state) { // if not same epistemic class
+                        cout << "hello 1" << endl;
+                        inEpistemic=false;
+                    }
                 }
 
                 newStatesCanGo.insert(newStateCan);
             }
 
+            cout << action << endl;
+
             customCanGoThere[stateEpistemicClassNumber][action] = newStatesCanGo;
+
+            if(!isOk && inEpistemic) {  // bladzenie
+                cout << "hello" << endl;
+                auto origStatesCanGo = this->canGoThere[agentNumber][stateEpistemicClassNumber][action];
+                std::map<unsigned int, bool> goodState;
+                int counter = 0;
+                bool change = true;
+                while(change) {
+                    change=false;
+                    for(auto stateCan : origStatesCanGo) {
+                        if(goodState[stateCan]) {
+                            continue;
+                        }
+                        else if(winningStatesDisjoint.find(stateCan) == firstWinning) {
+                            goodState[stateCan] = true;
+                            counter++;
+                            change = true;
+                        } else {
+                            bool good = true;
+                            for(auto tran : this->transitions[stateCan]) {
+                                if(tran.actions[agentNumber] == action) {
+                                    if(!goodState[tran.nextState]) {
+                                        good = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if(good) {
+                                counter++;
+                                change=true;
+                                goodState[stateCan] = true;
+                            }
+                        }
+                    }
+                }
+
+                if(counter == origStatesCanGo.size()) {
+                    isOk=true;
+                }
+            }
 
             if (isOk) {
                 resultStates.insert(sameStates.begin(), sameStates.end());
@@ -241,21 +289,29 @@ AtlModel::basicFormulaOneAgentMultipleStatesPerfectInformation(unsigned short ag
 std::set<unsigned int>
 AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumber,
                                                        const std::set<unsigned int> &winningStates) {
+
+
     if (winningStates.empty()) {
         return std::set<unsigned int>();
     }
+
+
 
     std::set<unsigned int> resultStates;
     resultStates.insert(winningStates.begin(), winningStates.end());
     int numberOfIterations = 0;
     auto currentStates = winningStates;
+    cout << "hello 2" << endl;
     DisjointUnion winningStatesDisjoint = this->epistemicClassDisjoint[agentNumber];
+    cout << "hello 3" << endl;
     auto firstWinning = winningStatesDisjoint.find(*winningStates.begin());
     std::set<int> epistemicClassNumbers;
     for (auto stateNumber: winningStates) {
         int epistemicClassNumber = this->epistemicClassMembership[agentNumber][stateNumber];
         epistemicClassNumbers.insert(epistemicClassNumber);
     }
+
+    cout << "hello 4" << endl;
 
     for (auto epistemicClassNumber: epistemicClassNumbers) {
         auto epistemicStates = this->imperfectInformation[agentNumber][epistemicClassNumber];
@@ -273,6 +329,8 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
     }
 
     epistemicClassNumbers.clear();
+
+    cout << "hello 5" << endl;
 
     auto customCanGoThere = this->canGoThere[agentNumber];
     while (true) {
