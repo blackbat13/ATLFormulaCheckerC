@@ -583,6 +583,7 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
             trace(" #3.1.1",currentState->to_string());
 #endif
 
+            cout << threadsVector.size() << endl;
             // utwórz nowy wątek
             thread *t = new thread(recursiveHelperThread, currentState->edges[currentState->currentAction+1], s, standard, threadsStarted, this);
 #ifdef __DEBUG__
