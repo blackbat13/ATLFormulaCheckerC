@@ -576,7 +576,7 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 
         // obejrzyj kolejną akcję, jeśli jest
         // jeśli jest taka sama jak bieżąca, wyślij tam nowy wątek
-        try {
+//        try {
             if (currentState->currentAction + 1 < currentState->counter &&
                 currentActionId == currentState->actions[currentState->currentAction + 1]) {
                 // kolejna akcja jest taka sama jak bieżąca
@@ -601,8 +601,8 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
                 trace(" #3.1.3",currentState->to_string());
 #endif
             }
-        }
-        catch(const std::system_error& e) {}
+//        }
+//        catch(const std::system_error& e) {}
 
 #endif
 
