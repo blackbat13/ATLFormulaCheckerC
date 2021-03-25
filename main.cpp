@@ -5,6 +5,7 @@
 #include <sys/time.h>
 #include <fstream>
 #include <cstring>
+#include <thread>
 
 using namespace std;
 
@@ -54,6 +55,8 @@ int main(int argc, char **argv) {
 //    }
 //
 //
+
+    cout << thread::hardware_concurrency() << endl;
     struct timeval tb,te;
     auto model = SimpleModel(argv[1]);
 //    auto res = model.verifyApproximationImperfect();
