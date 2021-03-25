@@ -54,7 +54,7 @@ public:
     inline string to_string();
 };
 
-#define MUTEX_COUNT 10
+#define MUTEX_COUNT 2
 
 class ParallelModel {
 
