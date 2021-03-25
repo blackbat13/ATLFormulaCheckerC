@@ -576,14 +576,14 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 
         // obejrzyj kolejną akcję, jeśli jest
         // jeśli jest taka sama jak bieżąca, wyślij tam nowy wątek
-        if(currentState->currentAction+1 < currentState->counter &&
+        if(threadsStarted < 2000 && currentState->currentAction+1 < currentState->counter &&
            currentActionId == currentState->actions[currentState->currentAction+1]) {
             // kolejna akcja jest taka sama jak bieżąca
 #ifdef __DEBUG__
             trace(" #3.1.1",currentState->to_string());
 #endif
 
-            cout << threadsVector.size() << endl;
+//            cout << threadsVector.size() << endl;
             // utwórz nowy wątek
             thread *t = new thread(recursiveHelperThread, currentState->edges[currentState->currentAction+1], s, standard, threadsStarted, this);
 #ifdef __DEBUG__
