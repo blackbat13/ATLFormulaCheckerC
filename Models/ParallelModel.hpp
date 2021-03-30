@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <thread>
 #include <pthread.h>
 #include <mutex>
@@ -55,6 +56,7 @@ public:
 };
 
 #define MUTEX_COUNT 10
+#define MAX_THREADS 1000
 
 class ParallelModel {
 
@@ -62,6 +64,11 @@ public:
     // tryb pracy (było bool potrzeba więcej)
     typedef enum {standard, resume, follow} operationMode;
 
+    // lista wątków oczekujących na wyłapanie przez join
+    queue<int> joinQueue;
+    // mutex do ochrony
+    mutex joinQueueMutex;
+    
 protected:
 
     int counter;
@@ -69,10 +76,13 @@ protected:
     // wektor muteksów dla dostępu do modelu
     mutex mutexes[MUTEX_COUNT];
     // bieżący licznik uruchomionych
-    int threadsStarted;
+    int threadsStarted;    
+    // bieżący licznik działających
+    int threadsRunning;
 
     // metoda dla wątków pomocniczych
     static bool recursiveHelperThread(int s, int p, operationMode mode, int threadId, ParallelModel *m);
+    static bool recursiveHelperThreadStart(int s, int p, int threadId, ParallelModel *m);
 
 public:
 

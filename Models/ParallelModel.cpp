@@ -1,4 +1,5 @@
 #include "ParallelModel.hpp"
+#include <unistd.h>
 
 using namespace std;
 
@@ -80,6 +81,7 @@ ParallelModel::ParallelModel(int size) {
     }
     // jeden wątek zablokowany na główny
     threadsStarted=1;
+    threadsRunning=0;
     // ustaw domyślny początkowy rozmiar tablicy wątków
     threadsVector.resize(10);
     threadsVector[0]=NULL;
@@ -489,11 +491,16 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #ifdef __DEBUG__
                     trace(" #2.1.1",currentState->to_string());
 #endif
+                    
                     // wątek pracuje - zaczekaj aż się zakończy
                     threadsVector[currentState->threadId]->join();
+                    threadsRunning--;
                     // skasuj stan
                     threadsVector[currentState->threadId] = NULL;
 
+#ifdef __DEBUG__
+                    trace(" #2.1.2",currentState->to_string());
+#endif
                     // zablokuj węzeł
                     mutexes[currentState->id % MUTEX_COUNT].lock();
                 }
@@ -576,33 +583,52 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 
         // obejrzyj kolejną akcję, jeśli jest
         // jeśli jest taka sama jak bieżąca, wyślij tam nowy wątek
-//        try {
-            if (currentState->currentAction + 1 < currentState->counter &&
-                currentActionId == currentState->actions[currentState->currentAction + 1]) {
-                // kolejna akcja jest taka sama jak bieżąca
+        if (currentState->currentAction + 1 < currentState->counter &&
+            currentActionId == currentState->actions[currentState->currentAction + 1]) {
+            // kolejna akcja jest taka sama jak bieżąca
 #ifdef __DEBUG__
-                trace(" #3.1.1",currentState->to_string());
+            trace(" #3.1.1",currentState->to_string());
 #endif
-
-//            cout << threadsVector.size() << endl;
-                // utwórz nowy wątek
-                thread *t = new thread(recursiveHelperThread, currentState->edges[currentState->currentAction + 1], s,
-                                       standard, threadsStarted, this);
-#ifdef __DEBUG__
-                trace(" #3.1.2",currentState->to_string());
-#endif
-                threadsVector[threadsStarted] = t;
-                // przesuń indeks
-                if (++threadsStarted == threadsVector.size()) {
-                    // jeśli już koniec tablicy, zwiększ ją 2x
-                    threadsVector.resize(threadsStarted * 2);
-                }
-#ifdef __DEBUG__
-                trace(" #3.1.3",currentState->to_string());
-#endif
+            // sprawdź, czy nie ma czego posprzątać
+            joinQueueMutex.lock();
+            while(joinQueue.size() > 0) {
+                // posprzątaj
+                int t=joinQueue.front();
+                joinQueue.pop();
+                
+                threadsVector[t]->join();
+                threadsRunning--;
+                threadsVector[t] = NULL;
+//                 cout << "% sprzątnąłem " << t << endl;
             }
-//        }
-//        catch(const std::system_error& e) {}
+            joinQueueMutex.unlock();
+            
+            // czy nie za dużo...
+            if(threadsRunning < MAX_THREADS) {
+                // utwórz nowy wątek
+                thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + 1], s,
+                                    threadsStarted, this);
+                if (t == NULL) {
+                    cerr << "WARNING: Cannot spawn a thread " << threadsStarted << endl;
+                } else {
+#ifdef __DEBUG__
+                    trace(" #3.1.2",currentState->to_string());
+#endif
+                    threadsRunning++;
+                    threadsVector[threadsStarted] = t;
+                    // przesuń indeks
+                    if (++threadsStarted == threadsVector.size()) {
+//                         cout << "# " << threadsStarted << endl;
+                        // jeśli już koniec tablicy, zwiększ ją 2x
+                        threadsVector.resize(threadsStarted * 2);
+//                         cout << "# " << threadsStarted << " OK" << endl;
+                    }
+#ifdef __DEBUG__
+                    trace(" #3.1.3",currentState->to_string());
+#endif
+                }
+            }
+        }
 
 #endif
 
@@ -712,6 +738,27 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 }
 
 /* -------------------------------------------------------------------------
+ * Metoda startująca dla wątku pomocniczego, 
+ * mająca za zadanie rzeczywiste uruchomienie wątku oraz jego zakończenie
+ * s - węzeł do odwiedzenia
+ * p - poprzedni węzeł (?)
+ * threadId - id bieżącego wątku
+ */
+bool ParallelModel::recursiveHelperThreadStart(int s, int p, int threadId, ParallelModel *m) {
+    bool res=recursiveHelperThread(s, p, standard, threadId, m);
+    
+    // zgłoś zakończenie
+    // zablokuj mutex
+    m->joinQueueMutex.lock();
+    m->joinQueue.push(threadId);
+    m->joinQueueMutex.unlock();
+    
+//     cout << "% kończę " << threadId << endl;
+    
+    return res;
+}
+
+/* -------------------------------------------------------------------------
  * Metoda dla wątku pomocniczego
  * Oparta na metodzie szeregowej
  * s - węzeł do odwiedzenia
@@ -751,6 +798,11 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
 #ifdef __DEBUG__
         trace("  %1.1\tw"+to_string(threadId),currentState->to_string());
 #endif
+        m->joinQueueMutex.lock();
+        m->joinQueue.push(threadId);
+        m->joinQueueMutex.unlock();
+//         cout << "%# kończę " << threadId << endl;
+        
         pthread_exit(NULL);
     }
 
@@ -790,6 +842,11 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
         if(currentState->threadId > -1) {
             // węzeł jest oznaczony przez inny wątek - po prostu zakończ się (wątek)
             m->mutexes[currentState->id % MUTEX_COUNT].unlock();
+            
+            m->joinQueueMutex.lock();
+            m->joinQueue.push(threadId);
+            m->joinQueueMutex.unlock();
+//             cout << "%% kończę " << threadId << endl;
             /* ------------------------------------------ *
              * to prawdopodobnie wymaga rewizji i poprawy *
              * ------------------------------------------ */
