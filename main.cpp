@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 
     // Transitions
     parallel->states[0]->addTransition(1,1);   // addTransition(action, nextState)
-    parallel->states[0]->addTransition(2,2);
+    parallel->states[0]->addTransition(2,2);   // Actions coming from one state should be sorted (by action number)
 
     // Epistemic classes
     parallel->unify(1,2);  // unify states in epistemic classes
