@@ -111,5 +111,8 @@ public:
     virtual bool parallelRecursiveDFS(int s, int p, operationMode mode, int threadId);
 
     friend ostream& operator<<(ostream &str, ParallelModel &m);
+    
+    // wypluj strategię wygrywającą - jeśli istnieje
+    virtual void printStrategy(int s, ostream &str);
 };
 #endif // __MODEL_HPP
