@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    struct timeval tb,te;
+    struct timeval tb, te;
 
     auto parallel = new ParallelModel(3);   // parameter - number of states
     cout << "#" << parallel->threadsVector.size() << endl;
@@ -19,11 +19,11 @@ int main(int argc, char **argv) {
     // Define the model
 
     // Transitions
-    parallel->states[0]->addTransition(1,1);   // addTransition(action, nextState)
-    parallel->states[0]->addTransition(2,2);   // Actions coming from one state should be sorted (by action number)
+    parallel->states[0]->addTransition(1, 1);   // addTransition(action, nextState)
+    parallel->states[0]->addTransition(2, 2);   // Actions coming from one state should be sorted (by action number)
 
     // Epistemic classes
-    parallel->unify(1,2);  // unify states in epistemic classes
+    parallel->unify(1, 2);  // unify states in epistemic classes
 
     // Winning states
     parallel->setAccept();   // mark winning states
@@ -34,9 +34,14 @@ int main(int argc, char **argv) {
     bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
     gettimeofday(&te, NULL);
 
-    cout << "Verification time: " << 1000000*(te.tv_sec-tb.tv_sec)+(te.tv_usec - tb.tv_usec) << " usec" << endl;
+    cout << "Verification time: " << 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) << " usec" << endl;
 
-    if(result) cout << "True" << endl;
-    else cout << "False" << endl;
+    if (result) {
+        cout << "True" << endl;
+        parallel->printStrategy(0, cout);
+    }
+    else {
+        cout << "False" << endl;
+    }
     return 0;
 }
