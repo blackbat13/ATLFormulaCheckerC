@@ -971,13 +971,24 @@ void ParallelModel::printStrategy(int s, ostream &str){
             continue;
         }
     
+        // jeśli nie ma akcji
+        if(currentState->counter == 0) {
+            str << " fail" << endl;
+            continue;
+        }
         // wybrana akcja
-        int currentAction=currentState->actions[currentState->currentAction];
+        int currentAction;
+        int currentClass=findClass(currentState->id);
+        if(currentClass == -1) {
+            currentAction=currentState->actions[currentState->currentAction];
+        } else {
+            currentAction=states[currentClass]->actions[states[currentClass]->currentAction];
+        }
         str << " action " << currentAction << endl;
         
         // nie jest wygrywający - jedziemy po następnikach
         // przejście przez tablicę akcji
-        for(int i=0; i < currentState->actions.size(); i++) {
+        for(int i=0; i < currentState->counter; i++) {
             // akcja dla krawędzi zgadza się z bieżącą
             if(currentState->actions[i] == currentAction) {
                 //wypluj na wyjście
