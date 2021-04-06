@@ -600,7 +600,6 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
                 threadsVector[t]->join();
                 threadsRunning--;
                 threadsVector[t] = NULL;
-//                 cout << "% sprzątnąłem " << t << endl;
             }
             joinQueueMutex.unlock();
             
@@ -705,6 +704,21 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
                     currentState->currentAction++;
                 } while(currentState->currentAction < currentState->counter
                         && currentState->actions[currentState->currentAction] == currentActionId);
+                
+                // ewentualnie trzeba być może poprawić w węźle nadrzędnym klasy abstrakcji
+                if(currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
+                    // jeśli już koniec
+                    if(currentState->counter == currentState->currentAction) {
+                        // ustaw w nadrzędnej na koniec
+                        headState->currentAction = headState->counter;
+                    } else{
+                        // w p.p. znajdź pierwszą akcję z takim samym identyfikatorem
+                        headState->currentAction = 0;
+                        while(currentState->actions[currentState->currentAction] != headState->actions[headState->currentAction]) {
+                            headState->currentAction++;
+                        }
+                    }
+                }
                 // resztę załatwia pętla
 #ifdef __DEBUG__
                 trace(" #3.2.2.3",currentState->to_string());
