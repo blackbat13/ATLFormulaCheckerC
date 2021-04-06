@@ -1,5 +1,6 @@
 #include "ParallelModel.hpp"
 #include <unistd.h>
+#include <stack>
 
 using namespace std;
 
@@ -940,3 +941,56 @@ ostream& operator<<(ostream &str, ParallelModel &m) {
     return str;
 }
 
+/* -------------------------------------------------------------------------
+ * Funkcja do wyplucia strategii wygrywającej.
+ * s : numer stanu do rozpoczęcia wypisywania
+ * str : strumień wyjściowy
+ */
+void ParallelModel::printStrategy(int s, ostream &str){
+    // wektor odwiedzin stanów
+    vector<bool> visited;
+    visited.resize(states.size(), false);
+    queue<int> pending;
+    
+    // wstaw stan startowy
+    visited[s]=true;
+    pending.push(s);
+    
+    str << "***********************" << endl;
+    // pętla po stanach do odwiedzenia
+    while(pending.size() > 0) {
+        // weź stan bieżący
+        ParallelState *currentState = states[pending.front()];
+        pending.pop();
+        
+        // "nagłówek"
+        str << "state " << currentState->id << ":";
+        // jeśli wygrywający
+        if(currentState->accept) {
+            str << " accept" << endl;
+            continue;
+        }
+    
+        // wybrana akcja
+        int currentAction=currentState->actions[currentState->currentAction];
+        str << " action " << currentAction << endl;
+        
+        // nie jest wygrywający - jedziemy po następnikach
+        // przejście przez tablicę akcji
+        for(int i=0; i < currentState->actions.size(); i++) {
+            // akcja dla krawędzi zgadza się z bieżącą
+            if(currentState->actions[i] == currentAction) {
+                //wypluj na wyjście
+                int destState=currentState->edges[i];
+                str << " -> " << destState << endl;
+                // czy docelowy stan jest już odwiedzony
+                if(! visited[destState]) {
+                    // nieodwiedzony - dorzuć do zbioru
+                    visited[destState] = true;
+                    pending.push(destState);
+                }
+            }
+        }
+    }
+    str << "***********************" << endl;
+}
