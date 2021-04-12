@@ -192,9 +192,12 @@ void ParallelModel::cleanPath(int s, int p, int threadId) {
  * p - poprzedni węzeł (?)
  * mode - czy ma być przeszukiwanie ma być wznowione od ostatniej decyzji
  *          tylko do użytku wewnętrznego
- * threadId - id bieżącego wątku
+ * depth - głębokość, potrzebne... czasami
  */
-bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId) {
+
+#define FORK_DEPTH 2
+
+bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int depth) {
 
     // zienna pomocnicza, żeby nie trzeba było ciągle dłubać
     ParallelState *currentState=states[s];
@@ -203,17 +206,25 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId)
     cout << *currentState << " " << p << " " << mode << endl;
 #endif
 
-    // jeśli stan jest wygrywajacy
-    if(currentState->accept) {
-        // zwróć odwrotność resume
-        if(mode == resume) return false;
-        else return true;
-    }
-
 #ifdef __DEBUG__
     cout << " $1(" << currentState->id << ")" << endl;
 #endif
 
+    // jeśli stan jest wygrywajacy
+    if(currentState->accept) {
+        // zwróć odwrotność resume
+#ifdef __DEBUG__
+        cout << " $1.1(" << currentState->id << ") " << mode << endl;
+#endif
+        return (mode != resume);
+    }
+
+
+    if(currentState->opState == ParallelState::negative || currentState->counter == 0) {
+        // zwróć fałsz
+        return false;
+    }
+    
     // węzeł reprezentant klasy abstrakcji, jeśli jest
     ParallelState *headState=NULL;
     // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
@@ -242,12 +253,8 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId)
 
         // w p.p. czy był odwiedzony w ogóle
         if(currentState->opState == ParallelState::searching) {
-            // stan był odwiedzony ale nie jest zakończony
-            // czy przez ten wątek?
-            if(currentState->threadId == threadId) {
-                // owszem - jest pętla, zwróć porażkę
-                return false;
-            }
+            // stan był odwiedzony ale nie jest zakończony - zwróć fałsz
+            return false;
         }
         // prawdopodobnie zbędny sanity check
         if(currentState->opState != ParallelState::clear) {
@@ -257,7 +264,7 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId)
         }
         // stan jest czysty, trzeba zainicjować
         currentState->opState = ParallelState::searching;
-        currentState->threadId = threadId;
+        currentState->threadId = 0; // niepotrzebne ale niech będzie
         currentState->previousStateIdx = p;
 
 #ifdef __DEBUG__
@@ -306,12 +313,12 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId)
 #endif
 
         // rekurencyjnie po grafie
-        bool result = recursiveDFS(currentState->edges[currentState->currentAction], s, resume, threadId);
+        bool result = recursiveDFS(currentState->edges[currentState->currentAction], s, mode, depth+1);
         // skasuj resume
         mode = standard;
 
 #ifdef __DEBUG__
-        cout << " $3.2(" << currentState->id << ")"  << endl;
+        cout << " $3.2(" << currentState->id << ") " << result << endl;
 #endif
 
         if(result) {
@@ -372,6 +379,21 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int threadId)
                     currentState->currentAction++;
                 } while(currentState->currentAction < currentState->counter
                         && currentState->actions[currentState->currentAction] == currentActionId);
+                
+                // ewentualnie trzeba być może poprawić w węźle nadrzędnym klasy abstrakcji
+                if(currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
+                    // jeśli już koniec
+                    if(currentState->counter == currentState->currentAction) {
+                        // ustaw w nadrzędnej na koniec
+                        headState->currentAction = headState->counter;
+                    } else{
+                        // w p.p. znajdź pierwszą akcję z takim samym identyfikatorem
+                        headState->currentAction = 0;
+                        while(currentState->actions[currentState->currentAction] != headState->actions[headState->currentAction]) {
+                            headState->currentAction++;
+                        }
+                    }
+                }
                 // resztę załatwia pętla
 #ifdef __DEBUG__
                 cout << " $3.2.2.3(" << currentState->id << ")"  << endl;

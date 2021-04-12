@@ -106,7 +106,7 @@ public:
     virtual void cleanAll();
     virtual void cleanPath(int s, int p, int threadId);
 
-    bool recursiveDFS(int s, int p, operationMode mode, int threadId);
+    bool recursiveDFS(int s, int p, operationMode mode, int depth);
 
     virtual bool parallelRecursiveDFS(int s, int p, operationMode mode, int threadId);
 
