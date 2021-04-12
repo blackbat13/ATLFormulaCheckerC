@@ -11,10 +11,11 @@
 // #include "TestModels/Model02.cpp"
 // #include "TestModels/Model03.cpp"
 // #include "TestModels/Model04.cpp"
-#include "TestModels/Model05.cpp"
+// #include "TestModels/Model05.cpp"
 // #include "TestModels/Model06.cpp"
 // #include "TestModels/Model07.cpp"
 // #include "TestModels/Model08.cpp"
+#include "TestModels/Model09.cpp"
 
 using namespace std;
 
@@ -38,16 +39,29 @@ int main(int argc, char **argv) {
     // parallel->setAccept();   // mark winning states
     
     
-    auto parallel = getModel(); // For models 1-6
-    // auto parallel = getModel(3, 4); // For models 7 and 8
+    // For models 1-6
+    // auto parallel = getModel();
+    
+    // For models 7 and 8
+    // int n = strtol(argv[1], NULL, 10);
+    // int k = strtol(argv[2], NULL, 10);
+    // auto parallel = getModel(n, k);
+    
+    // For model 9
+    int n = strtol(argv[1], NULL, 10);
+    int m = strtol(argv[2], NULL, 10);
+    int k = strtol(argv[3], NULL, 10);
+    auto parallel = getModel(n, m, k);
+    
     auto expectedResult = getExpectedResult();
 
 
     // Verification
     gettimeofday(&tb, NULL);
     bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
+    // bool result = parallel->recursiveDFS(0, -1, ParallelModel::standard, 0);
     gettimeofday(&te, NULL);
-
+    // cout << n << " " << m << " " << k << " " << (1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec)) << endl;
     cout << "Verification time: " << 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) << " usec" << endl;
     
     if (result == expectedResult) {

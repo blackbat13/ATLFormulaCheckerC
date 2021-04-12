@@ -1,8 +1,11 @@
 #include "TreeModelGenerator.cpp"
 
 ParallelModel *getModel(int n, int k) {
-    auto generator = new TreeModelGenerator(n, k - 1, 2);
+    auto generator = new TreeModelGenerator(n, n, k - 1, 2);
     auto model = generator->getModel();
+    if (model == nullptr) {
+        return nullptr;
+    }
     auto lastStateId = generator->calculateLevelFirstStateId(k - 1) - 1;
     
     
