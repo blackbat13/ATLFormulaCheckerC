@@ -42,7 +42,7 @@ public:
             for (int levelStateId = 0; levelStateId < statesInLevelCount; ++levelStateId) {
                 int stateId = levelFirstSateId + levelStateId;
                 int parentStateId = parentLevelFirstSateId + levelStateId / this->n;
-                int action = ((levelStateId % this->n) ) % this->m + 1;
+                int action = (levelStateId % this->n) / this->m + 1;
                 // cout << parentStateId << " ---" << action << "--> " << stateId << endl;
                 this->model->states[parentStateId]->addTransition(action, stateId);
             }
