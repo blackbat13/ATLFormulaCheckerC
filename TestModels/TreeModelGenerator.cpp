@@ -33,7 +33,9 @@ public:
             return nullptr;
         }
         int totalStatesCount = treeStatesCount + this->extraStatesCount;
-        cout << "Number of states: " << totalStatesCount << endl;
+        #if !RAW_PERF_OUT
+            cout << "Number of states: " << totalStatesCount << endl;
+        #endif
         this->model = new ParallelModel(totalStatesCount);
         for (int levelId = 1; levelId < k; ++levelId) {
             int statesInLevelCount = this->calculateLevelStatesCount(levelId);
