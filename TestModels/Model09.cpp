@@ -1,7 +1,11 @@
 #include "TreeModelGenerator.cpp"
 
-ParallelModel *getModel(int n, int k) {
-    auto generator = new TreeModelGenerator(n, n, k - 1, 2);
+ParallelModel *getModel(int n, int m, int k) {
+    if ((n % m) != 0) {
+        cout << "Error: n must be divisble by m (" << n << " % " << m << ")" << endl;
+        exit(0);
+    }
+    auto generator = new TreeModelGenerator(n, m, k - 1, 2);
     auto model = generator->getModel();
     if (model == nullptr) {
         return nullptr;
@@ -19,7 +23,6 @@ ParallelModel *getModel(int n, int k) {
     
     // Winning states
     
-    model->states[lastStateId + 1]->setAccept();
     model->states[lastStateId + 2]->setAccept();
     
     
@@ -28,5 +31,5 @@ ParallelModel *getModel(int n, int k) {
 }
 
 bool getExpectedResult() {
-    return true;
+    return false;
 }
