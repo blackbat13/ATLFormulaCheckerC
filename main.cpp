@@ -45,7 +45,8 @@ int main(int argc, char **argv) {
 
     // Verification
     gettimeofday(&tb, NULL);
-    bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
+    //bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
+    bool result = parallel->forkRecursiveDFS(0,5);
     gettimeofday(&te, NULL);
 
     cout << "Verification time: " << 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec) << " usec" << endl;
