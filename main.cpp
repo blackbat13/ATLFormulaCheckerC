@@ -71,6 +71,11 @@ int main(int argc, char **argv) {
     if(argc >= 3 && strcmp(argv[2], "-p") == 0) {
         imperfect = false;
     }
+
+    int t = 5;
+    if(argc >= 4) {
+        t = atoi(argv[3]);
+    }
 //
 //    model.printStats();
 //    model.simulate(model.getAgentId());
@@ -87,7 +92,8 @@ int main(int argc, char **argv) {
     gettimeofday(&tb, NULL);
 
     // odpal wyszukiwanie
-    bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
+    // bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
+    bool result = parallel->forkRecursiveDFS(0, t);
 
     // pobierz bieżący czas
     gettimeofday(&te, NULL);
