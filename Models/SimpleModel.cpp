@@ -154,8 +154,22 @@ ParallelModel* SimpleModel::toParallelModel(bool imperfect) {
 
         std::sort(tran.begin(), tran.end());
 
+//        std::vector<int> append;
+//        std::map<int, bool> visited;
+
         for(auto tr : tran) {
             parallelModel->states[stateId]->addTransition(tr.first, tr.second);
+
+//            if(tr.first == 0) {
+//                append.push_back(tr.second);
+//            }
+//            else if(!visited[tr.first]) {
+//                visited[tr.first] = true;
+//                for(auto dest: append) {
+//                    parallelModel->states[stateId]->addTransition(tr.first, dest);
+//                    cout << stateId << " " << tr.first << " " << dest << endl;
+//                }
+//            }
 //            cout << stateId << " " << tr.first << " " << tr.second << endl;
         }
     }

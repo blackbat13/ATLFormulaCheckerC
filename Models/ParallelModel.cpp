@@ -2,13 +2,14 @@
 #include <unistd.h>
 #include <stack>
 #include <sys/wait.h>
+#include <signal.h>
 
 using namespace std;
 
 
 inline void trace(string head, string msg) {
     string s;
-    s = string(head+"\t(");
+    s = string(head + "\t(");
     s += msg;
     s += ")\n";
     cout << s;
@@ -36,8 +37,8 @@ ParallelState::ParallelState(int _id) {
  */
 int ParallelState::addTransition(int action, int dest) {
 
-    if(counter == actions.size()) {
-        int s = 2*actions.size();
+    if (counter == actions.size()) {
+        int s = 2 * actions.size();
         actions.resize(s);
         edges.resize(s);
     }
@@ -50,7 +51,7 @@ int ParallelState::addTransition(int action, int dest) {
 string ParallelState::to_string() {
     string str;
     str += std::to_string(id) + ":" + std::to_string(accept) + ":" + std::to_string(abstractClass) + "(";
-    for(int i=0; i<counter; i++) {
+    for (int i = 0; i < counter; i++) {
         str += "(" + std::to_string(actions[i]) + "," + std::to_string(edges[i]) + ")";
     }
     str += "):" + std::to_string(currentAction) + "," + std::to_string(opState) + "," + std::to_string(threadId);
@@ -61,9 +62,9 @@ string ParallelState::to_string() {
 int ParallelState::findAction(int action) {
     // zacznij przeglądanie od początku tabeli akcji
     int i;
-    for (i=0; i < counter; i++) {
+    for (i = 0; i < counter; i++) {
         // jeśli bieżąca akcja odpowiada poszukiwanej - przerwij wyszukiwanie
-        if(actions[i] == action) {
+        if (actions[i] == action) {
             return i;
         }
     }
@@ -73,15 +74,14 @@ int ParallelState::findAction(int action) {
 
 /* -------------------------------------------------------------------------
  */
-ostream& operator<<(ostream &str, ParallelState &s) {
+ostream &operator<<(ostream &str, ParallelState &s) {
     str << s.to_string();
     return str;
 }
 
 
-
 void dumpActionPath(ActionPath p, ostream &str) {
-    while(p.size() > 0) {
+    while (p.size() > 0) {
         str << "->" << p.front();
         p.pop_front();
     }
@@ -97,31 +97,31 @@ void dumpActionPath(ActionPath p, ostream &str) {
 
 ParallelModel::ParallelModel(int size) {
     counter = size;
-    if(size != 0) states.resize(counter);
+    if (size != 0) states.resize(counter);
     else states.resize(2);
-    for(int i = 0; i<counter; i++) {
+    for (int i = 0; i < counter; i++) {
         states[i] = new ParallelState(i);
     }
     // jeden wątek zablokowany na główny
-    threadsStarted=1;
-    threadsRunning=0;
+    threadsStarted = 1;
+    threadsRunning = 0;
     // ustaw domyślny początkowy rozmiar tablicy wątków
     threadsVector.resize(10);
-    threadsVector[0]=NULL;
+    threadsVector[0] = NULL;
 }
 
 /* -------------------------------------------------------------------------
  */
 int ParallelModel::addState(ParallelState *s) {
     // jeśli za mało miejsca to zwiększ
-    if(counter == states.size()) {
-        int ns = 2*states.size();
+    if (counter == states.size()) {
+        int ns = 2 * states.size();
         states.resize(ns);
     }
     // id musi się zgadzać z miejscem
-    s->id=counter;
+    s->id = counter;
     // dodaj do tablicy
-    states[counter]=s;
+    states[counter] = s;
     counter++;
     return counter;
 }
@@ -137,7 +137,7 @@ int ParallelModel::addNewState() {
 /* -------------------------------------------------------------------------
  */
 void ParallelModel::cleanAll() {
-    for(int n=0; n<counter; n++) {
+    for (int n = 0; n < counter; n++) {
         states[n]->clean();
     }
 }
@@ -147,24 +147,24 @@ void ParallelModel::cleanAll() {
  */
 int ParallelModel::unify(int _id1, int _id2) {
     // ustaw - najpierw mniejszy, potem większy
-    int id1=min(_id1, _id2);
-    int id2=max(_id1, _id2);
+    int id1 = min(_id1, _id2);
+    int id2 = max(_id1, _id2);
     // W każdym przypadku przejdź do głowy
-    int h1=findClass(id1);
-    int h2=findClass(id2);
+    int h1 = findClass(id1);
+    int h2 = findClass(id2);
 
     // jeśli to samo to już nie trzeba łączyć
-    if(h1 == h2 && h1 != -1) return h1;
+    if (h1 == h2 && h1 != -1) return h1;
 
     // jeśli pierwszy jeszcze nie był podpięty nigdzie, zainicjuj
     if (h1 == -1) {
         // przypisz siebie
         states[id1]->abstractClass = id1;
-        h1=id1;
+        h1 = id1;
     }
     // to samo z drugim, zainicjuj
     if (h2 == -1) {
-        h2=id2;
+        h2 = id2;
         // nie trzeba przypisywać bo zaraz to nastąpi
     }
     // teraz podepnij drugą klasę pod pierwszy
@@ -177,11 +177,11 @@ int ParallelModel::unify(int _id1, int _id2) {
 /* -------------------------------------------------------------------------
  * znajdź węzeł reprezentujący klasę do której należy węzeł
  */
-int ParallelModel::findClass(int id){
+int ParallelModel::findClass(int id) {
     // jeśli węzeł nie należy do żadnej klasy, zwróć -1
-    if(states[id]->abstractClass == -1) return -1;
+    if (states[id]->abstractClass == -1) return -1;
     // w p.p. cofnij się "do głowy"
-    while(states[id]->abstractClass != id) id=states[id]->abstractClass;
+    while (states[id]->abstractClass != id) id = states[id]->abstractClass;
     return id;
 }
 
@@ -190,9 +190,9 @@ int ParallelModel::findClass(int id){
  * Należy uwzględnić klasę abstrakcji.
  */
 int ParallelModel::getAction(ParallelState *s) {
-    
-    int currentClass=findClass(s->id);
-    if(currentClass == -1) {
+
+    int currentClass = findClass(s->id);
+    if (currentClass == -1) {
         return s->actions[s->currentAction];
     } else {
         return states[currentClass]->actions[states[currentClass]->currentAction];
@@ -200,26 +200,26 @@ int ParallelModel::getAction(ParallelState *s) {
 }
 
 void ParallelModel::setAction(ParallelState *s, int action) {
-       
+
     // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-    if(s->abstractClass == -1) {
+    if (s->abstractClass == -1) {
         // jeśli nie, to decydujemy o akcji lokalnie
         s->currentAction = action;
     } else {
         // w p.p. zależymy od "głowy"    // węzeł reprezentant klasy abstrakcji, jeśli jest
-        ParallelState *headState=states[findClass(s->id)];
-        
+        ParallelState *headState = states[findClass(s->id)];
+
         // teraz, czy w gowie jest ustalona akcja
-        if(headState->currentAction == -1) {
+        if (headState->currentAction == -1) {
             // akcja nie jest określona - zrób to
             headState->currentAction = headState->findAction(action);
             // zabezpieczenie - dla poprawnego modelu zbędne
-            if(headState->currentAction == -1) {
+            if (headState->currentAction == -1) {
                 cerr << "model::setAction: requested action not found!" << endl;
                 exit(1);
             }
-        } else if(s != headState) {
-            if(headState->actions[headState->currentAction] != action) {
+        } else if (s != headState) {
+            if (headState->actions[headState->currentAction] != action) {
                 // chemy ustawić akcję inną od tej w głowie - zgłośc błąd
                 cout << "model::setAction: trying to set an action other than in the head" << endl;
                 exit(-1);
@@ -235,17 +235,17 @@ void ParallelModel::setAction(ParallelState *s, int action) {
 }
 
 void ParallelModel::clearAction(ParallelState *s) {
-   
+
     // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-    if(s->abstractClass == -1) {
+    if (s->abstractClass == -1) {
         // jeśli nie, to decydujemy o akcji lokalnie
         s->currentAction = -1;
     } else {
         // w p.p. zależymy od "głowy"    // węzeł reprezentant klasy abstrakcji, jeśli jest
-        ParallelState *headState=states[findClass(s->id)];
-        
+        ParallelState *headState = states[findClass(s->id)];
+
         // sprawdź licznik węzłów w głowie
-        if(headState->classCounter <= 0) {
+        if (headState->classCounter <= 0) {
             // błąd
             cerr << "ParallelModel::clearAction: head already clean!" << endl;
             exit(1);
@@ -253,15 +253,15 @@ void ParallelModel::clearAction(ParallelState *s) {
             // zmniejsz licznik przydziałów w klasie równoważności
             headState->classCounter--;
         }
-        
+
         // jeśli osiągnięto 0, to cała klasa jest pusta
-        if(headState->classCounter == 0) {
+        if (headState->classCounter == 0) {
             // wyzeruj akcję "na górze"
             headState->currentAction = -1;
         }
         // jeśli bieżący stan nie jest głową, wyzeruj w nim
-        if(s != headState) {
-                s->currentAction = -1;
+        if (s != headState) {
+            s->currentAction = -1;
         }
     }
 }
@@ -280,51 +280,51 @@ int ParallelModel::followPath(int s, ActionPath path) {
 #ifdef __DEBUG__
     cout << "ParallelModel::followPath(" << s << ",): 1" << endl;
 #endif
-    
+
     // bieżący stan
     ParallelState *currentState = states[s];
     // jeśli bieżący węzeł jest już oznaczony, zwróć błąd
-    if(currentState->opState != ParallelState::clear) return -1;
-    
+    if (currentState->opState != ParallelState::clear) return -1;
+
 #ifdef __DEBUG__
     cout << "ParallelModel::followPath(" << s << ",): 2: " << path.size() << endl;
 #endif
     // jeśli długość ścieżki jest zerowa, zwróć bieżący węzeł
-    if(path.size() == 0) {
+    if (path.size() == 0) {
 //         currentState->opState = ParallelState::searching;
         return s;
     }
     // w p.p. znajdź akcję w węźle
-    
+
     // wymagana akcja
     int currentAction = path.front();
     path.pop_front();
-    
+
 #ifdef __DEBUG__
     cout << "ParallelModel::followPath(" << s << ",): 3: " << currentAction << endl;
 #endif
-    
+
     // indeks w tablicy akcji dla poszukiwanej
-    int action=currentState->findAction(currentAction);
+    int action = currentState->findAction(currentAction);
     // jeśli coś jest nie tak - zwróć błąd
-    if(action == -1) return -1;
+    if (action == -1) return -1;
 
 #ifdef __DEBUG__
     cout << "ParallelModel::followPath(" << s << ",): 4: " << currentAction << endl;
 #endif
-    
+
     // czy to ostatnia lub niepowtarzająca się akcja
-    if(action+1 == currentState->counter || currentState->actions[action+1] != currentAction) {
+    if (action + 1 == currentState->counter || currentState->actions[action + 1] != currentAction) {
 
         // spróbuj ustawić akcję w stanie - jak nie wyjdzie to się zatrzyma
         setAction(currentState, currentAction);
         // jest dobrze, oznacz bieżący węzeł
         currentState->opState = ParallelState::searching;
-                
+
         // przejdź rekurencyjnie dalej
         int result = followPath(currentState->edges[action], path);
         // jeśli jest OK, zwróć ostatni stan
-        if(result != -1) {
+        if (result != -1) {
             return result;
         } else {
             // w p.p. wyzeruj i zwróć błąd
@@ -348,30 +348,30 @@ int ParallelModel::resetPath(int s, ActionPath path) {
     // bieżący stan
     ParallelState *currentState = states[s];
     // jeśli bieżący węzeł nie jest oznaczony, zwróć błąd
-    if(currentState->opState != ParallelState::searching && path.size() != 0) return -1;
+    if (currentState->opState != ParallelState::searching && path.size() != 0) return -1;
 
     // jeśli długość ścieżki jest zerowa, zwróć bieżący węzeł
-    if(path.size() == 0) {
+    if (path.size() == 0) {
         currentState->opState = ParallelState::clear;
-        
+
         return s;
     }
 
     // w p.p. znajdź akcję w węźle
-    
+
     // wymagana akcja
     int currentAction = path.front();
     path.pop_front();
-    int action=currentState->findAction(currentAction);
+    int action = currentState->findAction(currentAction);
     // jeśli coś jest nie tak - zwróć błąd
-    if(action == -1) return -1;
-    
+    if (action == -1) return -1;
+
     // czy to ostatnia lub niepowtarzająca się akcja
-    if(action+1 == currentState->counter || currentState->actions[action+1] != currentAction) {
+    if (action + 1 == currentState->counter || currentState->actions[action + 1] != currentAction) {
         // jest dobrze, przejdź rekurencyjnie
         int result = resetPath(currentState->edges[action], path);
         // jeśli jest OK, wyzeruj.
-        if(result != -1) {
+        if (result != -1) {
             currentState->opState = ParallelState::clear;
             clearAction(currentState);
             return result;
@@ -380,7 +380,7 @@ int ParallelModel::resetPath(int s, ActionPath path) {
             return -1;
         }
     }
-    
+
     // zwróć błąd - nie ma wymaganej akcji w bieżącym stanie
     return -1;
 }
@@ -397,63 +397,64 @@ int ParallelModel::resetPath(int s, ActionPath path) {
  * n - maksymalna liczba prefiksów po osiągnięciu której należy zakończyć
  * prefixes - zbiór znalezionych prefiksów strategii.
  */
-int ParallelModel::computePaths(int s, ActionPath start, int n, queue<ActionPath> &prefixes) {
+int ParallelModel::computePaths(int s, ActionPath start, int n, queue <ActionPath> &prefixes) {
     // kolejka aktywnych prefiksów
-    queue<ActionPath> activePrefixes;
+    queue <ActionPath> activePrefixes;
     // korzystamy z prefixes jako wyniku
 
     // pierwszy prefiks do aktywnych
     activePrefixes.push(start);
 
     // w pętli tak długo jak potrzeba lub się da
-    while(prefixes.size() + activePrefixes.size() < n && activePrefixes.size() > 0) {
+    while (prefixes.size() + activePrefixes.size() < n && activePrefixes.size() > 0) {
 
 #ifdef __DEBUG__
         cout << "ParallelModel::computePaths: 1" << endl;
-#endif        
+#endif
         // jest na czym pracować - wyjmij z kolejki
         ActionPath currentPrefix = activePrefixes.front();
         activePrefixes.pop();
-        
+
         // przejdź po ścieżce określonej przez prefix i znajdź docelowy stan
         int cs = followPath(s, currentPrefix);
         // wyczyść
         resetPath(s, currentPrefix);
-        
+
         // jeśli błąd w chodzeniu po ścieżce - zakręć pętlą
-        if(cs == -1) {
+        if (cs == -1) {
             cerr << "ParallelModel::computePaths: 2.1: prefix should not be incorrect" << endl;
             exit(1);
 #ifdef __DEBUG__
-        } else {
-            cout << "ParallelModel::computePaths: 2.2: " << cs << endl;
+            } else {
+                cout << "ParallelModel::computePaths: 2.2: " << cs << endl;
 #endif
         }
-        
+
         // "alias" dla ułatwienia
         ParallelState *currentState = states[cs];
 
         // jeśli to jest stan bez następników - zrób trochę inaczej
-        if(currentState->counter == 0) {
+        if (currentState->counter == 0) {
             // przepisz ten prefiks do wyników
             prefixes.push(currentPrefix);
             // i zakręć ponownie
             continue;
         }
-        
-        
+
+
         // jeśli są następniki, przejdź po akcjach
-        for(int action=0; action < currentState->counter; action++) {
+        for (int action = 0; action < currentState->counter; action++) {
 #ifdef __DEBUG__
             cout << "ParallelModel::computePaths: 3: "<< action << " : " << currentState->actions[action] << "->" << currentState->edges[action] <<endl;
 #endif
-            
+
             // skonstruuj nowy prefix
             ActionPath np = currentPrefix;
             np.push_back(currentState->actions[action]);
-            
+
             // teraz zależnie od kolejnej akcji
-            if(action == currentState->counter-1 || currentState->actions[action] != currentState->actions[action+1]) {
+            if (action == currentState->counter - 1 ||
+                currentState->actions[action] != currentState->actions[action + 1]) {
 #ifdef __DEBUG__
                 cout << "ParallelModel::computePaths: 3.1" << endl;
 #endif
@@ -468,26 +469,27 @@ int ParallelModel::computePaths(int s, ActionPath start, int n, queue<ActionPath
                 // przy okazji przejedź na najbliższą akcję inną lub na ostatnią
                 do {
                     action++;
-                }while (action < currentState->counter-1 && currentState->actions[action-1] == currentState->actions[action]);
+                } while (action < currentState->counter - 1 &&
+                         currentState->actions[action - 1] == currentState->actions[action]);
             }
         }
-        
+
         // jeśli za mało - zakręć
     }
-    
+
     // przepisz do wyniku wszystkie bieżące aktywne
-    while(activePrefixes.size() > 0) {
+    while (activePrefixes.size() > 0) {
         prefixes.push(activePrefixes.front());
         activePrefixes.pop();
     }
-    
+
     // zakończono - zwróć rozmiar wyniku
     return prefixes.size();
 }
 
 
 // Funkcja analogiczna, uzupełniająca, zakładajaca tylko jeden konkretny węzeł startowy
-int ParallelModel::computePaths(int s, int n, queue<ActionPath> &prefixes) {
+int ParallelModel::computePaths(int s, int n, queue <ActionPath> &prefixes) {
     ActionPath ap;
     return computePaths(s, ap, n, prefixes);
 }
@@ -524,7 +526,7 @@ void ParallelModel::cleanPath(int s, int p, int threadId) {
  * s - węzeł startowy
  */
 bool ParallelModel::forkRecursiveDFS(int s) {
- 
+
 #ifdef __DEBUG__
     cout << "ParallelModel::forkRecursiveDFS(" << s << ")" << endl;
 #endif
@@ -533,48 +535,48 @@ bool ParallelModel::forkRecursiveDFS(int s) {
     ParallelState *currentState = states[s];
 
     // ilu potomków udało się odpalić
-    int forkCounter=0;
-    
+    int forkCounter = 0;
+
     // pętla po wszystkich akcjach w danym stanie
-    for(int i=0; i<currentState->counter; i++) {
+    for (int i = 0; i < currentState->counter; i++) {
         // zapamiętaj bieżący stan
         int currentAction = currentState->actions[i];
         // utwórz proces potomny
-        switch(fork()) {
+        switch (fork()) {
             case -1:    // błąd
                 cerr << "ParallelModel::forkRecursiveDFS: błąd fork" << endl;
                 exit(1);
-                
+
             case 0:     // proces potomny
                 // odpal wyszukiwanie zgodnie z nieżącą akcją
-                if(recursiveDFS(s, -1, standard, currentAction)) {
+                if (recursiveDFS(s, -1, standard, currentAction)) {
                     cout << "OK " << endl;
 //                     cout << *this << endl << endl;
-                    printStrategy(0, cout);
+//                    printStrategy(0, cout);
                     exit(0);
                 } else {
                     cout << "FAILED " << endl;
                     exit(1);
                 }
-                
+
             default:    // proces macierzysty
                 forkCounter++;
 #ifdef __DEBUG__
                 cout << "ParallelModel::forkRecursiveDFS: " << s << "(" << currentAction << ")" << endl;
 #endif
                 // znajdź kolejną akcję
-                while(i < currentState->counter && currentState->actions[i] == currentAction) {
+                while (i < currentState->counter && currentState->actions[i] == currentAction) {
                     i++;
                 }
         }
 //         break;
     }
     // wyzbieraj potomków
-    bool success=false;
-    for(int i=0; i<forkCounter; i++) {
+    bool success = false;
+    for (int i = 0; i < forkCounter; i++) {
         int result;
         // poczekaj na potomka
-        if(wait(&result) == -1) {
+        if (wait(&result) == -1) {
             cerr << "ParallelModel::forkRecursiveDFS: wait() error" << endl;
         } else {
             // jeśli znalazł strategię to wygrywamy
@@ -594,42 +596,66 @@ bool ParallelModel::forkRecursiveDFS(int s) {
  * n - liczba wątków poniżej której jeszcze się szuka poprawy zrównoleglenia
  */
 bool ParallelModel::forkRecursiveDFS(int s, int n) {
- 
+    if (n == 0) {
+        bool result = false;
+        ParallelState *currentState = states[s];
+        for (int i = 0; i < currentState->counter;) {
+            // zapamiętaj bieżący stan
+            int currentAction = currentState->actions[i];
+            // utwórz proces potomny
+
+
+            if (recursiveDFS(s, -1, standard, currentAction)) {
+                result = true;
+            }
+
+            while (i < currentState->counter && currentState->actions[i] == currentAction) {
+                i++;
+            }
+
+            for(auto state: states) {
+                state->clean();
+            }
+        }
+
+        return result;
+    }
     // znajdź wszystkie prefiksy dla zrównoleglenia
-    queue<ActionPath> prefixes;
-    
+    queue <ActionPath> prefixes;
+    set<int> spawnedChildren;
+
 #ifdef __DEBUG__
     cout << "ParallelModel::forkRecursiveDFS(" << s << "," << n << ")" << endl;
 #endif
 
     computePaths(s, n, prefixes);
-    
+
 #ifdef __DEBUG__
     cout << "ParallelModel::forkRecursiveDFS(,): found " << prefixes.size() << " prefixes" << endl;
 #endif
-    
-    if(prefixes.size() == 1) {
+
+    if (prefixes.size() == 1) {
         // za mało na tę procedurę, odpal "standard"
         return forkRecursiveDFS(s);
     }
-    
+
     // ilu potomków udało się odpalić
-    int forkCounter=0;
+    int forkCounter = 0;
 
     // teraz pętla po prefiksach
-    while(prefixes.size() > 0) {
+    while (prefixes.size() > 0) {
         // jest na czym pracować - wyjmij z kolejki
         ActionPath currentPrefix = prefixes.front();
         prefixes.pop();
-        
+
 #ifdef __DEBUG__
         dumpActionPath(currentPrefix, cout << s);
 #endif
-        
+
         // ostatnia akcja - potrzebna do uruchomienia weryfikacji
         int lastAction = currentPrefix.back();
         currentPrefix.pop_back();
-        
+
         // przejdź po ścieżce określonej przez prefix i znajdź docelowy stan
         int cs = followPath(s, currentPrefix);
 
@@ -638,50 +664,79 @@ bool ParallelModel::forkRecursiveDFS(int s, int n) {
         cout << *this;
         cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" << endl;
 #endif
-        
+        int id;
         // w tym stanie uruchom potomka
-        switch(fork()) {
+        switch (id = fork()) {
             case -1:    // błąd
                 cerr << "ParallelModel::forkRecursiveDFS: błąd fork" << endl;
                 exit(1);
-                
+
             case 0:     // proces potomny
                 // odpal wyszukiwanie zgodnie z nieżącą akcją
-                
+
 //                     cout << "FAILED " << cs << endl;
 //                     exit(1);
-                if(recursiveDFS(cs, -1, standard, lastAction)) {
-                    cout << "OK " << cs << endl;
+                if (recursiveDFS(cs, -1, standard, lastAction)) {
+//                    cout << "OK " << cs << endl;
 //                     cout << *this << endl << endl;
-                    printStrategy(0, cout);
+//                    printStrategy(0, cout);
                     exit(0);
                 } else {
-                    cout << "FAILED " << cs << endl;
+//                    cout << "FAILED " << cs << endl;
                     exit(1);
                 }
-                
+
             default:    // proces macierzysty
+                // zapamiętaj potomka
+                spawnedChildren.insert(id);
+                // zwiększ licznik
                 forkCounter++;
         }
-        
+
         // wyczyść model cofając się po prefiksie
         resetPath(s, currentPrefix);
         // zakręć biorąc kolejny
     }
-    
+
+//    cout << "spawned " << forkCounter << " children" << endl;
     // wyzbieraj potomków
-    bool success=false;
-    for(int i=0; i<forkCounter; i++) {
+    bool success = false;
+    int id;
+    while (spawnedChildren.size() > 0 && !success) {
         int result;
         // poczekaj na potomka
-        if(wait(&result) == -1) {
+        id = wait(&result);
+        if (id == -1) {
             cerr << "ParallelModel::forkRecursiveDFS: wait() error" << endl;
         } else {
+            // usuń ze zbioru potomków
+            spawnedChildren.erase(id);
             // jeśli znalazł strategię to wygrywamy
             success = success || (result == 0);
+            if (success) {
+//                cout << "STRATEGY FOUND at child " << id << endl;
+            }
         }
     }
-    cout << "spawned " << forkCounter << " threads" << endl;
+    // wybij resztę
+    for (set<int>::iterator it = spawnedChildren.begin(); it != spawnedChildren.end(); it++) {
+        // wyślij kill do potomka
+        if (kill(*it, SIGTERM) == -1) {
+            cerr << "Cannot kill " << *it << endl;
+        }
+    }
+    // i odczekaj na ich koniec
+    while (spawnedChildren.size() > 0) {
+        // poczekaj na potomka
+        id = wait(NULL);
+        if (id == -1) {
+            cerr << "ParallelModel::forkRecursiveDFS: wait() error" << endl;
+        } else {
+            // usuń ze zbioru potomków
+//            cout << "Child " << id << " succesfully terminated" << endl;
+            spawnedChildren.erase(id);
+        }
+    }
     return success;
 }
 
@@ -708,7 +763,7 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
 #endif
 
     // jeśli stan jest wygrywajacy
-    if(currentState->accept) {
+    if (currentState->accept) {
         // zwróć odwrotność resume
 #ifdef __DEBUG__
         cout << " $1.1(" << currentState->id << ") " << mode << endl;
@@ -717,15 +772,15 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
     }
 
 
-    if(currentState->opState == ParallelState::negative || currentState->counter == 0) {
+    if (currentState->opState == ParallelState::negative || currentState->counter == 0) {
         // zwróć fałsz
         return false;
     }
-    
+
     // węzeł reprezentant klasy abstrakcji, jeśli jest
-    ParallelState *headState=NULL;
+    ParallelState *headState = NULL;
     // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-    if(currentState->abstractClass == -1) {
+    if (currentState->abstractClass == -1) {
         // jeśli nie, sam jest dla siebie "głową"
         headState = currentState;
     } else {
@@ -738,9 +793,9 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
 #endif
 
     // jeśli normalna akcja
-    if(mode == standard) {
+    if (mode == standard) {
         // czy stan był już odwiedzony pozytywnie
-        if(currentState->opState == ParallelState::positive) {
+        if (currentState->opState == ParallelState::positive) {
             // jest OK, zwróć prawdę
             return true;
         }
@@ -749,18 +804,18 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
 #endif
 
         // w p.p. czy był odwiedzony w ogóle
-        if(currentState->opState == ParallelState::searching) {
+        if (currentState->opState == ParallelState::searching) {
             // stan był odwiedzony ale nie jest zakończony - zwróć fałsz
-            cout << " BUM" << endl;
+//            cout << " BUM" << endl;
             return false;
         }
-        
+
 #ifdef __DEBUG__
         cout << " $2.2(" << currentState->id << ")"  << endl;
 #endif
-        
+
         // prawdopodobnie zbędny sanity check
-        if(currentState->opState != ParallelState::clear) {
+        if (currentState->opState != ParallelState::clear) {
             // dziwne, to się nie powinno wydarzyć
             cerr << "model::recursiveDFS: I should not be here!" << endl;
             exit(1);
@@ -775,13 +830,13 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
 #endif
 
         // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-        if(currentState->abstractClass == -1) {
+        if (currentState->abstractClass == -1) {
             // jeśli nie, to decydujemy o akcji lokalnie
-            if(action == -1) {
+            if (action == -1) {
                 currentState->currentAction = 0;
             } else {
                 currentState->currentAction = currentState->findAction(action);
-                if(currentState->currentAction == -1) {
+                if (currentState->currentAction == -1) {
                     cerr << "model::recursiveDFS: requested action not found!" << endl;
                     exit(1);
                 }
@@ -789,21 +844,21 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
         } else {
             // w p.p. zależymy od "głowy"
             // teraz, czy w gowie jest ustalona akcja
-            if(headState->currentAction == -1) {
-                if(action == -1) {
+            if (headState->currentAction == -1) {
+                if (action == -1) {
                     headState->currentAction = 0;
                 } else {
                     headState->currentAction = headState->findAction(action);
-                    if(headState->currentAction == -1) {
+                    if (headState->currentAction == -1) {
                         cerr << "model::recursiveDFS: requested action not found!" << endl;
                         exit(1);
                     }
                 }
-                
+
             } // w p.p. musimy uwzględnić akcję ustawioną w głowie
 
             // znajdź pierwszą akcję zgodną z tą w głowie
-            if(currentState != headState) {                
+            if (currentState != headState) {
                 currentState->currentAction = currentState->findAction(headState->actions[headState->currentAction]);
             }
             // zwiększamy licznik zajętości dla głowy
@@ -820,13 +875,13 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
 #endif
 
     // pętla tak długo jak długo są jakieś akcje
-    while(currentState->currentAction < currentState->counter) {
+    while (currentState->currentAction < currentState->counter) {
         int currentActionId = currentState->actions[currentState->currentAction];
 
 #ifdef __DEBUG__
         cout << " $3.1(" << currentState->id << ")"  << endl;
 #endif
-        
+
         // rekurencyjnie po grafie
         bool result = recursiveDFS(currentState->edges[currentState->currentAction], s, mode);
         // skasuj resume
@@ -836,13 +891,13 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
         cout << " $3.2(" << currentState->id << ") " << result << endl;
 #endif
 
-        if(result) {
+        if (result) {
 #ifdef __DEBUG__
             cout << " $3.2.1(" << currentState->id << ")"  << endl;
 #endif
             // chwilowo udało się znaleźć dobrą strategię
-            if(currentState->currentAction+1 == currentState->counter ||
-               currentActionId != currentState->actions[currentState->currentAction+1]) {
+            if (currentState->currentAction + 1 == currentState->counter ||
+                currentActionId != currentState->actions[currentState->currentAction + 1]) {
                 // kolejna akcja jest inna niż bieżąca albo jej nie ma
                 // zwróć sukces
                 currentState->opState = ParallelState::positive;
@@ -859,16 +914,16 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
             cout << " $3.2.2(" << *currentState << ")"  << endl;
 #endif
             // jeśli poprzedniej akcji nie ma lub jest ona różna od bieżącej
-            if(currentState->currentAction == 0 ||
-               currentActionId != currentState->actions[currentState->currentAction-1]) {
+            if (currentState->currentAction == 0 ||
+                currentActionId != currentState->actions[currentState->currentAction - 1]) {
 
                 /* Inaczej jak jest klasa abstrakcji */
-                if(currentState->abstractClass != -1) {
+                if (currentState->abstractClass != -1) {
 #ifdef __DEBUG__
                     cout << " $3.2.2.1(" << currentState->id << ")"  << endl;
 #endif
                     // jeśli aktywnych węzłów w klasie jest więcej niż 1, oznacza to, że ktoś w klasie jeszcze potrzebuje tej wartości
-                    if(headState->classCounter > 1) {
+                    if (headState->classCounter > 1) {
                         // a to oznacza porażkę - powróć
                         // zmniejsz licznik w headState
                         headState->classCounter--;
@@ -892,23 +947,24 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
                 // zaliczono wpadkę, idziemy do kolejnej akcji (lub na koniec)
                 do {
                     currentState->currentAction++;
-                } while(currentState->currentAction < currentState->counter
-                        && currentState->actions[currentState->currentAction] == currentActionId);
-                
+                } while (currentState->currentAction < currentState->counter
+                         && currentState->actions[currentState->currentAction] == currentActionId);
+
                 // jeśli była zadana akcja, przeskocz od razu na koniec
-                if(action != -1) {
+                if (action != -1) {
                     currentState->currentAction = currentState->counter;
                 }
-                    
+
                 // ewentualnie trzeba być może poprawić w węźle nadrzędnym klasy abstrakcji
-                if(currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
+                if (currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
                     // jeśli już koniec
-                    if(currentState->counter == currentState->currentAction) {
+                    if (currentState->counter == currentState->currentAction) {
                         // ustaw w nadrzędnej na koniec
                         headState->currentAction = headState->counter;
-                    } else{
+                    } else {
                         // w p.p. znajdź pierwszą akcję z takim samym identyfikatorem
-                        headState->currentAction = headState->findAction(currentState->actions[currentState->currentAction]);
+                        headState->currentAction = headState->findAction(
+                                currentState->actions[currentState->currentAction]);
                     }
                 }
                 // resztę załatwia pętla
@@ -954,7 +1010,7 @@ bool ParallelModel::recursiveDFS(int s, int p, operationMode mode, int action) {
  */
 bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int threadId) {
     // zienna pomocnicza, żeby nie trzeba było ciągle dłubać
-    ParallelState *currentState=states[s];
+    ParallelState *currentState = states[s];
 
 #ifdef __DEBUG__
     //     cout << *currentState << " " << p << " " << resume << " " << threadsVector.size() << endl;
@@ -965,7 +1021,7 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #endif
 
     // jeśli stan jest wygrywajacy
-    if(currentState->accept) {
+    if (currentState->accept) {
         // zwróć odwrotność resume
         return (mode != resume);
     }
@@ -974,15 +1030,15 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
     mutexes[currentState->id % MUTEX_COUNT].lock();
     ParallelState::operation opState = currentState->opState;
     mutexes[currentState->id % MUTEX_COUNT].unlock();
-    if(opState == ParallelState::negative || currentState->counter == 0) {
+    if (opState == ParallelState::negative || currentState->counter == 0) {
         // zwróć fałsz
         return false;
     }
 
     // węzeł reprezentant klasy abstrakcji, jeśli jest
-    ParallelState *headState=NULL;
+    ParallelState *headState = NULL;
     // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-    if(currentState->abstractClass == -1) {
+    if (currentState->abstractClass == -1) {
         // jeśli nie, sam jest dla siebie "głową"
         headState = currentState;
     } else {
@@ -995,7 +1051,7 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #endif
 
     // jeśli normalna akcja
-    if(mode == standard) {
+    if (mode == standard) {
 
         // -------------------------------------------------------
         // teraz zablokuj węzeł
@@ -1003,7 +1059,7 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
         // -------------------------------------------------------
 
         // czy stan był już odwiedzony pozytywnie
-        if(currentState->opState == ParallelState::positive) {
+        if (currentState->opState == ParallelState::positive) {
             // jest OK, zwróć prawdę
             mutexes[currentState->id % MUTEX_COUNT].unlock();
             return true;
@@ -1013,10 +1069,10 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #endif
 
         // w p.p. czy był odwiedzony w ogóle
-        if(currentState->opState == ParallelState::searching) {
+        if (currentState->opState == ParallelState::searching) {
             // stan był odwiedzony ale nie jest zakończony
             // czy przez ten wątek?
-            if(currentState->threadId == threadId) {
+            if (currentState->threadId == threadId) {
                 // owszem - jest pętla, zwróć porażkę
                 mutexes[currentState->id % MUTEX_COUNT].unlock();
                 return false;
@@ -1024,14 +1080,14 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
                 // w p.p. inny wątek tu grzebał - trzeba przejąć
 
                 // sprawdź, czy ten wątek jeszcze działa
-                if(threadsVector[currentState->threadId] != NULL) {
+                if (threadsVector[currentState->threadId] != NULL) {
                     // zwolnij węzeł
                     mutexes[currentState->id % MUTEX_COUNT].unlock();
 
 #ifdef __DEBUG__
                     trace(" #2.1.1",currentState->to_string());
 #endif
-                    
+
                     // wątek pracuje - zaczekaj aż się zakończy
                     threadsVector[currentState->threadId]->join();
                     threadsRunning--;
@@ -1070,24 +1126,25 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #endif
 
         // w trybie pracy follow nic tu nie robimy
-        if(mode != follow) {
+        if (mode != follow) {
             // co do akcji to sprawdzamy, czy nie jest to węzeł z jakiejś klasy abstrakcji
-            if(currentState->abstractClass == -1) {
+            if (currentState->abstractClass == -1) {
                 // jeśli nie, to decydujemy o akcji lokalnie
                 currentState->currentAction = 0;
             } else {
                 // w p.p. zależymy od "głowy"
                 // teraz, czy w gowie jest ustalona akcja
-                if(headState->currentAction == -1) {
+                if (headState->currentAction == -1) {
                     // nie ma - to ją ustaw
                     headState->currentAction = 0;
                 } // w p.p. musimy uwzględnić akcję ustawioną w głowie
 
                 // znajdź pierwszą akcję zgodną z tą w głowie
-                if(currentState != headState) {
+                if (currentState != headState) {
                     currentState->currentAction = 0;
                     // skanuj tablicę akcji aż znajdziesz akcję o takim samym identyfikatorze
-                    while(currentState->actions[currentState->currentAction] != headState->actions[headState->currentAction]) {
+                    while (currentState->actions[currentState->currentAction] !=
+                           headState->actions[headState->currentAction]) {
                         currentState->currentAction++;
                     }
                 }
@@ -1110,13 +1167,12 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #endif
 
     // pętla tak długo jak długo są jakieś akcje
-    while(currentState->currentAction < currentState->counter) {
+    while (currentState->currentAction < currentState->counter) {
         int currentActionId = currentState->actions[currentState->currentAction];
 
 #ifdef __DEBUG__
         trace(" #3.1",currentState->to_string()+" "+std::to_string(currentState->currentAction));
 #endif
-
 
 
 #ifndef __NOFORK__
@@ -1132,22 +1188,22 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
             // sprawdź, czy nie ma czego posprzątać
             joinQueueMutex.lock();
             int threadsJoined = 0;
-            while(joinQueue.size() > 0) {
+            while (joinQueue.size() > 0) {
                 // posprzątaj
-                int t=joinQueue.front();
+                int t = joinQueue.front();
                 joinQueue.pop();
-                
+
                 threadsVector[t]->join();
                 threadsJoined++;
                 threadsVector[t] = NULL;
             }
             joinQueueMutex.unlock();
-            
+
             threadsMutex.lock();
             threadsRunning -= threadsJoined;
-            
+
             // czy nie za dużo...
-            if(threadsRunning < MAX_THREADS &&
+            if (threadsRunning < MAX_THREADS &&
                 currentState->currentAction + 1 < currentState->counter &&
                 currentActionId == currentState->actions[currentState->currentAction + 1]) {
 #if 0
@@ -1160,8 +1216,9 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
 #else
                 {
                     // utwórz nowy wątek
-                    thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + 1], s,
-                                        threadsStarted, this);
+                    thread *t = new thread(recursiveHelperThreadStart,
+                                           currentState->edges[currentState->currentAction + 1], s,
+                                           threadsStarted, this);
 #endif
                     if (t == NULL) {
                         cerr << "WARNING: Cannot spawn a thread " << threadsStarted << endl;
@@ -1186,7 +1243,8 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
             }
             threadsMutex.unlock();
         } else {
-            cout << "& " << currentState->currentAction << " " << currentState->counter << " " << currentActionId << " " << currentState->actions[currentState->currentAction + 1] << endl;
+            cout << "& " << currentState->currentAction << " " << currentState->counter << " " << currentActionId << " "
+                 << currentState->actions[currentState->currentAction + 1] << endl;
         }
 
 #endif
@@ -1205,13 +1263,13 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
         trace(" #3.2",currentState->to_string());
 #endif
 
-        if(result) {
+        if (result) {
 #ifdef __DEBUG__
             trace(" #3.2.1",currentState->to_string());
 #endif
             // chwilowo udało się znaleźć dobrą strategię
-            if(currentState->currentAction+1 == currentState->counter ||
-               currentActionId != currentState->actions[currentState->currentAction+1]) {
+            if (currentState->currentAction + 1 == currentState->counter ||
+                currentActionId != currentState->actions[currentState->currentAction + 1]) {
                 // kolejna akcja jest inna niż bieżąca albo jej nie ma
                 // zwróć sukces
                 currentState->opState = ParallelState::positive;
@@ -1228,16 +1286,16 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
             trace(" #3.2.2",currentState->to_string());
 #endif
             // jeśli poprzedniej akcji nie ma lub jest ona różna od bieżącej
-            if(currentState->currentAction == 0 ||
-               currentActionId != currentState->actions[currentState->currentAction-1]) {
+            if (currentState->currentAction == 0 ||
+                currentActionId != currentState->actions[currentState->currentAction - 1]) {
 
                 /* Inaczej jak jest klasa abstrakcji */
-                if(currentState->abstractClass != -1) {
+                if (currentState->abstractClass != -1) {
 #ifdef __DEBUG__
                     trace(" #3.2.2.1",currentState->to_string());
 #endif
                     // jeśli aktywnych węzłów w klasie jest więcej niż 1, oznacza to, że ktoś w klasie jeszcze potrzebuje tej wartości
-                    if(headState->classCounter > 1) {
+                    if (headState->classCounter > 1) {
                         // a to oznacza porażkę - powróć
                         // zmniejsz licznik w headState
                         headState->classCounter--;
@@ -1261,19 +1319,20 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
                 // zaliczono wpadkę, idziemy do kolejnej akcji (lub na koniec)
                 do {
                     currentState->currentAction++;
-                } while(currentState->currentAction < currentState->counter
-                        && currentState->actions[currentState->currentAction] == currentActionId);
-                
+                } while (currentState->currentAction < currentState->counter
+                         && currentState->actions[currentState->currentAction] == currentActionId);
+
                 // ewentualnie trzeba być może poprawić w węźle nadrzędnym klasy abstrakcji
-                if(currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
+                if (currentState->abstractClass != -1 && currentState->id != currentState->abstractClass) {
                     // jeśli już koniec
-                    if(currentState->counter == currentState->currentAction) {
+                    if (currentState->counter == currentState->currentAction) {
                         // ustaw w nadrzędnej na koniec
                         headState->currentAction = headState->counter;
-                    } else{
+                    } else {
                         // w p.p. znajdź pierwszą akcję z takim samym identyfikatorem
                         headState->currentAction = 0;
-                        while(currentState->actions[currentState->currentAction] != headState->actions[headState->currentAction]) {
+                        while (currentState->actions[currentState->currentAction] !=
+                               headState->actions[headState->currentAction]) {
                             headState->currentAction++;
                         }
                     }
@@ -1319,16 +1378,16 @@ bool ParallelModel::parallelRecursiveDFS(int s, int p, operationMode mode, int t
  * threadId - id bieżącego wątku
  */
 bool ParallelModel::recursiveHelperThreadStart(int s, int p, int threadId, ParallelModel *m) {
-    bool res=recursiveHelperThread(s, p, standard, threadId, m);
-    
+    bool res = recursiveHelperThread(s, p, standard, threadId, m);
+
     // zgłoś zakończenie
     // zablokuj mutex
     m->joinQueueMutex.lock();
     m->joinQueue.push(threadId);
     m->joinQueueMutex.unlock();
-    
+
 //     cout << "% kończę " << threadId << endl;
-    
+
     return res;
 }
 
@@ -1343,14 +1402,14 @@ bool ParallelModel::recursiveHelperThreadStart(int s, int p, int threadId, Paral
  */
 bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int threadId, ParallelModel *m) {
     // zienna pomocnicza, żeby nie trzeba było ciągle dłubać
-    ParallelState *currentState=m->states[s];
+    ParallelState *currentState = m->states[s];
 
 #ifdef __DEBUG__
     trace("  %1\tw"+to_string(threadId),currentState->to_string());
 #endif
 
     // jeśli stan jest wygrywajacy
-    if(currentState->accept) {
+    if (currentState->accept) {
         // zwróć odwrotność resume
         return (mode != resume);
     }
@@ -1359,13 +1418,13 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
     m->mutexes[currentState->id % MUTEX_COUNT].lock();
     ParallelState::operation opState = currentState->opState;
     m->mutexes[currentState->id % MUTEX_COUNT].unlock();
-    if(opState == ParallelState::negative || currentState->counter == 0) {
+    if (opState == ParallelState::negative || currentState->counter == 0) {
         // zwróć fałsz
         return false;
     }
 
     // jeśli to jest węzeł z jakiejś klasy epistemicznej - kończymy
-    if(currentState->abstractClass != -1) {
+    if (currentState->abstractClass != -1) {
         /* ------------------------------------------ *
          * to prawdopodobnie wymaga rewizji i poprawy *
          * ------------------------------------------ */
@@ -1376,7 +1435,7 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
         m->joinQueue.push(threadId);
         m->joinQueueMutex.unlock();
 //         cout << "%# kończę " << threadId << endl;
-        
+
         pthread_exit(NULL);
     }
 
@@ -1385,7 +1444,7 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
 #endif
 
     // jeśli normalna akcja
-    if(mode == standard) {
+    if (mode == standard) {
 
         // -------------------------------------------------------
         // teraz zablokuj węzeł
@@ -1393,16 +1452,16 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
         // -------------------------------------------------------
 
         // czy stan był już odwiedzony pozytywnie
-        if(currentState->opState == ParallelState::positive) {
+        if (currentState->opState == ParallelState::positive) {
             // jest OK, zwróć prawdę
             m->mutexes[currentState->id % MUTEX_COUNT].unlock();
             return true;
         }
 
         // jeśli sam tu byłem
-        if(currentState->threadId == threadId) {
+        if (currentState->threadId == threadId) {
             // w p.p. czy był odwiedzony w ogóle
-            if(currentState->opState == ParallelState::searching) {
+            if (currentState->opState == ParallelState::searching) {
                 // stan był odwiedzony ale nie jest zakończony - jest pętla, zwróć porażkę
                 m->mutexes[currentState->id % MUTEX_COUNT].unlock();
                 return false;
@@ -1411,12 +1470,12 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
             cerr << "model::recursiveHelperThread: co mam zrobić? " << threadId << endl;
             exit(1);
         }
-        
+
         // czy ktoś inny tu nie rządzi
-        if(currentState->threadId > -1) {
+        if (currentState->threadId > -1) {
             // węzeł jest oznaczony przez inny wątek - po prostu zakończ się (wątek)
             m->mutexes[currentState->id % MUTEX_COUNT].unlock();
-            
+
             m->joinQueueMutex.lock();
             m->joinQueue.push(threadId);
             m->joinQueueMutex.unlock();
@@ -1447,68 +1506,68 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
 #endif
 
     // pętla tak długo jak długo są jakieś akcje
-    while(currentState->currentAction < currentState->counter) {
+    while (currentState->currentAction < currentState->counter) {
         int currentActionId = currentState->actions[currentState->currentAction];
 
 #if 0
-// #ifndef __NOFORK__
+        // #ifndef __NOFORK__
 
-        // obejrzyj kolejną akcję, jeśli jest
-        // jeśli jest taka sama jak bieżąca, wyślij tam nowy wątek
-        if (currentState->currentAction + 1 < currentState->counter &&
-            currentActionId == currentState->actions[currentState->currentAction + 1]) {
-            // kolejna akcja jest taka sama jak bieżąca
+                // obejrzyj kolejną akcję, jeśli jest
+                // jeśli jest taka sama jak bieżąca, wyślij tam nowy wątek
+                if (currentState->currentAction + 1 < currentState->counter &&
+                    currentActionId == currentState->actions[currentState->currentAction + 1]) {
+                    // kolejna akcja jest taka sama jak bieżąca
 #ifdef __DEBUG__
-            trace(" %3.1.1",currentState->to_string());
+                    trace(" %3.1.1",currentState->to_string());
 #endif
-            
-            if(m->threadsRunning < MAX_THREADS && 
-                currentState->currentAction + 1 < currentState->counter &&
-                currentActionId == currentState->actions[currentState->currentAction + 1]) {
-                
-                // ile wątków aktualnie pracuje
-                m->threadsMutex.lock();
-                
-                // czy nie za dużo...
-                if(m->threadsRunning < MAX_THREADS) {
-                    // walniemy wątkami z grubej rury po całości
-                    int spawned=0;
+
+                    if(m->threadsRunning < MAX_THREADS &&
+                        currentState->currentAction + 1 < currentState->counter &&
+                        currentActionId == currentState->actions[currentState->currentAction + 1]) {
+
+                        // ile wątków aktualnie pracuje
+                        m->threadsMutex.lock();
+
+                        // czy nie za dużo...
+                        if(m->threadsRunning < MAX_THREADS) {
+                            // walniemy wątkami z grubej rury po całości
+                            int spawned=0;
 #if 0
-                    for(int j=1; currentState->currentAction + j < currentState->counter &&
-                        currentActionId == currentState->actions[currentState->currentAction + j]; j++) {
-                        // utwórz nowy wątek
-                        thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + j], s,
-                                            m->threadsStarted, m);
+                            for(int j=1; currentState->currentAction + j < currentState->counter &&
+                                currentActionId == currentState->actions[currentState->currentAction + j]; j++) {
+                                // utwórz nowy wątek
+                                thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + j], s,
+                                                    m->threadsStarted, m);
 #else
-                    {
-                        // utwórz nowy wątek
-                        thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + 1], s,
-                                            m->threadsStarted, m);
+                            {
+                                // utwórz nowy wątek
+                                thread *t = new thread(recursiveHelperThreadStart, currentState->edges[currentState->currentAction + 1], s,
+                                                    m->threadsStarted, m);
 #endif
-                        if (t == NULL) {
-                            cerr << "WARNING: Cannot spawn a thread " << m->threadsStarted << endl;
-                        } else {
-    #ifdef __DEBUG__
-                            trace(" %3.1.2",currentState->to_string());
-    #endif
-                            m->threadsRunning++;
-                            m->threadsVector[m->threadsStarted] = t;
-                            // przesuń indeks
-                            if (++(m->threadsStarted) == m->threadsVector.size()) {
-    //                             cout << "# " << threadsStarted << endl;
-                                // jeśli już koniec tablicy, zwiększ ją 2x
-                                m->threadsVector.resize(m->threadsStarted * 2);
-    //                             cout << "# " << threadsStarted << " OK" << endl;
+                                if (t == NULL) {
+                                    cerr << "WARNING: Cannot spawn a thread " << m->threadsStarted << endl;
+                                } else {
+#ifdef __DEBUG__
+                                    trace(" %3.1.2",currentState->to_string());
+#endif
+                                    m->threadsRunning++;
+                                    m->threadsVector[m->threadsStarted] = t;
+                                    // przesuń indeks
+                                    if (++(m->threadsStarted) == m->threadsVector.size()) {
+            //                             cout << "# " << threadsStarted << endl;
+                                        // jeśli już koniec tablicy, zwiększ ją 2x
+                                        m->threadsVector.resize(m->threadsStarted * 2);
+            //                             cout << "# " << threadsStarted << " OK" << endl;
+                                    }
+#ifdef __DEBUG__
+                                    trace(" %3.1.3",currentState->to_string());
+#endif
+                                }
                             }
-    #ifdef __DEBUG__
-                            trace(" %3.1.3",currentState->to_string());
-    #endif
                         }
+                        m->threadsMutex.unlock();
                     }
                 }
-                m->threadsMutex.unlock();
-            }
-        }
 #endif
 
         // rekurencyjnie po grafie
@@ -1516,11 +1575,11 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
         // skasuj resume
         mode = standard;
 
-        if(result) {
+        if (result) {
 
             // chwilowo udało się znaleźć dobrą strategię
-            if(currentState->currentAction+1 == currentState->counter ||
-               currentActionId != currentState->actions[currentState->currentAction+1]) {
+            if (currentState->currentAction + 1 == currentState->counter ||
+                currentActionId != currentState->actions[currentState->currentAction + 1]) {
                 // kolejna akcja jest inna niż bieżąca albo jej nie ma
                 // zwróć sukces
                 currentState->opState = ParallelState::positive;
@@ -1534,14 +1593,14 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
             // nie da się wygrać bieżącą akcją
 
             // jeśli poprzedniej akcji nie ma lub jest ona różna od bieżącej
-            if(currentState->currentAction == 0 ||
-               currentActionId != currentState->actions[currentState->currentAction-1]) {
+            if (currentState->currentAction == 0 ||
+                currentActionId != currentState->actions[currentState->currentAction - 1]) {
 
                 // zaliczono wpadkę, idziemy do kolejnej akcji (lub na koniec)
                 do {
                     currentState->currentAction++;
-                } while(currentState->currentAction < currentState->counter
-                        && currentState->actions[currentState->currentAction] == currentActionId);
+                } while (currentState->currentAction < currentState->counter
+                         && currentState->actions[currentState->currentAction] == currentActionId);
                 // resztę załatwia pętla
                 continue;
             }
@@ -1569,8 +1628,8 @@ bool ParallelModel::recursiveHelperThread(int s, int p, operationMode mode, int 
 
 /* -------------------------------------------------------------------------
  */
-ostream& operator<<(ostream &str, ParallelModel &m) {
-    for(int i=0; i<m.counter; i++) {
+ostream &operator<<(ostream &str, ParallelModel &m) {
+    for (int i = 0; i < m.counter; i++) {
         str << *(m.states[i]) << endl;
     }
     return str;
@@ -1581,50 +1640,50 @@ ostream& operator<<(ostream &str, ParallelModel &m) {
  * s : numer stanu do rozpoczęcia wypisywania
  * str : strumień wyjściowy
  */
-void ParallelModel::printStrategy(int s, ostream &str){
+void ParallelModel::printStrategy(int s, ostream &str) {
     // wektor odwiedzin stanów
     vector<bool> visited;
     visited.resize(states.size(), false);
     queue<int> pending;
-    
+
     // wstaw stan startowy
-    visited[s]=true;
+    visited[s] = true;
     pending.push(s);
-    
+
     str << "***********************" << endl;
     // pętla po stanach do odwiedzenia
-    while(pending.size() > 0) {
+    while (pending.size() > 0) {
         // weź stan bieżący
         ParallelState *currentState = states[pending.front()];
         pending.pop();
-        
+
         // "nagłówek"
         str << "state " << currentState->id << ":";
         // jeśli wygrywający
-        if(currentState->accept) {
+        if (currentState->accept) {
             str << " accept" << endl;
             continue;
         }
-    
+
         // jeśli nie ma akcji
-        if(currentState->counter == 0) {
+        if (currentState->counter == 0) {
             str << " fail" << endl;
             continue;
         }
         // wybrana akcja
         int currentAction = getAction(currentState);
         str << " action " << currentAction << endl;
-        
+
         // nie jest wygrywający - jedziemy po następnikach
         // przejście przez tablicę akcji
-        for(int i=0; i < currentState->counter; i++) {
+        for (int i = 0; i < currentState->counter; i++) {
             // akcja dla krawędzi zgadza się z bieżącą
-            if(currentState->actions[i] == currentAction) {
+            if (currentState->actions[i] == currentAction) {
                 //wypluj na wyjście
-                int destState=currentState->edges[i];
+                int destState = currentState->edges[i];
                 str << " -> " << destState << endl;
                 // czy docelowy stan jest już odwiedzony
-                if(! visited[destState]) {
+                if (!visited[destState]) {
                     // nieodwiedzony - dorzuć do zbioru
                     visited[destState] = true;
                     pending.push(destState);

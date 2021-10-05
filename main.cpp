@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
 //
 
     cout << thread::hardware_concurrency() << endl;
-    struct timeval tb,te;
+    struct timeval tb, te;
     auto model = SimpleModel(argv[1]);
 //    auto res = model.verifyApproximationImperfect();
 //
@@ -67,15 +67,17 @@ int main(int argc, char **argv) {
 //    cout << endl;
 //
 //
+    int t = 5;
+    if (argc >= 3) {
+        t = atoi(argv[2]);
+    }
+
     bool imperfect = true;
-    if(argc >= 3 && strcmp(argv[2], "-p") == 0) {
+    if (argc >= 4 && strcmp(argv[3], "-p") == 0) {
         imperfect = false;
     }
 
-    int t = 5;
-    if(argc >= 4) {
-        t = atoi(argv[3]);
-    }
+
 //
 //    model.printStats();
 //    model.simulate(model.getAgentId());
@@ -87,22 +89,30 @@ int main(int argc, char **argv) {
 //    parallel->states[1]->setAccept();
 
     cout << "#" << parallel->threadsVector.size() << endl;
+    bool result;
 
-    // pobierz bieżący czas
-    gettimeofday(&tb, NULL);
+    unsigned long long czas = 0;
+    int n = 1;
+    for(int i = 0; i < n; i++) {
 
-    // odpal wyszukiwanie
-    // bool result = parallel->parallelRecursiveDFS(0, -1, ParallelModel::standard, 0);
-    bool result = parallel->forkRecursiveDFS(0, t);
+        gettimeofday(&tb, NULL);
 
-    // pobierz bieżący czas
-    gettimeofday(&te, NULL);
+        result = parallel->forkRecursiveDFS(0, t);
+
+        // pobierz bieżący czas
+        gettimeofday(&te, NULL);
+
+        czas += 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec);
+    }
+
+    czas /= n;
+
 
     // ile to trwało
-    cout << "polechali: " << 1000000*(te.tv_sec-tb.tv_sec)+(te.tv_usec - tb.tv_usec) << " usec" << endl;
+    cout << "polechali: " << czas << " usec" << endl;
 
     // no i czy znaleziono
-    if(result) cout << "jest" << endl;
+    if (result) cout << "jest" << endl;
     else cout << "nie ma" << endl;
 //    model.simulate(model.getAgentId());
     return 0;
