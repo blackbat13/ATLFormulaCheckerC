@@ -34,6 +34,7 @@ public:
     void addEpistemicClass(unsigned short agentId, const std::set<unsigned int>& epistemicClass);
     void addActions(unsigned short agentId, std::set<std::string> actions);
     AtlModel toAtlImperfect();
+    AtlModel toAtlPerfect();
     void addState(GlobalState state);
     std::set<unsigned int> epistemicClassForState(int stateId, int agentId);
     void simulate(int agentId);
@@ -44,6 +45,7 @@ public:
     int getAgentId();
     void printStats();
     std::set<unsigned int> verifyApproximationImperfect();
+    std::set<unsigned int> verifyApproximationPerfect();
 };
 
 

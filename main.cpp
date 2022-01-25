@@ -92,28 +92,54 @@ int main(int argc, char **argv) {
     bool result;
 
     unsigned long long czas = 0;
-    int n = 1;
-    for(int i = 0; i < n; i++) {
 
-        gettimeofday(&tb, NULL);
+    gettimeofday(&tb, NULL);
 
-        result = parallel->forkRecursiveDFS(0, t);
 
-        // pobierz bieżący czas
-        gettimeofday(&te, NULL);
+    result = parallel->forkRecursiveDFS(0, t);
 
-        czas += 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec);
-    }
 
-    czas /= n;
+    // pobierz bieżący czas
+    gettimeofday(&te, NULL);
+
+    czas = 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec);
+
 
 
     // ile to trwało
-    cout << "polechali: " << czas << " usec" << endl;
+    cout << "DFS: " << czas << " usec, ";
 
     // no i czy znaleziono
-    if (result) cout << "jest" << endl;
-    else cout << "nie ma" << endl;
+    if (result) cout << "True" << endl;
+    else cout << "False" << endl;
+
+
+    gettimeofday(&tb, NULL);
+    auto resultap = model.verifyApproximationImperfect();
+    gettimeofday(&te, NULL);
+
+    cout << "Imperfect verification time: " << 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec)
+         << " usec" << endl;
+
+    if (*resultap.begin() == 0) {
+        cout << "Imperfect verification result: TRUE" << endl;
+    } else {
+        cout << "Imperfect verification result: FALSE" << endl;
+    }
+
+    gettimeofday(&tb, NULL);
+    resultap = model.verifyApproximationPerfect();
+    gettimeofday(&te, NULL);
+
+    cout << "Perfect verification time: " << 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec)
+         << " usec" << endl;
+
+    if (*resultap.begin() == 0) {
+        cout << "Perfect verification result: TRUE" << endl;
+    } else {
+        cout << "Perfect verification result: FALSE" << endl;
+    }
+
 //    model.simulate(model.getAgentId());
     return 0;
 

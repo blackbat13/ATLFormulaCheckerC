@@ -73,6 +73,27 @@ AtlModel SimpleModel::toAtlImperfect() {
     return atlModel;
 }
 
+AtlModel SimpleModel::toAtlPerfect() {
+    AtlModel atlModel = AtlModel(this->noAgents, this->noStates);
+    for (unsigned short agentId = 0; agentId < this->noAgents; agentId++) {
+        for (const auto &action : this->agentsActions[agentId]) {
+            atlModel.addAction(agentId, action);
+        }
+    }
+
+    for (unsigned int stateId = 0; stateId < this->noStates; stateId++) {
+        for (const auto &transition : this->graph[stateId]) {
+            atlModel.addTransition(stateId, transition.nextState, transition.actions);
+        }
+    }
+
+    for (unsigned short agentId = 0; agentId < this->noAgents; agentId++) {
+        atlModel.finishEpistemicClasses(agentId);
+    }
+
+    return atlModel;
+}
+
 void SimpleModel::addActions(unsigned short agentId, std::set<std::string> actions) {
     this->agentsActions[agentId] = std::move(actions);
 }
@@ -154,24 +175,14 @@ ParallelModel* SimpleModel::toParallelModel(bool imperfect) {
 
         std::sort(tran.begin(), tran.end());
 
-//        std::vector<int> append;
-//        std::map<int, bool> visited;
-
         for(auto tr : tran) {
             parallelModel->states[stateId]->addTransition(tr.first, tr.second);
-
-//            if(tr.first == 0) {
-//                append.push_back(tr.second);
-//            }
-//            else if(!visited[tr.first]) {
-//                visited[tr.first] = true;
-//                for(auto dest: append) {
-//                    parallelModel->states[stateId]->addTransition(tr.first, dest);
-//                    cout << stateId << " " << tr.first << " " << dest << endl;
-//                }
-//            }
-//            cout << stateId << " " << tr.first << " " << tr.second << endl;
         }
+
+//        if(tran.empty()) {
+//            /// Add self loop
+//            parallelModel->states[stateId]->addTransition(0, stateId);
+//        }
     }
 
     if(imperfect) {
@@ -202,6 +213,17 @@ std::set<unsigned int> SimpleModel::verifyApproximationImperfect() {
     }
 
     auto result = model.minimumFormulaOneAgentMultipleStatesDisjoint(this->agentId, winningSet);
+    return result;
+}
+
+std::set<unsigned int> SimpleModel::verifyApproximationPerfect() {
+    auto model = this->toAtlImperfect();
+    std::set<unsigned int> winningSet;
+    for(auto stateId: this->winningStates) {
+        winningSet.insert(stateId);
+    }
+
+    auto result = model.minimumFormulaOneAgentMultipleStatesPerfectInformation(this->agentId, winningSet);
     return result;
 }
 

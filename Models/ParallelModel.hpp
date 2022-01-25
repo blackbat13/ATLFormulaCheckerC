@@ -33,6 +33,8 @@ public:
     int currentAction;
     int previousStateIdx;
 
+    int visitedCount;
+
     bool accept;
     // ustaw akceptację
     inline void setAccept() { accept = true;};
@@ -58,6 +60,7 @@ public:
         threadId = -1;
         currentAction = -1;
         previousStateIdx = -1;
+        visitedCount = 0;
     };
 
     friend ostream& operator<<(ostream &str, ParallelState &s);
@@ -120,6 +123,8 @@ private:
     virtual int getAction(ParallelState *s);
     virtual void setAction(ParallelState *s, int action);
     virtual void clearAction(ParallelState *s);
+
+    bool dfsOk;
     
 public:
 
@@ -147,6 +152,8 @@ public:
     virtual bool forkRecursiveDFS(int s, int n);
 
     virtual bool recursiveDFS(int s, int p, operationMode mode, int action = -1);
+
+    virtual bool nprecursiveDFS(int s, int p, operationMode mode, int action = -1);
     
     virtual bool parallelRecursiveDFS(int s, int p, operationMode mode, int threadId);
 

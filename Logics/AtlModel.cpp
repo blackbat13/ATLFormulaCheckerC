@@ -182,7 +182,6 @@ AtlModel::basicFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumber,
                 if (firstWinning != newStateCan) {
                     isOk = false;
                     if(newStateCan != state) { // if not same epistemic class
-                        cout << "hello 1" << endl;
                         inEpistemic=false;
                     }
                 }
@@ -190,12 +189,9 @@ AtlModel::basicFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumber,
                 newStatesCanGo.insert(newStateCan);
             }
 
-            cout << action << endl;
-
             customCanGoThere[stateEpistemicClassNumber][action] = newStatesCanGo;
 
             if(!isOk && inEpistemic) {  // bladzenie
-                cout << "hello" << endl;
                 auto origStatesCanGo = this->canGoThere[agentNumber][stateEpistemicClassNumber][action];
                 std::map<unsigned int, bool> goodState;
                 int counter = 0;
@@ -301,9 +297,7 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
     resultStates.insert(winningStates.begin(), winningStates.end());
     int numberOfIterations = 0;
     auto currentStates = winningStates;
-    cout << "hello 2" << endl;
     DisjointUnion winningStatesDisjoint = this->epistemicClassDisjoint[agentNumber];
-    cout << "hello 3" << endl;
     auto firstWinning = winningStatesDisjoint.find(*winningStates.begin());
     std::set<int> epistemicClassNumbers;
     for (auto stateNumber: winningStates) {
@@ -311,7 +305,6 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
         epistemicClassNumbers.insert(epistemicClassNumber);
     }
 
-    cout << "hello 4" << endl;
 
     for (auto epistemicClassNumber: epistemicClassNumbers) {
         auto epistemicStates = this->imperfectInformation[agentNumber][epistemicClassNumber];
@@ -329,8 +322,6 @@ AtlModel::minimumFormulaOneAgentMultipleStatesDisjoint(unsigned short agentNumbe
     }
 
     epistemicClassNumbers.clear();
-
-    cout << "hello 5" << endl;
 
     auto customCanGoThere = this->canGoThere[agentNumber];
     while (true) {
