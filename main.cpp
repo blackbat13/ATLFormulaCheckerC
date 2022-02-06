@@ -39,13 +39,25 @@ int main(int argc, char **argv) {
         model.setParallelAccept(parallel, formulaIndex);
 
         gettimeofday(&tb, NULL);
+        result = parallel->forkRecursiveDFS(0, 0);
+        gettimeofday(&te, NULL);
+
+
+        czas = 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec);
+
+        cout << "standard DFS: " << czas << " usec, ";
+
+        if (result) cout << "True" << endl;
+        else cout << "False" << endl;
+
+        gettimeofday(&tb, NULL);
         result = parallel->forkRecursiveDFS(0, t);
         gettimeofday(&te, NULL);
 
 
         czas = 1000000 * (te.tv_sec - tb.tv_sec) + (te.tv_usec - tb.tv_usec);
 
-        cout << "DFS: " << czas << " usec, ";
+        cout << "parallel DFS: " << czas << " usec, ";
 
         if (result) cout << "True" << endl;
         else cout << "False" << endl;
