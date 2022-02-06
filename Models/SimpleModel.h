@@ -23,7 +23,7 @@ protected:
     std::vector<GlobalState> states;
     unsigned int firstStateId;
     std::vector<std::set<std::string> > agentsActions;
-    std::vector<unsigned int> winningStates;
+    std::vector<std::vector<unsigned int> > winningStates;
     int agentId;
 public:
     explicit SimpleModel(unsigned int noAgents);
@@ -42,10 +42,12 @@ public:
     void simulatePrintEpistemicStates(int currentState, int agentId);
     void simulatePrintTransitions(int currentState);
     ParallelModel* toParallelModel(bool imperfect);
+    void setParallelAccept(ParallelModel *parallelModel, int formulaIndex);
     int getAgentId();
     void printStats();
-    std::set<unsigned int> verifyApproximationImperfect();
-    std::set<unsigned int> verifyApproximationPerfect();
+    std::set<unsigned int> verifyApproximationImperfect(int formulaIndex = 0);
+    std::set<unsigned int> verifyApproximationPerfect(int formulaIndex = 0);
+    int getFormulasCount();
 };
 
 

@@ -142,6 +142,16 @@ void ParallelModel::cleanAll() {
     }
 }
 
+
+/* -------------------------------------------------------------------------
+ */
+void ParallelModel::cleanAccept() {
+    for (int n = 0; n < counter; n++) {
+        states[n]->setNoAccept();
+    }
+}
+
+
 /* -------------------------------------------------------------------------
  * Połącz dwa węzły w klasę abstrakcji - podłącz klasę drugiego do pierwszego
  */

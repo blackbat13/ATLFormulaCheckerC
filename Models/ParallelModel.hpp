@@ -39,6 +39,8 @@ public:
     // ustaw akceptację
     inline void setAccept() { accept = true;};
 
+    inline void setNoAccept() { accept = false;};
+
     typedef enum {clear, searching, positive, negative} operation;
     operation opState;
 
@@ -146,6 +148,7 @@ public:
     virtual int findClass(int id);
 
     virtual void cleanAll();
+    virtual void cleanAccept();
 //     virtual void cleanPath(int s, int p, int threadId);
 
     virtual bool forkRecursiveDFS(int s);

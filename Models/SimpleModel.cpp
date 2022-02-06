@@ -50,6 +50,7 @@ void SimpleModel::addEpistemicClass(unsigned short agentId, const std::set<unsig
 
 AtlModel SimpleModel::toAtlImperfect() {
     AtlModel atlModel = AtlModel(this->noAgents, this->noStates);
+
     for (unsigned short agentId = 0; agentId < this->noAgents; agentId++) {
         for (const auto &action : this->agentsActions[agentId]) {
             atlModel.addAction(agentId, action);
@@ -178,11 +179,6 @@ ParallelModel* SimpleModel::toParallelModel(bool imperfect) {
         for(auto tr : tran) {
             parallelModel->states[stateId]->addTransition(tr.first, tr.second);
         }
-
-//        if(tran.empty()) {
-//            /// Add self loop
-//            parallelModel->states[stateId]->addTransition(0, stateId);
-//        }
     }
 
     if(imperfect) {
@@ -198,17 +194,20 @@ ParallelModel* SimpleModel::toParallelModel(bool imperfect) {
         }
     }
 
-    for(auto stateId : this->winningStates) {
-        parallelModel->states[stateId]->setAccept();
-    }
-
     return parallelModel;
 }
 
-std::set<unsigned int> SimpleModel::verifyApproximationImperfect() {
+void SimpleModel::setParallelAccept(ParallelModel *parallelModel, int formulaIndex) {
+    parallelModel->cleanAccept();
+    for(auto stateId : this->winningStates[formulaIndex]) {
+        parallelModel->states[stateId]->setAccept();
+    }
+}
+
+std::set<unsigned int> SimpleModel::verifyApproximationImperfect(int formulaIndex) {
     auto model = this->toAtlImperfect();
     std::set<unsigned int> winningSet;
-    for(auto stateId: this->winningStates) {
+    for(auto stateId: this->winningStates[formulaIndex]) {
         winningSet.insert(stateId);
     }
 
@@ -216,10 +215,10 @@ std::set<unsigned int> SimpleModel::verifyApproximationImperfect() {
     return result;
 }
 
-std::set<unsigned int> SimpleModel::verifyApproximationPerfect() {
+std::set<unsigned int> SimpleModel::verifyApproximationPerfect(int formulaIndex) {
     auto model = this->toAtlImperfect();
     std::set<unsigned int> winningSet;
-    for(auto stateId: this->winningStates) {
+    for(auto stateId: this->winningStates[formulaIndex]) {
         winningSet.insert(stateId);
     }
 
@@ -269,11 +268,17 @@ SimpleModel::SimpleModel(std::string filename) {
         }
     }
 
-    int winningStatesCount;
-    file >> winningStatesCount;
-    this->winningStates = std::vector<unsigned int>(winningStatesCount);
-    for(int i = 0; i < winningStatesCount; i++) {
-        file >> this->winningStates[i];
+    int formulasCount;
+    file >> formulasCount;
+    this->winningStates = std::vector<std::vector<unsigned int> >(formulasCount);
+
+    for(int f = 0; f < formulasCount; f++) {
+        int winningStatesCount;
+        file >> winningStatesCount;
+        this->winningStates[f] = std::vector<unsigned int>(winningStatesCount);
+        for (int i = 0; i < winningStatesCount; i++) {
+            file >> this->winningStates[f][i];
+        }
     }
 
     file >> this->agentId;
@@ -290,11 +295,15 @@ void SimpleModel::printStats() {
     std::cout << "Number of agents: " << this->noAgents << std::endl;
     std::cout << "Number of transitions: " << this->noTransitions << std::endl;
     std::cout << "Winning states: " << std::endl;
-    for(auto stateId : this->winningStates) {
+    for(auto stateId : this->winningStates[0]) {
         std::cout << stateId << " ";
     }
 
     std::cout << std::endl;
     std::cout << "Agent: " << this->agentId << std::endl;
     std::cout << std::endl;
+}
+
+int SimpleModel::getFormulasCount() {
+    return this->winningStates.size();
 }

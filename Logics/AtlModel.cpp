@@ -5,8 +5,8 @@ AtlModel::AtlModel(unsigned short numberOfAgents, unsigned int numberOfStates) :
     this->imperfectInformation = std::vector<std::vector<std::set<unsigned int> > >(numberOfAgents);
     this->agentsActions = std::vector<std::vector<std::string> >(numberOfAgents);
 
-    this->transitions = std::vector<std::set<Transition> >(1000);
-    this->preStates = std::vector<std::set<unsigned int> >(1000);
+    this->transitions = std::vector<std::set<Transition> >(numberOfStates + 1);
+    this->preStates = std::vector<std::set<unsigned int> >(numberOfStates + 1);
     this->numberOfTransitions = 0;
     this->initialStatesCount = 0;
 }
@@ -73,6 +73,7 @@ void AtlModel::finishEpistemicClasses(unsigned short agentNumber) {
 
 void AtlModel::findWhereCanGo(const std::set<unsigned int> &epistemicClass, unsigned int epistemicClassNumber,
                               unsigned short agentNumber) {
+
     for (const auto &action: this->agentsActions[agentNumber]) {
         std::set<unsigned int> canGoTemp;
         for (auto state: epistemicClass) {
@@ -92,6 +93,7 @@ void AtlModel::findWhereCanGo(const std::set<unsigned int> &epistemicClass, unsi
 
         this->canGoThere[agentNumber][epistemicClassNumber][action] = canGoTemp;
     }
+
 }
 
 bool AtlModel::isReachableByAgentDisjoint(const std::string &action, unsigned int fromState, unsigned short agentNumber,
